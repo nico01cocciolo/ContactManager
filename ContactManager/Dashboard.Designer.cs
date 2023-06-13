@@ -1,6 +1,6 @@
 ﻿namespace ContactManager
 {
-    partial class Form1
+    partial class Dashboard
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -70,7 +70,7 @@
             this.button4.Text = "De Besser Knopf 3";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,8 +79,8 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Dashboard";
+            this.Text = "Dashboard";
             this.ResumeLayout(false);
 
         }
