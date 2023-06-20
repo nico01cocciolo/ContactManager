@@ -9,10 +9,17 @@ namespace ContactManager.Model
     internal class Kunde : Person
     {
         //ADD
-        /* Firmenname, 
-         * Geschäftsadresse, 
-         * Kundentyp (A-E), 
-         * Firmenkontakt 
+        /*  Firmenname, 
+         *  Geschäftsadresse, 
+         *  Kundentyp (A-E), 
+         *  Firmenkontakt 
          */
+
+        #region Parameters
+        public string companyName { get; set; }
+        public string companyAdress { get; set; }
+        public char costumerType { get; set; }
+        public string companyContact { get; set; }
+        #endregion
     }
 }

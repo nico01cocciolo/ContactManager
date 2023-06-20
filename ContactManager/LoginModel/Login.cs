@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ContactManager.LoginModel
 {
-    internal class Login 
+    internal class Login : Form
     {
 
         private string username { get; set; }
@@ -34,5 +34,4 @@ namespace ContactManager.LoginModel
             }
         }
     }
-
 }
