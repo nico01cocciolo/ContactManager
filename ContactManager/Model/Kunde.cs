@@ -16,10 +16,18 @@ namespace ContactManager.Model
          */
 
         #region Parameters
-        public string companyName { get; set; }
-        public string companyAdress { get; set; }
-        public char costumerType { get; set; }
-        public string companyContact { get; set; }
+        public string CompanyName { get; set; }
+        public string CompanyAdress { get; set; }
+        public char CostumerType { get; set; }
+        public string CompanyContact { get; set; }
         #endregion
+
+        public Kunde(string f, string n, DateTime dob, string coname, string coadr, char ct, string cc) : base (f,n,dob)
+        {
+            CompanyName = coname;
+            CompanyAdress = coadr;
+            CostumerType = ct;
+            CompanyContact = cc;
+        }
     }
 }

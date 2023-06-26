@@ -47,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEmployeeView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddEmployeeView.Designer.cs">
-      <DependentUpon>AddEmployeeView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,20 +62,26 @@
     <Compile Include="LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
+    <Compile Include="MitarbeiterAnlegenView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MitarbeiterAnlegenView.Designer.cs">
+      <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Kunde.cs" />
     <Compile Include="Model\Lehrling.cs" />
     <Compile Include="Model\Mitarbeiter.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddEmployeeView.resx">
-      <DependentUpon>AddEmployeeView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MitarbeiterAnlegenView.resx">
+      <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

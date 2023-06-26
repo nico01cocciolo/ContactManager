@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,8 +17,15 @@ namespace ContactManager.Model
          */
 
         #region Parameters
-        public int traineeYears { get; set; }
-        public int actualTraineeYear { get; set; }
+        public int TraineeYears { get; set; }
+        public int ActualTraineeYear { get; set; }
         #endregion
+
+        public Lehrling(string f, string n, DateTime dob, int ks, string abt, int arbp, DateTime st, int ty, int aty) : base(f, n, dob, ks, abt, arbp, st)
+        {
+            TraineeYears = ty;
+            ActualTraineeYear = aty;
+        }
+
     }
 }

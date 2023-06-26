@@ -44,22 +44,33 @@ namespace ContactManager.Model
 
         #region Parameters
         public string salutation { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public DateTime dateOfBirth { get; set; }
-        public Gender gender { get; set; }
-        public Title title { get; set; } 
-        public string phoneNumberPrivat { get; set; }
-        public string phoneNumberWork { get; set; }
-        public string phoneNumberMobile { get; set; }
-        public string email { get; set; }
-        public string ahvNumber { get; set; }
-        public string nationality { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public Gender Gender { get; set; }
+        public Title Title { get; set; } 
+        public string PhoneNumberPrivat { get; set; }
+        public string PhoneNumberWork { get; set; }
+        public string PhoneNumberMobile { get; set; }
+        public string Email { get; set; }
+        public string AhvNumber { get; set; }
+        public string Nationality { get; set; }
         public bool inUse { get; set; }
-        public string street { get; set;  }
-        public int streetNumber { get; set; }
-        public int postalCode { get; set; }
-        public string wohnort { get; set; }
+        public string Street { get; set;  }
+        public int StreetNumber { get; set; }
+        public int PostalCode { get; set; }
+        public string Wohnort { get; set; }
         #endregion
+
+        //ADD 
+        //Du muss no meh so Gugus ine aber mag gad nüme *Gähn*
+
+        public Person(string f, string n, DateTime dob)
+        {
+            Firstname = f;
+            Lastname = n;
+            DateOfBirth = dob;
+        }
+
     }
 }

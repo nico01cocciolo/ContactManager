@@ -17,5 +17,10 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        private void TsmMitarbeiterAnlegen_Click(object sender, EventArgs e)
+        {
+            MitarbeiterAnlegenView mitarbeiterView = new MitarbeiterAnlegenView();
+            mitarbeiterView.ShowDialog();
+        }
     }
 }
