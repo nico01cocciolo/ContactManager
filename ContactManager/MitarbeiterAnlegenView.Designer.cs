@@ -45,6 +45,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TxtAktLehrjahr = new System.Windows.Forms.TextBox();
+            this.LblAktLehrjahr = new System.Windows.Forms.Label();
+            this.TxtLehrjahre = new System.Windows.Forms.TextBox();
+            this.LblLehrjahre = new System.Windows.Forms.Label();
             this.ChkLehrling = new System.Windows.Forms.CheckBox();
             this.DtpAustritt = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,20 +61,16 @@
             this.TxtRolle = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.TxtLehrjahre = new System.Windows.Forms.TextBox();
-            this.LblLehrjahre = new System.Windows.Forms.Label();
-            this.TxtAktLehrjahr = new System.Windows.Forms.TextBox();
-            this.LblAktLehrjahr = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.TxtStrasse = new System.Windows.Forms.TextBox();
-            this.TxtHausnummer = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.TxtWohnort = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.TxtPostleitzahl = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.TxtWohnort = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.TxtHausnummer = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TxtStrasse = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.TxtTelGesch = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -263,6 +263,42 @@
             this.panel2.Size = new System.Drawing.Size(338, 295);
             this.panel2.TabIndex = 16;
             // 
+            // TxtAktLehrjahr
+            // 
+            this.TxtAktLehrjahr.Enabled = false;
+            this.TxtAktLehrjahr.Location = new System.Drawing.Point(175, 247);
+            this.TxtAktLehrjahr.Name = "TxtAktLehrjahr";
+            this.TxtAktLehrjahr.Size = new System.Drawing.Size(121, 20);
+            this.TxtAktLehrjahr.TabIndex = 25;
+            // 
+            // LblAktLehrjahr
+            // 
+            this.LblAktLehrjahr.AutoSize = true;
+            this.LblAktLehrjahr.Enabled = false;
+            this.LblAktLehrjahr.Location = new System.Drawing.Point(6, 250);
+            this.LblAktLehrjahr.Name = "LblAktLehrjahr";
+            this.LblAktLehrjahr.Size = new System.Drawing.Size(91, 13);
+            this.LblAktLehrjahr.TabIndex = 24;
+            this.LblAktLehrjahr.Text = "Aktuelles Lehrjahr";
+            // 
+            // TxtLehrjahre
+            // 
+            this.TxtLehrjahre.Enabled = false;
+            this.TxtLehrjahre.Location = new System.Drawing.Point(175, 221);
+            this.TxtLehrjahre.Name = "TxtLehrjahre";
+            this.TxtLehrjahre.Size = new System.Drawing.Size(121, 20);
+            this.TxtLehrjahre.TabIndex = 23;
+            // 
+            // LblLehrjahre
+            // 
+            this.LblLehrjahre.AutoSize = true;
+            this.LblLehrjahre.Enabled = false;
+            this.LblLehrjahre.Location = new System.Drawing.Point(6, 224);
+            this.LblLehrjahre.Name = "LblLehrjahre";
+            this.LblLehrjahre.Size = new System.Drawing.Size(51, 13);
+            this.LblLehrjahre.TabIndex = 22;
+            this.LblLehrjahre.Text = "Lehrjahre";
+            // 
             // ChkLehrling
             // 
             this.ChkLehrling.AutoSize = true;
@@ -366,42 +402,6 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Mitarbeiter Daten";
             // 
-            // TxtLehrjahre
-            // 
-            this.TxtLehrjahre.Enabled = false;
-            this.TxtLehrjahre.Location = new System.Drawing.Point(175, 221);
-            this.TxtLehrjahre.Name = "TxtLehrjahre";
-            this.TxtLehrjahre.Size = new System.Drawing.Size(121, 20);
-            this.TxtLehrjahre.TabIndex = 23;
-            // 
-            // LblLehrjahre
-            // 
-            this.LblLehrjahre.AutoSize = true;
-            this.LblLehrjahre.Enabled = false;
-            this.LblLehrjahre.Location = new System.Drawing.Point(6, 224);
-            this.LblLehrjahre.Name = "LblLehrjahre";
-            this.LblLehrjahre.Size = new System.Drawing.Size(51, 13);
-            this.LblLehrjahre.TabIndex = 22;
-            this.LblLehrjahre.Text = "Lehrjahre";
-            // 
-            // TxtAktLehrjahr
-            // 
-            this.TxtAktLehrjahr.Enabled = false;
-            this.TxtAktLehrjahr.Location = new System.Drawing.Point(175, 247);
-            this.TxtAktLehrjahr.Name = "TxtAktLehrjahr";
-            this.TxtAktLehrjahr.Size = new System.Drawing.Size(121, 20);
-            this.TxtAktLehrjahr.TabIndex = 25;
-            // 
-            // LblAktLehrjahr
-            // 
-            this.LblAktLehrjahr.AutoSize = true;
-            this.LblAktLehrjahr.Enabled = false;
-            this.LblAktLehrjahr.Location = new System.Drawing.Point(6, 250);
-            this.LblAktLehrjahr.Name = "LblAktLehrjahr";
-            this.LblAktLehrjahr.Size = new System.Drawing.Size(91, 13);
-            this.LblAktLehrjahr.TabIndex = 24;
-            this.LblAktLehrjahr.Text = "Aktuelles Lehrjahr";
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -418,6 +418,61 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(338, 239);
             this.panel3.TabIndex = 16;
+            // 
+            // TxtPostleitzahl
+            // 
+            this.TxtPostleitzahl.Location = new System.Drawing.Point(174, 115);
+            this.TxtPostleitzahl.Name = "TxtPostleitzahl";
+            this.TxtPostleitzahl.Size = new System.Drawing.Size(121, 20);
+            this.TxtPostleitzahl.TabIndex = 22;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 118);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(63, 13);
+            this.label19.TabIndex = 21;
+            this.label19.Text = "Postleitzahl:";
+            // 
+            // TxtWohnort
+            // 
+            this.TxtWohnort.Location = new System.Drawing.Point(174, 89);
+            this.TxtWohnort.Name = "TxtWohnort";
+            this.TxtWohnort.Size = new System.Drawing.Size(121, 20);
+            this.TxtWohnort.TabIndex = 20;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 92);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(51, 13);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "Wohnort:";
+            // 
+            // TxtHausnummer
+            // 
+            this.TxtHausnummer.Location = new System.Drawing.Point(174, 63);
+            this.TxtHausnummer.Name = "TxtHausnummer";
+            this.TxtHausnummer.Size = new System.Drawing.Size(121, 20);
+            this.TxtHausnummer.TabIndex = 18;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 66);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 13);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "Hausnummer:";
+            // 
+            // TxtStrasse
+            // 
+            this.TxtStrasse.Location = new System.Drawing.Point(174, 37);
+            this.TxtStrasse.Name = "TxtStrasse";
+            this.TxtStrasse.Size = new System.Drawing.Size(121, 20);
+            this.TxtStrasse.TabIndex = 16;
             // 
             // label23
             // 
@@ -436,61 +491,6 @@
             this.label24.Size = new System.Drawing.Size(45, 13);
             this.label24.TabIndex = 0;
             this.label24.Text = "Adresse";
-            // 
-            // TxtStrasse
-            // 
-            this.TxtStrasse.Location = new System.Drawing.Point(174, 37);
-            this.TxtStrasse.Name = "TxtStrasse";
-            this.TxtStrasse.Size = new System.Drawing.Size(121, 20);
-            this.TxtStrasse.TabIndex = 16;
-            // 
-            // TxtHausnummer
-            // 
-            this.TxtHausnummer.Location = new System.Drawing.Point(174, 63);
-            this.TxtHausnummer.Name = "TxtHausnummer";
-            this.TxtHausnummer.Size = new System.Drawing.Size(121, 20);
-            this.TxtHausnummer.TabIndex = 18;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 66);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 13);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Hausnummer:";
-            // 
-            // TxtWohnort
-            // 
-            this.TxtWohnort.Location = new System.Drawing.Point(174, 89);
-            this.TxtWohnort.Name = "TxtWohnort";
-            this.TxtWohnort.Size = new System.Drawing.Size(121, 20);
-            this.TxtWohnort.TabIndex = 20;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 92);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 13);
-            this.label18.TabIndex = 19;
-            this.label18.Text = "Wohnort:";
-            // 
-            // TxtPostleitzahl
-            // 
-            this.TxtPostleitzahl.Location = new System.Drawing.Point(174, 115);
-            this.TxtPostleitzahl.Name = "TxtPostleitzahl";
-            this.TxtPostleitzahl.Size = new System.Drawing.Size(121, 20);
-            this.TxtPostleitzahl.TabIndex = 22;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 118);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(63, 13);
-            this.label19.TabIndex = 21;
-            this.label19.Text = "Postleitzahl:";
             // 
             // panel4
             // 

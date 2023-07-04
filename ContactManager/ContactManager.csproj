@@ -53,6 +53,12 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="KundeAnlegenView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KundeAnlegenView.Designer.cs">
+      <DependentUpon>KundeAnlegenView.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginModel\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KundeAnlegenView.resx">
+      <DependentUpon>KundeAnlegenView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>

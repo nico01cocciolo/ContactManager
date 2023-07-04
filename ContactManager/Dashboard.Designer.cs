@@ -35,14 +35,16 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.MsMenu = new System.Windows.Forms.MenuStrip();
             this.TsmImportieren = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsmKunde = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsmMitarbeiter = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsmLehrling = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsmStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.importierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmImportCSVDatei = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmKunde = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmMitarbeiter = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmMitarbeiterAnlegen = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmMitarbeiterBearbeiten = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmLehrling = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.kundeAnlegenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kundeBearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.MsMenu.SuspendLayout();
             this.SuspendLayout();
@@ -113,8 +115,25 @@
             this.TsmImportieren.Size = new System.Drawing.Size(46, 20);
             this.TsmImportieren.Text = "Datei";
             // 
+            // importierenToolStripMenuItem
+            // 
+            this.importierenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsmImportCSVDatei});
+            this.importierenToolStripMenuItem.Name = "importierenToolStripMenuItem";
+            this.importierenToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.importierenToolStripMenuItem.Text = "Importieren";
+            // 
+            // TsmImportCSVDatei
+            // 
+            this.TsmImportCSVDatei.Name = "TsmImportCSVDatei";
+            this.TsmImportCSVDatei.Size = new System.Drawing.Size(127, 22);
+            this.TsmImportCSVDatei.Text = "CSV-Datei";
+            // 
             // TsmKunde
             // 
+            this.TsmKunde.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kundeAnlegenToolStripMenuItem,
+            this.kundeBearbeitenToolStripMenuItem});
             this.TsmKunde.Name = "TsmKunde";
             this.TsmKunde.Size = new System.Drawing.Size(53, 20);
             this.TsmKunde.Text = "Kunde";
@@ -128,32 +147,6 @@
             this.TsmMitarbeiter.Size = new System.Drawing.Size(77, 20);
             this.TsmMitarbeiter.Text = "Mitarbeiter";
             // 
-            // TsmLehrling
-            // 
-            this.TsmLehrling.Name = "TsmLehrling";
-            this.TsmLehrling.Size = new System.Drawing.Size(62, 20);
-            this.TsmLehrling.Text = "Lehrling";
-            // 
-            // TsmStatus
-            // 
-            this.TsmStatus.Name = "TsmStatus";
-            this.TsmStatus.Size = new System.Drawing.Size(51, 20);
-            this.TsmStatus.Text = "Status";
-            // 
-            // importierenToolStripMenuItem
-            // 
-            this.importierenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TsmImportCSVDatei});
-            this.importierenToolStripMenuItem.Name = "importierenToolStripMenuItem";
-            this.importierenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importierenToolStripMenuItem.Text = "Importieren";
-            // 
-            // TsmImportCSVDatei
-            // 
-            this.TsmImportCSVDatei.Name = "TsmImportCSVDatei";
-            this.TsmImportCSVDatei.Size = new System.Drawing.Size(180, 22);
-            this.TsmImportCSVDatei.Text = "CSV-Datei";
-            // 
             // TsmMitarbeiterAnlegen
             // 
             this.TsmMitarbeiterAnlegen.Name = "TsmMitarbeiterAnlegen";
@@ -166,6 +159,31 @@
             this.TsmMitarbeiterBearbeiten.Name = "TsmMitarbeiterBearbeiten";
             this.TsmMitarbeiterBearbeiten.Size = new System.Drawing.Size(191, 22);
             this.TsmMitarbeiterBearbeiten.Text = "Mitarbeiter bearbeiten";
+            // 
+            // TsmLehrling
+            // 
+            this.TsmLehrling.Name = "TsmLehrling";
+            this.TsmLehrling.Size = new System.Drawing.Size(62, 20);
+            this.TsmLehrling.Text = "Lehrling";
+            // 
+            // TsmStatus
+            // 
+            this.TsmStatus.Name = "TsmStatus";
+            this.TsmStatus.Size = new System.Drawing.Size(51, 20);
+            this.TsmStatus.Text = "Status";
+            // 
+            // kundeAnlegenToolStripMenuItem
+            // 
+            this.kundeAnlegenToolStripMenuItem.Name = "kundeAnlegenToolStripMenuItem";
+            this.kundeAnlegenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kundeAnlegenToolStripMenuItem.Text = "Kunde anlegen";
+            this.kundeAnlegenToolStripMenuItem.Click += new System.EventHandler(this.kundeAnlegenToolStripMenuItem_Click);
+            // 
+            // kundeBearbeitenToolStripMenuItem
+            // 
+            this.kundeBearbeitenToolStripMenuItem.Name = "kundeBearbeitenToolStripMenuItem";
+            this.kundeBearbeitenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kundeBearbeitenToolStripMenuItem.Text = "Kunde bearbeiten";
             // 
             // Dashboard
             // 
@@ -206,6 +224,8 @@
         private System.Windows.Forms.ToolStripMenuItem TsmImportCSVDatei;
         private System.Windows.Forms.ToolStripMenuItem TsmMitarbeiterAnlegen;
         private System.Windows.Forms.ToolStripMenuItem TsmMitarbeiterBearbeiten;
+        private System.Windows.Forms.ToolStripMenuItem kundeAnlegenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kundeBearbeitenToolStripMenuItem;
     }
 }
 

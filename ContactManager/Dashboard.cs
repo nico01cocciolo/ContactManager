@@ -22,5 +22,11 @@ namespace ContactManager
             MitarbeiterAnlegenView mitarbeiterView = new MitarbeiterAnlegenView();
             mitarbeiterView.ShowDialog();
         }
+
+        private void kundeAnlegenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KundeAnlegenView kundenView = new KundeAnlegenView();
+            kundenView.ShowDialog();
+        }
     }
 }
