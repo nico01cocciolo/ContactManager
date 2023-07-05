@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.TxtAhvNum = new System.Windows.Forms.TextBox();
@@ -65,6 +66,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TxtFirmenname = new System.Windows.Forms.TextBox();
             this.CmbKundentyp = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -73,11 +75,16 @@
             this.CmdKundeAnlegen = new System.Windows.Forms.Button();
             this.CmdFelderReset = new System.Windows.Forms.Button();
             this.CmdNotizErfassen = new System.Windows.Forms.Button();
-            this.TxtFirmenname = new System.Windows.Forms.TextBox();
+            this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrNachname = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrGeburtsdatum = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrGeburtsdatum)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -421,6 +428,13 @@
             this.panel2.Size = new System.Drawing.Size(338, 239);
             this.panel2.TabIndex = 16;
             // 
+            // TxtFirmenname
+            // 
+            this.TxtFirmenname.Location = new System.Drawing.Point(174, 37);
+            this.TxtFirmenname.Name = "TxtFirmenname";
+            this.TxtFirmenname.Size = new System.Drawing.Size(121, 20);
+            this.TxtFirmenname.TabIndex = 17;
+            // 
             // CmbKundentyp
             // 
             this.CmbKundentyp.FormattingEnabled = true;
@@ -472,6 +486,7 @@
             this.CmdKundeAnlegen.TabIndex = 27;
             this.CmdKundeAnlegen.Text = "Kunde anlegen";
             this.CmdKundeAnlegen.UseVisualStyleBackColor = true;
+            this.CmdKundeAnlegen.Click += new System.EventHandler(this.CmdKundeAnlegen_Click);
             // 
             // CmdFelderReset
             // 
@@ -491,12 +506,17 @@
             this.CmdNotizErfassen.Text = "Notiz erfassen";
             this.CmdNotizErfassen.UseVisualStyleBackColor = true;
             // 
-            // TxtFirmenname
+            // ErrVorname
             // 
-            this.TxtFirmenname.Location = new System.Drawing.Point(174, 37);
-            this.TxtFirmenname.Name = "TxtFirmenname";
-            this.TxtFirmenname.Size = new System.Drawing.Size(121, 20);
-            this.TxtFirmenname.TabIndex = 17;
+            this.ErrVorname.ContainerControl = this;
+            // 
+            // ErrNachname
+            // 
+            this.ErrNachname.ContainerControl = this;
+            // 
+            // ErrGeburtsdatum
+            // 
+            this.ErrGeburtsdatum.ContainerControl = this;
             // 
             // KundeAnlegenView
             // 
@@ -521,6 +541,9 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrGeburtsdatum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -574,5 +597,8 @@
         private System.Windows.Forms.Button CmdFelderReset;
         private System.Windows.Forms.Button CmdNotizErfassen;
         private System.Windows.Forms.TextBox TxtFirmenname;
+        private System.Windows.Forms.ErrorProvider ErrVorname;
+        private System.Windows.Forms.ErrorProvider ErrNachname;
+        private System.Windows.Forms.ErrorProvider ErrGeburtsdatum;
     }
 }
