@@ -28,5 +28,10 @@ namespace ContactManager
             KundeAnlegenView kundenView = new KundeAnlegenView();
             kundenView.ShowDialog();
         }
+
+        private void CmdStammMitarbeiter_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

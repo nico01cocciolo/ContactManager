@@ -32,26 +32,32 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.MsMenu = new System.Windows.Forms.MenuStrip();
             this.TsmImportieren = new System.Windows.Forms.ToolStripMenuItem();
             this.importierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmImportCSVDatei = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmKunde = new System.Windows.Forms.ToolStripMenuItem();
+            this.kundeAnlegenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kundeBearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmMitarbeiter = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmMitarbeiterAnlegen = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmMitarbeiterBearbeiten = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmLehrling = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmStatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.kundeAnlegenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kundeBearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CmdStammMitarbeiter = new System.Windows.Forms.Button();
+            this.CmdStammKunden = new System.Windows.Forms.Button();
+            this.CmdStammLehrlinge = new System.Windows.Forms.Button();
+            this.CmdImportCsv = new System.Windows.Forms.Button();
             this.MsMenu.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 110);
+            this.button1.Location = new System.Drawing.Point(385, 104);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -60,7 +66,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(93, 110);
+            this.button2.Location = new System.Drawing.Point(466, 104);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -69,7 +75,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 139);
+            this.button3.Location = new System.Drawing.Point(385, 133);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(156, 23);
             this.button3.TabIndex = 2;
@@ -78,20 +84,12 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 168);
+            this.button4.Location = new System.Drawing.Point(385, 162);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(156, 23);
             this.button4.TabIndex = 3;
             this.button4.Text = "De Besser Knopf 3";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(93, 271);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1046, 367);
-            this.dataGridView1.TabIndex = 4;
             // 
             // MsMenu
             // 
@@ -103,7 +101,7 @@
             this.TsmStatus});
             this.MsMenu.Location = new System.Drawing.Point(0, 0);
             this.MsMenu.Name = "MsMenu";
-            this.MsMenu.Size = new System.Drawing.Size(1264, 24);
+            this.MsMenu.Size = new System.Drawing.Size(1183, 24);
             this.MsMenu.TabIndex = 5;
             this.MsMenu.Text = "menuStrip1";
             // 
@@ -137,6 +135,19 @@
             this.TsmKunde.Name = "TsmKunde";
             this.TsmKunde.Size = new System.Drawing.Size(53, 20);
             this.TsmKunde.Text = "Kunde";
+            // 
+            // kundeAnlegenToolStripMenuItem
+            // 
+            this.kundeAnlegenToolStripMenuItem.Name = "kundeAnlegenToolStripMenuItem";
+            this.kundeAnlegenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.kundeAnlegenToolStripMenuItem.Text = "Kunde anlegen";
+            this.kundeAnlegenToolStripMenuItem.Click += new System.EventHandler(this.kundeAnlegenToolStripMenuItem_Click);
+            // 
+            // kundeBearbeitenToolStripMenuItem
+            // 
+            this.kundeBearbeitenToolStripMenuItem.Name = "kundeBearbeitenToolStripMenuItem";
+            this.kundeBearbeitenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.kundeBearbeitenToolStripMenuItem.Text = "Kunde bearbeiten";
             // 
             // TsmMitarbeiter
             // 
@@ -172,36 +183,104 @@
             this.TsmStatus.Size = new System.Drawing.Size(51, 20);
             this.TsmStatus.Text = "Status";
             // 
-            // kundeAnlegenToolStripMenuItem
+            // flowLayoutPanel1
             // 
-            this.kundeAnlegenToolStripMenuItem.Name = "kundeAnlegenToolStripMenuItem";
-            this.kundeAnlegenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kundeAnlegenToolStripMenuItem.Text = "Kunde anlegen";
-            this.kundeAnlegenToolStripMenuItem.Click += new System.EventHandler(this.kundeAnlegenToolStripMenuItem_Click);
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(345, 27);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(919, 55);
+            this.flowLayoutPanel1.TabIndex = 6;
             // 
-            // kundeBearbeitenToolStripMenuItem
+            // panel1
             // 
-            this.kundeBearbeitenToolStripMenuItem.Name = "kundeBearbeitenToolStripMenuItem";
-            this.kundeBearbeitenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kundeBearbeitenToolStripMenuItem.Text = "Kunde bearbeiten";
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.CmdImportCsv);
+            this.panel1.Controls.Add(this.CmdStammLehrlinge);
+            this.panel1.Controls.Add(this.CmdStammKunden);
+            this.panel1.Controls.Add(this.CmdStammMitarbeiter);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(260, 651);
+            this.panel1.TabIndex = 7;
+            // 
+            // CmdStammMitarbeiter
+            // 
+            this.CmdStammMitarbeiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdStammMitarbeiter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdStammMitarbeiter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdStammMitarbeiter.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdStammMitarbeiter.Location = new System.Drawing.Point(0, 0);
+            this.CmdStammMitarbeiter.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdStammMitarbeiter.Name = "CmdStammMitarbeiter";
+            this.CmdStammMitarbeiter.Size = new System.Drawing.Size(260, 97);
+            this.CmdStammMitarbeiter.TabIndex = 0;
+            this.CmdStammMitarbeiter.Text = "Mitarbeiter";
+            this.CmdStammMitarbeiter.UseVisualStyleBackColor = true;
+            this.CmdStammMitarbeiter.Click += new System.EventHandler(this.CmdStammMitarbeiter_Click);
+            // 
+            // CmdStammKunden
+            // 
+            this.CmdStammKunden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdStammKunden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdStammKunden.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdStammKunden.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdStammKunden.Location = new System.Drawing.Point(0, 97);
+            this.CmdStammKunden.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdStammKunden.Name = "CmdStammKunden";
+            this.CmdStammKunden.Size = new System.Drawing.Size(260, 97);
+            this.CmdStammKunden.TabIndex = 1;
+            this.CmdStammKunden.Text = "Kunden";
+            this.CmdStammKunden.UseVisualStyleBackColor = true;
+            // 
+            // CmdStammLehrlinge
+            // 
+            this.CmdStammLehrlinge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdStammLehrlinge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdStammLehrlinge.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdStammLehrlinge.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdStammLehrlinge.Location = new System.Drawing.Point(0, 194);
+            this.CmdStammLehrlinge.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdStammLehrlinge.Name = "CmdStammLehrlinge";
+            this.CmdStammLehrlinge.Size = new System.Drawing.Size(260, 97);
+            this.CmdStammLehrlinge.TabIndex = 2;
+            this.CmdStammLehrlinge.Text = "Lehrlinge";
+            this.CmdStammLehrlinge.UseVisualStyleBackColor = true;
+            // 
+            // CmdImportCsv
+            // 
+            this.CmdImportCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdImportCsv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdImportCsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdImportCsv.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdImportCsv.Location = new System.Drawing.Point(0, 291);
+            this.CmdImportCsv.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdImportCsv.Name = "CmdImportCsv";
+            this.CmdImportCsv.Size = new System.Drawing.Size(260, 45);
+            this.CmdImportCsv.TabIndex = 3;
+            this.CmdImportCsv.Text = "Import";
+            this.CmdImportCsv.UseVisualStyleBackColor = true;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1183, 681);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.MsMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.MsMenu;
             this.Name = "Dashboard";
             this.Text = "Dashboard";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.MsMenu.ResumeLayout(false);
             this.MsMenu.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,7 +292,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip MsMenu;
         private System.Windows.Forms.ToolStripMenuItem TsmImportieren;
         private System.Windows.Forms.ToolStripMenuItem importierenToolStripMenuItem;
@@ -226,6 +304,13 @@
         private System.Windows.Forms.ToolStripMenuItem TsmMitarbeiterBearbeiten;
         private System.Windows.Forms.ToolStripMenuItem kundeAnlegenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kundeBearbeitenToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button CmdStammMitarbeiter;
+        private System.Windows.Forms.Button CmdImportCsv;
+        private System.Windows.Forms.Button CmdStammLehrlinge;
+        private System.Windows.Forms.Button CmdStammKunden;
     }
 }
 
