@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.MsMenu = new System.Windows.Forms.MenuStrip();
             this.TsmImportieren = new System.Windows.Forms.ToolStripMenuItem();
             this.importierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,8 +40,6 @@
             this.TsmMitarbeiterBearbeiten = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmLehrling = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmStatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CmdStammMitarbeiter = new System.Windows.Forms.Button();
             this.CmdStammKunden = new System.Windows.Forms.Button();
@@ -54,42 +48,6 @@
             this.MsMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(385, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Knopf";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(466, 104);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Knopf2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(385, 133);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(156, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "De Besser Knopf 2";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(385, 162);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(156, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "De Besser Knopf 3";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // MsMenu
             // 
@@ -183,14 +141,6 @@
             this.TsmStatus.Size = new System.Drawing.Size(51, 20);
             this.TsmStatus.Text = "Status";
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(345, 27);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(919, 55);
-            this.flowLayoutPanel1.TabIndex = 6;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -200,9 +150,9 @@
             this.panel1.Controls.Add(this.CmdStammLehrlinge);
             this.panel1.Controls.Add(this.CmdStammKunden);
             this.panel1.Controls.Add(this.CmdStammMitarbeiter);
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 651);
+            this.panel1.Size = new System.Drawing.Size(246, 651);
             this.panel1.TabIndex = 7;
             // 
             // CmdStammMitarbeiter
@@ -214,7 +164,7 @@
             this.CmdStammMitarbeiter.Location = new System.Drawing.Point(0, 0);
             this.CmdStammMitarbeiter.Margin = new System.Windows.Forms.Padding(0);
             this.CmdStammMitarbeiter.Name = "CmdStammMitarbeiter";
-            this.CmdStammMitarbeiter.Size = new System.Drawing.Size(260, 97);
+            this.CmdStammMitarbeiter.Size = new System.Drawing.Size(246, 97);
             this.CmdStammMitarbeiter.TabIndex = 0;
             this.CmdStammMitarbeiter.Text = "Mitarbeiter";
             this.CmdStammMitarbeiter.UseVisualStyleBackColor = true;
@@ -229,7 +179,7 @@
             this.CmdStammKunden.Location = new System.Drawing.Point(0, 97);
             this.CmdStammKunden.Margin = new System.Windows.Forms.Padding(0);
             this.CmdStammKunden.Name = "CmdStammKunden";
-            this.CmdStammKunden.Size = new System.Drawing.Size(260, 97);
+            this.CmdStammKunden.Size = new System.Drawing.Size(246, 97);
             this.CmdStammKunden.TabIndex = 1;
             this.CmdStammKunden.Text = "Kunden";
             this.CmdStammKunden.UseVisualStyleBackColor = true;
@@ -243,7 +193,7 @@
             this.CmdStammLehrlinge.Location = new System.Drawing.Point(0, 194);
             this.CmdStammLehrlinge.Margin = new System.Windows.Forms.Padding(0);
             this.CmdStammLehrlinge.Name = "CmdStammLehrlinge";
-            this.CmdStammLehrlinge.Size = new System.Drawing.Size(260, 97);
+            this.CmdStammLehrlinge.Size = new System.Drawing.Size(246, 97);
             this.CmdStammLehrlinge.TabIndex = 2;
             this.CmdStammLehrlinge.Text = "Lehrlinge";
             this.CmdStammLehrlinge.UseVisualStyleBackColor = true;
@@ -257,7 +207,7 @@
             this.CmdImportCsv.Location = new System.Drawing.Point(0, 291);
             this.CmdImportCsv.Margin = new System.Windows.Forms.Padding(0);
             this.CmdImportCsv.Name = "CmdImportCsv";
-            this.CmdImportCsv.Size = new System.Drawing.Size(260, 45);
+            this.CmdImportCsv.Size = new System.Drawing.Size(246, 45);
             this.CmdImportCsv.TabIndex = 3;
             this.CmdImportCsv.Text = "Import";
             this.CmdImportCsv.UseVisualStyleBackColor = true;
@@ -268,11 +218,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 681);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.MsMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.MsMenu;
@@ -287,11 +232,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.MenuStrip MsMenu;
         private System.Windows.Forms.ToolStripMenuItem TsmImportieren;
         private System.Windows.Forms.ToolStripMenuItem importierenToolStripMenuItem;
@@ -304,8 +244,6 @@
         private System.Windows.Forms.ToolStripMenuItem TsmMitarbeiterBearbeiten;
         private System.Windows.Forms.ToolStripMenuItem kundeAnlegenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kundeBearbeitenToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button CmdStammMitarbeiter;
         private System.Windows.Forms.Button CmdImportCsv;
