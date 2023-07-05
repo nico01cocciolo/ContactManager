@@ -39,7 +39,8 @@ namespace ContactManager
 
             if (CheckInputs() == true && counter < pers.Length)
             {
-
+            string kunde = "Kunde";
+            
             string gaggi = $"Kunde erstellt: \r\n Vorname: {Vorname} \r\n Nachname: {Nachname} \r\n Geburtstag: {dob.ToShortDateString()}";
             string personalien = $"Kunde \r\n {pers[counter].Firstname} {pers[counter].Lastname} ";
 
@@ -47,7 +48,7 @@ namespace ContactManager
             TxtNotizen.Text += personalien + "\r\n";
 
             persAn.GetKunde(Vorname, Nachname, dob);
-            persAn.WriteXML();
+            persAn.WriteXML(kunde);
 
             TxtVorname.Clear();
             TxtNachname.Clear();

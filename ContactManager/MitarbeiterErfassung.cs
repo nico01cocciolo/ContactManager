@@ -20,7 +20,8 @@ namespace ContactManager
         private void button1_Click(object sender, EventArgs e)
         {
             DataSet dataSet = new DataSet();
-            dataSet.ReadXml(@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml");
+            //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
+            dataSet.ReadXml(@"Y:\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml");
             dataGridView1.DataSource = dataSet.Tables[0];
         }
     }

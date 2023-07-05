@@ -24,30 +24,48 @@ namespace ContactManager.Controller
         private string Nachname;
         private DateTime Dob;
 
-        public string dataname = "Kunde" + counter + ".xml";
+        public string dataname = "Kunde.xml";
+        public bool dirCreated = false;
+
+        private string kunde = "Kunde";
+        private string mitarbeiter = "Mitarbeiter";
+        private string lehrling = "Lehrling";
 
         private static int counter = 1;
-
-        public void WriteXML()
+        
+        public void WriteXML(string choose)
         {
             KundeAnlegenView kav = new KundeAnlegenView();
             XmlTextWriter xw = new XmlTextWriter(dataname, new UnicodeEncoding());
-           
+
+            CreateNeededDir();
+
 
             xw.WriteStartDocument();
-            xw.WriteStartElement("Kunde");
+            xw.WriteStartElement(choose);
 
             xw.WriteStartElement("Persönliche_Daten");
+            xw.WriteAttributeString("Titel", null);
+            xw.WriteAttributeString("Anrede", null);
             xw.WriteAttributeString("Vorname", Vorname);
             xw.WriteAttributeString("Nachname", Nachname);
             xw.WriteAttributeString("Geburtsdatum", Dob.ToShortDateString());
+            xw.WriteAttributeString("Nationalität", null);
+            xw.WriteEndElement();
 
-            //xw.WriteStartElement("Kontakt Daten");
-            //xw.WriteAttributeString("E-Mail:", );
-            //xw.WriteAttributeString("Telefon Mobil", );
-            //xw.WriteAttributeString("Telefon Privat", );
-            //xw.WriteAttributeString("Telefon Geschäft", );
+            xw.WriteStartElement("Kontakt_Daten");
+            xw.WriteAttributeString("E-Mail", null);
+            xw.WriteAttributeString("Telefon_Mobil", null);
+            xw.WriteAttributeString("Telefon_Privat", null);
+            xw.WriteAttributeString("Telefon_Geschäft", null);
+            xw.WriteEndElement();
 
+            xw.WriteStartElement("Adresse");
+            xw.WriteAttributeString("Strasse", null);
+            xw.WriteAttributeString("Hausnummer", null);
+            xw.WriteAttributeString("Postleitzahl", null);
+            xw.WriteAttributeString("Wohnort", null);
+            xw.WriteEndElement();
 
             xw.WriteEndElement();
             xw.Close();
@@ -65,5 +83,16 @@ namespace ContactManager.Controller
             Nachname = nachname;
             Dob = dob;
         }
+
+        private void CreateNeededDir()
+        {
+            if (Directory.Exists("Kunden") == false && Directory.Exists("Lehrlinge") == false && Directory.Exists("Mitarbeiter") == false)
+            {
+                Directory.CreateDirectory("Kunden");
+                Directory.CreateDirectory("Lehrlinge");
+                Directory.CreateDirectory("Mitarbeiter");
+            }
+        }
+
     }
 }
