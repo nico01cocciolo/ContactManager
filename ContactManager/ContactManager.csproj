@@ -77,6 +77,12 @@
     <Compile Include="MitarbeiterAnlegenView.Designer.cs">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </Compile>
+    <Compile Include="MitarbeiterErfassung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MitarbeiterErfassung.Designer.cs">
+      <DependentUpon>MitarbeiterErfassung.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Kunde.cs" />
     <Compile Include="Model\Lehrling.cs" />
     <Compile Include="Model\Mitarbeiter.cs" />
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MitarbeiterAnlegenView.resx">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MitarbeiterErfassung.resx">
+      <DependentUpon>MitarbeiterErfassung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

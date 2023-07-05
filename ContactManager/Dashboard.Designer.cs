@@ -45,6 +45,7 @@
             this.CmdStammKunden = new System.Windows.Forms.Button();
             this.CmdStammLehrlinge = new System.Windows.Forms.Button();
             this.CmdImportCsv = new System.Windows.Forms.Button();
+            this.mitarbeiterErfassung1 = new ContactManager.MitarbeiterErfassung();
             this.MsMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -212,11 +213,19 @@
             this.CmdImportCsv.Text = "Import";
             this.CmdImportCsv.UseVisualStyleBackColor = true;
             // 
+            // mitarbeiterErfassung1
+            // 
+            this.mitarbeiterErfassung1.Location = new System.Drawing.Point(287, 52);
+            this.mitarbeiterErfassung1.Name = "mitarbeiterErfassung1";
+            this.mitarbeiterErfassung1.Size = new System.Drawing.Size(892, 553);
+            this.mitarbeiterErfassung1.TabIndex = 8;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 681);
+            this.Controls.Add(this.mitarbeiterErfassung1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MsMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -249,6 +258,7 @@
         private System.Windows.Forms.Button CmdImportCsv;
         private System.Windows.Forms.Button CmdStammLehrlinge;
         private System.Windows.Forms.Button CmdStammKunden;
+        private MitarbeiterErfassung mitarbeiterErfassung1;
     }
 }
 

@@ -37,7 +37,7 @@ namespace ContactManager.Controller
             xw.WriteStartDocument();
             xw.WriteStartElement("Kunde");
 
-            xw.WriteStartElement("Persönliche Daten");
+            xw.WriteStartElement("Persönliche_Daten");
             xw.WriteAttributeString("Vorname", Vorname);
             xw.WriteAttributeString("Nachname", Nachname);
             xw.WriteAttributeString("Geburtsdatum", Dob.ToShortDateString());
