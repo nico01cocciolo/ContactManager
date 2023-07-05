@@ -48,7 +48,7 @@ namespace ContactManager.Model
         public string Lastname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
-        public Title Title { get; set; } 
+        public Title Title { get; set; }
         public string PhoneNumberPrivat { get; set; }
         public string PhoneNumberWork { get; set; }
         public string PhoneNumberMobile { get; set; }
@@ -56,10 +56,12 @@ namespace ContactManager.Model
         public string AhvNumber { get; set; }
         public string Nationality { get; set; }
         public bool inUse { get; set; }
-        public string Street { get; set;  }
+        public string Street { get; set; }
         public int StreetNumber { get; set; }
         public int PostalCode { get; set; }
         public string Wohnort { get; set; }
+        public bool isActive {get; set;}
+
         #endregion
 
         //ADD 

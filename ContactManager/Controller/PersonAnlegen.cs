@@ -10,6 +10,7 @@ using ContactManager.Model;
 using System.Drawing;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Drawing.Text;
 
 namespace ContactManager.Controller
 {
@@ -23,12 +24,14 @@ namespace ContactManager.Controller
         private string Nachname;
         private DateTime Dob;
 
+        public string dataname = "Kunde" + counter + ".xml";
 
+        private static int counter = 1;
 
         public void WriteXML()
         {
             KundeAnlegenView kav = new KundeAnlegenView();
-            XmlTextWriter xw = new XmlTextWriter("Text.xml", new UnicodeEncoding());
+            XmlTextWriter xw = new XmlTextWriter(dataname, new UnicodeEncoding());
            
 
             xw.WriteStartDocument();
@@ -48,7 +51,8 @@ namespace ContactManager.Controller
 
             xw.WriteEndElement();
             xw.Close();
-
+            
+            counter++;
             Vorname = "";
             Nachname = "";
             
