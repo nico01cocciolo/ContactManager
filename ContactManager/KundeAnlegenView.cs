@@ -26,35 +26,29 @@ namespace ContactManager
         bool inputOk = false;
         private static int counter = 0;
 
+        XMLHandler xmlHandler = new XMLHandler();
+
         private void CmdKundeAnlegen_Click(object sender, EventArgs e)
         {
             PersonAnlegen persAn = new PersonAnlegen();
-            string Vorname = TxtVorname.Text;
-            string Nachname = TxtNachname.Text;
+            Guid id =  Guid.NewGuid();
+            string vorname = TxtVorname.Text;
+            string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
+            string email = TxtEmail.Text;
+            string strasse = TxtStrasse.Text;
+            string wohnort = TxtWohnort.Text;
+            int plz = Convert.ToInt16(TxtPostleitzahl.Text);
 
-            Person person = new Person(Vorname, Nachname, dob);
+            Person person = new Person(vorname, nachname, dob);
             pers[counter] = person;
 
 
             if (CheckInputs() == true && counter < pers.Length)
             {
-            string kunde = "Kunde";
-            
-            string gaggi = $"Kunde erstellt: \r\n Vorname: {Vorname} \r\n Nachname: {Nachname} \r\n Geburtstag: {dob.ToShortDateString()}";
-            string personalien = $"Kunde \r\n {pers[counter].Firstname} {pers[counter].Lastname} ";
-
-            TxtNotizen.Text += gaggi + "\r\n";
-            TxtNotizen.Text += personalien + "\r\n";
-
-            persAn.GetKunde(Vorname, Nachname, dob);
-            persAn.WriteXML(kunde);
-
-            TxtVorname.Clear();
-            TxtNachname.Clear();
-            
-            counter++;
-            inputOk = false;
+                //(Guid id, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
+                xmlHandler.CreateXML(id, vorname, nachname, dob, email, strasse, wohnort, plz);
+                MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
         }
 

@@ -41,10 +41,10 @@
             this.TsmLehrling = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CmdStammMitarbeiter = new System.Windows.Forms.Button();
-            this.CmdStammKunden = new System.Windows.Forms.Button();
-            this.CmdStammLehrlinge = new System.Windows.Forms.Button();
             this.CmdImportCsv = new System.Windows.Forms.Button();
+            this.CmdStammLehrlinge = new System.Windows.Forms.Button();
+            this.CmdStammKunden = new System.Windows.Forms.Button();
+            this.CmdStammMitarbeiter = new System.Windows.Forms.Button();
             this.mitarbeiterErfassung1 = new ContactManager.MitarbeiterErfassung();
             this.MsMenu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -156,34 +156,19 @@
             this.panel1.Size = new System.Drawing.Size(246, 651);
             this.panel1.TabIndex = 7;
             // 
-            // CmdStammMitarbeiter
+            // CmdImportCsv
             // 
-            this.CmdStammMitarbeiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdStammMitarbeiter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CmdStammMitarbeiter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdStammMitarbeiter.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdStammMitarbeiter.Location = new System.Drawing.Point(0, 0);
-            this.CmdStammMitarbeiter.Margin = new System.Windows.Forms.Padding(0);
-            this.CmdStammMitarbeiter.Name = "CmdStammMitarbeiter";
-            this.CmdStammMitarbeiter.Size = new System.Drawing.Size(246, 97);
-            this.CmdStammMitarbeiter.TabIndex = 0;
-            this.CmdStammMitarbeiter.Text = "Mitarbeiter";
-            this.CmdStammMitarbeiter.UseVisualStyleBackColor = true;
-            this.CmdStammMitarbeiter.Click += new System.EventHandler(this.CmdStammMitarbeiter_Click);
-            // 
-            // CmdStammKunden
-            // 
-            this.CmdStammKunden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdStammKunden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CmdStammKunden.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdStammKunden.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdStammKunden.Location = new System.Drawing.Point(0, 97);
-            this.CmdStammKunden.Margin = new System.Windows.Forms.Padding(0);
-            this.CmdStammKunden.Name = "CmdStammKunden";
-            this.CmdStammKunden.Size = new System.Drawing.Size(246, 97);
-            this.CmdStammKunden.TabIndex = 1;
-            this.CmdStammKunden.Text = "Kunden";
-            this.CmdStammKunden.UseVisualStyleBackColor = true;
+            this.CmdImportCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdImportCsv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdImportCsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdImportCsv.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdImportCsv.Location = new System.Drawing.Point(0, 291);
+            this.CmdImportCsv.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdImportCsv.Name = "CmdImportCsv";
+            this.CmdImportCsv.Size = new System.Drawing.Size(246, 45);
+            this.CmdImportCsv.TabIndex = 3;
+            this.CmdImportCsv.Text = "Import";
+            this.CmdImportCsv.UseVisualStyleBackColor = true;
             // 
             // CmdStammLehrlinge
             // 
@@ -199,19 +184,34 @@
             this.CmdStammLehrlinge.Text = "Lehrlinge";
             this.CmdStammLehrlinge.UseVisualStyleBackColor = true;
             // 
-            // CmdImportCsv
+            // CmdStammKunden
             // 
-            this.CmdImportCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdImportCsv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CmdImportCsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdImportCsv.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdImportCsv.Location = new System.Drawing.Point(0, 291);
-            this.CmdImportCsv.Margin = new System.Windows.Forms.Padding(0);
-            this.CmdImportCsv.Name = "CmdImportCsv";
-            this.CmdImportCsv.Size = new System.Drawing.Size(246, 45);
-            this.CmdImportCsv.TabIndex = 3;
-            this.CmdImportCsv.Text = "Import";
-            this.CmdImportCsv.UseVisualStyleBackColor = true;
+            this.CmdStammKunden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdStammKunden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdStammKunden.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdStammKunden.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdStammKunden.Location = new System.Drawing.Point(0, 97);
+            this.CmdStammKunden.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdStammKunden.Name = "CmdStammKunden";
+            this.CmdStammKunden.Size = new System.Drawing.Size(246, 97);
+            this.CmdStammKunden.TabIndex = 1;
+            this.CmdStammKunden.Text = "Kunden";
+            this.CmdStammKunden.UseVisualStyleBackColor = true;
+            // 
+            // CmdStammMitarbeiter
+            // 
+            this.CmdStammMitarbeiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdStammMitarbeiter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdStammMitarbeiter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdStammMitarbeiter.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdStammMitarbeiter.Location = new System.Drawing.Point(0, 0);
+            this.CmdStammMitarbeiter.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdStammMitarbeiter.Name = "CmdStammMitarbeiter";
+            this.CmdStammMitarbeiter.Size = new System.Drawing.Size(246, 97);
+            this.CmdStammMitarbeiter.TabIndex = 0;
+            this.CmdStammMitarbeiter.Text = "Mitarbeiter";
+            this.CmdStammMitarbeiter.UseVisualStyleBackColor = true;
+            this.CmdStammMitarbeiter.Click += new System.EventHandler(this.CmdStammMitarbeiter_Click);
             // 
             // mitarbeiterErfassung1
             // 
