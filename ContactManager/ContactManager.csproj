@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\NotizController.cs" />
     <Compile Include="Controller\PersonAnlegen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,10 +79,16 @@
     <Compile Include="MitarbeiterAnlegenView.Designer.cs">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </Compile>
-    <Compile Include="MitarbeiterErfassung.cs">
+    <Compile Include="User Controlls\MitarbeiterBearbeiten.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MitarbeiterErfassung.Designer.cs">
+    <Compile Include="User Controlls\MitarbeiterBearbeiten.Designer.cs">
+      <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controlls\MitarbeiterErfassung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controlls\MitarbeiterErfassung.Designer.cs">
       <DependentUpon>MitarbeiterErfassung.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Kunde.cs" />
@@ -102,7 +109,10 @@
     <EmbeddedResource Include="MitarbeiterAnlegenView.resx">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MitarbeiterErfassung.resx">
+    <EmbeddedResource Include="User Controlls\MitarbeiterBearbeiten.resx">
+      <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controlls\MitarbeiterErfassung.resx">
       <DependentUpon>MitarbeiterErfassung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

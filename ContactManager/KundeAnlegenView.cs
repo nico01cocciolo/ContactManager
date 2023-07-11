@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +23,15 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        string filepath = "Notiz.txt";
+
         Person[] pers = new Person[20];
 
         bool inputOk = false;
         private static int counter = 0;
 
         XMLHandler xmlHandler = new XMLHandler();
+        NotizController nc = new NotizController();
 
         private void CmdKundeAnlegen_Click(object sender, EventArgs e)
         {
@@ -51,7 +56,21 @@ namespace ContactManager
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
         }
+        private void CmdNotizErfassen_Click(object sender, EventArgs e)
+        {
+            if (TxtNotizInput.TextLength < 0)
+            nc.NotizErfassen(filepath, TxtNotizInput.Text);
+            
+            else
+            MessageBox.Show("Eingabe darf nicht leer sein!");
+   
+        }
+        private void CmdLesen_Click(object sender, EventArgs e)
+        {
+            TxtNotizen.Clear();
+            TxtNotizen.Text = nc.NotizLaden(filepath);
 
+        }
         private bool CheckInputs()
         {
             if (TxtVorname.TextLength <= 0)
@@ -64,7 +83,5 @@ namespace ContactManager
                 return inputOk = true;
             }
         }
-    
     }
-
 }

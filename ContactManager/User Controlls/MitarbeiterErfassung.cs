@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContactManager.User_Controlls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,28 @@ namespace ContactManager
             //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
             dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
             dataGridView1.DataSource = dataSet.Tables[0];
+        }
+
+        private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        public Panel panel
+        {
+            get;
+            set;
+        }
+
+        private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
+        {
+            MitarbeiterErfassung mf = new MitarbeiterErfassung();
+            this.Controls.Clear();
+
+            MitarbeiterBearbeiten mb = new MitarbeiterBearbeiten();
+            mb.Dock = DockStyle.Top;
+            this.Controls.Add(mb);
+            
         }
     }
 }

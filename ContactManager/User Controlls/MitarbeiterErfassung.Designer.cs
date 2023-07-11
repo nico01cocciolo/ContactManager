@@ -30,6 +30,8 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
+            this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,10 +53,32 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // CmdMitarbeiterBearbeiten
+            // 
+            this.CmdMitarbeiterBearbeiten.Location = new System.Drawing.Point(134, 221);
+            this.CmdMitarbeiterBearbeiten.Name = "CmdMitarbeiterBearbeiten";
+            this.CmdMitarbeiterBearbeiten.Size = new System.Drawing.Size(107, 23);
+            this.CmdMitarbeiterBearbeiten.TabIndex = 2;
+            this.CmdMitarbeiterBearbeiten.Text = "Bearbeiten";
+            this.CmdMitarbeiterBearbeiten.UseVisualStyleBackColor = true;
+            this.CmdMitarbeiterBearbeiten.Click += new System.EventHandler(this.CmdMitarbeiterBearbeiten_Click);
+            // 
+            // CmdMitarbeiterErstellen
+            // 
+            this.CmdMitarbeiterErstellen.Location = new System.Drawing.Point(21, 221);
+            this.CmdMitarbeiterErstellen.Name = "CmdMitarbeiterErstellen";
+            this.CmdMitarbeiterErstellen.Size = new System.Drawing.Size(107, 23);
+            this.CmdMitarbeiterErstellen.TabIndex = 3;
+            this.CmdMitarbeiterErstellen.Text = "Erstellen";
+            this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = true;
+            this.CmdMitarbeiterErstellen.Click += new System.EventHandler(this.CmdMitarbeiterErstellen_Click);
+            // 
             // MitarbeiterErfassung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CmdMitarbeiterErstellen);
+            this.Controls.Add(this.CmdMitarbeiterBearbeiten);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MitarbeiterErfassung";
@@ -68,5 +92,7 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
+        private System.Windows.Forms.Button CmdMitarbeiterErstellen;
     }
 }

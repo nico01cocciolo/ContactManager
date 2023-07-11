@@ -1,16 +1,16 @@
-﻿namespace ContactManager
+﻿namespace ContactManager.User_Controlls
 {
-    partial class KundeAnlegenView
+    partial class MitarbeiterBearbeiten
     {
-        /// <summary>
-        /// Required designer variable.
+        /// <summary> 
+        /// Erforderliche Designervariable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
+        /// <summary> 
+        /// Verwendete Ressourcen bereinigen.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,15 +20,14 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Vom Komponenten-Designer generierter Code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// <summary> 
+        /// Erforderliche Methode für die Designerunterstützung. 
+        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.TxtAhvNum = new System.Windows.Forms.TextBox();
@@ -45,6 +44,12 @@
             this.TxtVorname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.TxtTelGesch = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -65,28 +70,20 @@
             this.TxtStrasse = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.TxtFirmenname = new System.Windows.Forms.TextBox();
-            this.CmbKundentyp = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.TxtNotizen = new System.Windows.Forms.TextBox();
-            this.CmdKundeAnlegen = new System.Windows.Forms.Button();
-            this.CmdFelderReset = new System.Windows.Forms.Button();
-            this.CmdNotizErfassen = new System.Windows.Forms.Button();
-            this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ErrNachname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ErrGeburtsdatum = new System.Windows.Forms.ErrorProvider(this.components);
             this.TxtNotizInput = new System.Windows.Forms.TextBox();
-            this.CmdLesen = new System.Windows.Forms.Button();
+            this.CmdNotizErfassen = new System.Windows.Forms.Button();
+            this.CmdFelderReset = new System.Windows.Forms.Button();
+            this.CmdKundeBearbeiten = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.LblId = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.LblStatus = new System.Windows.Forms.Label();
+            this.ChkStatus = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrGeburtsdatum)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -107,10 +104,10 @@
             this.panel1.Controls.Add(this.TxtVorname);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(3, 72);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(338, 239);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 2;
             // 
             // label8
             // 
@@ -237,6 +234,61 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Persönliche Daten";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(174, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(121, 20);
+            this.textBox1.TabIndex = 17;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(174, 64);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 67);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Kundentyp";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Firmenname";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Firma";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Location = new System.Drawing.Point(347, 75);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(338, 239);
+            this.panel2.TabIndex = 18;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -249,10 +301,10 @@
             this.panel4.Controls.Add(this.TxtEmail);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Controls.Add(this.label26);
-            this.panel4.Location = new System.Drawing.Point(12, 257);
+            this.panel4.Location = new System.Drawing.Point(3, 317);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(338, 239);
-            this.panel4.TabIndex = 25;
+            this.panel4.Size = new System.Drawing.Size(338, 171);
+            this.panel4.TabIndex = 26;
             // 
             // TxtTelGesch
             // 
@@ -339,10 +391,10 @@
             this.panel3.Controls.Add(this.TxtStrasse);
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label24);
-            this.panel3.Location = new System.Drawing.Point(356, 257);
+            this.panel3.Location = new System.Drawing.Point(347, 317);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(338, 239);
-            this.panel3.TabIndex = 24;
+            this.panel3.Size = new System.Drawing.Size(338, 171);
+            this.panel3.TabIndex = 27;
             // 
             // TxtPostleitzahl
             // 
@@ -417,156 +469,125 @@
             this.label24.TabIndex = 0;
             this.label24.Text = "Adresse";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Controls.Add(this.TxtFirmenname);
-            this.panel2.Controls.Add(this.CmbKundentyp);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Location = new System.Drawing.Point(356, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(338, 239);
-            this.panel2.TabIndex = 16;
-            // 
-            // TxtFirmenname
-            // 
-            this.TxtFirmenname.Location = new System.Drawing.Point(174, 37);
-            this.TxtFirmenname.Name = "TxtFirmenname";
-            this.TxtFirmenname.Size = new System.Drawing.Size(121, 20);
-            this.TxtFirmenname.TabIndex = 17;
-            // 
-            // CmbKundentyp
-            // 
-            this.CmbKundentyp.FormattingEnabled = true;
-            this.CmbKundentyp.Location = new System.Drawing.Point(174, 64);
-            this.CmbKundentyp.Name = "CmbKundentyp";
-            this.CmbKundentyp.Size = new System.Drawing.Size(121, 21);
-            this.CmbKundentyp.TabIndex = 6;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 67);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 13);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Kundentyp";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 40);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(64, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Firmenname";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 13);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Firma";
-            // 
             // TxtNotizen
             // 
-            this.TxtNotizen.Location = new System.Drawing.Point(700, 12);
+            this.TxtNotizen.Location = new System.Drawing.Point(3, 494);
             this.TxtNotizen.Multiline = true;
             this.TxtNotizen.Name = "TxtNotizen";
-            this.TxtNotizen.Size = new System.Drawing.Size(279, 324);
-            this.TxtNotizen.TabIndex = 26;
-            // 
-            // CmdKundeAnlegen
-            // 
-            this.CmdKundeAnlegen.Location = new System.Drawing.Point(857, 540);
-            this.CmdKundeAnlegen.Name = "CmdKundeAnlegen";
-            this.CmdKundeAnlegen.Size = new System.Drawing.Size(122, 23);
-            this.CmdKundeAnlegen.TabIndex = 27;
-            this.CmdKundeAnlegen.Text = "Kunde anlegen";
-            this.CmdKundeAnlegen.UseVisualStyleBackColor = true;
-            this.CmdKundeAnlegen.Click += new System.EventHandler(this.CmdKundeAnlegen_Click);
-            // 
-            // CmdFelderReset
-            // 
-            this.CmdFelderReset.Location = new System.Drawing.Point(700, 540);
-            this.CmdFelderReset.Name = "CmdFelderReset";
-            this.CmdFelderReset.Size = new System.Drawing.Size(130, 23);
-            this.CmdFelderReset.TabIndex = 28;
-            this.CmdFelderReset.Text = "Felder löschen";
-            this.CmdFelderReset.UseVisualStyleBackColor = true;
-            // 
-            // CmdNotizErfassen
-            // 
-            this.CmdNotizErfassen.Location = new System.Drawing.Point(700, 473);
-            this.CmdNotizErfassen.Name = "CmdNotizErfassen";
-            this.CmdNotizErfassen.Size = new System.Drawing.Size(279, 23);
-            this.CmdNotizErfassen.TabIndex = 29;
-            this.CmdNotizErfassen.Text = "Notiz erfassen";
-            this.CmdNotizErfassen.UseVisualStyleBackColor = true;
-            this.CmdNotizErfassen.Click += new System.EventHandler(this.CmdNotizErfassen_Click);
-            // 
-            // ErrVorname
-            // 
-            this.ErrVorname.ContainerControl = this;
-            // 
-            // ErrNachname
-            // 
-            this.ErrNachname.ContainerControl = this;
-            // 
-            // ErrGeburtsdatum
-            // 
-            this.ErrGeburtsdatum.ContainerControl = this;
+            this.TxtNotizen.Size = new System.Drawing.Size(682, 83);
+            this.TxtNotizen.TabIndex = 28;
             // 
             // TxtNotizInput
             // 
-            this.TxtNotizInput.Location = new System.Drawing.Point(700, 346);
+            this.TxtNotizInput.Location = new System.Drawing.Point(3, 583);
             this.TxtNotizInput.Multiline = true;
             this.TxtNotizInput.Name = "TxtNotizInput";
-            this.TxtNotizInput.Size = new System.Drawing.Size(279, 121);
-            this.TxtNotizInput.TabIndex = 30;
+            this.TxtNotizInput.Size = new System.Drawing.Size(682, 50);
+            this.TxtNotizInput.TabIndex = 31;
             // 
-            // CmdLesen
+            // CmdNotizErfassen
             // 
-            this.CmdLesen.Location = new System.Drawing.Point(700, 502);
-            this.CmdLesen.Name = "CmdLesen";
-            this.CmdLesen.Size = new System.Drawing.Size(279, 23);
-            this.CmdLesen.TabIndex = 31;
-            this.CmdLesen.Text = "Notizen laden";
-            this.CmdLesen.UseVisualStyleBackColor = true;
-            this.CmdLesen.Click += new System.EventHandler(this.CmdLesen_Click);
+            this.CmdNotizErfassen.Location = new System.Drawing.Point(691, 581);
+            this.CmdNotizErfassen.Name = "CmdNotizErfassen";
+            this.CmdNotizErfassen.Size = new System.Drawing.Size(237, 23);
+            this.CmdNotizErfassen.TabIndex = 32;
+            this.CmdNotizErfassen.Text = "Notiz erfassen";
+            this.CmdNotizErfassen.UseVisualStyleBackColor = true;
             // 
-            // KundeAnlegenView
+            // CmdFelderReset
+            // 
+            this.CmdFelderReset.Location = new System.Drawing.Point(691, 610);
+            this.CmdFelderReset.Name = "CmdFelderReset";
+            this.CmdFelderReset.Size = new System.Drawing.Size(130, 23);
+            this.CmdFelderReset.TabIndex = 33;
+            this.CmdFelderReset.Text = "Felder löschen";
+            this.CmdFelderReset.UseVisualStyleBackColor = true;
+            // 
+            // CmdKundeBearbeiten
+            // 
+            this.CmdKundeBearbeiten.Location = new System.Drawing.Point(827, 610);
+            this.CmdKundeBearbeiten.Name = "CmdKundeBearbeiten";
+            this.CmdKundeBearbeiten.Size = new System.Drawing.Size(101, 23);
+            this.CmdKundeBearbeiten.TabIndex = 34;
+            this.CmdKundeBearbeiten.Text = "Speichern";
+            this.CmdKundeBearbeiten.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 39);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(21, 13);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "ID:";
+            // 
+            // LblId
+            // 
+            this.LblId.AutoSize = true;
+            this.LblId.Location = new System.Drawing.Point(36, 39);
+            this.LblId.Name = "LblId";
+            this.LblId.Size = new System.Drawing.Size(16, 13);
+            this.LblId.TabIndex = 36;
+            this.LblId.Text = "...";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(344, 39);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 37;
+            this.label13.Text = "Status:";
+            // 
+            // LblStatus
+            // 
+            this.LblStatus.AutoSize = true;
+            this.LblStatus.Location = new System.Drawing.Point(390, 39);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(31, 13);
+            this.LblStatus.TabIndex = 38;
+            this.LblStatus.Text = "Aktiv";
+            // 
+            // ChkStatus
+            // 
+            this.ChkStatus.AutoSize = true;
+            this.ChkStatus.Checked = true;
+            this.ChkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ChkStatus.Location = new System.Drawing.Point(593, 38);
+            this.ChkStatus.Name = "ChkStatus";
+            this.ChkStatus.Size = new System.Drawing.Size(92, 17);
+            this.ChkStatus.TabIndex = 39;
+            this.ChkStatus.Text = "Status ändern";
+            this.ChkStatus.UseVisualStyleBackColor = true;
+            // 
+            // MitarbeiterBearbeiten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 575);
-            this.Controls.Add(this.CmdLesen);
-            this.Controls.Add(this.TxtNotizInput);
-            this.Controls.Add(this.CmdNotizErfassen);
+            this.Controls.Add(this.ChkStatus);
+            this.Controls.Add(this.LblStatus);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.LblId);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.CmdKundeBearbeiten);
             this.Controls.Add(this.CmdFelderReset);
-            this.Controls.Add(this.CmdKundeAnlegen);
+            this.Controls.Add(this.CmdNotizErfassen);
+            this.Controls.Add(this.TxtNotizInput);
             this.Controls.Add(this.TxtNotizen);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "KundeAnlegenView";
-            this.Text = "KundeAnlegenView";
+            this.Name = "MitarbeiterBearbeiten";
+            this.Size = new System.Drawing.Size(931, 650);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrGeburtsdatum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,6 +611,12 @@
         private System.Windows.Forms.TextBox TxtVorname;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox TxtTelGesch;
         private System.Windows.Forms.Label label20;
@@ -610,20 +637,15 @@
         private System.Windows.Forms.TextBox TxtStrasse;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox CmbKundentyp;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox TxtNotizen;
-        private System.Windows.Forms.Button CmdKundeAnlegen;
-        private System.Windows.Forms.Button CmdFelderReset;
-        private System.Windows.Forms.Button CmdNotizErfassen;
-        private System.Windows.Forms.TextBox TxtFirmenname;
-        private System.Windows.Forms.ErrorProvider ErrVorname;
-        private System.Windows.Forms.ErrorProvider ErrNachname;
-        private System.Windows.Forms.ErrorProvider ErrGeburtsdatum;
         private System.Windows.Forms.TextBox TxtNotizInput;
-        private System.Windows.Forms.Button CmdLesen;
+        private System.Windows.Forms.Button CmdNotizErfassen;
+        private System.Windows.Forms.Button CmdFelderReset;
+        private System.Windows.Forms.Button CmdKundeBearbeiten;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label LblId;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label LblStatus;
+        private System.Windows.Forms.CheckBox ChkStatus;
     }
 }
