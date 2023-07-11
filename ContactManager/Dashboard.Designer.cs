@@ -218,7 +218,7 @@
             this.mitarbeiterErfassung1.Location = new System.Drawing.Point(249, 30);
             this.mitarbeiterErfassung1.Name = "mitarbeiterErfassung1";
             this.mitarbeiterErfassung1.panel = null;
-            this.mitarbeiterErfassung1.Size = new System.Drawing.Size(934, 639);
+            this.mitarbeiterErfassung1.Size = new System.Drawing.Size(934, 648);
             this.mitarbeiterErfassung1.TabIndex = 8;
             // 
             // Dashboard
