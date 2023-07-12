@@ -113,5 +113,17 @@ namespace ContactManager.User_Controlls
             LblId.Text = "...";
             LblStatus.Text = "...";
         }
+
+        private void CmdBack_Click(object sender, EventArgs e)
+        {
+            MitarbeiterBearbeiten mb = new MitarbeiterBearbeiten();
+            this.Controls.Clear();
+
+            MitarbeiterStamm mf = new MitarbeiterStamm();
+            mf.Dock = DockStyle.Fill;
+            this.Controls.Add(mf);
+
+
+        }
     }
 }

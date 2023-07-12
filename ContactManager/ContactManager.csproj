@@ -85,11 +85,11 @@
     <Compile Include="User Controlls\MitarbeiterBearbeiten.Designer.cs">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Controlls\MitarbeiterErfassung.cs">
+    <Compile Include="User Controlls\MitarbeiterStamm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Controlls\MitarbeiterErfassung.Designer.cs">
-      <DependentUpon>MitarbeiterErfassung.cs</DependentUpon>
+    <Compile Include="User Controlls\MitarbeiterStamm.Designer.cs">
+      <DependentUpon>MitarbeiterStamm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Kunde.cs" />
     <Compile Include="Model\Lehrling.cs" />
@@ -97,6 +97,12 @@
     <Compile Include="Model\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User Controlls\UcMitarbeiterErfassen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controlls\UcMitarbeiterErfassen.Designer.cs">
+      <DependentUpon>UcMitarbeiterErfassen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,8 +118,8 @@
     <EmbeddedResource Include="User Controlls\MitarbeiterBearbeiten.resx">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Controlls\MitarbeiterErfassung.resx">
-      <DependentUpon>MitarbeiterErfassung.cs</DependentUpon>
+    <EmbeddedResource Include="User Controlls\MitarbeiterStamm.resx">
+      <DependentUpon>MitarbeiterStamm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -124,6 +130,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="User Controlls\UcMitarbeiterErfassen.resx">
+      <DependentUpon>UcMitarbeiterErfassen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

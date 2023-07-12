@@ -12,11 +12,26 @@ using System.Windows.Forms;
 
 namespace ContactManager
 {
-    public partial class MitarbeiterErfassung : UserControl
+    public partial class MitarbeiterStamm : UserControl
     {
-        public MitarbeiterErfassung()
+        public MitarbeiterStamm()
         {
             InitializeComponent();
+        }
+
+        private static MitarbeiterStamm instance;
+
+        public static MitarbeiterStamm Instance
+        {
+            get 
+            {
+                if (instance == null)
+                {
+                    instance = new MitarbeiterStamm();
+                   
+                }
+                return instance;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,22 +44,21 @@ namespace ContactManager
 
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
-            
-        }
+            MitarbeiterStamm mf = new MitarbeiterStamm();
+            this.Controls.Clear();
 
-        public Panel panel
-        {
-            get;
-            set;
+            UcMitarbeiterErfassen ucMe = new UcMitarbeiterErfassen();
+            ucMe.Dock = DockStyle.Fill;
+            this.Controls.Add(ucMe);
         }
 
         private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
         {
-            MitarbeiterErfassung mf = new MitarbeiterErfassung();
+            MitarbeiterStamm mf = new MitarbeiterStamm();
             this.Controls.Clear();
 
             MitarbeiterBearbeiten mb = new MitarbeiterBearbeiten();
-            mb.Dock = DockStyle.Top;
+            mb.Dock = DockStyle.Fill;
             this.Controls.Add(mb);
             
         }

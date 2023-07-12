@@ -34,6 +34,17 @@ namespace ContactManager
             //DataSet dataSet = new DataSet();
             //dataSet.ReadXml(@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml");
             //dataGridView1.DataSource = dataSet.Tables[0];
+
+            if (!PnlUCHandler.Controls.Contains(MitarbeiterStamm.Instance))
+            {
+                PnlUCHandler.Controls.Add(MitarbeiterStamm.Instance);
+                MitarbeiterStamm.Instance.Dock = DockStyle.Fill;
+                MitarbeiterStamm.Instance.BringToFront();
+            }
+            else 
+            {
+                MitarbeiterStamm.Instance.BringToFront();
+            }
         }
     }
 }

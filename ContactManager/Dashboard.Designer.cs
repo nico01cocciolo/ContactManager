@@ -45,7 +45,7 @@
             this.CmdStammLehrlinge = new System.Windows.Forms.Button();
             this.CmdStammKunden = new System.Windows.Forms.Button();
             this.CmdStammMitarbeiter = new System.Windows.Forms.Button();
-            this.mitarbeiterErfassung1 = new ContactManager.MitarbeiterErfassung();
+            this.PnlUCHandler = new System.Windows.Forms.Panel();
             this.MsMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -213,20 +213,19 @@
             this.CmdStammMitarbeiter.UseVisualStyleBackColor = true;
             this.CmdStammMitarbeiter.Click += new System.EventHandler(this.CmdStammMitarbeiter_Click);
             // 
-            // mitarbeiterErfassung1
+            // PnlUCHandler
             // 
-            this.mitarbeiterErfassung1.Location = new System.Drawing.Point(249, 30);
-            this.mitarbeiterErfassung1.Name = "mitarbeiterErfassung1";
-            this.mitarbeiterErfassung1.panel = null;
-            this.mitarbeiterErfassung1.Size = new System.Drawing.Size(934, 648);
-            this.mitarbeiterErfassung1.TabIndex = 8;
+            this.PnlUCHandler.Location = new System.Drawing.Point(249, 28);
+            this.PnlUCHandler.Name = "PnlUCHandler";
+            this.PnlUCHandler.Size = new System.Drawing.Size(931, 650);
+            this.PnlUCHandler.TabIndex = 9;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 681);
-            this.Controls.Add(this.mitarbeiterErfassung1);
+            this.Controls.Add(this.PnlUCHandler);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MsMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -259,7 +258,7 @@
         private System.Windows.Forms.Button CmdImportCsv;
         private System.Windows.Forms.Button CmdStammLehrlinge;
         private System.Windows.Forms.Button CmdStammKunden;
-        private MitarbeiterErfassung mitarbeiterErfassung1;
+        private System.Windows.Forms.Panel PnlUCHandler;
     }
 }
 
