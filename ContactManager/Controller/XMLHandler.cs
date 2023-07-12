@@ -1,7 +1,9 @@
 ﻿using ContactManager.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -12,6 +14,8 @@ namespace ContactManager.Controller
     {
         public void CreateXML(Guid id, string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
         {
+            if (File.Exists("Kunde.xml") == false)
+            {
                 XDocument xDoc = new XDocument(new XDeclaration("1.0", "UTF-16", "yes"),
                     new XElement("Person",
                     new XElement("Mitarbeiter",
@@ -39,12 +43,44 @@ namespace ContactManager.Controller
                     new XElement("Postleitzahl", plz))));
 
                 xDoc.Save("Kunde.xml");
+            }
+            else
+            {
+                XElement xEleo = XElement.Load("Kunde.xml");
+
+                xEleo.Add(new XElement("Mitarbeiter",
+                    //Wichtig
+                    new XAttribute("ID", id),
+                    new XAttribute("Status", status),
+                    //Person
+                    new XElement("Geschlecht", "A"),
+                    new XElement("Anrede", "A"),
+                    new XElement("Titel", "A"),
+                    new XElement("Vorname", vorname),
+                    new XElement("Nachname", nachname),
+                    new XElement("Geburtsdatum", dob.ToShortDateString()),
+                    new XElement("Nationalität", "A"),
+                    new XElement("AHV-Nummer", "A"),
+                    //Kontakt
+                    new XElement("E-Mail", email),
+                    new XElement("Telefon_Mobil", "A"),
+                    new XElement("Telefon_Privat", "A"),
+                    new XElement("Telefon_Arbeit", "A"),
+                    //Adresse
+                    new XElement("Strasse", strasse),
+                    new XElement("Wohnort", wohnort),
+                    new XElement("Postleitzahl", plz)));
+                xEleo.Save("Kunde.xml");
+            }
         }
 
         public void ChangeValuesXML(string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
         {
-            XElement xdoc = XElement.Load("Kunde.xml");
+            UcMitarbeiterStamm ucm = new UcMitarbeiterStamm();
 
+            string id =  ucm.IDGetter();
+            XElement xdoc = XElement.Load("Kunde.xml");
+           
             //Wichtig
             xdoc.Element("Mitarbeiter").Attribute("Status").SetValue(status);
 

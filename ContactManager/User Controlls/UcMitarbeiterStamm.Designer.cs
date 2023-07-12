@@ -32,6 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
+            this.LblTest = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Daten laden";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CmdMitarbeiterBearbeiten
             // 
@@ -72,10 +74,20 @@
             this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = true;
             this.CmdMitarbeiterErstellen.Click += new System.EventHandler(this.CmdMitarbeiterErstellen_Click);
             // 
+            // LblTest
+            // 
+            this.LblTest.AutoSize = true;
+            this.LblTest.Location = new System.Drawing.Point(353, 216);
+            this.LblTest.Name = "LblTest";
+            this.LblTest.Size = new System.Drawing.Size(35, 13);
+            this.LblTest.TabIndex = 5;
+            this.LblTest.Text = "label2";
+            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblTest);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
             this.Controls.Add(this.CmdMitarbeiterBearbeiten);
             this.Controls.Add(this.button1);
@@ -85,6 +97,7 @@
             this.Load += new System.EventHandler(this.UcMitarbeiterStamm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -94,5 +107,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
+        private System.Windows.Forms.Label LblTest;
     }
 }

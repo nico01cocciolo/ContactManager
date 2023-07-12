@@ -52,7 +52,7 @@ namespace ContactManager
             UcMitarbeiterBearbeiten mb = new UcMitarbeiterBearbeiten();
             mb.Dock = DockStyle.Fill;
             this.Controls.Add(mb);
-            
+
         }
 
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
@@ -61,6 +61,28 @@ namespace ContactManager
             //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
             dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
             dataGridView1.DataSource = dataSet.Tables[0];
+
+        }
+
+        public string IDGetter()
+        {
+            string cellValue = ""; 
+
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
+
+                LblTest.Text = cellValue;
+                
+            }
+            return cellValue;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
