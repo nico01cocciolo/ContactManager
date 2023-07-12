@@ -9,14 +9,15 @@ namespace ContactManager.Controller
 {
     internal class XMLHandler
     {
-        public void CreateXML(Guid id, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
-    {
-            XDocument xDoc = new XDocument(new XElement("Person",
+        public void CreateXML(Guid id, string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
+        {
+            XDocument xDoc = new XDocument(new XDeclaration("1.0", "UTF-16", "yes"),
+                new XElement("Person",
                 new XElement("Mitarbeiter",
-                
+
                 //Wichtig
                 new XAttribute("ID", id),
-                new XAttribute("Status", "aktiv"),
+                new XAttribute("Status", status),
                 //Person
                 new XElement("Geschlecht", "A"),
                 new XElement("Anrede", "A"),
@@ -37,7 +38,31 @@ namespace ContactManager.Controller
                 new XElement("Postleitzahl", plz))));
                 
             xDoc.Save("Kunde.xml");
-    }
-    
+        }
+
+        public void ChangeValuesXML(string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
+        {
+            XElement xdoc = XElement.Load("Kunde.xml");
+
+            //Wichtig
+            xdoc.Element("Mitarbeiter").Attribute("Status").SetValue(status);
+
+            //Person
+            xdoc.Element("Mitarbeiter").Element("Vorname").SetValue(vorname);
+            xdoc.Element("Mitarbeiter").Element("Nachname").SetValue(nachname);
+            xdoc.Element("Mitarbeiter").Element("Geburtsdatum").SetValue(dob.ToShortDateString());
+            
+            //Kontakt
+            xdoc.Element("Mitarbeiter").Element("E-Mail").SetValue(email);
+            
+            //Adresse
+            xdoc.Element("Mitarbeiter").Element("Strasse").SetValue(strasse);
+            xdoc.Element("Mitarbeiter").Element("Wohnort").SetValue(wohnort);
+            xdoc.Element("Mitarbeiter").Element("Postleitzahl").SetValue(plz);
+
+            xdoc.Save("Kunde.xml");
+            
+
+        }
     }
 }

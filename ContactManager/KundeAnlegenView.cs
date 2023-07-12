@@ -36,6 +36,7 @@ namespace ContactManager
         private void CmdKundeAnlegen_Click(object sender, EventArgs e)
         {
             PersonAnlegen persAn = new PersonAnlegen();
+            
             Guid id =  Guid.NewGuid();
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
@@ -44,6 +45,7 @@ namespace ContactManager
             string strasse = TxtStrasse.Text;
             string wohnort = TxtWohnort.Text;
             int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+            string status = "Aktiv";
 
             Person person = new Person(vorname, nachname, dob);
             pers[counter] = person;
@@ -52,7 +54,7 @@ namespace ContactManager
             if (CheckInputs() == true && counter < pers.Length)
             {
                 //(Guid id, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
-                xmlHandler.CreateXML(id, vorname, nachname, dob, email, strasse, wohnort, plz);
+                xmlHandler.CreateXML(id, status,vorname, nachname, dob, email, strasse, wohnort, plz);
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
         }

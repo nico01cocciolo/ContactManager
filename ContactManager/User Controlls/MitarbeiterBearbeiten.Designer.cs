@@ -44,7 +44,7 @@
             this.TxtVorname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtFirmenname = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -80,6 +80,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.LblStatus = new System.Windows.Forms.Label();
             this.ChkStatus = new System.Windows.Forms.CheckBox();
+            this.CmdLaden = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -234,12 +235,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Persönliche Daten";
             // 
-            // textBox1
+            // TxtFirmenname
             // 
-            this.textBox1.Location = new System.Drawing.Point(174, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 17;
+            this.TxtFirmenname.Location = new System.Drawing.Point(174, 37);
+            this.TxtFirmenname.Name = "TxtFirmenname";
+            this.TxtFirmenname.Size = new System.Drawing.Size(121, 20);
+            this.TxtFirmenname.TabIndex = 17;
             // 
             // comboBox1
             // 
@@ -279,7 +280,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.TxtFirmenname);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label10);
@@ -502,6 +503,7 @@
             this.CmdFelderReset.TabIndex = 33;
             this.CmdFelderReset.Text = "Felder löschen";
             this.CmdFelderReset.UseVisualStyleBackColor = true;
+            this.CmdFelderReset.Click += new System.EventHandler(this.CmdFelderReset_Click);
             // 
             // CmdKundeBearbeiten
             // 
@@ -511,6 +513,7 @@
             this.CmdKundeBearbeiten.TabIndex = 34;
             this.CmdKundeBearbeiten.Text = "Speichern";
             this.CmdKundeBearbeiten.UseVisualStyleBackColor = true;
+            this.CmdKundeBearbeiten.Click += new System.EventHandler(this.CmdKundeBearbeiten_Click);
             // 
             // label12
             // 
@@ -560,10 +563,21 @@
             this.ChkStatus.Text = "Status ändern";
             this.ChkStatus.UseVisualStyleBackColor = true;
             // 
+            // CmdLaden
+            // 
+            this.CmdLaden.Location = new System.Drawing.Point(691, 552);
+            this.CmdLaden.Name = "CmdLaden";
+            this.CmdLaden.Size = new System.Drawing.Size(237, 23);
+            this.CmdLaden.TabIndex = 40;
+            this.CmdLaden.Text = "Daten laden";
+            this.CmdLaden.UseVisualStyleBackColor = true;
+            this.CmdLaden.Click += new System.EventHandler(this.CmdLaden_Click);
+            // 
             // MitarbeiterBearbeiten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CmdLaden);
             this.Controls.Add(this.ChkStatus);
             this.Controls.Add(this.LblStatus);
             this.Controls.Add(this.label13);
@@ -611,7 +625,7 @@
         private System.Windows.Forms.TextBox TxtVorname;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtFirmenname;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -647,5 +661,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label LblStatus;
         private System.Windows.Forms.CheckBox ChkStatus;
+        private System.Windows.Forms.Button CmdLaden;
     }
 }
