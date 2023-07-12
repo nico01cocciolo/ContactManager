@@ -1,6 +1,6 @@
 ﻿namespace ContactManager
 {
-    partial class MitarbeiterStamm
+    partial class UcMitarbeiterStamm
     {
         /// <summary> 
         /// Erforderliche Designervariable.

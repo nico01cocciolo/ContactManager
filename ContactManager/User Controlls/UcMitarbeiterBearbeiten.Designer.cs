@@ -1,6 +1,6 @@
 ﻿namespace ContactManager.User_Controlls
 {
-    partial class MitarbeiterBearbeiten
+    partial class UcMitarbeiterBearbeiten
     {
         /// <summary> 
         /// Erforderliche Designervariable.

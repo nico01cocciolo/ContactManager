@@ -71,7 +71,7 @@ namespace ContactManager.User_Controlls
             UcMitarbeiterErfassen ucMe = new UcMitarbeiterErfassen();
             this.Controls.Clear();
 
-            MitarbeiterStamm mf = new MitarbeiterStamm();
+            UcMitarbeiterStamm mf = new UcMitarbeiterStamm();
             mf.Dock = DockStyle.Fill;
             this.Controls.Add(mf);
         }

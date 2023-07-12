@@ -79,17 +79,17 @@
     <Compile Include="MitarbeiterAnlegenView.Designer.cs">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Controlls\MitarbeiterBearbeiten.cs">
+    <Compile Include="User Controlls\UcMitarbeiterBearbeiten.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Controlls\MitarbeiterBearbeiten.Designer.cs">
-      <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    <Compile Include="User Controlls\UcMitarbeiterBearbeiten.Designer.cs">
+      <DependentUpon>UcMitarbeiterBearbeiten.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Controlls\MitarbeiterStamm.cs">
+    <Compile Include="User Controlls\UcMitarbeiterStamm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Controlls\MitarbeiterStamm.Designer.cs">
-      <DependentUpon>MitarbeiterStamm.cs</DependentUpon>
+    <Compile Include="User Controlls\UcMitarbeiterStamm.Designer.cs">
+      <DependentUpon>UcMitarbeiterStamm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Kunde.cs" />
     <Compile Include="Model\Lehrling.cs" />
@@ -115,11 +115,11 @@
     <EmbeddedResource Include="MitarbeiterAnlegenView.resx">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Controlls\MitarbeiterBearbeiten.resx">
-      <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    <EmbeddedResource Include="User Controlls\UcMitarbeiterBearbeiten.resx">
+      <DependentUpon>UcMitarbeiterBearbeiten.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Controlls\MitarbeiterStamm.resx">
-      <DependentUpon>MitarbeiterStamm.cs</DependentUpon>
+    <EmbeddedResource Include="User Controlls\UcMitarbeiterStamm.resx">
+      <DependentUpon>UcMitarbeiterStamm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

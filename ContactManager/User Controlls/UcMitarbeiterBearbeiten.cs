@@ -12,9 +12,9 @@ using System.Xml.Linq;
 
 namespace ContactManager.User_Controlls
 {
-    public partial class MitarbeiterBearbeiten : UserControl
+    public partial class UcMitarbeiterBearbeiten : UserControl
     {
-        public MitarbeiterBearbeiten()
+        public UcMitarbeiterBearbeiten()
         {
             InitializeComponent();
         }
@@ -116,10 +116,10 @@ namespace ContactManager.User_Controlls
 
         private void CmdBack_Click(object sender, EventArgs e)
         {
-            MitarbeiterBearbeiten mb = new MitarbeiterBearbeiten();
+            UcMitarbeiterBearbeiten mb = new UcMitarbeiterBearbeiten();
             this.Controls.Clear();
 
-            MitarbeiterStamm mf = new MitarbeiterStamm();
+            UcMitarbeiterStamm mf = new UcMitarbeiterStamm();
             mf.Dock = DockStyle.Fill;
             this.Controls.Add(mf);
 

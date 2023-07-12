@@ -35,15 +35,15 @@ namespace ContactManager
             //dataSet.ReadXml(@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml");
             //dataGridView1.DataSource = dataSet.Tables[0];
 
-            if (!PnlUCHandler.Controls.Contains(MitarbeiterStamm.Instance))
+            if (!PnlUCHandler.Controls.Contains(UcMitarbeiterStamm.Instance))
             {
-                PnlUCHandler.Controls.Add(MitarbeiterStamm.Instance);
-                MitarbeiterStamm.Instance.Dock = DockStyle.Fill;
-                MitarbeiterStamm.Instance.BringToFront();
+                PnlUCHandler.Controls.Add(UcMitarbeiterStamm.Instance);
+                UcMitarbeiterStamm.Instance.Dock = DockStyle.Fill;
+                UcMitarbeiterStamm.Instance.BringToFront();
             }
             else 
             {
-                MitarbeiterStamm.Instance.BringToFront();
+                UcMitarbeiterStamm.Instance.BringToFront();
             }
         }
     }
