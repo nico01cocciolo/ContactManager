@@ -34,14 +34,6 @@ namespace ContactManager
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataSet dataSet = new DataSet();
-            //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
-            dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
-            dataGridView1.DataSource = dataSet.Tables[0];
-        }
-
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
             UcMitarbeiterStamm mf = new UcMitarbeiterStamm();
@@ -61,6 +53,14 @@ namespace ContactManager
             mb.Dock = DockStyle.Fill;
             this.Controls.Add(mb);
             
+        }
+
+        private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
+        {
+            DataSet dataSet = new DataSet();
+            //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
+            dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
+            dataGridView1.DataSource = dataSet.Tables[0];
         }
     }
 }

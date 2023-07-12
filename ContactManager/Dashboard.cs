@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace ContactManager
 {
     public partial class Dashboard : Form
     {
+        public DataGrid dataGridView1 { get; set; }
+
         public Dashboard()
         {
             InitializeComponent();
@@ -46,5 +49,6 @@ namespace ContactManager
                 UcMitarbeiterStamm.Instance.BringToFront();
             }
         }
+
     }
 }

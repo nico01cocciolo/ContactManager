@@ -51,7 +51,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Daten laden";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CmdMitarbeiterBearbeiten
             // 
@@ -73,7 +72,7 @@
             this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = true;
             this.CmdMitarbeiterErstellen.Click += new System.EventHandler(this.CmdMitarbeiterErstellen_Click);
             // 
-            // MitarbeiterStamm
+            // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,8 +80,9 @@
             this.Controls.Add(this.CmdMitarbeiterBearbeiten);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "MitarbeiterStamm";
+            this.Name = "UcMitarbeiterStamm";
             this.Size = new System.Drawing.Size(931, 650);
+            this.Load += new System.EventHandler(this.UcMitarbeiterStamm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
