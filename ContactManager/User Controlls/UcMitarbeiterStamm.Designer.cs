@@ -33,6 +33,7 @@
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.LblTest = new System.Windows.Forms.Label();
+            this.CmdGetID = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,10 +84,21 @@
             this.LblTest.TabIndex = 5;
             this.LblTest.Text = "label2";
             // 
+            // CmdGetID
+            // 
+            this.CmdGetID.Location = new System.Drawing.Point(428, 330);
+            this.CmdGetID.Name = "CmdGetID";
+            this.CmdGetID.Size = new System.Drawing.Size(75, 23);
+            this.CmdGetID.TabIndex = 6;
+            this.CmdGetID.Text = "Get ID";
+            this.CmdGetID.UseVisualStyleBackColor = true;
+            this.CmdGetID.Click += new System.EventHandler(this.CmdGetID_Click);
+            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CmdGetID);
             this.Controls.Add(this.LblTest);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
             this.Controls.Add(this.CmdMitarbeiterBearbeiten);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
         private System.Windows.Forms.Label LblTest;
+        private System.Windows.Forms.Button CmdGetID;
     }
 }

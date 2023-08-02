@@ -74,28 +74,46 @@ namespace ContactManager.Controller
             }
         }
 
-        public void ChangeValuesXML(string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
+        public void ChangeValuesXML(string id, string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
         {
             UcMitarbeiterStamm ucm = new UcMitarbeiterStamm();
 
-            string id =  ucm.IDGetter();
+            
             XElement xdoc = XElement.Load("Kunde.xml");
-           
+
             //Wichtig
             xdoc.Element("Mitarbeiter").Attribute("Status").SetValue(status);
 
             //Person
-            xdoc.Element("Mitarbeiter").Element("Vorname").SetValue(vorname);
-            xdoc.Element("Mitarbeiter").Element("Nachname").SetValue(nachname);
-            xdoc.Element("Mitarbeiter").Element("Geburtsdatum").SetValue(dob.ToShortDateString());
-            
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Vorname", vorname);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Nachname", nachname);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Geburtsdatum", dob.ToShortDateString());
+
             //Kontakt
-            xdoc.Element("Mitarbeiter").Element("E-Mail").SetValue(email);
-            
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("E-Mail", email);
+
             //Adresse
-            xdoc.Element("Mitarbeiter").Element("Strasse").SetValue(strasse);
-            xdoc.Element("Mitarbeiter").Element("Wohnort").SetValue(wohnort);
-            xdoc.Element("Mitarbeiter").Element("Postleitzahl").SetValue(plz);
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Strasse", strasse);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Wohnort", wohnort);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Postleitzahl", plz);
 
             xdoc.Save("Kunde.xml");
             

@@ -14,6 +14,8 @@ namespace ContactManager.User_Controlls
 {
     public partial class UcMitarbeiterBearbeiten : UserControl
     {
+        UcMitarbeiterStamm ucm = new UcMitarbeiterStamm();
+
         public UcMitarbeiterBearbeiten()
         {
             InitializeComponent();
@@ -21,10 +23,13 @@ namespace ContactManager.User_Controlls
         
         XMLHandler xmlHandler = new XMLHandler();
 
+        public string id { get; set; }
+
         private void CmdFelderReset_Click(object sender, EventArgs e)
         {
             ClearAll();
         }
+
 
         private void CmdLaden_Click(object sender, EventArgs e)
         {
@@ -32,32 +37,37 @@ namespace ContactManager.User_Controlls
             //try
             //{
 
-            XElement xdoc = XElement.Load("Kunde.xml");
+            //XElement xdoc = XElement.Load("Kunde.xml");
 
-            LblId.Text = xdoc.Element("Mitarbeiter").Attribute("ID").Value;
-            LblStatus.Text = xdoc.Element("Mitarbeiter").Attribute("Status").Value;
+            //LblId.Text = xdoc.Element("Mitarbeiter").Attribute("ID").Value;
+            //LblStatus.Text = xdoc.Element("Mitarbeiter").Attribute("Status").Value;
 
-            TxtVorname.Text = xdoc.Element("Mitarbeiter").Element("Vorname").Value;
+            //TxtVorname.Text = xdoc.Element("Mitarbeiter").Element("Vorname").Value;
 
-            TxtNachname.Text = xdoc.Element("Mitarbeiter").Element("Nachname").Value;
-            DtpGeburtsdatum.Value = Convert.ToDateTime(xdoc.Element("Mitarbeiter").Element("Geburtsdatum").Value);
+            //TxtNachname.Text = xdoc.Element("Mitarbeiter").Element("Nachname").Value;
+            //DtpGeburtsdatum.Value = Convert.ToDateTime(xdoc.Element("Mitarbeiter").Element("Geburtsdatum").Value);
 
-            TxtEmail.Text = xdoc.Element("Mitarbeiter").Element("E-Mail").Value;
+            //TxtEmail.Text = xdoc.Element("Mitarbeiter").Element("E-Mail").Value;
 
-            TxtStrasse.Text = xdoc.Element("Mitarbeiter").Element("Strasse").Value;
-            TxtWohnort.Text = xdoc.Element("Mitarbeiter").Element("Wohnort").Value;
-            TxtPostleitzahl.Text = xdoc.Element("Mitarbeiter").Element("Postleitzahl").Value;
+            //TxtStrasse.Text = xdoc.Element("Mitarbeiter").Element("Strasse").Value;
+            //TxtWohnort.Text = xdoc.Element("Mitarbeiter").Element("Wohnort").Value;
+            //TxtPostleitzahl.Text = xdoc.Element("Mitarbeiter").Element("Postleitzahl").Value;
             //}
             //catch 
             //{
             //    MessageBox.Show("Konnte die Werte nicht laden.");
             //}
+
+
+
         }
 
         private void CmdKundeBearbeiten_Click(object sender, EventArgs e)
         {
             try
             {
+                string banane = id;
+
                 string vorname = TxtVorname.Text;
                 string nachname = TxtNachname.Text;
                 DateTime dob = DtpGeburtsdatum.Value;
@@ -70,7 +80,7 @@ namespace ContactManager.User_Controlls
 
                 string status = PersonenStatus();
 
-                xmlHandler.ChangeValuesXML(status, vorname, nachname, dob, email, strasse, wohnort, postleitzahl);
+                xmlHandler.ChangeValuesXML(id, status, vorname, nachname, dob, email, strasse, wohnort, postleitzahl);
             }
 
             catch
@@ -124,6 +134,48 @@ namespace ContactManager.User_Controlls
             this.Controls.Add(mf);
 
 
+        }
+
+        private void CmdShowID_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void UcMitarbeiterBearbeiten_Load(object sender, EventArgs e)
+        {
+            XElement xdoc = XElement.Load("Kunde.xml");
+
+            LblId.Text = xdoc.Elements("Mitarbeiter")
+                             .Where(x => x.Attribute("ID").Value == id)
+                             .FirstOrDefault().Attribute("ID").Value;
+
+            TxtVorname.Text = xdoc.Elements("Mitarbeiter")
+                                     .Where(x => x.Attribute("ID").Value == id)
+                                     .FirstOrDefault().Element("Vorname").Value;
+
+            TxtNachname.Text = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Nachname").Value;
+
+            DtpGeburtsdatum.Value = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Geburtsdatum").Value);
+            
+            TxtEmail.Text = xdoc.Elements("Mitarbeiter")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Element("E-Mail").Value;
+
+            TxtStrasse.Text = xdoc.Elements("Mitarbeiter")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Element("Strasse").Value;
+
+            TxtWohnort.Text = xdoc.Elements("Mitarbeiter")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Element("Wohnort").Value;
+
+            TxtPostleitzahl.Text = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Postleitzahl").Value;
         }
     }
 }

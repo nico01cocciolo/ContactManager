@@ -36,6 +36,7 @@ namespace ContactManager
 
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
+            
             UcMitarbeiterStamm mf = new UcMitarbeiterStamm();
             this.Controls.Clear();
 
@@ -46,10 +47,13 @@ namespace ContactManager
 
         private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
         {
+            
             UcMitarbeiterStamm mf = new UcMitarbeiterStamm();
             this.Controls.Clear();
 
+       
             UcMitarbeiterBearbeiten mb = new UcMitarbeiterBearbeiten();
+            mb.id = IDGetter();
             mb.Dock = DockStyle.Fill;
             this.Controls.Add(mb);
 
@@ -57,11 +61,13 @@ namespace ContactManager
 
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
         {
+            if (File.Exists("Kunde.xml"))
+            { 
             DataSet dataSet = new DataSet();
             //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
             dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
             dataGridView1.DataSource = dataSet.Tables[0];
-
+            }
         }
 
         public string IDGetter()
@@ -75,7 +81,7 @@ namespace ContactManager
                 cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
 
                 LblTest.Text = cellValue;
-                
+
             }
             return cellValue;
         }
@@ -83,6 +89,11 @@ namespace ContactManager
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CmdGetID_Click(object sender, EventArgs e)
+        {
+            IDGetter();
         }
     }
 }

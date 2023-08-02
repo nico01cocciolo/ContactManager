@@ -82,6 +82,7 @@
             this.ChkStatus = new System.Windows.Forms.CheckBox();
             this.CmdLaden = new System.Windows.Forms.Button();
             this.CmdBack = new System.Windows.Forms.Button();
+            this.CmdShowID = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -584,10 +585,21 @@
             this.CmdBack.UseVisualStyleBackColor = true;
             this.CmdBack.Click += new System.EventHandler(this.CmdBack_Click);
             // 
-            // MitarbeiterBearbeiten
+            // CmdShowID
+            // 
+            this.CmdShowID.Location = new System.Drawing.Point(691, 523);
+            this.CmdShowID.Name = "CmdShowID";
+            this.CmdShowID.Size = new System.Drawing.Size(237, 23);
+            this.CmdShowID.TabIndex = 42;
+            this.CmdShowID.Text = "Show ID";
+            this.CmdShowID.UseVisualStyleBackColor = true;
+            this.CmdShowID.Click += new System.EventHandler(this.CmdShowID_Click);
+            // 
+            // UcMitarbeiterBearbeiten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CmdShowID);
             this.Controls.Add(this.CmdBack);
             this.Controls.Add(this.CmdLaden);
             this.Controls.Add(this.ChkStatus);
@@ -604,8 +616,9 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "MitarbeiterBearbeiten";
+            this.Name = "UcMitarbeiterBearbeiten";
             this.Size = new System.Drawing.Size(931, 650);
+            this.Load += new System.EventHandler(this.UcMitarbeiterBearbeiten_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -675,5 +688,6 @@
         private System.Windows.Forms.CheckBox ChkStatus;
         private System.Windows.Forms.Button CmdLaden;
         private System.Windows.Forms.Button CmdBack;
+        private System.Windows.Forms.Button CmdShowID;
     }
 }
