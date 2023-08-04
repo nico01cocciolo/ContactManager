@@ -1,4 +1,5 @@
-﻿using ContactManager.User_Controlls;
+﻿using ContactManager.Controller;
+using ContactManager.User_Controlls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ContactManager
 {
@@ -18,6 +20,8 @@ namespace ContactManager
         {
             InitializeComponent();
         }
+
+        XMLHandler xmlHandler = new XMLHandler();
 
         private static UcMitarbeiterStamm instance;
 
@@ -94,6 +98,57 @@ namespace ContactManager
         private void CmdGetID_Click(object sender, EventArgs e)
         {
             IDGetter();
+        }
+
+        private string PersonenStatus()
+        {
+            if (!ChkStatus.Checked)
+            {
+                return "Deaktiviert";
+            }
+            else
+            {
+                return "Aktiv";
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id = IDGetter();
+
+            XElement xdoc = XElement.Load("Kunde.xml");
+
+            LblId.Text = xdoc.Elements("Mitarbeiter")
+                             .Where(x => x.Attribute("ID").Value == id)
+                             .FirstOrDefault().Attribute("ID").Value;
+
+            TxtVorname.Text = xdoc.Elements("Mitarbeiter")
+                                     .Where(x => x.Attribute("ID").Value == id)
+                                     .FirstOrDefault().Element("Vorname").Value;
+
+            TxtNachname.Text = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Nachname").Value;
+
+            DtpGeburtsdatum.Value = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Geburtsdatum").Value);
+
+            TxtEmail.Text = xdoc.Elements("Mitarbeiter")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Element("E-Mail").Value;
+
+            TxtStrasse.Text = xdoc.Elements("Mitarbeiter")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Element("Strasse").Value;
+
+            TxtWohnort.Text = xdoc.Elements("Mitarbeiter")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Element("Wohnort").Value;
+
+            TxtPostleitzahl.Text = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Postleitzahl").Value;
         }
     }
 }
