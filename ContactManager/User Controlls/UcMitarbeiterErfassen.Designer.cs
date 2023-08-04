@@ -568,6 +568,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UcMitarbeiterErfassen";
             this.Size = new System.Drawing.Size(931, 650);
+            this.Load += new System.EventHandler(this.UcMitarbeiterErfassen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);

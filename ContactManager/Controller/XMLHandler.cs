@@ -12,7 +12,7 @@ namespace ContactManager.Controller
 {
     internal class XMLHandler
     {
-        public void CreateXML(Guid id, string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
+        public void CreateXML(Guid id, string status,string anrede, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
         {
             if (File.Exists("Kunde.xml") == false)
             {
@@ -25,7 +25,7 @@ namespace ContactManager.Controller
                     new XAttribute("Status", status),
                     //Person
                     new XElement("Geschlecht", "A"),
-                    new XElement("Anrede", "A"),
+                    new XElement("Anrede", anrede),
                     new XElement("Titel", "A"),
                     new XElement("Vorname", vorname),
                     new XElement("Nachname", nachname),
@@ -54,7 +54,7 @@ namespace ContactManager.Controller
                     new XAttribute("Status", status),
                     //Person
                     new XElement("Geschlecht", "A"),
-                    new XElement("Anrede", "A"),
+                    new XElement("Anrede", anrede),
                     new XElement("Titel", "A"),
                     new XElement("Vorname", vorname),
                     new XElement("Nachname", nachname),
@@ -74,7 +74,7 @@ namespace ContactManager.Controller
             }
         }
 
-        public void ChangeValuesXML(string id, string status, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
+        public void ChangeValuesXML(string id, string status, string anrede, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
         {
             UcMitarbeiterStamm ucm = new UcMitarbeiterStamm();
 
@@ -82,9 +82,15 @@ namespace ContactManager.Controller
             XElement xdoc = XElement.Load("Kunde.xml");
 
             //Wichtig
-            xdoc.Element("Mitarbeiter").Attribute("Status").SetValue(status);
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetAttributeValue("Status", status);
 
             //Person
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Anrede", anrede);
+
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetElementValue("Vorname", vorname);

@@ -25,8 +25,6 @@ namespace ContactManager
 
         string filepath = "Notiz.txt";
 
-        Person[] pers = new Person[20];
-
         bool inputOk = false;
         private static int counter = 0;
 
@@ -38,6 +36,7 @@ namespace ContactManager
             PersonAnlegen persAn = new PersonAnlegen();
             
             Guid id =  Guid.NewGuid();
+            string anrede = CmbAnrede.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
@@ -48,16 +47,16 @@ namespace ContactManager
             string status = "Aktiv";
 
             Person person = new Person(vorname, nachname, dob);
-            pers[counter] = person;
 
 
-            if (CheckInputs() == true && counter < pers.Length)
+            if (CheckInputs() == true)
             {
                 //(Guid id, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
-                xmlHandler.CreateXML(id, status,vorname, nachname, dob, email, strasse, wohnort, plz);
+                xmlHandler.CreateXML(id, status, anrede, vorname, nachname, dob, email, strasse, wohnort, plz);
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
         }
+
         private void CmdNotizErfassen_Click(object sender, EventArgs e)
         {
             if (TxtNotizInput.TextLength < 0)

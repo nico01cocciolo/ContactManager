@@ -29,9 +29,13 @@ namespace ContactManager.User_Controlls
 
         private void CmdKundeAnlegen_Click(object sender, EventArgs e)
         {
+
+
             PersonAnlegen persAn = new PersonAnlegen();
 
             Guid id = Guid.NewGuid();
+
+            string anrede = CmbAnrede.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
@@ -47,8 +51,10 @@ namespace ContactManager.User_Controlls
 
             if (CheckInputs() == true && counter < pers.Length)
             {
+
+
                 //(Guid id, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
-                xmlHandler.CreateXML(id, status, vorname, nachname, dob, email, strasse, wohnort, plz);
+                xmlHandler.CreateXML(id, status, anrede, vorname, nachname, dob, email, strasse, wohnort, plz);
                 LblId.Text = Convert.ToString(id);
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
@@ -104,6 +110,12 @@ namespace ContactManager.User_Controlls
         private void CmdFelderReset_Click(object sender, EventArgs e)
         {
             ClearAll();
+        }
+
+        private void UcMitarbeiterErfassen_Load(object sender, EventArgs e)
+        {
+            CmbAnrede.Items.Add("Herr");
+            CmbAnrede.Items.Add("Frau");
         }
     }
 }

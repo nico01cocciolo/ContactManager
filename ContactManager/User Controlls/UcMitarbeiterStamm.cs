@@ -65,13 +65,9 @@ namespace ContactManager
 
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Kunde.xml"))
-            { 
-            DataSet dataSet = new DataSet();
-            //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
-            dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
-            dataGridView1.DataSource = dataSet.Tables[0];
-            }
+            CmbAnrede.Items.Add("Herr");
+            CmbAnrede.Items.Add("Frau");
+            LoadFile();
         }
 
         public string IDGetter()
@@ -84,71 +80,100 @@ namespace ContactManager
                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
                 cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
 
-                LblTest.Text = cellValue;
-
             }
             return cellValue;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CmdGetID_Click(object sender, EventArgs e)
-        {
-            IDGetter();
         }
 
         private string PersonenStatus()
         {
             if (!ChkStatus.Checked)
             {
+                ChkStatus.Text = "Aktivieren";
                 return "Deaktiviert";
             }
             else
             {
+                ChkStatus.Text = "Deaktivieren";
                 return "Aktiv";
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+                string id = IDGetter();
+
+                XElement xdoc = XElement.Load("Kunde.xml");
+
+                LblId.Text = xdoc.Elements("Mitarbeiter")
+                                 .Where(x => x.Attribute("ID").Value == id)
+                                 .FirstOrDefault().Attribute("ID").Value;
+
+                TxtVorname.Text = xdoc.Elements("Mitarbeiter")
+                                      .Where(x => x.Attribute("ID").Value == id)
+                                      .FirstOrDefault().Element("Vorname").Value;
+
+                CmbAnrede.Text = xdoc.Elements("Mitarbeiter")
+                                     .Where(x => x.Attribute("ID").Value == id)
+                                     .FirstOrDefault().Element("Anrede").Value;
+
+                TxtNachname.Text = xdoc.Elements("Mitarbeiter")
+                                       .Where(x => x.Attribute("ID").Value == id)
+                                       .FirstOrDefault().Element("Nachname").Value;
+
+                DtpGeburtsdatum.Value = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                               .Where(x => x.Attribute("ID").Value == id)
+                                               .FirstOrDefault().Element("Geburtsdatum").Value);
+
+                TxtEmail.Text = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("E-Mail").Value;
+
+               TxtStrasse.Text = xdoc.Elements("Mitarbeiter")
+                                      .Where(x => x.Attribute("ID").Value == id)
+                                      .FirstOrDefault().Element("Strasse").Value;
+
+                TxtWohnort.Text = xdoc.Elements("Mitarbeiter")
+                                      .Where(x => x.Attribute("ID").Value == id)
+                                      .FirstOrDefault().Element("Wohnort").Value;
+
+                TxtPostleitzahl.Text = xdoc.Elements("Mitarbeiter")
+                                           .Where(x => x.Attribute("ID").Value == id)
+                                           .FirstOrDefault().Element("Postleitzahl").Value;
+        }
+
+        private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
             string id = IDGetter();
 
-            XElement xdoc = XElement.Load("Kunde.xml");
+            string status = PersonenStatus();
 
-            LblId.Text = xdoc.Elements("Mitarbeiter")
-                             .Where(x => x.Attribute("ID").Value == id)
-                             .FirstOrDefault().Attribute("ID").Value;
+            string anrede = CmbAnrede.Text;
 
-            TxtVorname.Text = xdoc.Elements("Mitarbeiter")
-                                     .Where(x => x.Attribute("ID").Value == id)
-                                     .FirstOrDefault().Element("Vorname").Value;
+            string vorname = TxtVorname.Text;
+            string nachname = TxtNachname.Text;
+            DateTime dob = DtpGeburtsdatum.Value;
+            string email = TxtEmail.Text;
+            string strasse = TxtStrasse.Text;
+            string wohnort = TxtWohnort.Text;
+            int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+           
 
-            TxtNachname.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Nachname").Value;
+            xmlHandler.ChangeValuesXML(id, status,anrede, vorname, nachname, dob, email, strasse, wohnort, plz);
+            LoadFile();
 
-            DtpGeburtsdatum.Value = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Geburtsdatum").Value);
-
-            TxtEmail.Text = xdoc.Elements("Mitarbeiter")
-                                .Where(x => x.Attribute("ID").Value == id)
-                                .FirstOrDefault().Element("E-Mail").Value;
-
-            TxtStrasse.Text = xdoc.Elements("Mitarbeiter")
-                                .Where(x => x.Attribute("ID").Value == id)
-                                .FirstOrDefault().Element("Strasse").Value;
-
-            TxtWohnort.Text = xdoc.Elements("Mitarbeiter")
-                                .Where(x => x.Attribute("ID").Value == id)
-                                .FirstOrDefault().Element("Wohnort").Value;
-
-            TxtPostleitzahl.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Postleitzahl").Value;
         }
+
+        public void LoadFile()
+        {
+            if (File.Exists("Kunde.xml"))
+            {
+                DataSet dataSet = new DataSet();
+                //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
+                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
+                dataGridView1.DataSource = dataSet.Tables[0];
+               
+            }
+        }
+
     }
 }
