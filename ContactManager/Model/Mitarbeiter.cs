@@ -25,7 +25,6 @@ namespace ContactManager.Model
         public int Arbeitspensum { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public Guid EmployeeNumber { get; set; }
         #endregion
 
         public Mitarbeiter(Guid id, string anrede, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort,
