@@ -121,7 +121,7 @@
             this.PnlUCHandler.Location = new System.Drawing.Point(210, 4);
             this.PnlUCHandler.Margin = new System.Windows.Forms.Padding(4);
             this.PnlUCHandler.Name = "PnlUCHandler";
-            this.PnlUCHandler.Size = new System.Drawing.Size(1298, 1004);
+            this.PnlUCHandler.Size = new System.Drawing.Size(1219, 1004);
             this.PnlUCHandler.TabIndex = 9;
             // 
             // Dashboard
@@ -130,7 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1515, 1015);
+            this.ClientSize = new System.Drawing.Size(1439, 1015);
             this.Controls.Add(this.PnlUCHandler);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
