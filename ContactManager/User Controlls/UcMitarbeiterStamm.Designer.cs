@@ -208,6 +208,7 @@
             // 
             // TxtPostleitzahl
             // 
+            this.TxtPostleitzahl.Enabled = false;
             this.TxtPostleitzahl.Location = new System.Drawing.Point(204, 94);
             this.TxtPostleitzahl.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPostleitzahl.Name = "TxtPostleitzahl";
@@ -226,6 +227,7 @@
             // 
             // TxtWohnort
             // 
+            this.TxtWohnort.Enabled = false;
             this.TxtWohnort.Location = new System.Drawing.Point(204, 62);
             this.TxtWohnort.Margin = new System.Windows.Forms.Padding(4);
             this.TxtWohnort.Name = "TxtWohnort";
@@ -244,6 +246,7 @@
             // 
             // TxtStrasse
             // 
+            this.TxtStrasse.Enabled = false;
             this.TxtStrasse.Location = new System.Drawing.Point(204, 30);
             this.TxtStrasse.Margin = new System.Windows.Forms.Padding(4);
             this.TxtStrasse.Name = "TxtStrasse";
@@ -290,6 +293,7 @@
             // 
             // TxtTelGesch
             // 
+            this.TxtTelGesch.Enabled = false;
             this.TxtTelGesch.Location = new System.Drawing.Point(179, 124);
             this.TxtTelGesch.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelGesch.Name = "TxtTelGesch";
@@ -308,6 +312,7 @@
             // 
             // TxtTelPriv
             // 
+            this.TxtTelPriv.Enabled = false;
             this.TxtTelPriv.Location = new System.Drawing.Point(179, 92);
             this.TxtTelPriv.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelPriv.Name = "TxtTelPriv";
@@ -326,6 +331,7 @@
             // 
             // TxtTelMobil
             // 
+            this.TxtTelMobil.Enabled = false;
             this.TxtTelMobil.Location = new System.Drawing.Point(179, 60);
             this.TxtTelMobil.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelMobil.Name = "TxtTelMobil";
@@ -344,6 +350,7 @@
             // 
             // TxtEmail
             // 
+            this.TxtEmail.Enabled = false;
             this.TxtEmail.Location = new System.Drawing.Point(179, 28);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.TxtEmail.Name = "TxtEmail";
@@ -390,6 +397,7 @@
             // 
             // NumKaderstufe
             // 
+            this.NumKaderstufe.Enabled = false;
             this.NumKaderstufe.Location = new System.Drawing.Point(179, 31);
             this.NumKaderstufe.Margin = new System.Windows.Forms.Padding(4);
             this.NumKaderstufe.Maximum = new decimal(new int[] {
@@ -403,6 +411,7 @@
             // 
             // NumArbeitspensum
             // 
+            this.NumArbeitspensum.Enabled = false;
             this.NumArbeitspensum.Increment = new decimal(new int[] {
             10,
             0,
@@ -416,6 +425,7 @@
             // 
             // DtpStartdatum
             // 
+            this.DtpStartdatum.Enabled = false;
             this.DtpStartdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpStartdatum.Location = new System.Drawing.Point(179, 126);
             this.DtpStartdatum.Margin = new System.Windows.Forms.Padding(4);
@@ -445,6 +455,7 @@
             // 
             // TxtAbteilung
             // 
+            this.TxtAbteilung.Enabled = false;
             this.TxtAbteilung.Location = new System.Drawing.Point(179, 62);
             this.TxtAbteilung.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAbteilung.Name = "TxtAbteilung";
@@ -515,6 +526,7 @@
             this.ChkStatus.AutoSize = true;
             this.ChkStatus.Checked = true;
             this.ChkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ChkStatus.Enabled = false;
             this.ChkStatus.Location = new System.Drawing.Point(204, 54);
             this.ChkStatus.Margin = new System.Windows.Forms.Padding(4);
             this.ChkStatus.Name = "ChkStatus";
@@ -555,6 +567,7 @@
             // 
             // TxtAhvNum
             // 
+            this.TxtAhvNum.Enabled = false;
             this.TxtAhvNum.Location = new System.Drawing.Point(204, 281);
             this.TxtAhvNum.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAhvNum.Name = "TxtAhvNum";
@@ -563,6 +576,7 @@
             // 
             // CmbNationalitaet
             // 
+            this.CmbNationalitaet.Enabled = false;
             this.CmbNationalitaet.FormattingEnabled = true;
             this.CmbNationalitaet.Location = new System.Drawing.Point(204, 247);
             this.CmbNationalitaet.Margin = new System.Windows.Forms.Padding(4);
@@ -602,6 +616,7 @@
             // 
             // DtpGeburtsdatum
             // 
+            this.DtpGeburtsdatum.Enabled = false;
             this.DtpGeburtsdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpGeburtsdatum.Location = new System.Drawing.Point(204, 215);
             this.DtpGeburtsdatum.Margin = new System.Windows.Forms.Padding(4);
@@ -631,6 +646,7 @@
             // 
             // TxtNachname
             // 
+            this.TxtNachname.Enabled = false;
             this.TxtNachname.Location = new System.Drawing.Point(204, 183);
             this.TxtNachname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNachname.Name = "TxtNachname";
@@ -649,6 +665,7 @@
             // 
             // CmbTitel
             // 
+            this.CmbTitel.Enabled = false;
             this.CmbTitel.FormattingEnabled = true;
             this.CmbTitel.Location = new System.Drawing.Point(204, 118);
             this.CmbTitel.Margin = new System.Windows.Forms.Padding(4);
@@ -668,6 +685,7 @@
             // 
             // CmbAnrede
             // 
+            this.CmbAnrede.Enabled = false;
             this.CmbAnrede.FormattingEnabled = true;
             this.CmbAnrede.Location = new System.Drawing.Point(204, 85);
             this.CmbAnrede.Margin = new System.Windows.Forms.Padding(4);
@@ -677,6 +695,7 @@
             // 
             // TxtVorname
             // 
+            this.TxtVorname.Enabled = false;
             this.TxtVorname.Location = new System.Drawing.Point(204, 151);
             this.TxtVorname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtVorname.Name = "TxtVorname";

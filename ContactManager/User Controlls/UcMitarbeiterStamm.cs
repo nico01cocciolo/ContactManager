@@ -47,6 +47,7 @@ namespace ContactManager
             CmdMitarbeiterErstellen.Visible = false;
             CmdMitarbeiterSpeichern.Visible = true;
             DtgData.Enabled = false;
+            ChangeTxtValues();
         }
 
         private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
@@ -118,6 +119,8 @@ namespace ContactManager
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+                ChangeTxtValues();
+
                 index = DtgData.CurrentRow.Index;
                 
                 string id = IDGetter();
@@ -195,7 +198,9 @@ namespace ContactManager
                 NumArbeitspensum.Value = Convert.ToDecimal(xdoc.Elements("Mitarbeiter")
                                              .Where(x => x.Attribute("ID").Value == id)
                                              .FirstOrDefault().Element("Arbeitspensum").Value);
+
         }
+
         private void ClearAll()
         {
             //Personen Daten
@@ -216,6 +221,22 @@ namespace ContactManager
 
             LblId.Text = "...";
             LblStatus.Text = "...";
+        }
+
+        private void ChangeTxtValues()
+        {
+            TxtWohnort.Enabled = true;
+            TxtTelPriv.Enabled = true; 
+            TxtTelMobil.Enabled = true;
+            TxtTelGesch.Enabled = true;
+            TxtEmail.Enabled = true;
+            LblId.Enabled = true;
+            LblStatus.Enabled = true;
+            TxtStrasse.Enabled = true;
+            TxtNachname.Enabled = true;
+            TxtVorname.Enabled = true;
+            TxtAhvNum.Enabled = true;
+            TxtAbteilung.Enabled = true;
         }
 
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
