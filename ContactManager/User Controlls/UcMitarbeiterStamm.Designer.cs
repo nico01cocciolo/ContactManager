@@ -107,7 +107,7 @@
             this.DtgData.Margin = new System.Windows.Forms.Padding(4);
             this.DtgData.Name = "DtgData";
             this.DtgData.RowHeadersWidth = 51;
-            this.DtgData.Size = new System.Drawing.Size(1283, 460);
+            this.DtgData.Size = new System.Drawing.Size(1246, 448);
             this.DtgData.TabIndex = 0;
             this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -120,7 +120,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer1.Panel1.Controls.Add(this.textBox2);
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
             this.splitContainer1.Panel1.Controls.Add(this.CmdWerteSpeichern);
@@ -134,22 +134,22 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.DtgData);
-            this.splitContainer1.Size = new System.Drawing.Size(1283, 1001);
-            this.splitContainer1.SplitterDistance = 531;
+            this.splitContainer1.Size = new System.Drawing.Size(1246, 974);
+            this.splitContainer1.SplitterDistance = 516;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 1;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(860, 326);
+            this.textBox2.Location = new System.Drawing.Point(825, 381);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(414, 76);
+            this.textBox2.Size = new System.Drawing.Size(414, 87);
             this.textBox2.TabIndex = 55;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(860, 8);
+            this.textBox1.Location = new System.Drawing.Point(825, 63);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(414, 312);
@@ -157,7 +157,7 @@
             // 
             // CmdWerteSpeichern
             // 
-            this.CmdWerteSpeichern.Location = new System.Drawing.Point(222, 27);
+            this.CmdWerteSpeichern.Location = new System.Drawing.Point(222, 8);
             this.CmdWerteSpeichern.Margin = new System.Windows.Forms.Padding(4);
             this.CmdWerteSpeichern.Name = "CmdWerteSpeichern";
             this.CmdWerteSpeichern.Size = new System.Drawing.Size(213, 28);
@@ -175,7 +175,7 @@
             this.panel3.Controls.Add(this.TxtStrasse);
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label24);
-            this.panel3.Location = new System.Drawing.Point(12, 391);
+            this.panel3.Location = new System.Drawing.Point(12, 381);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(410, 128);
@@ -257,7 +257,7 @@
             this.panel4.Controls.Add(this.TxtEmail);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Controls.Add(this.label26);
-            this.panel4.Location = new System.Drawing.Point(426, 73);
+            this.panel4.Location = new System.Drawing.Point(426, 63);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(392, 172);
@@ -357,7 +357,7 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Location = new System.Drawing.Point(426, 248);
+            this.panel2.Location = new System.Drawing.Point(426, 238);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(392, 271);
@@ -479,7 +479,7 @@
             this.panel1.Controls.Add(this.TxtVorname);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 73);
+            this.panel1.Location = new System.Drawing.Point(12, 63);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(410, 312);
@@ -680,7 +680,7 @@
             // 
             // CmdMitarbeiterErstellen
             // 
-            this.CmdMitarbeiterErstellen.Location = new System.Drawing.Point(12, 18);
+            this.CmdMitarbeiterErstellen.Location = new System.Drawing.Point(12, 8);
             this.CmdMitarbeiterErstellen.Margin = new System.Windows.Forms.Padding(4);
             this.CmdMitarbeiterErstellen.Name = "CmdMitarbeiterErstellen";
             this.CmdMitarbeiterErstellen.Size = new System.Drawing.Size(103, 47);
@@ -690,7 +690,7 @@
             // 
             // CmdMitarbeiterBearbeiten
             // 
-            this.CmdMitarbeiterBearbeiten.Location = new System.Drawing.Point(123, 18);
+            this.CmdMitarbeiterBearbeiten.Location = new System.Drawing.Point(123, 8);
             this.CmdMitarbeiterBearbeiten.Margin = new System.Windows.Forms.Padding(4);
             this.CmdMitarbeiterBearbeiten.Name = "CmdMitarbeiterBearbeiten";
             this.CmdMitarbeiterBearbeiten.Size = new System.Drawing.Size(91, 47);
@@ -705,7 +705,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UcMitarbeiterStamm";
-            this.Size = new System.Drawing.Size(1283, 1001);
+            this.Size = new System.Drawing.Size(1246, 974);
             this.Load += new System.EventHandler(this.UcMitarbeiterStamm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
