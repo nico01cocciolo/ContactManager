@@ -66,13 +66,11 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.TxtFirmenname = new System.Windows.Forms.TextBox();
-            this.CmbKundentyp = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.CmdFelderReset = new System.Windows.Forms.Button();
-            this.CmdKundeAnlegen = new System.Windows.Forms.Button();
+            this.CmdMitarbeiterAnlegen = new System.Windows.Forms.Button();
             this.CmdBack = new System.Windows.Forms.Button();
             this.LblId = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -81,6 +79,12 @@
             this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
             this.ErrNachname = new System.Windows.Forms.ErrorProvider(this.components);
             this.ErrGeburtsdatum = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.DtpStartdatum = new System.Windows.Forms.DateTimePicker();
+            this.TxtAbteilung = new System.Windows.Forms.TextBox();
+            this.NumKaderstufe = new System.Windows.Forms.NumericUpDown();
+            this.NumArbeitspensum = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -88,6 +92,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrGeburtsdatum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumKaderstufe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -421,8 +427,12 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Controls.Add(this.TxtFirmenname);
-            this.panel2.Controls.Add(this.CmbKundentyp);
+            this.panel2.Controls.Add(this.NumArbeitspensum);
+            this.panel2.Controls.Add(this.NumKaderstufe);
+            this.panel2.Controls.Add(this.TxtAbteilung);
+            this.panel2.Controls.Add(this.DtpStartdatum);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label16);
@@ -431,47 +441,32 @@
             this.panel2.Size = new System.Drawing.Size(338, 239);
             this.panel2.TabIndex = 28;
             // 
-            // TxtFirmenname
-            // 
-            this.TxtFirmenname.Location = new System.Drawing.Point(174, 37);
-            this.TxtFirmenname.Name = "TxtFirmenname";
-            this.TxtFirmenname.Size = new System.Drawing.Size(121, 20);
-            this.TxtFirmenname.TabIndex = 17;
-            // 
-            // CmbKundentyp
-            // 
-            this.CmbKundentyp.FormattingEnabled = true;
-            this.CmbKundentyp.Location = new System.Drawing.Point(174, 64);
-            this.CmbKundentyp.Name = "CmbKundentyp";
-            this.CmbKundentyp.Size = new System.Drawing.Size(121, 21);
-            this.CmbKundentyp.TabIndex = 6;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(6, 67);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 13);
+            this.label14.Size = new System.Drawing.Size(51, 13);
             this.label14.TabIndex = 5;
-            this.label14.Text = "Kundentyp";
+            this.label14.Text = "Abteilung";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 40);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(64, 13);
+            this.label15.Size = new System.Drawing.Size(58, 13);
             this.label15.TabIndex = 1;
-            this.label15.Text = "Firmenname";
+            this.label15.Text = "Kaderstufe";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(3, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 0;
-            this.label16.Text = "Firma";
+            this.label16.Text = "Mitarbeiter";
             // 
             // CmdFelderReset
             // 
@@ -483,15 +478,15 @@
             this.CmdFelderReset.UseVisualStyleBackColor = true;
             this.CmdFelderReset.Click += new System.EventHandler(this.CmdFelderReset_Click);
             // 
-            // CmdKundeAnlegen
+            // CmdMitarbeiterAnlegen
             // 
-            this.CmdKundeAnlegen.Location = new System.Drawing.Point(806, 609);
-            this.CmdKundeAnlegen.Name = "CmdKundeAnlegen";
-            this.CmdKundeAnlegen.Size = new System.Drawing.Size(122, 23);
-            this.CmdKundeAnlegen.TabIndex = 30;
-            this.CmdKundeAnlegen.Text = "Kunde anlegen";
-            this.CmdKundeAnlegen.UseVisualStyleBackColor = true;
-            this.CmdKundeAnlegen.Click += new System.EventHandler(this.CmdKundeAnlegen_Click);
+            this.CmdMitarbeiterAnlegen.Location = new System.Drawing.Point(806, 609);
+            this.CmdMitarbeiterAnlegen.Name = "CmdMitarbeiterAnlegen";
+            this.CmdMitarbeiterAnlegen.Size = new System.Drawing.Size(122, 23);
+            this.CmdMitarbeiterAnlegen.TabIndex = 30;
+            this.CmdMitarbeiterAnlegen.Text = "Mitarbeiter anlegen";
+            this.CmdMitarbeiterAnlegen.UseVisualStyleBackColor = true;
+            this.CmdMitarbeiterAnlegen.Click += new System.EventHandler(this.CmdMitarbeiterAnlegen_Click);
             // 
             // CmdBack
             // 
@@ -551,6 +546,63 @@
             // 
             this.ErrGeburtsdatum.ContainerControl = this;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 94);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Arbeitspensum";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 120);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Startdatum";
+            // 
+            // DtpStartdatum
+            // 
+            this.DtpStartdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpStartdatum.Location = new System.Drawing.Point(174, 115);
+            this.DtpStartdatum.Name = "DtpStartdatum";
+            this.DtpStartdatum.Size = new System.Drawing.Size(121, 20);
+            this.DtpStartdatum.TabIndex = 16;
+            // 
+            // TxtAbteilung
+            // 
+            this.TxtAbteilung.Location = new System.Drawing.Point(174, 63);
+            this.TxtAbteilung.Name = "TxtAbteilung";
+            this.TxtAbteilung.Size = new System.Drawing.Size(121, 20);
+            this.TxtAbteilung.TabIndex = 21;
+            // 
+            // NumKaderstufe
+            // 
+            this.NumKaderstufe.Location = new System.Drawing.Point(175, 37);
+            this.NumKaderstufe.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NumKaderstufe.Name = "NumKaderstufe";
+            this.NumKaderstufe.Size = new System.Drawing.Size(120, 20);
+            this.NumKaderstufe.TabIndex = 22;
+            // 
+            // NumArbeitspensum
+            // 
+            this.NumArbeitspensum.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumArbeitspensum.Location = new System.Drawing.Point(174, 89);
+            this.NumArbeitspensum.Name = "NumArbeitspensum";
+            this.NumArbeitspensum.Size = new System.Drawing.Size(120, 20);
+            this.NumArbeitspensum.TabIndex = 23;
+            // 
             // UcMitarbeiterErfassen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,7 +612,7 @@
             this.Controls.Add(this.LblId);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.CmdBack);
-            this.Controls.Add(this.CmdKundeAnlegen);
+            this.Controls.Add(this.CmdMitarbeiterAnlegen);
             this.Controls.Add(this.CmdFelderReset);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
@@ -580,6 +632,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrGeburtsdatum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumKaderstufe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -624,13 +678,11 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox TxtFirmenname;
-        private System.Windows.Forms.ComboBox CmbKundentyp;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button CmdFelderReset;
-        private System.Windows.Forms.Button CmdKundeAnlegen;
+        private System.Windows.Forms.Button CmdMitarbeiterAnlegen;
         private System.Windows.Forms.Button CmdBack;
         private System.Windows.Forms.Label LblId;
         private System.Windows.Forms.Label label12;
@@ -639,5 +691,11 @@
         private System.Windows.Forms.ErrorProvider ErrVorname;
         private System.Windows.Forms.ErrorProvider ErrNachname;
         private System.Windows.Forms.ErrorProvider ErrGeburtsdatum;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox TxtAbteilung;
+        private System.Windows.Forms.DateTimePicker DtpStartdatum;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown NumKaderstufe;
+        private System.Windows.Forms.NumericUpDown NumArbeitspensum;
     }
 }

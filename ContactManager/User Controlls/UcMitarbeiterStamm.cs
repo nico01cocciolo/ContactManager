@@ -1,4 +1,5 @@
 ﻿using ContactManager.Controller;
+using ContactManager.Model;
 using ContactManager.User_Controlls;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace ContactManager
         {
             InitializeComponent();
         }
+
+        private int index { get; set; }
 
         XMLHandler xmlHandler = new XMLHandler();
 
@@ -74,10 +77,10 @@ namespace ContactManager
         {
             string cellValue = ""; 
 
-            if (dataGridView1.SelectedCells.Count > 0)
+            if (DtgData.SelectedCells.Count > 0)
             {
-                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                int selectedrowindex = DtgData.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = DtgData.Rows[selectedrowindex];
                 cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
 
             }
@@ -100,21 +103,23 @@ namespace ContactManager
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+                index = DtgData.CurrentRow.Index;
+                
                 string id = IDGetter();
 
-                XElement xdoc = XElement.Load("Kunde.xml");
+                XElement xdoc = XElement.Load("Mitarbeiter.xml");
 
                 LblId.Text = xdoc.Elements("Mitarbeiter")
                                  .Where(x => x.Attribute("ID").Value == id)
                                  .FirstOrDefault().Attribute("ID").Value;
 
-                TxtVorname.Text = xdoc.Elements("Mitarbeiter")
-                                      .Where(x => x.Attribute("ID").Value == id)
-                                      .FirstOrDefault().Element("Vorname").Value;
-
                 CmbAnrede.Text = xdoc.Elements("Mitarbeiter")
                                      .Where(x => x.Attribute("ID").Value == id)
                                      .FirstOrDefault().Element("Anrede").Value;
+
+                TxtVorname.Text = xdoc.Elements("Mitarbeiter")
+                                      .Where(x => x.Attribute("ID").Value == id)
+                                      .FirstOrDefault().Element("Vorname").Value;
 
                 TxtNachname.Text = xdoc.Elements("Mitarbeiter")
                                        .Where(x => x.Attribute("ID").Value == id)
@@ -124,11 +129,31 @@ namespace ContactManager
                                                .Where(x => x.Attribute("ID").Value == id)
                                                .FirstOrDefault().Element("Geburtsdatum").Value);
 
+                TxtAhvNum.Text = xdoc.Elements("Mitarbeiter")
+                                     .Where(x => x.Attribute("ID").Value == id)
+                                     .FirstOrDefault().Element("AHV-Nummer").Value;
+
+                CmbNationalitaet.Text = xdoc.Elements("Mitarbeiter")
+                                     .Where(x => x.Attribute("ID").Value == id)
+                                     .FirstOrDefault().Element("Nationalität").Value;
+
                 TxtEmail.Text = xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
                                     .FirstOrDefault().Element("E-Mail").Value;
 
-               TxtStrasse.Text = xdoc.Elements("Mitarbeiter")
+                TxtTelGesch.Text = xdoc.Elements("Mitarbeiter")
+                                       .Where(x => x.Attribute("ID").Value == id)
+                                       .FirstOrDefault().Element("Telefon_Arbeit").Value;
+                
+                TxtTelMobil.Text = xdoc.Elements("Mitarbeiter")
+                                       .Where(x => x.Attribute("ID").Value == id)
+                                       .FirstOrDefault().Element("Telefon_Mobil").Value;
+                
+                TxtTelMobil.Text = xdoc.Elements("Mitarbeiter")
+                                       .Where(x => x.Attribute("ID").Value == id)
+                                       .FirstOrDefault().Element("Telefon_Privat").Value;
+
+                TxtStrasse.Text = xdoc.Elements("Mitarbeiter")
                                       .Where(x => x.Attribute("ID").Value == id)
                                       .FirstOrDefault().Element("Strasse").Value;
 
@@ -139,38 +164,70 @@ namespace ContactManager
                 TxtPostleitzahl.Text = xdoc.Elements("Mitarbeiter")
                                            .Where(x => x.Attribute("ID").Value == id)
                                            .FirstOrDefault().Element("Postleitzahl").Value;
+                
+                NumKaderstufe.Value = Convert.ToDecimal(xdoc.Elements("Mitarbeiter")
+                                             .Where(x => x.Attribute("ID").Value == id)
+                                             .FirstOrDefault().Element("Kaderstufe").Value);
+
+                TxtAbteilung.Text = xdoc.Elements("Mitarbeiter")
+                                        .Where(x => x.Attribute("ID").Value == id)
+                                        .FirstOrDefault().Element("Abteilung").Value;
+
+                DtpStartdatum.Value = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                             .Where(x => x.Attribute("ID").Value == id)
+                                             .FirstOrDefault().Element("Startdatum").Value);
+
+                NumArbeitspensum.Value = Convert.ToDecimal(xdoc.Elements("Mitarbeiter")
+                                             .Where(x => x.Attribute("ID").Value == id)
+                                             .FirstOrDefault().Element("Arbeitspensum").Value);
         }
 
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
-            string id = IDGetter();
+            string eid = IDGetter();
 
             string status = PersonenStatus();
 
-            string anrede = CmbAnrede.Text;
+            Guid id = Guid.Parse(eid);
 
+            string anrede = CmbAnrede.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
+            string ahv = TxtAhvNum.Text;
+            string nationalitaet = CmbNationalitaet.Text;
+
             string email = TxtEmail.Text;
+            string privat = TxtTelPriv.Text;
+            string mobil = TxtTelMobil.Text;
+            string arbeit = TxtTelGesch.Text;
+
             string strasse = TxtStrasse.Text;
             string wohnort = TxtWohnort.Text;
             int plz = Convert.ToInt16(TxtPostleitzahl.Text);
-           
 
-            xmlHandler.ChangeValuesXML(id, status,anrede, vorname, nachname, dob, email, strasse, wohnort, plz);
+            int ks = Convert.ToInt16(NumKaderstufe.Value);
+            string abt = TxtAbteilung.Text;
+            int arbp = Convert.ToInt16(NumArbeitspensum.Value);
+            DateTime st = DtpStartdatum.Value;
+
+            Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
+
+
+            //xmlHandler.ChangeValuesXML(id, status,anrede, vorname, nachname, dob, email, strasse, wohnort, plz);
+            xmlHandler.ChangeValuesMitarbeiterXML(m);
             LoadFile();
 
         }
 
         public void LoadFile()
         {
-            if (File.Exists("Kunde.xml"))
+            if (File.Exists("Mitarbeiter.xml"))
             {
                 DataSet dataSet = new DataSet();
-                //@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml"
-                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
-                dataGridView1.DataSource = dataSet.Tables[0];
+                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+                DtgData.DataSource = dataSet.Tables[0];
+                DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
                
             }
         }

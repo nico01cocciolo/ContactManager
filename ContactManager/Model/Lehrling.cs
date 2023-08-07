@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ContactManager.Model
 {
@@ -21,7 +22,9 @@ namespace ContactManager.Model
         public int ActualTraineeYear { get; set; }
         #endregion
 
-        public Lehrling(string f, string n, DateTime dob, int ks, string abt, int arbp, DateTime st, int ty, int aty) : base(f, n, dob, ks, abt, arbp, st)
+        public Lehrling(Guid id, string anrede, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort, int ks, string abt, int arbp, DateTime st,
+                        int ty, int aty) 
+                       : base(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st)
         {
             TraineeYears = ty;
             ActualTraineeYear = aty;

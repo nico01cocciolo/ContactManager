@@ -20,41 +20,43 @@ namespace ContactManager.User_Controlls
             InitializeComponent();
         }
 
-        Person[] pers = new Person[20];
-
         bool inputOk = false;
         private static int counter = 0;
 
         XMLHandler xmlHandler = new XMLHandler();
 
-        private void CmdKundeAnlegen_Click(object sender, EventArgs e)
+        private void CmdMitarbeiterAnlegen_Click(object sender, EventArgs e)
         {
-
-
-            PersonAnlegen persAn = new PersonAnlegen();
-
             Guid id = Guid.NewGuid();
 
             string anrede = CmbAnrede.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
+            string ahv = TxtAhvNum.Text;
+            string nationalitaet = CmbNationalitaet.Text;
+
             string email = TxtEmail.Text;
+            string privat = TxtTelPriv.Text;
+            string mobil = TxtTelMobil.Text;
+            string arbeit = TxtTelGesch.Text;
+            
             string strasse = TxtStrasse.Text;
             string wohnort = TxtWohnort.Text;
             int plz = Convert.ToInt16(TxtPostleitzahl.Text);
             string status = "Aktiv";
 
-            Person person = new Person(vorname, nachname, dob);
-            pers[counter] = person;
+            int ks = Convert.ToInt16(NumKaderstufe.Value);
+            string abt = TxtAbteilung.Text;
+            int arbp = Convert.ToInt16(NumArbeitspensum.Value);
+            DateTime st = DtpStartdatum.Value;
+
+            Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
 
 
-            if (CheckInputs() == true && counter < pers.Length)
+            if (CheckInputs() == true)
             {
-
-
-                //(Guid id, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
-                xmlHandler.CreateXML(id, status, anrede, vorname, nachname, dob, email, strasse, wohnort, plz);
+                xmlHandler.CreateMitarbeiterXML(m);
                 LblId.Text = Convert.ToString(id);
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
@@ -100,8 +102,6 @@ namespace ContactManager.User_Controlls
             TxtTelMobil.Clear();
             TxtTelGesch.Clear();
             TxtEmail.Clear();
-
-            TxtFirmenname.Clear();
 
             LblId.Text = "...";
             LblStatus.Text = "...";

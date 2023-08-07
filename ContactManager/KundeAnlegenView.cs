@@ -46,7 +46,7 @@ namespace ContactManager
             int plz = Convert.ToInt16(TxtPostleitzahl.Text);
             string status = "Aktiv";
 
-            Person person = new Person(vorname, nachname, dob);
+            //Person person = new Person(vorname, nachname, dob);
 
 
             if (CheckInputs() == true)

@@ -28,7 +28,8 @@ namespace ContactManager.Model
         public Guid EmployeeNumber { get; set; }
         #endregion
 
-        public Mitarbeiter(string f, string n, DateTime dob, int ks, string abt, int arbp, DateTime st) : base(f, n, dob)
+        public Mitarbeiter(Guid id, string anrede, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort,
+                           int ks, string abt, int arbp, DateTime st) : base(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort)
         {
             KaderStufe = ks;
             Abteilung = abt;

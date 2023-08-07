@@ -43,22 +43,21 @@ namespace ContactManager.Model
          */
 
         #region Parameters
-        private string salutation { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public Guid Id { get; set; }
+        public string Anrede { get; set; }
+        public string Vorname { get; set; }
+        public string Nachname { get; set; }
+        public DateTime Geburtsdatum { get; set; }
         public Gender Gender { get; set; }
         public Title Title { get; set; }
-        public string PhoneNumberPrivat { get; set; }
-        public string PhoneNumberWork { get; set; }
-        public string PhoneNumberMobile { get; set; }
+        public string TelefonPrivat { get; set; }
+        public string TelefonArbeit { get; set; }
+        public string TelefonMobil { get; set; }
         public string Email { get; set; }
         public string AhvNumber { get; set; }
-        public string Nationality { get; set; }
-        public bool inUse { get; set; }
-        public string Street { get; set; }
-        public int StreetNumber { get; set; }
-        public int PostalCode { get; set; }
+        public string Nationalität { get; set; }
+        public string Strasse { get; set; }
+        public int Plz { get; set; }
         public string Wohnort { get; set; }
         public bool isActive {get; set;}
 
@@ -67,12 +66,23 @@ namespace ContactManager.Model
         //ADD 
         //Du muss no meh so Gugus ine aber mag gad nüme *Gähn*
 
-        public Person(string f, string n, DateTime dob)
+        public Person(Guid id, string anrede, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort)
         {
-            Firstname = f;
-            Lastname = n;
-            DateOfBirth = dob;
-        }
+            Id = id;
+            Anrede = anrede;
+            Vorname = vorname;
+            Nachname = nachname;
+            Geburtsdatum = dob;
+            TelefonPrivat = privat;
+            TelefonArbeit = arbeit;
+            TelefonMobil = mobil;
+            Email = email;
+            AhvNumber = ahv;
+            Nationalität = nationalitaet;
+            Strasse = strasse;
+            Plz = plz;
+            Wohnort = wohnort;
 
+        }
     }
 }

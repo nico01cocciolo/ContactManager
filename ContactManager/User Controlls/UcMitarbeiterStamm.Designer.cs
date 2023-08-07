@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DtgData = new System.Windows.Forms.DataGridView();
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.ChkStatus = new System.Windows.Forms.CheckBox();
@@ -41,8 +41,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.TxtWohnort = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.TxtHausnummer = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.TxtStrasse = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -57,10 +55,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.TxtFirmenname = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -79,24 +73,34 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CmdWerteSpeichern = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label9 = new System.Windows.Forms.Label();
+            this.TxtAbteilung = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.DtpStartdatum = new System.Windows.Forms.DateTimePicker();
+            this.NumArbeitspensum = new System.Windows.Forms.NumericUpDown();
+            this.NumKaderstufe = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumKaderstufe)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DtgData
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 355);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(925, 292);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.DtgData.AllowUserToAddRows = false;
+            this.DtgData.AllowUserToDeleteRows = false;
+            this.DtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgData.Location = new System.Drawing.Point(3, 355);
+            this.DtgData.Name = "DtgData";
+            this.DtgData.RowHeadersWidth = 51;
+            this.DtgData.Size = new System.Drawing.Size(925, 292);
+            this.DtgData.TabIndex = 0;
+            this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // CmdMitarbeiterBearbeiten
             // 
@@ -173,8 +177,6 @@
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.TxtWohnort);
             this.panel3.Controls.Add(this.label18);
-            this.panel3.Controls.Add(this.TxtHausnummer);
-            this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.TxtStrasse);
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label24);
@@ -185,7 +187,7 @@
             // 
             // TxtPostleitzahl
             // 
-            this.TxtPostleitzahl.Location = new System.Drawing.Point(134, 102);
+            this.TxtPostleitzahl.Location = new System.Drawing.Point(134, 76);
             this.TxtPostleitzahl.Name = "TxtPostleitzahl";
             this.TxtPostleitzahl.Size = new System.Drawing.Size(121, 20);
             this.TxtPostleitzahl.TabIndex = 22;
@@ -193,7 +195,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 105);
+            this.label19.Location = new System.Drawing.Point(6, 79);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(63, 13);
             this.label19.TabIndex = 21;
@@ -201,7 +203,7 @@
             // 
             // TxtWohnort
             // 
-            this.TxtWohnort.Location = new System.Drawing.Point(134, 76);
+            this.TxtWohnort.Location = new System.Drawing.Point(134, 50);
             this.TxtWohnort.Name = "TxtWohnort";
             this.TxtWohnort.Size = new System.Drawing.Size(121, 20);
             this.TxtWohnort.TabIndex = 20;
@@ -209,27 +211,11 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 79);
+            this.label18.Location = new System.Drawing.Point(6, 53);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(51, 13);
             this.label18.TabIndex = 19;
             this.label18.Text = "Wohnort:";
-            // 
-            // TxtHausnummer
-            // 
-            this.TxtHausnummer.Location = new System.Drawing.Point(134, 50);
-            this.TxtHausnummer.Name = "TxtHausnummer";
-            this.TxtHausnummer.Size = new System.Drawing.Size(121, 20);
-            this.TxtHausnummer.TabIndex = 18;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 13);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Hausnummer:";
             // 
             // TxtStrasse
             // 
@@ -349,57 +335,28 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Controls.Add(this.TxtFirmenname);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.NumKaderstufe);
+            this.panel2.Controls.Add(this.NumArbeitspensum);
+            this.panel2.Controls.Add(this.DtpStartdatum);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.TxtAbteilung);
             this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Location = new System.Drawing.Point(624, 48);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(294, 136);
             this.panel2.TabIndex = 41;
             // 
-            // TxtFirmenname
-            // 
-            this.TxtFirmenname.Location = new System.Drawing.Point(134, 37);
-            this.TxtFirmenname.Name = "TxtFirmenname";
-            this.TxtFirmenname.Size = new System.Drawing.Size(121, 20);
-            this.TxtFirmenname.TabIndex = 17;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(134, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 67);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Kundentyp";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 40);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Firmenname";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.Size = new System.Drawing.Size(56, 13);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Firma";
+            this.label11.Text = "Mitarbeiter";
             // 
             // panel1
             // 
@@ -564,6 +521,81 @@
             this.CmdWerteSpeichern.UseVisualStyleBackColor = true;
             this.CmdWerteSpeichern.Click += new System.EventHandler(this.CmdWerteSpeichern_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Kaderstufe";
+            // 
+            // TxtAbteilung
+            // 
+            this.TxtAbteilung.Location = new System.Drawing.Point(134, 50);
+            this.TxtAbteilung.Name = "TxtAbteilung";
+            this.TxtAbteilung.Size = new System.Drawing.Size(121, 20);
+            this.TxtAbteilung.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Abteilung";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 79);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Arbeitspensum";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 105);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(58, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Startdatum";
+            // 
+            // DtpStartdatum
+            // 
+            this.DtpStartdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpStartdatum.Location = new System.Drawing.Point(134, 102);
+            this.DtpStartdatum.Name = "DtpStartdatum";
+            this.DtpStartdatum.Size = new System.Drawing.Size(121, 20);
+            this.DtpStartdatum.TabIndex = 30;
+            // 
+            // NumArbeitspensum
+            // 
+            this.NumArbeitspensum.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumArbeitspensum.Location = new System.Drawing.Point(134, 76);
+            this.NumArbeitspensum.Name = "NumArbeitspensum";
+            this.NumArbeitspensum.Size = new System.Drawing.Size(120, 20);
+            this.NumArbeitspensum.TabIndex = 31;
+            // 
+            // NumKaderstufe
+            // 
+            this.NumKaderstufe.Location = new System.Drawing.Point(134, 25);
+            this.NumKaderstufe.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NumKaderstufe.Name = "NumKaderstufe";
+            this.NumKaderstufe.Size = new System.Drawing.Size(120, 20);
+            this.NumKaderstufe.TabIndex = 32;
+            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -575,11 +607,11 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
             this.Controls.Add(this.CmdMitarbeiterBearbeiten);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DtgData);
             this.Name = "UcMitarbeiterStamm";
             this.Size = new System.Drawing.Size(931, 651);
             this.Load += new System.EventHandler(this.UcMitarbeiterStamm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgData)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -588,13 +620,15 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumKaderstufe)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DtgData;
         private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
         private System.Windows.Forms.CheckBox ChkStatus;
@@ -607,8 +641,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox TxtWohnort;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox TxtHausnummer;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox TxtStrasse;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
@@ -623,10 +655,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox TxtFirmenname;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
@@ -645,5 +673,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CmdWerteSpeichern;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox TxtAbteilung;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker DtpStartdatum;
+        private System.Windows.Forms.NumericUpDown NumArbeitspensum;
+        private System.Windows.Forms.NumericUpDown NumKaderstufe;
     }
 }
