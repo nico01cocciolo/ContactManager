@@ -101,6 +101,7 @@
             // 
             this.DtgData.AllowUserToAddRows = false;
             this.DtgData.AllowUserToDeleteRows = false;
+            this.DtgData.AllowUserToOrderColumns = true;
             this.DtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DtgData.Location = new System.Drawing.Point(0, 0);
