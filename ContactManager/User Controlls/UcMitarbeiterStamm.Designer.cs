@@ -84,6 +84,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Anrede = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nachname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gegurtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon_Mobil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon_Privat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon_Arbeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -103,6 +112,16 @@
             this.DtgData.AllowUserToDeleteRows = false;
             this.DtgData.AllowUserToOrderColumns = true;
             this.DtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Anrede,
+            this.Nachname,
+            this.Vorname,
+            this.Gegurtsdatum,
+            this.EMail,
+            this.Telefon_Mobil,
+            this.Telefon_Privat,
+            this.Telefon_Arbeit});
             this.DtgData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DtgData.Location = new System.Drawing.Point(0, 0);
             this.DtgData.Margin = new System.Windows.Forms.Padding(4);
@@ -706,6 +725,77 @@
             this.CmdMitarbeiterBearbeiten.UseVisualStyleBackColor = true;
             this.CmdMitarbeiterBearbeiten.Click += new System.EventHandler(this.CmdMitarbeiterBearbeiten_Click);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 125;
+            // 
+            // Anrede
+            // 
+            this.Anrede.HeaderText = "Anrede";
+            this.Anrede.MinimumWidth = 6;
+            this.Anrede.Name = "Anrede";
+            this.Anrede.ReadOnly = true;
+            this.Anrede.Width = 125;
+            // 
+            // Nachname
+            // 
+            this.Nachname.HeaderText = "Nachname";
+            this.Nachname.MinimumWidth = 6;
+            this.Nachname.Name = "Nachname";
+            this.Nachname.ReadOnly = true;
+            this.Nachname.Width = 125;
+            // 
+            // Vorname
+            // 
+            this.Vorname.HeaderText = "Vorname";
+            this.Vorname.MinimumWidth = 6;
+            this.Vorname.Name = "Vorname";
+            this.Vorname.ReadOnly = true;
+            this.Vorname.Width = 125;
+            // 
+            // Gegurtsdatum
+            // 
+            this.Gegurtsdatum.HeaderText = "Gegurtsdatum";
+            this.Gegurtsdatum.MinimumWidth = 6;
+            this.Gegurtsdatum.Name = "Gegurtsdatum";
+            this.Gegurtsdatum.ReadOnly = true;
+            this.Gegurtsdatum.Width = 125;
+            // 
+            // EMail
+            // 
+            this.EMail.HeaderText = "E-Mail";
+            this.EMail.MinimumWidth = 6;
+            this.EMail.Name = "EMail";
+            this.EMail.Width = 125;
+            // 
+            // Telefon_Mobil
+            // 
+            this.Telefon_Mobil.HeaderText = "Telefon Mobil";
+            this.Telefon_Mobil.MinimumWidth = 6;
+            this.Telefon_Mobil.Name = "Telefon_Mobil";
+            this.Telefon_Mobil.ReadOnly = true;
+            this.Telefon_Mobil.Width = 125;
+            // 
+            // Telefon_Privat
+            // 
+            this.Telefon_Privat.HeaderText = "Telefon Privat";
+            this.Telefon_Privat.MinimumWidth = 6;
+            this.Telefon_Privat.Name = "Telefon_Privat";
+            this.Telefon_Privat.ReadOnly = true;
+            this.Telefon_Privat.Width = 125;
+            // 
+            // Telefon_Arbeit
+            // 
+            this.Telefon_Arbeit.HeaderText = "Telefon Arbeit";
+            this.Telefon_Arbeit.MinimumWidth = 6;
+            this.Telefon_Arbeit.Name = "Telefon_Arbeit";
+            this.Telefon_Arbeit.ReadOnly = true;
+            this.Telefon_Arbeit.Width = 125;
+            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -793,5 +883,14 @@
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
         private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
         private System.Windows.Forms.Button CmdMitarbeiterSpeichern;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Anrede;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nachname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vorname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gegurtsdatum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon_Mobil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon_Privat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon_Arbeit;
     }
 }

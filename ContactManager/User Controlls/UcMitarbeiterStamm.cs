@@ -262,8 +262,21 @@ namespace ContactManager
             {
                 DataSet dataSet = new DataSet();
                 dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
-                DtgData.DataSource = dataSet.Tables[0];
-                DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+                foreach (DataRow item in dataSet.Tables["Mitarbeiter"].Rows)
+                {
+                    int n = DtgData.Rows.Add();
+                    DtgData.Rows[n].Cells[0].Value=item[19];
+                    DtgData.Rows[n].Cells[1].Value = item[1];
+                    DtgData.Rows[n].Cells[2].Value = item[4];
+                    DtgData.Rows[n].Cells[3].Value = item[3];
+                    DtgData.Rows[n].Cells[4].Value = item[5];
+                    DtgData.Rows[n].Cells[5].Value = item[8];
+                    DtgData.Rows[n].Cells[6].Value = item[9];
+                    DtgData.Rows[n].Cells[7].Value = item[10];
+                    DtgData.Rows[n].Cells[8].Value = item[11];
+                }
+                //DtgData.DataSource = dataSet.Tables[0];
+                //DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
                
             }
         }
