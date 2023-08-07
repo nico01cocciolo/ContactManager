@@ -43,13 +43,10 @@ namespace ContactManager
 
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
-            
-            UcMitarbeiterStamm mf = new UcMitarbeiterStamm();
-            this.Controls.Clear();
-
-            UcMitarbeiterErfassen ucMe = new UcMitarbeiterErfassen();
-            ucMe.Dock = DockStyle.Fill;
-            this.Controls.Add(ucMe);
+            ClearAll();
+            CmdMitarbeiterErstellen.Visible = false;
+            CmdMitarbeiterSpeichern.Visible = true;
+            DtgData.Enabled = false;
         }
 
         private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
@@ -64,6 +61,24 @@ namespace ContactManager
             mb.Dock = DockStyle.Fill;
             this.Controls.Add(mb);
 
+        }
+
+        public void BenutzererstellungFehler()
+        {
+            if (CmdMitarbeiterErstellen.Visible == false)
+            {
+                DialogResult dialogResult = MessageBox.Show("Benutzer Speichern?", "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    CmdMitarbeiterErstellen.Visible = true;
+                }
+                else
+                {
+                    CmdMitarbeiterErstellen.Visible = true;
+                }
+            }
         }
 
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
@@ -181,6 +196,27 @@ namespace ContactManager
                                              .Where(x => x.Attribute("ID").Value == id)
                                              .FirstOrDefault().Element("Arbeitspensum").Value);
         }
+        private void ClearAll()
+        {
+            //Personen Daten
+            TxtVorname.Clear();
+            TxtNachname.Clear();
+            TxtAhvNum.Clear();
+
+            //Adresse
+            TxtStrasse.Clear();
+            TxtWohnort.Clear();
+            TxtPostleitzahl.Clear();
+
+            //Kontakt Daten
+            TxtTelPriv.Clear();
+            TxtTelMobil.Clear();
+            TxtTelGesch.Clear();
+            TxtEmail.Clear();
+
+            LblId.Text = "...";
+            LblStatus.Text = "...";
+        }
 
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
@@ -229,6 +265,53 @@ namespace ContactManager
                 DtgData.DataSource = dataSet.Tables[0];
                 DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
                
+            }
+        }
+
+        private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CmdMitarbeiterErstellen.Visible = true;
+                CmdMitarbeiterSpeichern.Visible = false;
+                DtgData.Enabled = true;
+
+                Guid id = Guid.NewGuid();
+
+                string anrede = CmbAnrede.Text;
+                string vorname = TxtVorname.Text;
+                string nachname = TxtNachname.Text;
+                DateTime dob = DtpGeburtsdatum.Value;
+                string ahv = TxtAhvNum.Text;
+                string nationalitaet = CmbNationalitaet.Text;
+
+                string email = TxtEmail.Text;
+                string privat = TxtTelPriv.Text;
+                string mobil = TxtTelMobil.Text;
+                string arbeit = TxtTelGesch.Text;
+
+                string strasse = TxtStrasse.Text;
+                string wohnort = TxtWohnort.Text;
+                int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+                string status = "Aktiv";
+
+                int ks = Convert.ToInt16(NumKaderstufe.Value);
+                string abt = TxtAbteilung.Text;
+                int arbp = Convert.ToInt16(NumArbeitspensum.Value);
+                DateTime st = DtpStartdatum.Value;
+
+                Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
+
+
+                xmlHandler.CreateMitarbeiterXML(m);
+                LblId.Text = Convert.ToString(id);
+                MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
+
+                LoadFile();
+            }
+            catch
+            {
+                MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
