@@ -7,13 +7,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ContactManager.Controller
 {
     internal class XMLHandler
     {
+        #region Old might delete
         public void CreateXML(Guid id, string status, string anrede, string vorname, string nachname, DateTime dob, string email, string strasse, string wohnort, int plz)
         {
             if (File.Exists("Kunde.xml") == false)
@@ -127,7 +126,9 @@ namespace ContactManager.Controller
 
 
         }
+        #endregion
 
+        #region Create
         public void CreateKundeXML(Kunde k)
         {
             if (!File.Exists("Kunde.xml"))
@@ -383,7 +384,9 @@ namespace ContactManager.Controller
                 xEle.Save("Mitarbeiter.xml");
             }
         }
+        #endregion
 
+        #region Change Values
         public void ChangeValuesMitarbeiterXML(Mitarbeiter m)
         {
             XElement xdoc = XElement.Load("Mitarbeiter.xml");
@@ -465,5 +468,184 @@ namespace ContactManager.Controller
 
             xdoc.Save("Mitarbeiter.xml");
         }
+
+        public void ChangeValuesKundeXML(Kunde k)
+        {
+            XElement xdoc = XElement.Load("Kunde.xml");
+
+            string id = Convert.ToString(k.Id);
+
+            
+            //Attribute
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetAttributeValue("Status", "Status");
+
+            //Persönliche Daten
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Anrede", k.Anrede);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Vorname", k.Vorname);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Nachname", k.Nachname);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Geburtsdatum", k.Geburtsdatum.ToShortDateString());
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Nationalität", k.Nationalität);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("AHV-Nummer", k.AhvNumber);
+
+            //Kontaktdaten
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("E-Mail", k.Email);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Telefon_Mobil", k.TelefonMobil);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Telefon_Privat", k.TelefonPrivat);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Telefon_Arbeit", k.TelefonArbeit);
+
+            //Adresse
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Strasse", k.Strasse);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Wohnort", k.Wohnort);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Postleitzahl", k.Plz);
+
+            //Kundenspezifische Parameter
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Firmenname", k.Firmenname);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Firmenadresse", k.Firmenadresse);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Kundentyp", k.Kundentyp);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Kundenkontakt", k.Kundenkontakt);
+
+            xdoc.Save("Kunde.xml");
+        }
+
+        public void ChangeValuesLehrlingXML(Lehrling l)
+        {
+            XElement xdoc = XElement.Load("Mitarbeiter.xml");
+
+            string id = Convert.ToString(l.Id);
+
+            //Wichtig
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetAttributeValue("Status", "A");
+
+            //Person
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Anrede", l.Anrede);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Vorname", l.Vorname);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Nachname", l.Nachname);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Geburtsdatum", l.Geburtsdatum.ToShortDateString());
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Nationalität", l.Nationalität);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("AHV-Nummer", l.AhvNumber);
+
+            //Kontakt
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("E-Mail", l.Email);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Telefon_Mobil", l.TelefonMobil);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Telefon_Privat", l.TelefonPrivat);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Telefon_Arbeit", l.TelefonArbeit);
+
+            //Adresse
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Strasse", l.Strasse);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Wohnort", l.Wohnort);
+
+            //Kunde
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Kaderstufe", l.KaderStufe);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Abteilung", l.Abteilung);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Startdatum", l.StartDate);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Arbeitspensum", l.Arbeitspensum);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Lehrjahre", l.TraineeYears);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Aktuelles Lehrjahr", l.ActualTraineeYear);
+
+            xdoc.Save("Mitarbeiter.xml");
+        }
+        #endregion
     }
 }

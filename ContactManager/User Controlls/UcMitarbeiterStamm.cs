@@ -19,7 +19,7 @@ namespace ContactManager
     {
         public UcMitarbeiterStamm()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         private int index { get; set; }
@@ -188,7 +188,6 @@ namespace ContactManager
             DataGridZeileBearbeiten();
             Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
 
-            //xmlHandler.ChangeValuesXML(id, status,anrede, vorname, nachname, dob, email, strasse, wohnort, plz);
             xmlHandler.ChangeValuesMitarbeiterXML(m);
 
         }
@@ -361,6 +360,7 @@ namespace ContactManager
             TxtAbteilung.ReadOnly = false;
             TxtPostleitzahl.ReadOnly = false;
         }
+
         public void BenutzererstellungFehler()
         {
             if (CmdMitarbeiterErstellen.Visible == false)
@@ -377,11 +377,6 @@ namespace ContactManager
                     CmdMitarbeiterErstellen.Visible = true;
                 }
             }
-        }
-
-        private void DtgData_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

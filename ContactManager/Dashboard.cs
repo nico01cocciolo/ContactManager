@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContactManager.User_Controlls.Kunde;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,5 +55,20 @@ namespace ContactManager
             uc.BenutzererstellungFehler();
         }
 
+        private void CmdStammKunden_Click(object sender, EventArgs e)
+        {
+            UcKundeStamm uc = new UcKundeStamm();
+
+            if (!PnlUCHandler.Controls.Contains(UcKundeStamm.Instance))
+            {
+                PnlUCHandler.Controls.Add(UcKundeStamm.Instance);
+                UcKundeStamm.Instance.Dock = DockStyle.Fill;
+                UcKundeStamm.Instance.BringToFront();
+            }
+            else
+            {
+                UcKundeStamm.Instance.BringToFront();
+            }
+        }
     }
 }

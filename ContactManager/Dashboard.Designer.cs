@@ -47,9 +47,8 @@
             this.panel1.Controls.Add(this.CmdStammMitarbeiter);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(206, 1015);
+            this.panel1.Size = new System.Drawing.Size(154, 825);
             this.panel1.TabIndex = 7;
             // 
             // CmdImportCsv
@@ -59,10 +58,10 @@
             this.CmdImportCsv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdImportCsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdImportCsv.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdImportCsv.Location = new System.Drawing.Point(0, 152);
+            this.CmdImportCsv.Location = new System.Drawing.Point(0, 124);
             this.CmdImportCsv.Margin = new System.Windows.Forms.Padding(0);
             this.CmdImportCsv.Name = "CmdImportCsv";
-            this.CmdImportCsv.Size = new System.Drawing.Size(206, 42);
+            this.CmdImportCsv.Size = new System.Drawing.Size(154, 34);
             this.CmdImportCsv.TabIndex = 3;
             this.CmdImportCsv.Text = "Import";
             this.CmdImportCsv.UseVisualStyleBackColor = false;
@@ -74,10 +73,10 @@
             this.CmdStammLehrlinge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdStammLehrlinge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdStammLehrlinge.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdStammLehrlinge.Location = new System.Drawing.Point(0, 103);
+            this.CmdStammLehrlinge.Location = new System.Drawing.Point(0, 84);
             this.CmdStammLehrlinge.Margin = new System.Windows.Forms.Padding(0);
             this.CmdStammLehrlinge.Name = "CmdStammLehrlinge";
-            this.CmdStammLehrlinge.Size = new System.Drawing.Size(206, 49);
+            this.CmdStammLehrlinge.Size = new System.Drawing.Size(154, 40);
             this.CmdStammLehrlinge.TabIndex = 2;
             this.CmdStammLehrlinge.Text = "Lehrlinge";
             this.CmdStammLehrlinge.UseVisualStyleBackColor = false;
@@ -89,13 +88,14 @@
             this.CmdStammKunden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdStammKunden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdStammKunden.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdStammKunden.Location = new System.Drawing.Point(0, 52);
+            this.CmdStammKunden.Location = new System.Drawing.Point(0, 42);
             this.CmdStammKunden.Margin = new System.Windows.Forms.Padding(0);
             this.CmdStammKunden.Name = "CmdStammKunden";
-            this.CmdStammKunden.Size = new System.Drawing.Size(206, 51);
+            this.CmdStammKunden.Size = new System.Drawing.Size(154, 41);
             this.CmdStammKunden.TabIndex = 1;
             this.CmdStammKunden.Text = "Kunden";
             this.CmdStammKunden.UseVisualStyleBackColor = false;
+            this.CmdStammKunden.Click += new System.EventHandler(this.CmdStammKunden_Click);
             // 
             // CmdStammMitarbeiter
             // 
@@ -104,10 +104,10 @@
             this.CmdStammMitarbeiter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdStammMitarbeiter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdStammMitarbeiter.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdStammMitarbeiter.Location = new System.Drawing.Point(0, -8);
+            this.CmdStammMitarbeiter.Location = new System.Drawing.Point(0, -6);
             this.CmdStammMitarbeiter.Margin = new System.Windows.Forms.Padding(0);
             this.CmdStammMitarbeiter.Name = "CmdStammMitarbeiter";
-            this.CmdStammMitarbeiter.Size = new System.Drawing.Size(206, 60);
+            this.CmdStammMitarbeiter.Size = new System.Drawing.Size(154, 49);
             this.CmdStammMitarbeiter.TabIndex = 0;
             this.CmdStammMitarbeiter.Text = "Mitarbeiter";
             this.CmdStammMitarbeiter.UseVisualStyleBackColor = false;
@@ -118,24 +118,22 @@
             this.PnlUCHandler.BackColor = System.Drawing.Color.Transparent;
             this.PnlUCHandler.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PnlUCHandler.BackgroundImage")));
             this.PnlUCHandler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PnlUCHandler.Location = new System.Drawing.Point(210, 4);
-            this.PnlUCHandler.Margin = new System.Windows.Forms.Padding(4);
+            this.PnlUCHandler.Location = new System.Drawing.Point(158, 3);
             this.PnlUCHandler.Name = "PnlUCHandler";
-            this.PnlUCHandler.Size = new System.Drawing.Size(1219, 1004);
+            this.PnlUCHandler.Size = new System.Drawing.Size(914, 816);
             this.PnlUCHandler.TabIndex = 9;
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1439, 1015);
+            this.ClientSize = new System.Drawing.Size(1079, 825);
             this.Controls.Add(this.PnlUCHandler);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
