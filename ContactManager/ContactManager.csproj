@@ -79,6 +79,12 @@
     <Compile Include="MitarbeiterAnlegenView.Designer.cs">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Controlls\Kunde\UcKundeStamm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controlls\Kunde\UcKundeStamm.Designer.cs">
+      <DependentUpon>UcKundeStamm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Controlls\UcMitarbeiterBearbeiten.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     <EmbeddedResource Include="MitarbeiterAnlegenView.resx">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Controlls\Kunde\UcKundeStamm.resx">
+      <DependentUpon>UcKundeStamm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Controlls\UcMitarbeiterBearbeiten.resx">
       <DependentUpon>UcMitarbeiterBearbeiten.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,9 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="XML-Testdaten\Kunde.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
