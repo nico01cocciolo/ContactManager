@@ -84,11 +84,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
+            this.CmdWerteSpeichern = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Anrede = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nachname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gegurtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon_Mobil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon_Privat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,7 +118,7 @@
             this.Anrede,
             this.Nachname,
             this.Vorname,
-            this.Gegurtsdatum,
+            this.Geburtsdatum,
             this.EMail,
             this.Telefon_Mobil,
             this.Telefon_Privat,
@@ -130,6 +131,7 @@
             this.DtgData.Size = new System.Drawing.Size(1245, 449);
             this.DtgData.TabIndex = 0;
             this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.DtgData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgData_CellContentClick);
             // 
             // splitContainer1
             // 
@@ -142,6 +144,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.CmdWerteSpeichern);
             this.splitContainer1.Panel1.Controls.Add(this.CmdMitarbeiterSpeichern);
             this.splitContainer1.Panel1.Controls.Add(this.textBox2);
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
@@ -208,10 +211,10 @@
             // 
             // TxtPostleitzahl
             // 
-            this.TxtPostleitzahl.Enabled = false;
             this.TxtPostleitzahl.Location = new System.Drawing.Point(204, 94);
             this.TxtPostleitzahl.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPostleitzahl.Name = "TxtPostleitzahl";
+            this.TxtPostleitzahl.ReadOnly = true;
             this.TxtPostleitzahl.Size = new System.Drawing.Size(160, 22);
             this.TxtPostleitzahl.TabIndex = 22;
             // 
@@ -227,10 +230,10 @@
             // 
             // TxtWohnort
             // 
-            this.TxtWohnort.Enabled = false;
             this.TxtWohnort.Location = new System.Drawing.Point(204, 62);
             this.TxtWohnort.Margin = new System.Windows.Forms.Padding(4);
             this.TxtWohnort.Name = "TxtWohnort";
+            this.TxtWohnort.ReadOnly = true;
             this.TxtWohnort.Size = new System.Drawing.Size(160, 22);
             this.TxtWohnort.TabIndex = 20;
             // 
@@ -246,10 +249,10 @@
             // 
             // TxtStrasse
             // 
-            this.TxtStrasse.Enabled = false;
             this.TxtStrasse.Location = new System.Drawing.Point(204, 30);
             this.TxtStrasse.Margin = new System.Windows.Forms.Padding(4);
             this.TxtStrasse.Name = "TxtStrasse";
+            this.TxtStrasse.ReadOnly = true;
             this.TxtStrasse.Size = new System.Drawing.Size(160, 22);
             this.TxtStrasse.TabIndex = 16;
             // 
@@ -293,10 +296,10 @@
             // 
             // TxtTelGesch
             // 
-            this.TxtTelGesch.Enabled = false;
             this.TxtTelGesch.Location = new System.Drawing.Point(179, 124);
             this.TxtTelGesch.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelGesch.Name = "TxtTelGesch";
+            this.TxtTelGesch.ReadOnly = true;
             this.TxtTelGesch.Size = new System.Drawing.Size(160, 22);
             this.TxtTelGesch.TabIndex = 22;
             // 
@@ -312,10 +315,10 @@
             // 
             // TxtTelPriv
             // 
-            this.TxtTelPriv.Enabled = false;
             this.TxtTelPriv.Location = new System.Drawing.Point(179, 92);
             this.TxtTelPriv.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelPriv.Name = "TxtTelPriv";
+            this.TxtTelPriv.ReadOnly = true;
             this.TxtTelPriv.Size = new System.Drawing.Size(160, 22);
             this.TxtTelPriv.TabIndex = 20;
             // 
@@ -331,10 +334,10 @@
             // 
             // TxtTelMobil
             // 
-            this.TxtTelMobil.Enabled = false;
             this.TxtTelMobil.Location = new System.Drawing.Point(179, 60);
             this.TxtTelMobil.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelMobil.Name = "TxtTelMobil";
+            this.TxtTelMobil.ReadOnly = true;
             this.TxtTelMobil.Size = new System.Drawing.Size(160, 22);
             this.TxtTelMobil.TabIndex = 18;
             // 
@@ -350,10 +353,10 @@
             // 
             // TxtEmail
             // 
-            this.TxtEmail.Enabled = false;
             this.TxtEmail.Location = new System.Drawing.Point(179, 28);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.ReadOnly = true;
             this.TxtEmail.Size = new System.Drawing.Size(160, 22);
             this.TxtEmail.TabIndex = 16;
             // 
@@ -392,12 +395,11 @@
             this.panel2.Location = new System.Drawing.Point(427, 238);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(392, 271);
+            this.panel2.Size = new System.Drawing.Size(392, 272);
             this.panel2.TabIndex = 50;
             // 
             // NumKaderstufe
             // 
-            this.NumKaderstufe.Enabled = false;
             this.NumKaderstufe.Location = new System.Drawing.Point(179, 31);
             this.NumKaderstufe.Margin = new System.Windows.Forms.Padding(4);
             this.NumKaderstufe.Maximum = new decimal(new int[] {
@@ -411,7 +413,6 @@
             // 
             // NumArbeitspensum
             // 
-            this.NumArbeitspensum.Enabled = false;
             this.NumArbeitspensum.Increment = new decimal(new int[] {
             10,
             0,
@@ -425,7 +426,6 @@
             // 
             // DtpStartdatum
             // 
-            this.DtpStartdatum.Enabled = false;
             this.DtpStartdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpStartdatum.Location = new System.Drawing.Point(179, 126);
             this.DtpStartdatum.Margin = new System.Windows.Forms.Padding(4);
@@ -455,10 +455,10 @@
             // 
             // TxtAbteilung
             // 
-            this.TxtAbteilung.Enabled = false;
             this.TxtAbteilung.Location = new System.Drawing.Point(179, 62);
             this.TxtAbteilung.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAbteilung.Name = "TxtAbteilung";
+            this.TxtAbteilung.ReadOnly = true;
             this.TxtAbteilung.Size = new System.Drawing.Size(160, 22);
             this.TxtAbteilung.TabIndex = 26;
             // 
@@ -567,16 +567,15 @@
             // 
             // TxtAhvNum
             // 
-            this.TxtAhvNum.Enabled = false;
             this.TxtAhvNum.Location = new System.Drawing.Point(204, 281);
             this.TxtAhvNum.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAhvNum.Name = "TxtAhvNum";
+            this.TxtAhvNum.ReadOnly = true;
             this.TxtAhvNum.Size = new System.Drawing.Size(160, 22);
             this.TxtAhvNum.TabIndex = 14;
             // 
             // CmbNationalitaet
             // 
-            this.CmbNationalitaet.Enabled = false;
             this.CmbNationalitaet.FormattingEnabled = true;
             this.CmbNationalitaet.Location = new System.Drawing.Point(204, 247);
             this.CmbNationalitaet.Margin = new System.Windows.Forms.Padding(4);
@@ -616,7 +615,6 @@
             // 
             // DtpGeburtsdatum
             // 
-            this.DtpGeburtsdatum.Enabled = false;
             this.DtpGeburtsdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpGeburtsdatum.Location = new System.Drawing.Point(204, 215);
             this.DtpGeburtsdatum.Margin = new System.Windows.Forms.Padding(4);
@@ -646,10 +644,10 @@
             // 
             // TxtNachname
             // 
-            this.TxtNachname.Enabled = false;
             this.TxtNachname.Location = new System.Drawing.Point(204, 183);
             this.TxtNachname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNachname.Name = "TxtNachname";
+            this.TxtNachname.ReadOnly = true;
             this.TxtNachname.Size = new System.Drawing.Size(160, 22);
             this.TxtNachname.TabIndex = 8;
             // 
@@ -665,7 +663,6 @@
             // 
             // CmbTitel
             // 
-            this.CmbTitel.Enabled = false;
             this.CmbTitel.FormattingEnabled = true;
             this.CmbTitel.Location = new System.Drawing.Point(204, 118);
             this.CmbTitel.Margin = new System.Windows.Forms.Padding(4);
@@ -685,7 +682,6 @@
             // 
             // CmbAnrede
             // 
-            this.CmbAnrede.Enabled = false;
             this.CmbAnrede.FormattingEnabled = true;
             this.CmbAnrede.Location = new System.Drawing.Point(204, 85);
             this.CmbAnrede.Margin = new System.Windows.Forms.Padding(4);
@@ -695,10 +691,10 @@
             // 
             // TxtVorname
             // 
-            this.TxtVorname.Enabled = false;
             this.TxtVorname.Location = new System.Drawing.Point(204, 151);
             this.TxtVorname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtVorname.Name = "TxtVorname";
+            this.TxtVorname.ReadOnly = true;
             this.TxtVorname.Size = new System.Drawing.Size(160, 22);
             this.TxtVorname.TabIndex = 3;
             // 
@@ -744,12 +740,23 @@
             this.CmdMitarbeiterBearbeiten.UseVisualStyleBackColor = true;
             this.CmdMitarbeiterBearbeiten.Click += new System.EventHandler(this.CmdMitarbeiterBearbeiten_Click);
             // 
+            // CmdWerteSpeichern
+            // 
+            this.CmdWerteSpeichern.Location = new System.Drawing.Point(12, 7);
+            this.CmdWerteSpeichern.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdWerteSpeichern.Name = "CmdWerteSpeichern";
+            this.CmdWerteSpeichern.Size = new System.Drawing.Size(86, 52);
+            this.CmdWerteSpeichern.TabIndex = 57;
+            this.CmdWerteSpeichern.Text = "Speichern";
+            this.CmdWerteSpeichern.UseVisualStyleBackColor = true;
+            this.CmdWerteSpeichern.Visible = false;
+            this.CmdWerteSpeichern.Click += new System.EventHandler(this.CmdWerteSpeichern_Click);
+            // 
             // ID
             // 
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
             this.ID.Width = 125;
             // 
             // Anrede
@@ -776,19 +783,20 @@
             this.Vorname.ReadOnly = true;
             this.Vorname.Width = 125;
             // 
-            // Gegurtsdatum
+            // Geburtsdatum
             // 
-            this.Gegurtsdatum.HeaderText = "Gegurtsdatum";
-            this.Gegurtsdatum.MinimumWidth = 6;
-            this.Gegurtsdatum.Name = "Gegurtsdatum";
-            this.Gegurtsdatum.ReadOnly = true;
-            this.Gegurtsdatum.Width = 125;
+            this.Geburtsdatum.HeaderText = "Geburtsdatum";
+            this.Geburtsdatum.MinimumWidth = 6;
+            this.Geburtsdatum.Name = "Geburtsdatum";
+            this.Geburtsdatum.ReadOnly = true;
+            this.Geburtsdatum.Width = 125;
             // 
             // EMail
             // 
-            this.EMail.HeaderText = "E-Mail";
+            this.EMail.HeaderText = "EMail";
             this.EMail.MinimumWidth = 6;
             this.EMail.Name = "EMail";
+            this.EMail.ReadOnly = true;
             this.EMail.Width = 125;
             // 
             // Telefon_Mobil
@@ -902,11 +910,12 @@
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
         private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
         private System.Windows.Forms.Button CmdMitarbeiterSpeichern;
+        private System.Windows.Forms.Button CmdWerteSpeichern;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Anrede;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nachname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vorname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gegurtsdatum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Geburtsdatum;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon_Mobil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon_Privat;
