@@ -43,17 +43,18 @@ namespace ContactManager
 
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
+            ChangeTxtValuesAllow();
             ClearAll();
             CmdMitarbeiterErstellen.Visible = false;
             CmdMitarbeiterSpeichern.Visible = true;
+            CmdMitarbeiterBearbeiten.Visible = false;
             DtgData.Enabled = false;
-            ChangeTxtValues();
         }
 
         private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
         {
 
-            ChangeTxtValues();
+            ChangeTxtValuesAllow();
             CmdWerteSpeichern.Visible = true;
             CmdMitarbeiterBearbeiten.Visible = false;
             DtgData.Enabled = false;
@@ -62,6 +63,7 @@ namespace ContactManager
 
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
         {
+            ChangeTxtValuesDeny();
             CmbAnrede.Items.Add("Herr");
             CmbAnrede.Items.Add("Frau");
             LoadFile();
@@ -71,6 +73,7 @@ namespace ContactManager
         {
             index = DtgData.CurrentRow.Index;
 
+            CmdMitarbeiterBearbeiten.Visible = true;
             DtgData.CurrentRow.Selected = true;
                 
             string id = IDGetter();
@@ -187,8 +190,11 @@ namespace ContactManager
             int arbp = Convert.ToInt16(NumArbeitspensum.Value);
             DateTime st = DtpStartdatum.Value;
 
-            DataGridZeileBearbeiten();
             Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
+            
+            CmdMitarbeiterBearbeiten.Visible = false;
+            DataGridZeileBearbeiten();
+            ChangeTxtValuesDeny();
 
             xmlHandler.ChangeValuesMitarbeiterXML(m);
 
@@ -230,7 +236,9 @@ namespace ContactManager
                 DataGridNeueZeile();
                 CmdMitarbeiterErstellen.Visible = true;
                 CmdMitarbeiterSpeichern.Visible = false;
+                CmdMitarbeiterBearbeiten.Visible = false;
                 DtgData.Enabled = true;
+                ChangeTxtValuesDeny();
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
 
             }
@@ -344,8 +352,9 @@ namespace ContactManager
             LblStatus.Text = "...";
         }
 
-        private void ChangeTxtValues()
+        private void ChangeTxtValuesAllow()
         {
+            CmbAnrede.Enabled = true;
             TxtWohnort.ReadOnly = false;
             TxtTelPriv.ReadOnly = false;
             TxtTelMobil.ReadOnly = false;
@@ -361,6 +370,24 @@ namespace ContactManager
             TxtPostleitzahl.ReadOnly = false;
         }
 
+        private void ChangeTxtValuesDeny()
+        {
+            CmbAnrede.Enabled = false;
+            TxtWohnort.ReadOnly = true;
+            TxtTelPriv.ReadOnly = true;
+            TxtTelMobil.ReadOnly = true;
+            TxtTelGesch.ReadOnly = true;
+            TxtEmail.ReadOnly = true;
+            LblId.Enabled = false;
+            LblStatus.Enabled = false;
+            TxtStrasse.ReadOnly = true;
+            TxtNachname.ReadOnly = true;
+            TxtVorname.ReadOnly = true;
+            TxtAhvNum.ReadOnly = true;
+            TxtAbteilung.ReadOnly = true;
+            TxtPostleitzahl.ReadOnly = true;
+        }
+
         public void BenutzererstellungFehler()
         {
             if (CmdMitarbeiterErstellen.Visible == false)
@@ -369,6 +396,48 @@ namespace ContactManager
 
                 if (dialogResult == DialogResult.Yes)
                 {
+                    try
+                    {
+                        Guid id = Guid.NewGuid();
+
+                        string anrede = CmbAnrede.Text;
+                        string vorname = TxtVorname.Text;
+                        string nachname = TxtNachname.Text;
+                        DateTime dob = DtpGeburtsdatum.Value;
+                        string ahv = TxtAhvNum.Text;
+                        string nationalitaet = CmbNationalitaet.Text;
+
+                        string email = TxtEmail.Text;
+                        string privat = TxtTelPriv.Text;
+                        string mobil = TxtTelMobil.Text;
+                        string arbeit = TxtTelGesch.Text;
+
+                        string strasse = TxtStrasse.Text;
+                        string wohnort = TxtWohnort.Text;
+                        int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+                        string status = "Aktiv";
+
+                        int ks = Convert.ToInt16(NumKaderstufe.Value);
+                        string abt = TxtAbteilung.Text;
+                        int arbp = Convert.ToInt16(NumArbeitspensum.Value);
+                        DateTime st = DtpStartdatum.Value;
+
+                        Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
+
+
+                        xmlHandler.CreateMitarbeiterXML(m);
+                        LblId.Text = Convert.ToString(id);
+                        DataGridNeueZeile();
+                        CmdMitarbeiterErstellen.Visible = true;
+                        CmdMitarbeiterSpeichern.Visible = false;
+                        DtgData.Enabled = true;
+                        MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                     CmdMitarbeiterErstellen.Visible = true;
                 }
