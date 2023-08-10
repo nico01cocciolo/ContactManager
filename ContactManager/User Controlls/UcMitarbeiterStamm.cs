@@ -75,84 +75,30 @@ namespace ContactManager
 
             CmdMitarbeiterBearbeiten.Visible = true;
             DtgData.CurrentRow.Selected = true;
-                
+
             string id = IDGetter();
 
-            XElement xdoc = XElement.Load("Mitarbeiter.xml");
+            Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
+            LblId.Text = Convert.ToString(m.Id);
+            CmbAnrede.Text = m.Anrede;
+            TxtVorname.Text = m.Vorname;
+            TxtNachname.Text = m.Nachname;
+            DtpGeburtsdatum.Value = m.Geburtsdatum;
+            TxtAhvNum.Text = m.AhvNumber;
+            CmbNationalitaet.Text = m.Nationalität;
+            TxtEmail.Text = m.Email;
+            TxtTelGesch.Text = m.TelefonArbeit;
+            TxtTelMobil.Text = m.TelefonMobil;
+            TxtTelPriv.Text = m.TelefonPrivat;
+            TxtStrasse.Text = m.Strasse;
+            TxtWohnort.Text = m.Wohnort;
+            TxtPostleitzahl.Text = Convert.ToString(m.Plz);
+            NumKaderstufe.Value = Convert.ToDecimal(m.KaderStufe);
+            TxtAbteilung.Text = m.Abteilung;
+            DtpStartdatum.Value = m.StartDate;
+            NumArbeitspensum.Value = Convert.ToDecimal(m.Arbeitspensum);
 
-            LblId.Text = xdoc.Elements("Mitarbeiter")
-                                .Where(x => x.Attribute("ID").Value == id)
-                                .FirstOrDefault().Attribute("ID").Value;
 
-            CmbAnrede.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Anrede").Value;
-
-            TxtVorname.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Vorname").Value;
-
-            TxtNachname.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Nachname").Value;
-
-            DtpGeburtsdatum.Value = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
-                                            .Where(x => x.Attribute("ID").Value == id)
-                                            .FirstOrDefault().Element("Geburtsdatum").Value);
-
-            TxtAhvNum.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("AHV-Nummer").Value;
-
-            CmbNationalitaet.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Nationalität").Value;
-
-            TxtEmail.Text = xdoc.Elements("Mitarbeiter")
-                                .Where(x => x.Attribute("ID").Value == id)
-                                .FirstOrDefault().Element("E-Mail").Value;
-
-            TxtTelGesch.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Telefon_Arbeit").Value;
-                
-            TxtTelMobil.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Telefon_Mobil").Value;
-                
-            TxtTelMobil.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Telefon_Privat").Value;
-
-            TxtStrasse.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Strasse").Value;
-
-            TxtWohnort.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Wohnort").Value;
-
-            TxtPostleitzahl.Text = xdoc.Elements("Mitarbeiter")
-                                        .Where(x => x.Attribute("ID").Value == id)
-                                        .FirstOrDefault().Element("Postleitzahl").Value;
-                
-            NumKaderstufe.Value = Convert.ToDecimal(xdoc.Elements("Mitarbeiter")
-                                            .Where(x => x.Attribute("ID").Value == id)
-                                            .FirstOrDefault().Element("Kaderstufe").Value);
-
-            TxtAbteilung.Text = xdoc.Elements("Mitarbeiter")
-                                    .Where(x => x.Attribute("ID").Value == id)
-                                    .FirstOrDefault().Element("Abteilung").Value;
-
-            DtpStartdatum.Value = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
-                                            .Where(x => x.Attribute("ID").Value == id)
-                                            .FirstOrDefault().Element("Startdatum").Value);
-
-            NumArbeitspensum.Value = Convert.ToDecimal(xdoc.Elements("Mitarbeiter")
-                                            .Where(x => x.Attribute("ID").Value == id)
-                                            .FirstOrDefault().Element("Arbeitspensum").Value);
-
-            
 
         }
 

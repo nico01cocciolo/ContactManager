@@ -1,4 +1,4 @@
-﻿using ContactManager.User_Controlls.Kunde;
+﻿using ContactManager.User_Controlls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

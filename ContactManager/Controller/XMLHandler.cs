@@ -1,6 +1,7 @@
 ﻿using ContactManager.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -646,6 +647,171 @@ namespace ContactManager.Controller
 
             xdoc.Save("Mitarbeiter.xml");
         }
+        #endregion
+
+        #region Retrive Values
+        public Mitarbeiter RetriveValuesMitarbeiter(string id)
+        {
+            XElement xdoc = XElement.Load("Mitarbeiter.xml");
+
+            Guid ide = Guid.Parse(id);
+
+            string anrede =     xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Anrede").Value;
+            
+            string vorname =    xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Vorname").Value;
+           
+            string nachname =   xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Nachname").Value;
+            
+            DateTime geburtsdatum = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                           .Where(x => x.Attribute("ID").Value == id)
+                                           .FirstOrDefault().Element("Geburtsdatum").Value);
+
+            string ahv =        xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("AHV-Nummer").Value;
+
+            string nationalitaet =  xdoc.Elements("Mitarbeiter")
+                                        .Where(x => x.Attribute("ID").Value == id)
+                                        .FirstOrDefault().Element("Nationalität").Value;
+
+            string email = xdoc.Elements("Mitarbeiter")
+                               .Where(x => x.Attribute("ID").Value == id)
+                               .FirstOrDefault().Element("E-Mail").Value;
+
+            string arbeit = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Telefon_Arbeit").Value;
+
+            string mobil = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Telefon_Mobil").Value;
+
+            string privat = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Telefon_Privat").Value;
+
+            string strasse = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Strasse").Value;
+
+            string wohnort = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Wohnort").Value;
+
+            int plz = Convert.ToInt16(xdoc.Elements("Mitarbeiter")
+                                        .Where(x => x.Attribute("ID").Value == id)
+                                        .FirstOrDefault().Element("Postleitzahl").Value);
+
+            int kaderstufe = Convert.ToInt16(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Kaderstufe").Value);
+
+            string abteilung = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Abteilung").Value;
+
+            DateTime start = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Startdatum").Value);
+
+            int arbeitspensum = Convert.ToInt16(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Arbeitspensum").Value);
+
+            Mitarbeiter m = new Mitarbeiter(ide, anrede, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, abteilung, arbeitspensum, start);
+
+            return m;
+        }
+        public Kunde RetriveValuesKunde(string id)
+        {
+            XElement xDoc = XElement.Load("Kunde.xml");
+
+            Guid ide = Guid.Parse(id);
+
+            string anrede = xDoc.Elements("Kunde")
+                                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                .Element("Anrede").Value;
+                
+            string vorname = xDoc.Elements("Kunde")
+                                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                 .Element("Vorname").Value;
+
+            string nachname = xDoc.Elements("Kunde")
+                                  .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                  .Element("Nachname").Value;
+
+            DateTime geburtsdatum = Convert.ToDateTime(xDoc.Elements("Kunde")
+                                           .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                           .Element("Geburtsdatum").Value);
+
+            string nationalitaet = xDoc.Elements("Kunde")
+                                       .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                       .Element("Nationalität").Value;
+
+            string ahv = xDoc.Elements("Kunde")
+                             .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                             .Element("AHV-Nummer").Value;
+
+            string email = xDoc.Elements("Kunde")
+                               .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                               .Element("E-Mail").Value;
+
+            string mobil = xDoc.Elements("Kunde")
+                               .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                               .Element("Telefon_Mobil").Value;
+            
+            string arbeit = xDoc.Elements("Kunde")
+                                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                .Element("Telefon_Arbeit").Value;
+
+            string privat = xDoc.Elements("Kunde")
+                                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                .Element("Telefon_Privat").Value;
+
+            string strasse = xDoc.Elements("Kunde")
+                                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                .Element("Strasse").Value;
+            
+            string wohnort = xDoc.Elements("Kunde")
+                                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                 .Element("Wohnort").Value;
+            
+            int plz = Convert.ToInt16(xDoc.Elements("Kunde")
+                          .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                          .Element("Postleitzahl").Value);
+
+            string firmenname = xDoc.Elements("Kunde")
+                                    .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                    .Element("Firmenname").Value;
+
+            string firmenadresse = xDoc.Elements("Kunde")
+                                       .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                       .Element("Firmenadresse").Value;
+
+            char kundentyp = Convert.ToChar(xDoc.Elements("Kunde")
+                                    .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                    .Element("Kundentyp").Value);
+
+            string kundenkontakt = xDoc.Elements("Kunde")
+                                       .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                       .Element("Kundenkontakt").Value;
+
+            Kunde k = new Kunde(ide, anrede, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+
+            return k;
+
+        }
+        
+        //public Lehrling RetriveValuesLehrling(string id)
+        //{ 
+            
+        //}
         #endregion
     }
 }

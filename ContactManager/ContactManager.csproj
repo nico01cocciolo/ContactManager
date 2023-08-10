@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Controller\NotizController.cs" />
     <Compile Include="Controller\PersonAnlegen.cs">
       <SubType>Form</SubType>
@@ -79,10 +80,10 @@
     <Compile Include="MitarbeiterAnlegenView.Designer.cs">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Controlls\Kunde\UcKundeStamm.cs">
+    <Compile Include="User Controlls\UcKundeStamm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Controlls\Kunde\UcKundeStamm.Designer.cs">
+    <Compile Include="User Controlls\UcKundeStamm.Designer.cs">
       <DependentUpon>UcKundeStamm.cs</DependentUpon>
     </Compile>
     <Compile Include="User Controlls\UcMitarbeiterBearbeiten.cs">
@@ -121,7 +122,7 @@
     <EmbeddedResource Include="MitarbeiterAnlegenView.resx">
       <DependentUpon>MitarbeiterAnlegenView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Controlls\Kunde\UcKundeStamm.resx">
+    <EmbeddedResource Include="User Controlls\UcKundeStamm.resx">
       <DependentUpon>UcKundeStamm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Controlls\UcMitarbeiterBearbeiten.resx">
@@ -155,5 +156,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
