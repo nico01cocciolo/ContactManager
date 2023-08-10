@@ -132,13 +132,13 @@
             this.ChkStatus.AutoSize = true;
             this.ChkStatus.Checked = true;
             this.ChkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ChkStatus.Enabled = false;
             this.ChkStatus.Location = new System.Drawing.Point(153, 44);
             this.ChkStatus.Name = "ChkStatus";
             this.ChkStatus.Size = new System.Drawing.Size(92, 17);
             this.ChkStatus.TabIndex = 48;
             this.ChkStatus.Text = "Status ändern";
             this.ChkStatus.UseVisualStyleBackColor = true;
+            this.ChkStatus.CheckedChanged += new System.EventHandler(this.ChkStatus_CheckedChanged);
             // 
             // label8
             // 
@@ -637,7 +637,7 @@
             this.Knöpgke.Name = "Knöpgke";
             this.Knöpgke.Size = new System.Drawing.Size(75, 23);
             this.Knöpgke.TabIndex = 68;
-            this.Knöpgke.Text = "button1";
+            this.Knöpgke.Text = "Erstellen";
             this.Knöpgke.UseVisualStyleBackColor = true;
             this.Knöpgke.Click += new System.EventHandler(this.Knöpgke_Click);
             // 

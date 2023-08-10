@@ -585,6 +585,7 @@
             this.ChkStatus.TabIndex = 48;
             this.ChkStatus.Text = "Status ändern";
             this.ChkStatus.UseVisualStyleBackColor = true;
+            this.ChkStatus.CheckedChanged += new System.EventHandler(this.ChkStatus_CheckedChanged);
             // 
             // label8
             // 

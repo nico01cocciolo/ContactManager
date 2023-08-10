@@ -404,5 +404,9 @@ namespace ContactManager
             xmlHandler.DeleteValuesMitarbeiter(id);
             LoadFile();
         }
+
+        private void ChkStatus_CheckedChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

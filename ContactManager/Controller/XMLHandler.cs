@@ -140,7 +140,7 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", k.Id),
-                    new XAttribute("Status", "K"),
+                    new XAttribute("Status", k.Status),
 
                     //Person
                     new XElement("Geschlecht", "A"),
@@ -179,7 +179,7 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", k.Id),
-                    new XAttribute("Status", "K"),
+                    new XAttribute("Status", k.Status),
 
                     //Person
                     new XElement("Geschlecht", "A"),
@@ -387,7 +387,7 @@ namespace ContactManager.Controller
         }
         #endregion
 
-        #region Change Values
+        #region Update
         public void ChangeValuesMitarbeiterXML(Mitarbeiter m)
         {
             XElement xdoc = XElement.Load("Mitarbeiter.xml");
@@ -649,7 +649,7 @@ namespace ContactManager.Controller
         }
         #endregion
 
-        #region Retrive Values
+        #region Read
         public Mitarbeiter RetriveValuesMitarbeiter(string id)
         {
             XElement xdoc = XElement.Load("Mitarbeiter.xml");
@@ -734,6 +734,10 @@ namespace ContactManager.Controller
 
             Guid ide = Guid.Parse(id);
 
+            string status = xDoc.Elements("Kunde")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Attribute("Status").Value;
+
             string anrede = xDoc.Elements("Kunde")
                                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                                 .Element("Anrede").Value;
@@ -802,7 +806,7 @@ namespace ContactManager.Controller
                                        .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                                        .Element("Kundenkontakt").Value;
 
-            Kunde k = new Kunde(ide, anrede, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+            Kunde k = new Kunde(ide, status, anrede, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
             return k;
 
@@ -814,7 +818,7 @@ namespace ContactManager.Controller
         //}
         #endregion
 
-        #region Deleting Values
+        #region Delete
         public void DeleteValuesKunde(string id)
         {
             XElement xDoc = XElement.Load("Kunde.xml");

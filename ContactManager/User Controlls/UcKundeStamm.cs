@@ -111,6 +111,7 @@ namespace ContactManager
 
             if (CmbKundentyp.SelectedIndex > -1 && TxtPostleitzahl.TextLength > 0)
             {
+                string status = Status();
                 string nachname = TxtNachname.Text;
                 DateTime dob = DtpGeburtsdatum.Value;
                 string nationalitaet = CmbNationalitaet.Text;
@@ -132,7 +133,7 @@ namespace ContactManager
                 char kundentyp = Convert.ToChar(CmbKundentyp.Text);
 
 
-                Kunde k = new Kunde(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
+                Kunde k = new Kunde(id, status, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
 
                 xmlHandler.CreateKundeXML(k);
                 LoadData();
@@ -141,6 +142,20 @@ namespace ContactManager
             else
             {
                 MessageBox.Show("Error");
+            }
+        }
+
+        private string Status()
+        {
+            if (ChkStatus.Checked)
+            {
+                ChkStatus.Text = "Aktiviert";
+                return "Aktiviert";
+            }
+            else 
+            {
+                ChkStatus.Text = "Deaktiviert";
+                return "Deaktiviert";
             }
         }
 
@@ -154,6 +169,7 @@ namespace ContactManager
         {
             string id = IDGetter();
 
+            File.Delete($"{id}.txt");
             xmlHandler.DeleteValuesKunde(id);
             LoadData();
 
@@ -171,6 +187,11 @@ namespace ContactManager
             {
                 DtgData.DataSource = null;
             }
+        }
+
+        private void ChkStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            Status();
         }
     }
 }

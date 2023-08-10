@@ -20,15 +20,17 @@ namespace ContactManager.Model
         public string Firmenadresse { get; set; }
         public char Kundentyp { get; set; }
         public string Kundenkontakt { get; set; }
+        public string Status { get; set; }
         #endregion
 
-        public Kunde(Guid id, string anrede, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort,
+        public Kunde(Guid id, string status, string anrede, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort,
                      string firmenname, string firmenadresse, char kt, string kk) : base (id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort)
         {
             Firmenname = firmenname;
             Firmenadresse = firmenadresse;
             Kundentyp = kt;
             Kundenkontakt = kk;
+            Status = status;
         }
     }
 }
