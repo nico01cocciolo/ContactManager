@@ -67,13 +67,7 @@ namespace ContactManager
         private void UcKundeStamm_Load(object sender, EventArgs e)
         {
             FillCombobox();
-
-            if (File.Exists("Kunde.xml"))
-            {
-                DataSet dataSet = new DataSet();
-                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
-                DtgData.DataSource = dataSet.Tables[0];
-            }
+            LoadData();
         }
 
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -141,6 +135,8 @@ namespace ContactManager
                 Kunde k = new Kunde(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
 
                 xmlHandler.CreateKundeXML(k);
+                LoadData();
+
             }
             else
             {
@@ -152,6 +148,29 @@ namespace ContactManager
         {
             CmbKundentyp.Items.AddRange(kundentyp);
             CmbAnrede.Items.AddRange(anrede);
+        }
+
+        private void Kill_Click(object sender, EventArgs e)
+        {
+            string id = IDGetter();
+
+            xmlHandler.DeleteValuesKunde(id);
+            LoadData();
+
+        }
+
+        private void LoadData()
+        {
+            if (File.Exists("Kunde.xml") && new FileInfo("Kunde.xml").Length >= 60)
+            {
+                DataSet dataSet = new DataSet();
+                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
+                DtgData.DataSource = dataSet.Tables[0];
+            }
+            else 
+            {
+                DtgData.DataSource = null;
+            }
         }
     }
 }

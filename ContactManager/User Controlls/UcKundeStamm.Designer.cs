@@ -89,6 +89,7 @@
             this.Knöpgke = new System.Windows.Forms.Button();
             this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
             this.ErrNachname = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Kill = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -648,10 +649,21 @@
             // 
             this.ErrNachname.ContainerControl = this;
             // 
+            // Kill
+            // 
+            this.Kill.Location = new System.Drawing.Point(345, 13);
+            this.Kill.Name = "Kill";
+            this.Kill.Size = new System.Drawing.Size(75, 23);
+            this.Kill.TabIndex = 69;
+            this.Kill.Text = "Killswitch";
+            this.Kill.UseVisualStyleBackColor = true;
+            this.Kill.Click += new System.EventHandler(this.Kill_Click);
+            // 
             // UcKundeStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Kill);
             this.Controls.Add(this.Knöpgke);
             this.Controls.Add(this.DtgData);
             this.Controls.Add(this.CmdKundeSpeichern);
@@ -746,5 +758,6 @@
         private System.Windows.Forms.Button Knöpgke;
         private System.Windows.Forms.ErrorProvider ErrVorname;
         private System.Windows.Forms.ErrorProvider ErrNachname;
+        private System.Windows.Forms.Button Kill;
     }
 }

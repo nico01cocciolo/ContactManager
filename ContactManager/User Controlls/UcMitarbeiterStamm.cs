@@ -196,13 +196,14 @@ namespace ContactManager
 
         public void LoadFile()
         {
-            if (File.Exists("Mitarbeiter.xml"))
+            if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
                 DataSet dataSet = new DataSet();
                 dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
                 foreach (DataRow item in dataSet.Tables["Mitarbeiter"].Rows)
                 {
+
                     int n = DtgData.Rows.Add();
                     DtgData.Rows[n].Cells[0].Value = item[19];
                     DtgData.Rows[n].Cells[1].Value = item[1];
@@ -215,10 +216,12 @@ namespace ContactManager
                     DtgData.Rows[n].Cells[8].Value = item[11];
                 }
 
-                //DtgData.DataSource = dataSet.Tables[0];
-                //DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
-
             }
+            else 
+            {
+                DtgData.DataSource = null;
+            }
+
         }
 
         public void DataGridNeueZeile()
@@ -392,6 +395,14 @@ namespace ContactManager
                     CmdMitarbeiterErstellen.Visible = true;
                 }
             }
+        }
+
+        private void Kill_Click(object sender, EventArgs e)
+        {
+            string id = IDGetter();
+
+            xmlHandler.DeleteValuesMitarbeiter(id);
+            LoadFile();
         }
     }
 }

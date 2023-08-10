@@ -807,11 +807,35 @@ namespace ContactManager.Controller
             return k;
 
         }
-        
+
         //public Lehrling RetriveValuesLehrling(string id)
         //{ 
-            
+
         //}
+        #endregion
+
+        #region Deleting Values
+        public void DeleteValuesKunde(string id)
+        {
+            XElement xDoc = XElement.Load("Kunde.xml");
+
+            xDoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .Remove();
+
+            xDoc.Save("Kunde.xml");
+        }
+
+        public void DeleteValuesMitarbeiter(string id)
+        {
+            XElement xDoc = XElement.Load("Mitarbeiter.xml");
+
+            xDoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .Remove();
+
+            xDoc.Save("Mitarbeiter.xml");
+        }
         #endregion
     }
 }
