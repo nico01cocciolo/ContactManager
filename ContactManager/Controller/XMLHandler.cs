@@ -401,7 +401,7 @@ namespace ContactManager.Controller
             //Wichtig
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
-                .SetAttributeValue("Status", "A");
+                .SetAttributeValue("Status", m.isActive);
 
             //Person
             xdoc.Elements("Mitarbeiter")
@@ -480,13 +480,18 @@ namespace ContactManager.Controller
 
             string id = Convert.ToString(k.Id);
 
-            
             //Attribute
             xdoc.Elements("Kunde")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
-                .SetAttributeValue("Status", "Status");
+                .SetAttributeValue("Status", k.isActive);
+
+
 
             //Persönliche Daten
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Titel", k.Title);
+
             xdoc.Elements("Kunde")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetElementValue("Anrede", k.Anrede);

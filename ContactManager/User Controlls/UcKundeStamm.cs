@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using ContactManager.Model;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ContactManager
 {
@@ -79,9 +80,40 @@ namespace ContactManager
             Kunde k = xmlHandler.RetriveValuesKunde(id);
 
             LblId.Text = Convert.ToString(k.Id);
+
+            if (k.isActive)
+            {
+                LblStatus.Text = "Aktiviert";
+                ChkStatus.Checked = true;
+            }
+            else
+            {
+                LblStatus.Text = "Deaktiviert";
+                ChkStatus.Checked = false;
+            }
+
+            CmbAnrede.Text = k.Anrede;
+            CmbTitel.Text = k.Title;
             TxtVorname.Text = k.Vorname;
             TxtNachname.Text = k.Nachname;
+            DtpGeburtsdatum.Value = k.Geburtsdatum;
+            CmbNationalitaet.Text = k.Nationalität;
+            TxtAhvNum.Text = k.AhvNumber;
 
+            TxtEmail.Text = k.Email;
+            TxtTelPriv.Text = k.TelefonPrivat;
+            TxtTelMobil.Text = k.TelefonMobil;
+            TxtTelGesch.Text = k.TelefonArbeit;
+
+            TxtStrasse.Text = k.Strasse;
+            TxtWohnort.Text = k.Wohnort;
+            TxtPostleitzahl.Text = Convert.ToString(k.Plz);
+
+            CmbKundentyp.Text = Convert.ToString(k.Kundentyp);
+            TxtKundenkontakt.Text = k.Kundenkontakt;
+            TxtFirmenadresse.Text = k.Firmenadresse;
+            TxtFirmenname.Text = k.Firmenname;
+            
             if (File.Exists(path))
             {
                 TxtNotizOutput.Text = nc.NotizLaden(path);
@@ -152,12 +184,12 @@ namespace ContactManager
             if (ChkStatus.Checked)
             {
                 ChkStatus.Text = "Aktiviert";
-                return false;
+                return true;
             }
             else 
             {
                 ChkStatus.Text = "Deaktiviert";
-                return true;
+                return false;
             }
         }
 
@@ -195,6 +227,76 @@ namespace ContactManager
         private void ChkStatus_CheckedChanged(object sender, EventArgs e)
         {
             Status();
+        }
+
+        private void CmdClear_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+
+        private void CmdSave_Click(object sender, EventArgs e)
+        {
+            //Parameters
+            string id = IDGetter();
+            Guid ide = Guid.Parse(id);
+
+            bool status = Status();
+
+            string anrede = CmbAnrede.Text;
+            string titel = CmbTitel.Text;
+            string vorname = TxtVorname.Text;
+            string nachname = TxtNachname.Text;
+            DateTime dob = DtpGeburtsdatum.Value;
+            string nationalitaet = CmbNationalitaet.Text;
+            string ahv = TxtAhvNum.Text;
+
+            string email = TxtEmail.Text;
+            string privat = TxtTelPriv.Text;
+            string arbeit = TxtTelGesch.Text;
+            string mobil = TxtTelMobil.Text;
+
+            string strasse = TxtStrasse.Text;
+            string wohnort = TxtWohnort.Text;
+            int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+
+            string firmenname = TxtFirmenname.Text;
+            string firmenadresse = TxtFirmenadresse.Text;
+            char kundentyp = Convert.ToChar(CmbKundentyp.Text);
+            string kundenkontakt = TxtKundenkontakt.Text;
+
+            Kunde k = new Kunde(ide, status, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+
+            xmlHandler.ChangeValuesKundeXML(k);
+            LoadData();
+        }
+
+        private void ClearAll()
+        {
+            LblId.Text = "...";
+            LblStatus.Text = "...";
+
+            CmbAnrede.ResetText();
+            CmbTitel.ResetText();
+
+            TxtVorname.Clear();
+            TxtNachname.Clear();
+            DtpGeburtsdatum.ResetText();
+            CmbNationalitaet.ResetText();
+            TxtAhvNum.Clear();
+
+            TxtEmail.Clear();
+            TxtTelPriv.Clear();
+            TxtTelGesch.Clear();
+            TxtTelMobil.Clear();
+
+            TxtStrasse.Clear();
+            TxtWohnort.Clear();
+            TxtPostleitzahl.Clear();
+
+            TxtFirmenname.Clear();
+            TxtFirmenadresse.Clear();
+            CmbKundentyp.ResetText();
+            TxtKundenkontakt.Clear();
         }
     }
 }

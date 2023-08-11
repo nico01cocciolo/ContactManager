@@ -90,6 +90,8 @@
             this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
             this.ErrNachname = new System.Windows.Forms.ErrorProvider(this.components);
             this.Kill = new System.Windows.Forms.Button();
+            this.CmdClear = new System.Windows.Forms.Button();
+            this.CmdSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -659,10 +661,32 @@
             this.Kill.UseVisualStyleBackColor = true;
             this.Kill.Click += new System.EventHandler(this.Kill_Click);
             // 
+            // CmdClear
+            // 
+            this.CmdClear.Location = new System.Drawing.Point(426, 13);
+            this.CmdClear.Name = "CmdClear";
+            this.CmdClear.Size = new System.Drawing.Size(75, 23);
+            this.CmdClear.TabIndex = 70;
+            this.CmdClear.Text = "Clear All";
+            this.CmdClear.UseVisualStyleBackColor = true;
+            this.CmdClear.Click += new System.EventHandler(this.CmdClear_Click);
+            // 
+            // CmdSave
+            // 
+            this.CmdSave.Location = new System.Drawing.Point(507, 13);
+            this.CmdSave.Name = "CmdSave";
+            this.CmdSave.Size = new System.Drawing.Size(75, 23);
+            this.CmdSave.TabIndex = 71;
+            this.CmdSave.Text = "Save";
+            this.CmdSave.UseVisualStyleBackColor = true;
+            this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+            // 
             // UcKundeStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CmdSave);
+            this.Controls.Add(this.CmdClear);
             this.Controls.Add(this.Kill);
             this.Controls.Add(this.Knöpgke);
             this.Controls.Add(this.DtgData);
@@ -759,5 +783,7 @@
         private System.Windows.Forms.ErrorProvider ErrVorname;
         private System.Windows.Forms.ErrorProvider ErrNachname;
         private System.Windows.Forms.Button Kill;
+        private System.Windows.Forms.Button CmdClear;
+        private System.Windows.Forms.Button CmdSave;
     }
 }
