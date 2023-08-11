@@ -37,8 +37,9 @@ namespace ContactManager
         NotizController nc = new NotizController();
         XMLHandler xmlHandler = new XMLHandler();
 
-        string[] kundentyp = new string[] { "A", "B", "C", "D", "E", "F" };
+        string[] kundentyp = new string[] { "A", "B", "C", "D", "E" };
         string[] anrede = new string[] { "Herr", "Frau", "Divers" };
+        string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
 
         private void CmdNotizErfassen_Click(object sender, EventArgs e)
         {
@@ -111,7 +112,8 @@ namespace ContactManager
 
             if (CmbKundentyp.SelectedIndex > -1 && TxtPostleitzahl.TextLength > 0)
             {
-                string status = Status();
+                bool status = Status();
+                string title = CmbTitel.Text;
                 string nachname = TxtNachname.Text;
                 DateTime dob = DtpGeburtsdatum.Value;
                 string nationalitaet = CmbNationalitaet.Text;
@@ -133,7 +135,7 @@ namespace ContactManager
                 char kundentyp = Convert.ToChar(CmbKundentyp.Text);
 
 
-                Kunde k = new Kunde(id, status, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
+                Kunde k = new Kunde(id, status, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
 
                 xmlHandler.CreateKundeXML(k);
                 LoadData();
@@ -145,17 +147,17 @@ namespace ContactManager
             }
         }
 
-        private string Status()
+        private bool Status()
         {
             if (ChkStatus.Checked)
             {
                 ChkStatus.Text = "Aktiviert";
-                return "Aktiviert";
+                return false;
             }
             else 
             {
                 ChkStatus.Text = "Deaktiviert";
-                return "Deaktiviert";
+                return true;
             }
         }
 
@@ -163,6 +165,7 @@ namespace ContactManager
         {
             CmbKundentyp.Items.AddRange(kundentyp);
             CmbAnrede.Items.AddRange(anrede);
+            CmbTitel.Items.AddRange(titel);
         }
 
         private void Kill_Click(object sender, EventArgs e)

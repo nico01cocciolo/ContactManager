@@ -21,7 +21,9 @@ namespace ContactManager.User_Controlls
         }
 
         bool inputOk = false;
-        private static int counter = 0;
+
+        string[] anrede = new string[] { "Herr", "Frau", "Divers" };
+        string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
 
         XMLHandler xmlHandler = new XMLHandler();
 
@@ -29,7 +31,9 @@ namespace ContactManager.User_Controlls
         {
             Guid id = Guid.NewGuid();
 
+
             string anrede = CmbAnrede.Text;
+            string titel = CmbAnrede.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
@@ -51,15 +55,15 @@ namespace ContactManager.User_Controlls
             int arbp = Convert.ToInt16(NumArbeitspensum.Value);
             DateTime st = DtpStartdatum.Value;
 
-            Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
+           // Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
 
 
-            if (CheckInputs() == true)
-            {
-                xmlHandler.CreateMitarbeiterXML(m);
-                LblId.Text = Convert.ToString(id);
-                MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
-            }
+            //if (CheckInputs() == true)
+            //{
+            //    xmlHandler.CreateMitarbeiterXML(m);
+            //    LblId.Text = Convert.ToString(id);
+            //    MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
+            //}
         }
 
         private bool CheckInputs()
@@ -86,14 +90,19 @@ namespace ContactManager.User_Controlls
         }
         private void ClearAll()
         {
+            //Parameters
+            LblId.Text = "...";
+            LblStatus.Text = "...";
+
             //Personen Daten
+            CmbAnrede.ResetText();
+            CmbTitel.ResetText();
             TxtVorname.Clear();
             TxtNachname.Clear();
             TxtAhvNum.Clear();
 
             //Adresse
             TxtStrasse.Clear();
-            TxtHausnummer.Clear();
             TxtWohnort.Clear();
             TxtPostleitzahl.Clear();
 
@@ -103,8 +112,13 @@ namespace ContactManager.User_Controlls
             TxtTelGesch.Clear();
             TxtEmail.Clear();
 
-            LblId.Text = "...";
-            LblStatus.Text = "...";
+            //Mitarbeiter Daten
+            NumKaderstufe.ResetText();
+            NumArbeitspensum.ResetText();
+            TxtAbteilung.Clear();
+            DtpGeburtsdatum.ResetText();
+
+
         }
 
         private void CmdFelderReset_Click(object sender, EventArgs e)
@@ -114,8 +128,13 @@ namespace ContactManager.User_Controlls
 
         private void UcMitarbeiterErfassen_Load(object sender, EventArgs e)
         {
-            CmbAnrede.Items.Add("Herr");
-            CmbAnrede.Items.Add("Frau");
+            FillCombobox();
+        }
+
+        private void FillCombobox()
+        {
+            CmbAnrede.Items.AddRange(anrede);
+            CmbTitel.Items.AddRange(titel);
         }
     }
 }

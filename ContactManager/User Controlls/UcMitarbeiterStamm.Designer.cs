@@ -39,10 +39,9 @@
             this.Telefon_Privat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon_Arbeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Kill = new System.Windows.Forms.Button();
             this.CmdWerteSpeichern = new System.Windows.Forms.Button();
             this.CmdMitarbeiterSpeichern = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.TxtPostleitzahl = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -94,7 +93,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
-            this.Kill = new System.Windows.Forms.Button();
+            this.DtpEnddatum = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
+            this.TxtRolle = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.ChkLehrling = new System.Windows.Forms.CheckBox();
+            this.CmbReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -106,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumKaderstufe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // DtgData
@@ -207,18 +218,18 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.CmbReset);
+            this.splitContainer1.Panel1.Controls.Add(this.panel5);
             this.splitContainer1.Panel1.Controls.Add(this.Kill);
             this.splitContainer1.Panel1.Controls.Add(this.CmdWerteSpeichern);
             this.splitContainer1.Panel1.Controls.Add(this.CmdMitarbeiterSpeichern);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox2);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
             this.splitContainer1.Panel1.Controls.Add(this.panel3);
             this.splitContainer1.Panel1.Controls.Add(this.panel4);
             this.splitContainer1.Panel1.Controls.Add(this.panel2);
@@ -233,6 +244,16 @@
             this.splitContainer1.SplitterDistance = 417;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // Kill
+            // 
+            this.Kill.Location = new System.Drawing.Point(208, 16);
+            this.Kill.Name = "Kill";
+            this.Kill.Size = new System.Drawing.Size(75, 23);
+            this.Kill.TabIndex = 70;
+            this.Kill.Text = "Killswitch";
+            this.Kill.UseVisualStyleBackColor = true;
+            this.Kill.Click += new System.EventHandler(this.Kill_Click);
             // 
             // CmdWerteSpeichern
             // 
@@ -255,24 +276,6 @@
             this.CmdMitarbeiterSpeichern.UseVisualStyleBackColor = true;
             this.CmdMitarbeiterSpeichern.Visible = false;
             this.CmdMitarbeiterSpeichern.Click += new System.EventHandler(this.CmdMitarbeiterSpeichern_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(619, 310);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(312, 71);
-            this.textBox2.TabIndex = 55;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(619, 51);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(312, 254);
-            this.textBox1.TabIndex = 54;
             // 
             // panel3
             // 
@@ -446,6 +449,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.TxtRolle);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.DtpEnddatum);
+            this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.NumKaderstufe);
             this.panel2.Controls.Add(this.NumArbeitspensum);
             this.panel2.Controls.Add(this.DtpStartdatum);
@@ -462,7 +469,7 @@
             // 
             // NumKaderstufe
             // 
-            this.NumKaderstufe.Location = new System.Drawing.Point(134, 25);
+            this.NumKaderstufe.Location = new System.Drawing.Point(135, 25);
             this.NumKaderstufe.Maximum = new decimal(new int[] {
             5,
             0,
@@ -479,7 +486,7 @@
             0,
             0,
             0});
-            this.NumArbeitspensum.Location = new System.Drawing.Point(134, 76);
+            this.NumArbeitspensum.Location = new System.Drawing.Point(134, 103);
             this.NumArbeitspensum.Name = "NumArbeitspensum";
             this.NumArbeitspensum.Size = new System.Drawing.Size(120, 20);
             this.NumArbeitspensum.TabIndex = 31;
@@ -487,7 +494,7 @@
             // DtpStartdatum
             // 
             this.DtpStartdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpStartdatum.Location = new System.Drawing.Point(134, 102);
+            this.DtpStartdatum.Location = new System.Drawing.Point(134, 129);
             this.DtpStartdatum.Name = "DtpStartdatum";
             this.DtpStartdatum.Size = new System.Drawing.Size(121, 20);
             this.DtpStartdatum.TabIndex = 30;
@@ -495,7 +502,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 105);
+            this.label15.Location = new System.Drawing.Point(6, 132);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 13);
             this.label15.TabIndex = 29;
@@ -504,7 +511,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 79);
+            this.label14.Location = new System.Drawing.Point(7, 105);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(76, 13);
             this.label14.TabIndex = 27;
@@ -512,7 +519,7 @@
             // 
             // TxtAbteilung
             // 
-            this.TxtAbteilung.Location = new System.Drawing.Point(134, 50);
+            this.TxtAbteilung.Location = new System.Drawing.Point(134, 51);
             this.TxtAbteilung.Name = "TxtAbteilung";
             this.TxtAbteilung.ReadOnly = true;
             this.TxtAbteilung.Size = new System.Drawing.Size(121, 20);
@@ -772,15 +779,117 @@
             this.CmdMitarbeiterBearbeiten.Visible = false;
             this.CmdMitarbeiterBearbeiten.Click += new System.EventHandler(this.CmdMitarbeiterBearbeiten_Click);
             // 
-            // Kill
+            // DtpEnddatum
             // 
-            this.Kill.Location = new System.Drawing.Point(208, 16);
-            this.Kill.Name = "Kill";
-            this.Kill.Size = new System.Drawing.Size(75, 23);
-            this.Kill.TabIndex = 70;
-            this.Kill.Text = "Killswitch";
-            this.Kill.UseVisualStyleBackColor = true;
-            this.Kill.Click += new System.EventHandler(this.Kill_Click);
+            this.DtpEnddatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpEnddatum.Location = new System.Drawing.Point(134, 155);
+            this.DtpEnddatum.Name = "DtpEnddatum";
+            this.DtpEnddatum.Size = new System.Drawing.Size(121, 20);
+            this.DtpEnddatum.TabIndex = 34;
+            this.DtpEnddatum.Value = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 158);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(55, 13);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "Enddatum";
+            // 
+            // TxtRolle
+            // 
+            this.TxtRolle.Location = new System.Drawing.Point(134, 77);
+            this.TxtRolle.Name = "TxtRolle";
+            this.TxtRolle.ReadOnly = true;
+            this.TxtRolle.Size = new System.Drawing.Size(121, 20);
+            this.TxtRolle.TabIndex = 36;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(5, 79);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(31, 13);
+            this.label17.TabIndex = 35;
+            this.label17.Text = "Rolle";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.Controls.Add(this.ChkLehrling);
+            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.label28);
+            this.panel5.Controls.Add(this.textBox3);
+            this.panel5.Controls.Add(this.label29);
+            this.panel5.Controls.Add(this.label30);
+            this.panel5.Location = new System.Drawing.Point(620, 51);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(308, 139);
+            this.panel5.TabIndex = 53;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(157, 77);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(121, 20);
+            this.textBox2.TabIndex = 20;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(3, 80);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(91, 13);
+            this.label28.TabIndex = 19;
+            this.label28.Text = "Aktuelles Lehrjahr";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(157, 51);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(121, 20);
+            this.textBox3.TabIndex = 16;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 54);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(51, 13);
+            this.label29.TabIndex = 1;
+            this.label29.Text = "Lehrjahre";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(3, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(44, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Lehrling";
+            // 
+            // ChkLehrling
+            // 
+            this.ChkLehrling.AutoSize = true;
+            this.ChkLehrling.Location = new System.Drawing.Point(6, 27);
+            this.ChkLehrling.Name = "ChkLehrling";
+            this.ChkLehrling.Size = new System.Drawing.Size(63, 17);
+            this.ChkLehrling.TabIndex = 21;
+            this.ChkLehrling.Text = "Lehrling";
+            this.ChkLehrling.UseVisualStyleBackColor = true;
+            // 
+            // CmbReset
+            // 
+            this.CmbReset.Location = new System.Drawing.Point(289, 16);
+            this.CmbReset.Name = "CmbReset";
+            this.CmbReset.Size = new System.Drawing.Size(75, 23);
+            this.CmbReset.TabIndex = 71;
+            this.CmbReset.Text = "Reseter";
+            this.CmbReset.UseVisualStyleBackColor = true;
+            this.CmbReset.Click += new System.EventHandler(this.CmbReset_Click);
             // 
             // UcMitarbeiterStamm
             // 
@@ -792,7 +901,6 @@
             this.Load += new System.EventHandler(this.UcMitarbeiterStamm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -806,6 +914,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -814,8 +924,6 @@
 
         private System.Windows.Forms.DataGridView DtgData;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox TxtPostleitzahl;
         private System.Windows.Forms.Label label19;
@@ -879,5 +987,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon_Privat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon_Arbeit;
         private System.Windows.Forms.Button Kill;
+        private System.Windows.Forms.DateTimePicker DtpEnddatum;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox TxtRolle;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox ChkLehrling;
+        private System.Windows.Forms.Button CmbReset;
     }
 }

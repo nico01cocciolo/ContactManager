@@ -140,12 +140,12 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", k.Id),
-                    new XAttribute("Status", k.Status),
+                    new XAttribute("Status", k.isActive),
 
                     //Person
                     new XElement("Geschlecht", "A"),
                     new XElement("Anrede", k.Anrede),
-                    new XElement("Titel", "A"),
+                    new XElement("Titel", k.Title),
                     new XElement("Vorname", k.Vorname),
                     new XElement("Nachname", k.Nachname),
                     new XElement("Geburtsdatum", k.Geburtsdatum.ToShortDateString()),
@@ -179,12 +179,12 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", k.Id),
-                    new XAttribute("Status", k.Status),
+                    new XAttribute("Status", k.isActive),
 
                     //Person
                     new XElement("Geschlecht", "A"),
                     new XElement("Anrede", k.Anrede),
-                    new XElement("Titel", "A"),
+                    new XElement("Titel", k.Title),
                     new XElement("Vorname", k.Vorname),
                     new XElement("Nachname", k.Nachname),
                     new XElement("Geburtsdatum", k.Geburtsdatum.ToShortDateString()),
@@ -223,12 +223,12 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", m.Id),
-                    new XAttribute("Status", "A"),
+                    new XAttribute("Status", m.isActive),
 
                     //Person
                     new XElement("Geschlecht", "A"),
                     new XElement("Anrede", m.Anrede),
-                    new XElement("Titel", "A"),
+                    new XElement("Titel", m.Title),
                     new XElement("Vorname", m.Vorname),
                     new XElement("Nachname", m.Nachname),
                     new XElement("Geburtsdatum", m.Geburtsdatum.ToShortDateString()),
@@ -249,7 +249,9 @@ namespace ContactManager.Controller
                     //Mitarbeiterspezifisch
                     new XElement("Kaderstufe", m.KaderStufe),
                     new XElement("Abteilung", m.Abteilung),
+                    new XElement("Rolle", m.Rolle),
                     new XElement("Startdatum", m.StartDate.ToShortDateString()),
+                    new XElement("Enddatum", m.EndDate.ToShortDateString()),
                     new XElement("Arbeitspensum", m.Arbeitspensum))));
 
                 xDoc.Save("Mitarbeiter.xml");
@@ -262,12 +264,12 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", m.Id),
-                    new XAttribute("Status", "A"),
+                    new XAttribute("Status", m.isActive),
 
                     //Person
                     new XElement("Geschlecht", "A"),
                     new XElement("Anrede", m.Anrede),
-                    new XElement("Titel", "A"),
+                    new XElement("Titel", m.Title),
                     new XElement("Vorname", m.Vorname),
                     new XElement("Nachname", m.Nachname),
                     new XElement("Geburtsdatum", m.Geburtsdatum.ToShortDateString()),
@@ -288,7 +290,9 @@ namespace ContactManager.Controller
                     //Mitarbeiterspezifisch
                     new XElement("Kaderstufe", m.KaderStufe),
                     new XElement("Abteilung", m.Abteilung),
+                    new XElement("Rolle", m.Rolle),
                     new XElement("Startdatum", m.StartDate.ToShortDateString()),
+                    new XElement("Enddatum", m.EndDate.ToShortDateString()),
                     new XElement("Arbeitspensum", m.Arbeitspensum)));
 
                 xEle.Save("Mitarbeiter.xml");
@@ -656,10 +660,18 @@ namespace ContactManager.Controller
 
             Guid ide = Guid.Parse(id);
 
+            bool status = Convert.ToBoolean(xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Attribute("Status").Value);
+
             string anrede =     xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
                                     .FirstOrDefault().Element("Anrede").Value;
-            
+
+            string title =      xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Titel").Value;
+
             string vorname =    xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
                                     .FirstOrDefault().Element("Vorname").Value;
@@ -716,15 +728,23 @@ namespace ContactManager.Controller
                                     .Where(x => x.Attribute("ID").Value == id)
                                     .FirstOrDefault().Element("Abteilung").Value;
 
+            string rolle = xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Rolle").Value;
+
             DateTime start = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
                                             .Where(x => x.Attribute("ID").Value == id)
                                             .FirstOrDefault().Element("Startdatum").Value);
+            
+            DateTime end = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Enddatum").Value);
 
             int arbeitspensum = Convert.ToInt16(xdoc.Elements("Mitarbeiter")
                                             .Where(x => x.Attribute("ID").Value == id)
                                             .FirstOrDefault().Element("Arbeitspensum").Value);
 
-            Mitarbeiter m = new Mitarbeiter(ide, anrede, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, abteilung, arbeitspensum, start);
+            Mitarbeiter m = new Mitarbeiter(ide, status, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end);
 
             return m;
         }
@@ -734,14 +754,18 @@ namespace ContactManager.Controller
 
             Guid ide = Guid.Parse(id);
 
-            string status = xDoc.Elements("Kunde")
+            bool status = Convert.ToBoolean(xDoc.Elements("Kunde")
                                 .Where(x => x.Attribute("ID").Value == id)
-                                .FirstOrDefault().Attribute("Status").Value;
+                                .FirstOrDefault().Attribute("Status").Value);
 
             string anrede = xDoc.Elements("Kunde")
                                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                                 .Element("Anrede").Value;
-                
+
+            string title = xDoc.Elements("Kunde")
+                                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                                .Element("Titel").Value;
+
             string vorname = xDoc.Elements("Kunde")
                                  .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                                  .Element("Vorname").Value;
@@ -806,7 +830,7 @@ namespace ContactManager.Controller
                                        .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                                        .Element("Kundenkontakt").Value;
 
-            Kunde k = new Kunde(ide, status, anrede, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+            Kunde k = new Kunde(ide, status, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
             return k;
 

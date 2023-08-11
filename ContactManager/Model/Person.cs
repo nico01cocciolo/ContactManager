@@ -9,20 +9,6 @@ using System.Web;
 
 namespace ContactManager.Model
 {
-    enum Gender
-    {
-        Männlich,
-        Weiblich,
-        Trans,
-        Kampfhelikopter
-    }
-
-    enum  Title
-    { 
-       Dr,
-       Dipl, 
-    }
-
     internal class Person
     {
         //ADD
@@ -49,8 +35,8 @@ namespace ContactManager.Model
         public string Vorname { get; set; }
         public string Nachname { get; set; }
         public DateTime Geburtsdatum { get; set; }
-        public Gender Gender { get; set; }
-        public Title Title { get; set; }
+        //public Gender Gender { get; set; }
+        public string Title { get; set; }
         public string TelefonPrivat { get; set; }
         public string TelefonArbeit { get; set; }
         public string TelefonMobil { get; set; }
@@ -67,9 +53,11 @@ namespace ContactManager.Model
         //ADD 
         //Du muss no meh so Gugus ine aber mag gad nüme *Gähn*
 
-        public Person(Guid id, string anrede, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort)
+        public Person(Guid id, bool isa,  string anrede, string title, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort)
         {
             Id = id;
+            isActive = isa;
+            Title = title;
             Anrede = anrede;
             Vorname = vorname;
             Nachname = nachname;

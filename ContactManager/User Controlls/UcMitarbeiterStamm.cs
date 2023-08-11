@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Linq;
 
 namespace ContactManager
@@ -19,8 +20,11 @@ namespace ContactManager
     {
         public UcMitarbeiterStamm()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
+
+        string[] anrede = new string[] { "Herr", "Frau", "Divers" };
+        string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
 
         private int index { get; set; }
 
@@ -30,12 +34,12 @@ namespace ContactManager
 
         public static UcMitarbeiterStamm Instance
         {
-            get 
+            get
             {
                 if (instance == null)
                 {
                     instance = new UcMitarbeiterStamm();
-                   
+
                 }
                 return instance;
             }
@@ -64,8 +68,7 @@ namespace ContactManager
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
         {
             ChangeTxtValuesDeny();
-            CmbAnrede.Items.Add("Herr");
-            CmbAnrede.Items.Add("Frau");
+            FillCombobox();
             LoadFile();
         }
 
@@ -111,11 +114,12 @@ namespace ContactManager
 
             string eid = IDGetter();
 
-            string status = PersonenStatus();
+            bool status = Status();
 
             Guid id = Guid.Parse(eid);
 
             string anrede = CmbAnrede.Text;
+            string title = CmbTitel.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
@@ -133,11 +137,13 @@ namespace ContactManager
 
             int ks = Convert.ToInt16(NumKaderstufe.Value);
             string abt = TxtAbteilung.Text;
+            string rolle = TxtRolle.Text;
             int arbp = Convert.ToInt16(NumArbeitspensum.Value);
             DateTime st = DtpStartdatum.Value;
+            DateTime end = DtpEnddatum.Value;
 
-            Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
-            
+            Mitarbeiter m = new Mitarbeiter(id, status, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end);
+
             CmdMitarbeiterBearbeiten.Visible = false;
             DataGridZeileBearbeiten();
             ChangeTxtValuesDeny();
@@ -152,7 +158,9 @@ namespace ContactManager
             {
                 Guid id = Guid.NewGuid();
 
+                bool status = Status();
                 string anrede = CmbAnrede.Text;
+                string titel = CmbTitel.Text;
                 string vorname = TxtVorname.Text;
                 string nachname = TxtNachname.Text;
                 DateTime dob = DtpGeburtsdatum.Value;
@@ -167,14 +175,15 @@ namespace ContactManager
                 string strasse = TxtStrasse.Text;
                 string wohnort = TxtWohnort.Text;
                 int plz = Convert.ToInt16(TxtPostleitzahl.Text);
-                string status = "Aktiv";
 
                 int ks = Convert.ToInt16(NumKaderstufe.Value);
+                string rolle = TxtRolle.Text;
                 string abt = TxtAbteilung.Text;
                 int arbp = Convert.ToInt16(NumArbeitspensum.Value);
                 DateTime st = DtpStartdatum.Value;
+                DateTime et = DtpEnddatum.Value;
 
-                Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
+                Mitarbeiter m = new Mitarbeiter(id, status, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
 
 
                 xmlHandler.CreateMitarbeiterXML(m);
@@ -217,7 +226,7 @@ namespace ContactManager
                 }
 
             }
-            else 
+            else
             {
                 DtgData.DataSource = null;
             }
@@ -265,23 +274,29 @@ namespace ContactManager
             return cellValue;
         }
 
-        private string PersonenStatus()
+        private bool Status()
         {
             if (!ChkStatus.Checked)
             {
                 ChkStatus.Text = "Aktivieren";
-                return "Deaktiviert";
+                return false;
             }
-            else
+            else 
             {
                 ChkStatus.Text = "Deaktivieren";
-                return "Aktiv";
+                return true;
             }
         }
 
         private void ClearAll()
         {
+            //Parameters
+            LblId.Text = "...";
+            LblStatus.Text = "...";
+
             //Personen Daten
+            CmbAnrede.ResetText();
+            CmbTitel.ResetText();
             TxtVorname.Clear();
             TxtNachname.Clear();
             TxtAhvNum.Clear();
@@ -297,8 +312,11 @@ namespace ContactManager
             TxtTelGesch.Clear();
             TxtEmail.Clear();
 
-            LblId.Text = "...";
-            LblStatus.Text = "...";
+            //Mitarbeiter Daten
+            NumKaderstufe.ResetText();
+            NumArbeitspensum.ResetText();
+            TxtAbteilung.Clear();
+            DtpGeburtsdatum.ResetText();
         }
 
         private void ChangeTxtValuesAllow()
@@ -348,8 +366,10 @@ namespace ContactManager
                     try
                     {
                         Guid id = Guid.NewGuid();
+                        bool status = Status();
 
                         string anrede = CmbAnrede.Text;
+                        string title = CmbTitel.Text;
                         string vorname = TxtVorname.Text;
                         string nachname = TxtNachname.Text;
                         DateTime dob = DtpGeburtsdatum.Value;
@@ -364,14 +384,15 @@ namespace ContactManager
                         string strasse = TxtStrasse.Text;
                         string wohnort = TxtWohnort.Text;
                         int plz = Convert.ToInt16(TxtPostleitzahl.Text);
-                        string status = "Aktiv";
 
                         int ks = Convert.ToInt16(NumKaderstufe.Value);
                         string abt = TxtAbteilung.Text;
+                        string rolle = TxtRolle.Text;
                         int arbp = Convert.ToInt16(NumArbeitspensum.Value);
                         DateTime st = DtpStartdatum.Value;
+                        DateTime et = DtpEnddatum.Value;
 
-                        Mitarbeiter m = new Mitarbeiter(id, anrede, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, abt, arbp, st);
+                        Mitarbeiter m = new Mitarbeiter(id, status, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
 
 
                         xmlHandler.CreateMitarbeiterXML(m);
@@ -407,6 +428,18 @@ namespace ContactManager
 
         private void ChkStatus_CheckedChanged(object sender, EventArgs e)
         {
+            Status();
+        }
+
+        private void CmbReset_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+
+        private void FillCombobox()
+        {
+            CmbTitel.Items.AddRange(titel);
+            CmbAnrede.Items.AddRange(anrede);
         }
     }
 }
