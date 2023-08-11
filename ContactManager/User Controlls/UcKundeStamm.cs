@@ -40,6 +40,7 @@ namespace ContactManager
 
         string[] kundentyp = new string[] { "A", "B", "C", "D", "E" };
         string[] anrede = new string[] { "Herr", "Frau", "Divers" };
+        string[] geschlecht = new string[] { "Männlich", "Weiblich", "Divers" };
         string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
 
         private void CmdNotizErfassen_Click(object sender, EventArgs e)
@@ -198,6 +199,7 @@ namespace ContactManager
             CmbKundentyp.Items.AddRange(kundentyp);
             CmbAnrede.Items.AddRange(anrede);
             CmbTitel.Items.AddRange(titel);
+            CmbGeschlecht.Items.AddRange(geschlecht);
         }
 
         private void Kill_Click(object sender, EventArgs e)

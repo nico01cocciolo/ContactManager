@@ -25,6 +25,7 @@ namespace ContactManager
 
         string[] anrede = new string[] { "Herr", "Frau", "Divers" };
         string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
+        string[] geschlecht = new string[] { "Männlich", "Weiblich", "Divers" };
 
         private int index { get; set; }
 
