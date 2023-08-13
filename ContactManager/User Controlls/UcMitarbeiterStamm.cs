@@ -48,6 +48,8 @@ namespace ContactManager
 
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
+            Kill.Visible = false;
+            CmbReset.Visible = false;
             ChangeTxtValuesAllow();
             ClearAll();
             CmdMitarbeiterErstellen.Visible = false;
@@ -58,10 +60,12 @@ namespace ContactManager
 
         private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
         {
-
+            Kill.Visible = false;
+            CmbReset.Visible = false;
             ChangeTxtValuesAllow();
             CmdWerteSpeichern.Visible = true;
             CmdMitarbeiterBearbeiten.Visible = false;
+            CmdMitarbeiterErstellen.Visible = false;
             DtgData.Enabled = false;
 
         }
@@ -71,6 +75,8 @@ namespace ContactManager
             ChangeTxtValuesDeny();
             FillCombobox();
             LoadFile();
+            Kill.Visible = false;
+            CmbReset.Visible = false;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -79,6 +85,8 @@ namespace ContactManager
 
             CmdMitarbeiterBearbeiten.Visible = true;
             DtgData.CurrentRow.Selected = true;
+            Kill.Visible = true;
+            CmbReset.Visible = true;
 
             string id = IDGetter();
 
@@ -146,6 +154,8 @@ namespace ContactManager
             Mitarbeiter m = new Mitarbeiter(id, status, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end);
 
             CmdMitarbeiterBearbeiten.Visible = false;
+            Kill.Visible = true;
+            CmbReset.Visible = true;
             DataGridZeileBearbeiten();
             ChangeTxtValuesDeny();
 
@@ -193,7 +203,9 @@ namespace ContactManager
                 CmdMitarbeiterErstellen.Visible = true;
                 CmdMitarbeiterSpeichern.Visible = false;
                 CmdMitarbeiterBearbeiten.Visible = false;
+                Kill.Visible = true;
                 DtgData.Enabled = true;
+                CmbReset.Visible = true;
                 ChangeTxtValuesDeny();
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
 
@@ -215,7 +227,7 @@ namespace ContactManager
                 {
 
                     int n = DtgData.Rows.Add();
-                    DtgData.Rows[n].Cells[0].Value = item[19];
+                    DtgData.Rows[n].Cells[0].Value = item[21];
                     DtgData.Rows[n].Cells[1].Value = item[1];
                     DtgData.Rows[n].Cells[2].Value = item[4];
                     DtgData.Rows[n].Cells[3].Value = item[3];
@@ -320,40 +332,40 @@ namespace ContactManager
             DtpGeburtsdatum.ResetText();
         }
 
-        private void ChangeTxtValuesAllow()
-        {
-            CmbAnrede.Enabled = true;
-            TxtWohnort.ReadOnly = false;
-            TxtTelPriv.ReadOnly = false;
-            TxtTelMobil.ReadOnly = false;
-            TxtTelGesch.ReadOnly = false;
-            TxtEmail.ReadOnly = false;
-            LblId.Enabled = true;
-            LblStatus.Enabled = true;
-            TxtStrasse.ReadOnly = false;
-            TxtNachname.ReadOnly = false;
-            TxtVorname.ReadOnly = false;
-            TxtAhvNum.ReadOnly = false;
-            TxtAbteilung.ReadOnly = false;
-            TxtPostleitzahl.ReadOnly = false;
-        }
-
         private void ChangeTxtValuesDeny()
         {
             CmbAnrede.Enabled = false;
-            TxtWohnort.ReadOnly = true;
-            TxtTelPriv.ReadOnly = true;
-            TxtTelMobil.ReadOnly = true;
-            TxtTelGesch.ReadOnly = true;
-            TxtEmail.ReadOnly = true;
+            TxtWohnort.Enabled = false;
+            TxtTelPriv.Enabled = false;
+            TxtTelMobil.Enabled = false;
+            TxtTelGesch.Enabled = false;
+            TxtEmail.Enabled = false;
             LblId.Enabled = false;
             LblStatus.Enabled = false;
-            TxtStrasse.ReadOnly = true;
-            TxtNachname.ReadOnly = true;
-            TxtVorname.ReadOnly = true;
-            TxtAhvNum.ReadOnly = true;
-            TxtAbteilung.ReadOnly = true;
-            TxtPostleitzahl.ReadOnly = true;
+            TxtStrasse.Enabled = false;
+            TxtNachname.Enabled = false;
+            TxtVorname.Enabled = false;
+            TxtAhvNum.Enabled = false;
+            TxtAbteilung.Enabled = false;
+            TxtPostleitzahl.Enabled = false; 
+        }
+
+        private void ChangeTxtValuesAllow()
+        {
+            CmbAnrede.Enabled = true;
+            TxtWohnort.Enabled = true;
+            TxtTelPriv.Enabled = true;
+            TxtTelMobil.Enabled = true;
+            TxtTelGesch.Enabled = true;
+            TxtEmail.Enabled = true;
+            LblId.Enabled = true;
+            LblStatus.Enabled = false;
+            TxtStrasse.Enabled = true;
+            TxtNachname.Enabled = true;
+            TxtVorname.Enabled = true;
+            TxtAhvNum.Enabled = true;
+            TxtAbteilung.Enabled = true;
+            TxtPostleitzahl.Enabled = true;
         }
 
         public void BenutzererstellungFehler()
@@ -423,8 +435,13 @@ namespace ContactManager
         {
             string id = IDGetter();
 
-            xmlHandler.DeleteValuesMitarbeiter(id);
-            LoadFile();
+            DialogResult dialogResult = MessageBox.Show("Benutzer löschen?", "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                xmlHandler.DeleteValuesMitarbeiter(id);
+                DtgData.Rows.RemoveAt(DtgData.SelectedRows[0].Index);
+            }
         }
 
         private void ChkStatus_CheckedChanged(object sender, EventArgs e)
