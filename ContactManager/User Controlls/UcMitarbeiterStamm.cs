@@ -81,37 +81,37 @@ namespace ContactManager
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index = DtgData.CurrentRow.Index;
+            if (DtgData.SelectedCells.Count == 1)
+            {
+                index = DtgData.CurrentRow.Index;
 
-            CmdMitarbeiterBearbeiten.Visible = true;
-            DtgData.CurrentRow.Selected = true;
-            Kill.Visible = true;
-            CmbReset.Visible = true;
+                CmdMitarbeiterBearbeiten.Visible = true;
+                DtgData.CurrentRow.Selected = true;
+                Kill.Visible = true;
+                CmbReset.Visible = true;
 
-            string id = IDGetter();
+                string id = IDGetter();
 
-            Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
-            LblId.Text = Convert.ToString(m.Id);
-            CmbAnrede.Text = m.Anrede;
-            TxtVorname.Text = m.Vorname;
-            TxtNachname.Text = m.Nachname;
-            DtpGeburtsdatum.Value = m.Geburtsdatum;
-            TxtAhvNum.Text = m.AhvNumber;
-            CmbNationalitaet.Text = m.Nationalität;
-            TxtEmail.Text = m.Email;
-            TxtTelGesch.Text = m.TelefonArbeit;
-            TxtTelMobil.Text = m.TelefonMobil;
-            TxtTelPriv.Text = m.TelefonPrivat;
-            TxtStrasse.Text = m.Strasse;
-            TxtWohnort.Text = m.Wohnort;
-            TxtPostleitzahl.Text = Convert.ToString(m.Plz);
-            NumKaderstufe.Value = Convert.ToDecimal(m.KaderStufe);
-            TxtAbteilung.Text = m.Abteilung;
-            DtpStartdatum.Value = m.StartDate;
-            NumArbeitspensum.Value = Convert.ToDecimal(m.Arbeitspensum);
-
-
-
+                Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
+                LblId.Text = Convert.ToString(m.Id);
+                CmbAnrede.Text = m.Anrede;
+                TxtVorname.Text = m.Vorname;
+                TxtNachname.Text = m.Nachname;
+                DtpGeburtsdatum.Value = m.Geburtsdatum;
+                TxtAhvNum.Text = m.AhvNumber;
+                CmbNationalitaet.Text = m.Nationalität;
+                TxtEmail.Text = m.Email;
+                TxtTelGesch.Text = m.TelefonArbeit;
+                TxtTelMobil.Text = m.TelefonMobil;
+                TxtTelPriv.Text = m.TelefonPrivat;
+                TxtStrasse.Text = m.Strasse;
+                TxtWohnort.Text = m.Wohnort;
+                TxtPostleitzahl.Text = Convert.ToString(m.Plz);
+                NumKaderstufe.Value = Convert.ToDecimal(m.KaderStufe);
+                TxtAbteilung.Text = m.Abteilung;
+                DtpStartdatum.Value = m.StartDate;
+                NumArbeitspensum.Value = Convert.ToDecimal(m.Arbeitspensum);
+            }
         }
 
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
