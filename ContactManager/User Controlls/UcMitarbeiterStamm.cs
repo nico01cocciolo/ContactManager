@@ -50,6 +50,7 @@ namespace ContactManager
         {
             Kill.Visible = false;
             CmbReset.Visible = false;
+            CmdCancel.Visible = true;
             ChangeTxtValuesAllow();
             ClearAll();
             CmdMitarbeiterErstellen.Visible = false;
@@ -62,6 +63,7 @@ namespace ContactManager
         {
             Kill.Visible = false;
             CmbReset.Visible = false;
+            CmdCancel.Visible = true;
             ChangeTxtValuesAllow();
             CmdWerteSpeichern.Visible = true;
             CmdMitarbeiterBearbeiten.Visible = false;
@@ -156,6 +158,7 @@ namespace ContactManager
             CmdMitarbeiterBearbeiten.Visible = false;
             Kill.Visible = true;
             CmbReset.Visible = true;
+            CmdCancel.Visible = false;
             DataGridZeileBearbeiten();
             ChangeTxtValuesDeny();
 
@@ -206,6 +209,7 @@ namespace ContactManager
                 Kill.Visible = true;
                 DtgData.Enabled = true;
                 CmbReset.Visible = true;
+                CmdCancel.Visible = false;
                 ChangeTxtValuesDeny();
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
 
@@ -458,6 +462,16 @@ namespace ContactManager
         {
             CmbTitel.Items.AddRange(titel);
             CmbAnrede.Items.AddRange(anrede);
+        }
+
+        private void CmdCancel_Click(object sender, EventArgs e)
+        {
+            CmdMitarbeiterSpeichern.Visible = false;
+            CmdWerteSpeichern.Visible = false;
+            CmdCancel.Visible = false;
+            CmdMitarbeiterErstellen.Visible = true;
+            DtgData.Enabled = true;
+            ChangeTxtValuesDeny();
         }
     }
 }
