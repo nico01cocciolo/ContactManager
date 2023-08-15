@@ -175,7 +175,7 @@
   <data name="Kill.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADezSURBVHhe7d1n
+        EAAACxABrSO9dQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADezSURBVHhe7d1n
         uG1ldfZxOogoggKKlR47CmI0USkaWywgajRSxaiJFBuKUlRiQ1HEqJEiBiuKJb4oIJYYG9UuHEowihTF
         iiJNyHvPuLkysnMfOGfvNcec45n/+7p+X0Yie4y115j7Oauu8F//9V8AlpGygewmr5Wj5bPybfmZ3CTd
         /xP6dZWcJ1+UD8ibZR95gPudAfBsEcD/UDaTl8vX5UaJf4wwLhfL2+SRsrL7fQL4E1sEpk5ZSfaQH0r8
@@ -639,7 +639,7 @@
         ZXqenU4HPevd/DHhPTPCWnC10yAKSAZZm5eQ+pP9OgrcooASilooA//Z
 </value>
   </data>
-  <data name="CmdMitarbeiterSpeichern.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CmdMitarbeiterSpeichernErstellen.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAAAAAAAD/4QAuRXhpZgAATU0AKgAAAAgAAkAAAAMAAAABAAAAAEABAAEAAAAB
         AAAAAAAAAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQy
@@ -1074,7 +1074,7 @@
   <data name="CmdMitarbeiterBearbeiten.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABkAAAAZACAYAAAAhDI6nAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAkU5JREFUeF7s3a+TFdu29+nzV6FwOCQWiUTikEgkFofcEokuicFtjUXiO3rkuafe
+        wAAADsABataJCQAAkU5JREFUeF7s3a+TFdu29+nzV6FwOCQWiUTikEgkFofcEokuicFtjUXiO3rkuafe
         k6f2BGplrjV/jPE8EZ+4caM7uuN9KeaunF9yrX8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAQD5PoxfR6+ht9D76GH2KPkdforvo266v0d+7/337f779v7f113/6EL2Ltv/vvoyeRwAAAAAA

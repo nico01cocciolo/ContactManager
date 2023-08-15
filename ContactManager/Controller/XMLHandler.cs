@@ -335,12 +335,13 @@ namespace ContactManager.Controller
                     //Mitarbeiterspezifisch
                     new XElement("Kaderstufe", l.KaderStufe),
                     new XElement("Abteilung", l.KaderStufe),
-                    new XElement("Startdatum", l.StartDate),
+                    new XElement("Startdatum", l.StartDate.ToShortDateString()),
+                    new XElement("Enddatum", l.EndDate.ToShortDateString()),
                     new XElement("Arbeitspensum", l.Arbeitspensum),
                     
                     //Lehrlingspezifisch
                     new XElement("Lehrjahre", l.TraineeYears),
-                    new XElement("Aktuelles Lehrjahr", l.ActualTraineeYear))));
+                    new XElement("Aktuelles_Lehrjahr", l.ActualTraineeYear))));
 
                 xDoc.Save("Mitarbeiter.xml");
             }
@@ -362,6 +363,7 @@ namespace ContactManager.Controller
                     new XElement("Vorname", l.Vorname),
                     new XElement("Nachname", l.Nachname),
                     new XElement("Geburtsdatum", l.Geburtsdatum.ToShortDateString()),
+                    new XElement("Enddatum", l.EndDate.ToShortDateString()),
                     new XElement("Nationalität", l.Nationalität),
                     new XElement("AHV-Nummer", l.AhvNumber),
 
@@ -379,12 +381,12 @@ namespace ContactManager.Controller
                     //Mitarbeiterspezifisch
                     new XElement("Kaderstufe", l.KaderStufe),
                     new XElement("Abteilung", l.KaderStufe),
-                    new XElement("Startdatum", l.StartDate),
+                    new XElement("Startdatum", l.StartDate.ToShortDateString()),
                     new XElement("Arbeitspensum", l.Arbeitspensum),
 
                     //Lehrlingspezifisch
                     new XElement("Lehrjahre", l.TraineeYears),
-                    new XElement("Aktuelles Lehrjahr", l.ActualTraineeYear))));
+                    new XElement("Aktuelles_Lehrjahr", l.ActualTraineeYear))));
 
                 xEle.Save("Mitarbeiter.xml");
             }
