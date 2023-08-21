@@ -107,6 +107,7 @@
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -140,7 +141,7 @@
             this.Telefon_Arbeit});
             this.DtgData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DtgData.Location = new System.Drawing.Point(0, 0);
-            this.DtgData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtgData.Margin = new System.Windows.Forms.Padding(4);
             this.DtgData.Name = "DtgData";
             this.DtgData.RowHeadersWidth = 51;
             this.DtgData.Size = new System.Drawing.Size(1245, 424);
@@ -252,7 +253,7 @@
             this.panel5.Controls.Add(this.label29);
             this.panel5.Controls.Add(this.label30);
             this.panel5.Location = new System.Drawing.Point(832, 4);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(387, 187);
             this.panel5.TabIndex = 53;
@@ -261,7 +262,7 @@
             // 
             this.ChkLehrling.AutoSize = true;
             this.ChkLehrling.Location = new System.Drawing.Point(8, 33);
-            this.ChkLehrling.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChkLehrling.Margin = new System.Windows.Forms.Padding(4);
             this.ChkLehrling.Name = "ChkLehrling";
             this.ChkLehrling.Size = new System.Drawing.Size(76, 20);
             this.ChkLehrling.TabIndex = 21;
@@ -273,7 +274,7 @@
             this.textBox2.BackColor = System.Drawing.Color.LightGray;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Location = new System.Drawing.Point(209, 95);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(161, 22);
             this.textBox2.TabIndex = 20;
@@ -293,7 +294,7 @@
             this.textBox3.BackColor = System.Drawing.Color.LightGray;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox3.Location = new System.Drawing.Point(209, 63);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(161, 22);
             this.textBox3.TabIndex = 16;
@@ -330,7 +331,7 @@
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label24);
             this.panel3.Location = new System.Drawing.Point(4, 341);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(424, 142);
             this.panel3.TabIndex = 52;
@@ -342,7 +343,7 @@
             this.TxtPostleitzahl.Enabled = false;
             this.TxtPostleitzahl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.TxtPostleitzahl.Location = new System.Drawing.Point(204, 94);
-            this.TxtPostleitzahl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtPostleitzahl.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPostleitzahl.Name = "TxtPostleitzahl";
             this.TxtPostleitzahl.Size = new System.Drawing.Size(161, 22);
             this.TxtPostleitzahl.TabIndex = 22;
@@ -362,7 +363,7 @@
             this.TxtWohnort.BackColor = System.Drawing.Color.LightGray;
             this.TxtWohnort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtWohnort.Location = new System.Drawing.Point(204, 62);
-            this.TxtWohnort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtWohnort.Margin = new System.Windows.Forms.Padding(4);
             this.TxtWohnort.Name = "TxtWohnort";
             this.TxtWohnort.Size = new System.Drawing.Size(161, 22);
             this.TxtWohnort.TabIndex = 20;
@@ -382,7 +383,7 @@
             this.TxtStrasse.BackColor = System.Drawing.Color.LightGray;
             this.TxtStrasse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtStrasse.Location = new System.Drawing.Point(204, 30);
-            this.TxtStrasse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtStrasse.Margin = new System.Windows.Forms.Padding(4);
             this.TxtStrasse.Name = "TxtStrasse";
             this.TxtStrasse.Size = new System.Drawing.Size(161, 22);
             this.TxtStrasse.TabIndex = 16;
@@ -421,7 +422,7 @@
             this.panel4.Controls.Add(this.label25);
             this.panel4.Controls.Add(this.label26);
             this.panel4.Location = new System.Drawing.Point(436, 4);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(388, 187);
             this.panel4.TabIndex = 51;
@@ -431,7 +432,7 @@
             this.TxtTelGesch.BackColor = System.Drawing.Color.LightGray;
             this.TxtTelGesch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTelGesch.Location = new System.Drawing.Point(179, 124);
-            this.TxtTelGesch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtTelGesch.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelGesch.Name = "TxtTelGesch";
             this.TxtTelGesch.Size = new System.Drawing.Size(161, 22);
             this.TxtTelGesch.TabIndex = 22;
@@ -451,7 +452,7 @@
             this.TxtTelPriv.BackColor = System.Drawing.Color.LightGray;
             this.TxtTelPriv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTelPriv.Location = new System.Drawing.Point(179, 92);
-            this.TxtTelPriv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtTelPriv.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelPriv.Name = "TxtTelPriv";
             this.TxtTelPriv.Size = new System.Drawing.Size(161, 22);
             this.TxtTelPriv.TabIndex = 20;
@@ -471,7 +472,7 @@
             this.TxtTelMobil.BackColor = System.Drawing.Color.LightGray;
             this.TxtTelMobil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTelMobil.Location = new System.Drawing.Point(179, 60);
-            this.TxtTelMobil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtTelMobil.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelMobil.Name = "TxtTelMobil";
             this.TxtTelMobil.Size = new System.Drawing.Size(161, 22);
             this.TxtTelMobil.TabIndex = 18;
@@ -491,7 +492,7 @@
             this.TxtEmail.BackColor = System.Drawing.Color.LightGray;
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtEmail.Location = new System.Drawing.Point(179, 28);
-            this.TxtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(161, 22);
             this.TxtEmail.TabIndex = 16;
@@ -534,7 +535,7 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Location = new System.Drawing.Point(436, 198);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(388, 284);
             this.panel2.TabIndex = 50;
@@ -544,7 +545,7 @@
             this.TxtRolle.BackColor = System.Drawing.Color.LightGray;
             this.TxtRolle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtRolle.Location = new System.Drawing.Point(179, 95);
-            this.TxtRolle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtRolle.Margin = new System.Windows.Forms.Padding(4);
             this.TxtRolle.Name = "TxtRolle";
             this.TxtRolle.Size = new System.Drawing.Size(161, 22);
             this.TxtRolle.TabIndex = 36;
@@ -563,7 +564,7 @@
             // 
             this.DtpEnddatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpEnddatum.Location = new System.Drawing.Point(179, 191);
-            this.DtpEnddatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtpEnddatum.Margin = new System.Windows.Forms.Padding(4);
             this.DtpEnddatum.Name = "DtpEnddatum";
             this.DtpEnddatum.Size = new System.Drawing.Size(160, 22);
             this.DtpEnddatum.TabIndex = 34;
@@ -583,7 +584,7 @@
             // 
             this.NumKaderstufe.BackColor = System.Drawing.Color.LightGray;
             this.NumKaderstufe.Location = new System.Drawing.Point(180, 31);
-            this.NumKaderstufe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumKaderstufe.Margin = new System.Windows.Forms.Padding(4);
             this.NumKaderstufe.Maximum = new decimal(new int[] {
             5,
             0,
@@ -602,7 +603,7 @@
             0,
             0});
             this.NumArbeitspensum.Location = new System.Drawing.Point(179, 127);
-            this.NumArbeitspensum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumArbeitspensum.Margin = new System.Windows.Forms.Padding(4);
             this.NumArbeitspensum.Name = "NumArbeitspensum";
             this.NumArbeitspensum.Size = new System.Drawing.Size(160, 22);
             this.NumArbeitspensum.TabIndex = 31;
@@ -611,7 +612,7 @@
             // 
             this.DtpStartdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpStartdatum.Location = new System.Drawing.Point(179, 159);
-            this.DtpStartdatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtpStartdatum.Margin = new System.Windows.Forms.Padding(4);
             this.DtpStartdatum.Name = "DtpStartdatum";
             this.DtpStartdatum.Size = new System.Drawing.Size(160, 22);
             this.DtpStartdatum.TabIndex = 30;
@@ -641,7 +642,7 @@
             this.TxtAbteilung.BackColor = System.Drawing.Color.LightGray;
             this.TxtAbteilung.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtAbteilung.Location = new System.Drawing.Point(179, 63);
-            this.TxtAbteilung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtAbteilung.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAbteilung.Name = "TxtAbteilung";
             this.TxtAbteilung.Size = new System.Drawing.Size(161, 22);
             this.TxtAbteilung.TabIndex = 26;
@@ -701,7 +702,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 330);
             this.panel1.TabIndex = 49;
@@ -713,7 +714,7 @@
             this.ChkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChkStatus.Enabled = false;
             this.ChkStatus.Location = new System.Drawing.Point(204, 54);
-            this.ChkStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChkStatus.Margin = new System.Windows.Forms.Padding(4);
             this.ChkStatus.Name = "ChkStatus";
             this.ChkStatus.Size = new System.Drawing.Size(111, 20);
             this.ChkStatus.TabIndex = 48;
@@ -756,7 +757,7 @@
             this.TxtAhvNum.BackColor = System.Drawing.Color.LightGray;
             this.TxtAhvNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtAhvNum.Location = new System.Drawing.Point(204, 281);
-            this.TxtAhvNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtAhvNum.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAhvNum.Name = "TxtAhvNum";
             this.TxtAhvNum.Size = new System.Drawing.Size(161, 22);
             this.TxtAhvNum.TabIndex = 14;
@@ -766,7 +767,7 @@
             this.CmbNationalitaet.BackColor = System.Drawing.Color.LightGray;
             this.CmbNationalitaet.FormattingEnabled = true;
             this.CmbNationalitaet.Location = new System.Drawing.Point(204, 247);
-            this.CmbNationalitaet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbNationalitaet.Margin = new System.Windows.Forms.Padding(4);
             this.CmbNationalitaet.Name = "CmbNationalitaet";
             this.CmbNationalitaet.Size = new System.Drawing.Size(160, 24);
             this.CmbNationalitaet.TabIndex = 13;
@@ -807,7 +808,7 @@
             this.DtpGeburtsdatum.CalendarTitleBackColor = System.Drawing.Color.LightGray;
             this.DtpGeburtsdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpGeburtsdatum.Location = new System.Drawing.Point(204, 215);
-            this.DtpGeburtsdatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtpGeburtsdatum.Margin = new System.Windows.Forms.Padding(4);
             this.DtpGeburtsdatum.Name = "DtpGeburtsdatum";
             this.DtpGeburtsdatum.Size = new System.Drawing.Size(160, 22);
             this.DtpGeburtsdatum.TabIndex = 1;
@@ -837,7 +838,7 @@
             this.TxtNachname.BackColor = System.Drawing.Color.LightGray;
             this.TxtNachname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNachname.Location = new System.Drawing.Point(204, 183);
-            this.TxtNachname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNachname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNachname.Name = "TxtNachname";
             this.TxtNachname.Size = new System.Drawing.Size(161, 22);
             this.TxtNachname.TabIndex = 8;
@@ -857,7 +858,7 @@
             this.CmbTitel.BackColor = System.Drawing.Color.LightGray;
             this.CmbTitel.FormattingEnabled = true;
             this.CmbTitel.Location = new System.Drawing.Point(204, 118);
-            this.CmbTitel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbTitel.Margin = new System.Windows.Forms.Padding(4);
             this.CmbTitel.Name = "CmbTitel";
             this.CmbTitel.Size = new System.Drawing.Size(160, 24);
             this.CmbTitel.TabIndex = 6;
@@ -877,7 +878,7 @@
             this.CmbAnrede.BackColor = System.Drawing.Color.LightGray;
             this.CmbAnrede.FormattingEnabled = true;
             this.CmbAnrede.Location = new System.Drawing.Point(204, 85);
-            this.CmbAnrede.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbAnrede.Margin = new System.Windows.Forms.Padding(4);
             this.CmbAnrede.Name = "CmbAnrede";
             this.CmbAnrede.Size = new System.Drawing.Size(160, 24);
             this.CmbAnrede.TabIndex = 4;
@@ -887,7 +888,7 @@
             this.TxtVorname.BackColor = System.Drawing.Color.LightGray;
             this.TxtVorname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtVorname.Location = new System.Drawing.Point(204, 151);
-            this.TxtVorname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtVorname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtVorname.Name = "TxtVorname";
             this.TxtVorname.Size = new System.Drawing.Size(161, 22);
             this.TxtVorname.TabIndex = 3;
@@ -917,7 +918,7 @@
             // 
             this.CmbReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbReset.Location = new System.Drawing.Point(145, 4);
-            this.CmbReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbReset.Margin = new System.Windows.Forms.Padding(4);
             this.CmbReset.Name = "CmbReset";
             this.CmbReset.Size = new System.Drawing.Size(92, 52);
             this.CmbReset.TabIndex = 71;
@@ -932,7 +933,7 @@
             this.Kill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Kill.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Kill.Location = new System.Drawing.Point(1159, 4);
-            this.Kill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Kill.Margin = new System.Windows.Forms.Padding(4);
             this.Kill.Name = "Kill";
             this.Kill.Size = new System.Drawing.Size(60, 52);
             this.Kill.TabIndex = 70;
@@ -946,7 +947,7 @@
             this.CmdWerteSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdWerteSpeichern.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdWerteSpeichern.Location = new System.Drawing.Point(4, 4);
-            this.CmdWerteSpeichern.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdWerteSpeichern.Margin = new System.Windows.Forms.Padding(4);
             this.CmdWerteSpeichern.Name = "CmdWerteSpeichern";
             this.CmdWerteSpeichern.Size = new System.Drawing.Size(56, 52);
             this.CmdWerteSpeichern.TabIndex = 57;
@@ -961,7 +962,7 @@
             this.CmdMitarbeiterSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdMitarbeiterSpeichern.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdMitarbeiterSpeichern.Location = new System.Drawing.Point(4, 4);
-            this.CmdMitarbeiterSpeichern.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdMitarbeiterSpeichern.Margin = new System.Windows.Forms.Padding(4);
             this.CmdMitarbeiterSpeichern.Name = "CmdMitarbeiterSpeichern";
             this.CmdMitarbeiterSpeichern.Size = new System.Drawing.Size(56, 52);
             this.CmdMitarbeiterSpeichern.TabIndex = 56;
@@ -976,7 +977,7 @@
             this.CmdMitarbeiterErstellen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdMitarbeiterErstellen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdMitarbeiterErstellen.Location = new System.Drawing.Point(4, 4);
-            this.CmdMitarbeiterErstellen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdMitarbeiterErstellen.Margin = new System.Windows.Forms.Padding(4);
             this.CmdMitarbeiterErstellen.Name = "CmdMitarbeiterErstellen";
             this.CmdMitarbeiterErstellen.Size = new System.Drawing.Size(64, 52);
             this.CmdMitarbeiterErstellen.TabIndex = 48;
@@ -990,7 +991,7 @@
             this.CmdMitarbeiterBearbeiten.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdMitarbeiterBearbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdMitarbeiterBearbeiten.Location = new System.Drawing.Point(75, 4);
-            this.CmdMitarbeiterBearbeiten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdMitarbeiterBearbeiten.Margin = new System.Windows.Forms.Padding(4);
             this.CmdMitarbeiterBearbeiten.Name = "CmdMitarbeiterBearbeiten";
             this.CmdMitarbeiterBearbeiten.Size = new System.Drawing.Size(63, 52);
             this.CmdMitarbeiterBearbeiten.TabIndex = 47;
@@ -1010,11 +1011,26 @@
             this.CmdCancel.Visible = false;
             this.CmdCancel.Click += new System.EventHandler(this.CmdCancel_Click);
             // 
+            // button1
+            // 
+            this.button1.AccessibleDescription = "Benutzer löschen";
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1091, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(60, 52);
+            this.button1.TabIndex = 73;
+            this.button1.Tag = "";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.CmdCancel);
             this.Controls.Add(this.CmbReset);
             this.Controls.Add(this.splitContainer1);
@@ -1023,7 +1039,7 @@
             this.Controls.Add(this.CmdMitarbeiterSpeichern);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
             this.Controls.Add(this.CmdMitarbeiterBearbeiten);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UcMitarbeiterStamm";
             this.Size = new System.Drawing.Size(1235, 974);
             this.Load += new System.EventHandler(this.UcMitarbeiterStamm_Load);
@@ -1128,5 +1144,6 @@
         private System.Windows.Forms.CheckBox ChkLehrling;
         private System.Windows.Forms.Button CmbReset;
         private System.Windows.Forms.Button CmdCancel;
+        private System.Windows.Forms.Button button1;
     }
 }
