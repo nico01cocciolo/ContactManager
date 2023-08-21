@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,9 +55,10 @@ namespace ContactManager
             ChangeTxtValuesAllow();
             ClearAll();
             CmdMitarbeiterErstellen.Visible = false;
-            CmdMitarbeiterSpeichern.Visible = true;
+            CmdMitarbeiterSpeichernErstellen.Visible = true;
             CmdMitarbeiterBearbeiten.Visible = false;
             DtgData.Enabled = false;
+      
         }
 
         private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
@@ -168,8 +170,9 @@ namespace ContactManager
 
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
+
                 Guid id = Guid.NewGuid();
 
                 bool status = Status();
@@ -197,14 +200,28 @@ namespace ContactManager
                 DateTime st = DtpStartdatum.Value;
                 DateTime et = DtpEnddatum.Value;
 
-                Mitarbeiter m = new Mitarbeiter(id, status, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
 
 
-                xmlHandler.CreateMitarbeiterXML(m);
+
+                if (ChkLehrling.Checked == true)
+                {
+                    //Für Lehrlinge
+                    int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
+                    int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
+                    Lehrling l = new Lehrling(id, status, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
+                    xmlHandler.CreateLehrlingXML(l);
+                }
+                else if(ChkLehrling.Checked == false)
+                {
+                    Mitarbeiter m = new Mitarbeiter(id, status, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
+                    xmlHandler.CreateMitarbeiterXML(m);
+                }
+
+
                 LblId.Text = Convert.ToString(id);
                 DataGridNeueZeile();
                 CmdMitarbeiterErstellen.Visible = true;
-                CmdMitarbeiterSpeichern.Visible = false;
+                CmdMitarbeiterSpeichernErstellen.Visible = false;
                 CmdMitarbeiterBearbeiten.Visible = false;
                 Kill.Visible = true;
                 DtgData.Enabled = true;
@@ -213,11 +230,11 @@ namespace ContactManager
                 ChangeTxtValuesDeny();
                 MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
 
-            }
-            catch
-            {
-                MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         public void LoadFile()
@@ -338,6 +355,7 @@ namespace ContactManager
 
         private void ChangeTxtValuesDeny()
         {
+            ChkLehrling.Enabled = false;
             CmbAnrede.Enabled = false;
             TxtWohnort.Enabled = false;
             TxtTelPriv.Enabled = false;
@@ -356,6 +374,7 @@ namespace ContactManager
 
         private void ChangeTxtValuesAllow()
         {
+            ChkLehrling.Enabled = true;
             CmbAnrede.Enabled = true;
             TxtWohnort.Enabled = true;
             TxtTelPriv.Enabled = true;
@@ -416,7 +435,7 @@ namespace ContactManager
                         LblId.Text = Convert.ToString(id);
                         DataGridNeueZeile();
                         CmdMitarbeiterErstellen.Visible = true;
-                        CmdMitarbeiterSpeichern.Visible = false;
+                        CmdMitarbeiterSpeichernErstellen.Visible = false;
                         DtgData.Enabled = true;
                         MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
 
@@ -466,12 +485,26 @@ namespace ContactManager
 
         private void CmdCancel_Click(object sender, EventArgs e)
         {
-            CmdMitarbeiterSpeichern.Visible = false;
+            CmdMitarbeiterSpeichernErstellen.Visible = false;
             CmdWerteSpeichern.Visible = false;
             CmdCancel.Visible = false;
             CmdMitarbeiterErstellen.Visible = true;
             DtgData.Enabled = true;
             ChangeTxtValuesDeny();
+        }
+
+        private void ChkLehrling_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ChkLehrling.Checked)
+            {
+                NumLehrjahr.Enabled = true;
+                NumAktLehrjahr.Enabled = true;
+            }
+            else 
+            {
+                NumAktLehrjahr.Enabled = false;
+                NumLehrjahr.Enabled = false;
+            }
         }
     }
 }
