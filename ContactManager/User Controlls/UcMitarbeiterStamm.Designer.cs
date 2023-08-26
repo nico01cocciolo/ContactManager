@@ -41,6 +41,8 @@
             this.Telefon_Arbeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.NumAktLehrjahr = new System.Windows.Forms.NumericUpDown();
+            this.NumLehrjahr = new System.Windows.Forms.NumericUpDown();
             this.ChkLehrling = new System.Windows.Forms.CheckBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -105,22 +107,21 @@
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
-            this.NumLehrjahr = new System.Windows.Forms.NumericUpDown();
-            this.NumAktLehrjahr = new System.Windows.Forms.NumericUpDown();
+            this.Lehrling = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumAktLehrjahr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumLehrjahr)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumKaderstufe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumLehrjahr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumAktLehrjahr)).BeginInit();
             this.SuspendLayout();
             // 
             // DtgData
@@ -139,7 +140,8 @@
             this.EMail,
             this.Telefon_Mobil,
             this.Telefon_Privat,
-            this.Telefon_Arbeit});
+            this.Telefon_Arbeit,
+            this.Lehrling});
             this.DtgData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DtgData.Location = new System.Drawing.Point(0, 0);
             this.DtgData.Name = "DtgData";
@@ -222,7 +224,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Location = new System.Drawing.Point(0, 47);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -256,6 +258,52 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(290, 152);
             this.panel5.TabIndex = 53;
+            // 
+            // NumAktLehrjahr
+            // 
+            this.NumAktLehrjahr.Enabled = false;
+            this.NumAktLehrjahr.Location = new System.Drawing.Point(157, 77);
+            this.NumAktLehrjahr.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.NumAktLehrjahr.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NumAktLehrjahr.Name = "NumAktLehrjahr";
+            this.NumAktLehrjahr.Size = new System.Drawing.Size(120, 20);
+            this.NumAktLehrjahr.TabIndex = 23;
+            this.NumAktLehrjahr.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // NumLehrjahr
+            // 
+            this.NumLehrjahr.Enabled = false;
+            this.NumLehrjahr.Location = new System.Drawing.Point(157, 51);
+            this.NumLehrjahr.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.NumLehrjahr.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NumLehrjahr.Name = "NumLehrjahr";
+            this.NumLehrjahr.Size = new System.Drawing.Size(120, 20);
+            this.NumLehrjahr.TabIndex = 22;
+            this.NumLehrjahr.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // ChkLehrling
             // 
@@ -921,7 +969,7 @@
             this.CmdCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdCancel.BackgroundImage")));
             this.CmdCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdCancel.Location = new System.Drawing.Point(50, 3);
-            this.CmdCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CmdCancel.Margin = new System.Windows.Forms.Padding(2);
             this.CmdCancel.Name = "CmdCancel";
             this.CmdCancel.Size = new System.Drawing.Size(40, 42);
             this.CmdCancel.TabIndex = 72;
@@ -929,21 +977,10 @@
             this.CmdCancel.Visible = false;
             this.CmdCancel.Click += new System.EventHandler(this.CmdCancel_Click);
             // 
-            // NumLehrjahr
+            // Lehrling
             // 
-            this.NumLehrjahr.Enabled = false;
-            this.NumLehrjahr.Location = new System.Drawing.Point(157, 51);
-            this.NumLehrjahr.Name = "NumLehrjahr";
-            this.NumLehrjahr.Size = new System.Drawing.Size(120, 20);
-            this.NumLehrjahr.TabIndex = 22;
-            // 
-            // NumAktLehrjahr
-            // 
-            this.NumAktLehrjahr.Enabled = false;
-            this.NumAktLehrjahr.Location = new System.Drawing.Point(157, 77);
-            this.NumAktLehrjahr.Name = "NumAktLehrjahr";
-            this.NumAktLehrjahr.Size = new System.Drawing.Size(120, 20);
-            this.NumAktLehrjahr.TabIndex = 23;
+            this.Lehrling.HeaderText = "Lehrling";
+            this.Lehrling.Name = "Lehrling";
             // 
             // UcMitarbeiterStamm
             // 
@@ -968,6 +1005,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumAktLehrjahr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumLehrjahr)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -978,8 +1017,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumLehrjahr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumAktLehrjahr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1064,5 +1101,6 @@
         private System.Windows.Forms.Button CmdCancel;
         private System.Windows.Forms.NumericUpDown NumAktLehrjahr;
         private System.Windows.Forms.NumericUpDown NumLehrjahr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lehrling;
     }
 }

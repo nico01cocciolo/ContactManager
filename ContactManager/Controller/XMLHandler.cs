@@ -224,6 +224,7 @@ namespace ContactManager.Controller
                     //Wichtig
                     new XAttribute("ID", m.Id),
                     new XAttribute("Status", m.isActive),
+                    new XAttribute("Lehrling", m.isTrainee),
 
                     //Person
                     new XElement("Geschlecht", "A"),
@@ -265,6 +266,7 @@ namespace ContactManager.Controller
                     //Wichtig
                     new XAttribute("ID", m.Id),
                     new XAttribute("Status", m.isActive),
+                    new XAttribute("Lehrling", m.isTrainee),
 
                     //Person
                     new XElement("Geschlecht", "A"),
@@ -309,7 +311,8 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", l.Id),
-                    new XAttribute("Status", "A"),
+                    new XAttribute("Status", l.isActive),
+                    new XAttribute("Lehrling", l.isTrainee),
 
                     //Person
                     new XElement("Geschlecht", "A"),
@@ -334,7 +337,8 @@ namespace ContactManager.Controller
 
                     //Mitarbeiterspezifisch
                     new XElement("Kaderstufe", l.KaderStufe),
-                    new XElement("Abteilung", l.KaderStufe),
+                    new XElement("Abteilung", l.Abteilung),
+                    new XElement("Rolle", l.Rolle),
                     new XElement("Startdatum", l.StartDate.ToShortDateString()),
                     new XElement("Enddatum", l.EndDate.ToShortDateString()),
                     new XElement("Arbeitspensum", l.Arbeitspensum),
@@ -354,7 +358,8 @@ namespace ContactManager.Controller
 
                     //Wichtig
                     new XAttribute("ID", l.Id),
-                    new XAttribute("Status", "A"),
+                    new XAttribute("Status", l.isActive),
+                    new XAttribute("Lehrling", l.isTrainee),
 
                     //Person
                     new XElement("Geschlecht", "A"),
@@ -380,7 +385,8 @@ namespace ContactManager.Controller
 
                     //Mitarbeiterspezifisch
                     new XElement("Kaderstufe", l.KaderStufe),
-                    new XElement("Abteilung", l.KaderStufe),
+                    new XElement("Abteilung", l.Abteilung),
+                    new XElement("Rolle", l.Rolle),
                     new XElement("Startdatum", l.StartDate.ToShortDateString()),
                     new XElement("Arbeitspensum", l.Arbeitspensum),
 
@@ -578,7 +584,8 @@ namespace ContactManager.Controller
             //Wichtig
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
-                .SetAttributeValue("Status", "A");
+                .SetAttributeValue("Status", l.isActive);
+
 
             //Person
             xdoc.Elements("Mitarbeiter")
@@ -654,7 +661,7 @@ namespace ContactManager.Controller
 
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
-                .SetElementValue("Aktuelles Lehrjahr", l.ActualTraineeYear);
+                .SetElementValue("Aktuelles_Lehrjahr", l.ActualTraineeYear);
 
             xdoc.Save("Mitarbeiter.xml");
         }
@@ -670,6 +677,10 @@ namespace ContactManager.Controller
             bool status = Convert.ToBoolean(xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
                                     .FirstOrDefault().Attribute("Status").Value);
+
+            bool isTrainee = Convert.ToBoolean(xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Attribute("Lehrling").Value);
 
             string anrede =     xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
@@ -751,9 +762,9 @@ namespace ContactManager.Controller
                                             .Where(x => x.Attribute("ID").Value == id)
                                             .FirstOrDefault().Element("Arbeitspensum").Value);
 
-            Mitarbeiter m = new Mitarbeiter(ide, status, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end);
-
+            Mitarbeiter m = new Mitarbeiter(ide, status, isTrainee, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end);
             return m;
+
         }
         public Kunde RetriveValuesKunde(string id)
         {
@@ -842,11 +853,109 @@ namespace ContactManager.Controller
             return k;
 
         }
+        public Lehrling RetriveValueLehrling(string id)
+        {
+            XElement xdoc = XElement.Load("Mitarbeiter.xml");
 
-        //public Lehrling RetriveValuesLehrling(string id)
-        //{ 
+            Guid ide = Guid.Parse(id);
 
-        //}
+            bool status = Convert.ToBoolean(xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Attribute("Status").Value);
+
+            bool istrainee = Convert.ToBoolean(xdoc.Elements("Mitarbeiter")
+                        .Where(x => x.Attribute("ID").Value == id)
+                        .FirstOrDefault().Attribute("Lehrling").Value);
+
+            string anrede = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Anrede").Value;
+
+            string title = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Titel").Value;
+
+            string vorname = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Vorname").Value;
+
+            string nachname = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Nachname").Value;
+
+            DateTime geburtsdatum = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                           .Where(x => x.Attribute("ID").Value == id)
+                                           .FirstOrDefault().Element("Geburtsdatum").Value);
+
+            string ahv = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("AHV-Nummer").Value;
+
+            string nationalitaet = xdoc.Elements("Mitarbeiter")
+                                        .Where(x => x.Attribute("ID").Value == id)
+                                        .FirstOrDefault().Element("Nationalität").Value;
+
+            string email = xdoc.Elements("Mitarbeiter")
+                               .Where(x => x.Attribute("ID").Value == id)
+                               .FirstOrDefault().Element("E-Mail").Value;
+
+            string arbeit = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Telefon_Arbeit").Value;
+
+            string mobil = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Telefon_Mobil").Value;
+
+            string privat = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Telefon_Privat").Value;
+
+            string strasse = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Strasse").Value;
+
+            string wohnort = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Wohnort").Value;
+
+            int plz = Convert.ToInt16(xdoc.Elements("Mitarbeiter")
+                                        .Where(x => x.Attribute("ID").Value == id)
+                                        .FirstOrDefault().Element("Postleitzahl").Value);
+
+            int kaderstufe = Convert.ToInt16(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Kaderstufe").Value);
+
+            string abteilung = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Abteilung").Value;
+
+            string rolle = xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Rolle").Value;
+
+            DateTime start = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Startdatum").Value);
+
+            DateTime end = Convert.ToDateTime(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Enddatum").Value);
+
+            int arbeitspensum = Convert.ToInt16(xdoc.Elements("Mitarbeiter")
+                                            .Where(x => x.Attribute("ID").Value == id)
+                                            .FirstOrDefault().Element("Arbeitspensum").Value);
+
+            int lehrjahre = Convert.ToInt16(xdoc.Elements("Mitarbeiter").Where(x => x.Attribute("ID").Value == id).FirstOrDefault().Element("Lehrjahre").Value);
+
+            int aktlehrjahr = Convert.ToInt16(xdoc.Elements("Mitarbeiter").Where(x => x.Attribute("ID").Value == id).FirstOrDefault().Element("Aktuelles_Lehrjahr").Value);
+
+
+            Lehrling l = new Lehrling(ide, status, istrainee, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end, lehrjahre, aktlehrjahr);
+
+            return l;
+        }
         #endregion
 
         #region Delete
