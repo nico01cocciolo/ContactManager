@@ -297,7 +297,7 @@ namespace ContactManager
                 {
 
                     int n = DtgData.Rows.Add();
-                    DtgData.Rows[n].Cells[0].Value = item[23];
+                    DtgData.Rows[n].Cells[0].Value = item[21];
                     DtgData.Rows[n].Cells[1].Value = item[1];
                     DtgData.Rows[n].Cells[2].Value = item[4];
                     DtgData.Rows[n].Cells[3].Value = item[3];
@@ -306,7 +306,7 @@ namespace ContactManager
                     DtgData.Rows[n].Cells[6].Value = item[9];
                     DtgData.Rows[n].Cells[7].Value = item[10];
                     DtgData.Rows[n].Cells[8].Value = item[11];
-                    DtgData.Rows[n].Cells[9].Value = item[25];
+                    DtgData.Rows[n].Cells[9].Value = item[23];
                 }
 
             }
