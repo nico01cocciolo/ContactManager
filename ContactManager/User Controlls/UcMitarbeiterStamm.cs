@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace ContactManager
@@ -290,24 +291,18 @@ namespace ContactManager
         {
             if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
-                DataSet dataSet = new DataSet();
-                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+                XDocument xmlDoc = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
-                foreach (DataRow item in dataSet.Tables["Mitarbeiter"].Rows)
-                {
+                var filteredMitarbeiter = from person in xmlDoc.Descendants("Mitarbeiter")
+                                          select new
+                                          {
+                                              ID = person.Attribute("ID").Value,
+                                              Vorname = person.Element("Vorname").Value,
+                                              Nachname = person.Element("Nachname").Value
+                                          };
 
-                    int n = DtgData.Rows.Add();
-                    DtgData.Rows[n].Cells[0].Value = item[21];
-                    DtgData.Rows[n].Cells[1].Value = item[1];
-                    DtgData.Rows[n].Cells[2].Value = item[4];
-                    DtgData.Rows[n].Cells[3].Value = item[3];
-                    DtgData.Rows[n].Cells[4].Value = item[5];
-                    DtgData.Rows[n].Cells[5].Value = item[8];
-                    DtgData.Rows[n].Cells[6].Value = item[9];
-                    DtgData.Rows[n].Cells[7].Value = item[10];
-                    DtgData.Rows[n].Cells[8].Value = item[11];
-                    DtgData.Rows[n].Cells[9].Value = item[23];
-                }
+
+                DtgData.DataSource = filteredMitarbeiter.ToList();
 
             }
             else
@@ -364,6 +359,7 @@ namespace ContactManager
         {
             {
                 bool lehrling = false;
+
 
                 if (DtgData.SelectedCells.Count > 0)
                 {
@@ -448,6 +444,7 @@ namespace ContactManager
 
         private void ChangeTxtValuesAllow()
         {
+            ChkStatus.Enabled = true;
             ChkLehrling.Enabled = true;
             CmbAnrede.Enabled = true;
             TxtWohnort.Enabled = true;
@@ -581,5 +578,29 @@ namespace ContactManager
                 NumLehrjahr.Enabled = false;
             }
         }
+
+        public bool filterStatus { get; set; }
+
+        public void ApplyXmlFilter()
+        {
+            XDocument xmlDoc = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+
+            var filteredMitarbeiter = from person in xmlDoc.Descendants("Mitarbeiter")
+                                      where (bool)person.Attribute("Status") == filterStatus
+                                      select new
+                                      {
+                                          Vorname = person.Element("Vorname").Value,
+                                          Nachname = person.Element("Nachname").Value
+                                      };
+
+            DtgData.DataSource = filteredMitarbeiter.ToList();
+        }
+
+        private void CmdSuchfilter_Click_1(object sender, EventArgs e)
+        {
+            FilterDashboard filterDashboard = new FilterDashboard();
+            filterDashboard.ShowDialog();
+        }
+
     }
 }

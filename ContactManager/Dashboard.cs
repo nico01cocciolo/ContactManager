@@ -39,7 +39,9 @@ namespace ContactManager
             //dataSet.ReadXml(@"H:\ZBW-Studium\PF2\Git\ContactManager\ContactManager\bin\Debug\Kunde1.xml");
             //dataGridView1.DataSource = dataSet.Tables[0];
 
-            UcMitarbeiterStamm uc = new UcMitarbeiterStamm();
+            //UcMitarbeiterStamm uc = new UcMitarbeiterStamm();
+
+            
 
             if (!PnlUCHandler.Controls.Contains(UcMitarbeiterStamm.Instance))
             {
@@ -52,7 +54,7 @@ namespace ContactManager
                 UcMitarbeiterStamm.Instance.BringToFront();
             }
 
-            uc.BenutzererstellungFehler();
+            UcMitarbeiterStamm.Instance.BenutzererstellungFehler();
         }
 
         private void CmdStammKunden_Click(object sender, EventArgs e)
