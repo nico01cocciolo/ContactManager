@@ -297,8 +297,10 @@ namespace ContactManager
                                           select new
                                           {
                                               ID = person.Attribute("ID").Value,
+                                              Anrede = person.Element("Anrede").Value,
+                                              Nachname = person.Element("Nachname").Value,
                                               Vorname = person.Element("Vorname").Value,
-                                              Nachname = person.Element("Nachname").Value
+                                              Lehrling = person.Attribute("Lehrling").Value
                                           };
 
 
@@ -319,12 +321,6 @@ namespace ContactManager
             DtgData.Rows[n].Cells[1].Value = CmbAnrede.Text;
             DtgData.Rows[n].Cells[2].Value = TxtNachname.Text;
             DtgData.Rows[n].Cells[3].Value = TxtVorname.Text;
-            DtgData.Rows[n].Cells[4].Value = DtpGeburtsdatum.Text;
-            DtgData.Rows[n].Cells[5].Value = TxtEmail.Text;
-            DtgData.Rows[n].Cells[6].Value = TxtTelMobil.Text;
-            DtgData.Rows[n].Cells[7].Value = TxtTelPriv.Text;
-            DtgData.Rows[n].Cells[8].Value = TxtTelGesch.Text;
-            DtgData.Rows[n].Cells[9].Value = ChkLehrling.Checked;
         }
 
         public void DataGridZeileBearbeiten()
@@ -333,12 +329,6 @@ namespace ContactManager
             DtgData.SelectedRows[0].Cells[1].Value = CmbAnrede.Text;
             DtgData.SelectedRows[0].Cells[2].Value = TxtNachname.Text;
             DtgData.SelectedRows[0].Cells[3].Value = TxtVorname.Text;
-            DtgData.SelectedRows[0].Cells[4].Value = DtpGeburtsdatum.Text;
-            DtgData.SelectedRows[0].Cells[5].Value = TxtEmail.Text;
-            DtgData.SelectedRows[0].Cells[6].Value = TxtTelMobil.Text;
-            DtgData.SelectedRows[0].Cells[7].Value = TxtTelPriv.Text;
-            DtgData.SelectedRows[0].Cells[8].Value = TxtTelGesch.Text;
-            DtgData.SelectedRows[0].Cells[9].Value = ChkLehrling.Checked;
         }
 
         public string IDGetter()
@@ -589,8 +579,11 @@ namespace ContactManager
                                       where (bool)person.Attribute("Status") == filterStatus
                                       select new
                                       {
+                                          ID = person.Attribute("ID").Value,
+                                          Anrede = person.Element("Anrede").Value,
+                                          Nachname = person.Element("Nachname").Value,
                                           Vorname = person.Element("Vorname").Value,
-                                          Nachname = person.Element("Nachname").Value
+                                          Lehrling = person.Attribute("Lehrling").Value
                                       };
 
             DtgData.DataSource = filteredMitarbeiter.ToList();
@@ -601,6 +594,5 @@ namespace ContactManager
             FilterDashboard filterDashboard = new FilterDashboard();
             filterDashboard.ShowDialog();
         }
-
     }
 }

@@ -99,7 +99,6 @@
             this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
             this.CmdSuchfilter = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -964,21 +963,11 @@
             this.CmdSuchfilter.UseVisualStyleBackColor = true;
             this.CmdSuchfilter.Click += new System.EventHandler(this.CmdSuchfilter_Click_1);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(493, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 74;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.CmdSuchfilter);
             this.Controls.Add(this.CmdCancel);
             this.Controls.Add(this.CmbReset);
@@ -1086,7 +1075,6 @@
         private System.Windows.Forms.NumericUpDown NumAktLehrjahr;
         private System.Windows.Forms.NumericUpDown NumLehrjahr;
         private System.Windows.Forms.Button CmdSuchfilter;
-        private System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox TxtEmail;
     }
 }

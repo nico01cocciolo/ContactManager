@@ -61,8 +61,10 @@
             this.ClientSize = new System.Drawing.Size(354, 596);
             this.Controls.Add(this.CmdFilterSuchen);
             this.Controls.Add(this.CkStatus);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FilterDashboard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FilterDashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
