@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,16 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.XPath;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ContactManager
 {
     public partial class UcMitarbeiterStamm : UserControl
     {
+        private XDocument mitarbeiter = new XDocument();
+        private string URL_XML_FILE = "Directory.GetCurrentDirectory() + \"/Mitarbeiter.xml\"";
+
         public UcMitarbeiterStamm()
         {
             InitializeComponent();
@@ -53,109 +59,24 @@ namespace ContactManager
             Kill.Visible = false;
             CmbReset.Visible = false;
             CmdCancel.Visible = true;
-            ChangeTxtValuesAllow();
-            ClearAll();
             CmdMitarbeiterErstellen.Visible = false;
             CmdMitarbeiterSpeichernErstellen.Visible = true;
-            CmdMitarbeiterBearbeiten.Visible = false;
-            DtgData.Enabled = false;
-
-        }
-
-        private void CmdMitarbeiterBearbeiten_Click(object sender, EventArgs e)
-        {
-            Kill.Visible = false;
-            CmbReset.Visible = false;
-            CmdCancel.Visible = true;
-            ChangeTxtValuesAllow();
-            CmdWerteSpeichern.Visible = true;
-            CmdMitarbeiterBearbeiten.Visible = false;
-            CmdMitarbeiterErstellen.Visible = false;
             DtgData.Enabled = false;
 
         }
 
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
         {
-            ChangeTxtValuesDeny();
             FillCombobox();
             LoadFile();
             Kill.Visible = false;
             CmbReset.Visible = false;
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (DtgData.SelectedCells.Count > 0)
-            {
-                index = DtgData.CurrentRow.Index;
-
-                CmdMitarbeiterBearbeiten.Visible = true;
-                DtgData.CurrentRow.Selected = true;
-                Kill.Visible = true;
-                CmbReset.Visible = true;
-
-                string id = IDGetter();
-                bool istrainee = TraineChecker();
-
-                if (istrainee == false)
-                {
-                    Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
-                    LblId.Text = Convert.ToString(m.Id);
-                    CmbAnrede.Text = m.Anrede;
-                    TxtVorname.Text = m.Vorname;
-                    TxtNachname.Text = m.Nachname;
-                    DtpGeburtsdatum.Value = m.Geburtsdatum;
-                    TxtAhvNum.Text = m.AhvNumber;
-                    CmbNationalitaet.Text = m.Nationalität;
-                    TxtEmail.Text = m.Email;
-                    TxtTelGesch.Text = m.TelefonArbeit;
-                    TxtTelMobil.Text = m.TelefonMobil;
-                    TxtTelPriv.Text = m.TelefonPrivat;
-                    TxtStrasse.Text = m.Strasse;
-                    TxtWohnort.Text = m.Wohnort;
-                    TxtPostleitzahl.Text = Convert.ToString(m.Plz);
-                    NumKaderstufe.Value = Convert.ToDecimal(m.KaderStufe);
-                    TxtAbteilung.Text = m.Abteilung;
-                    DtpStartdatum.Value = m.StartDate;
-                    NumArbeitspensum.Value = Convert.ToDecimal(m.Arbeitspensum);
-                    ChkLehrling.Checked = false;
-                }
-
-                else if (istrainee == true)
-                {
-                    Lehrling l = xmlHandler.RetriveValueLehrling(id);
-                    LblId.Text = Convert.ToString(l.Id);
-                    CmbAnrede.Text = l.Anrede;
-                    TxtVorname.Text = l.Vorname;
-                    TxtNachname.Text = l.Nachname;
-                    DtpGeburtsdatum.Value = l.Geburtsdatum;
-                    TxtAhvNum.Text = l.AhvNumber;
-                    CmbNationalitaet.Text = l.Nationalität;
-                    TxtEmail.Text = l.Email;
-                    TxtTelGesch.Text = l.TelefonArbeit;
-                    TxtTelMobil.Text = l.TelefonMobil;
-                    TxtTelPriv.Text = l.TelefonPrivat;
-                    TxtStrasse.Text = l.Strasse;
-                    TxtWohnort.Text = l.Wohnort;
-                    TxtPostleitzahl.Text = Convert.ToString(l.Plz);
-                    NumKaderstufe.Value = Convert.ToDecimal(l.KaderStufe);
-                    TxtAbteilung.Text = l.Abteilung;
-                    DtpStartdatum.Value = l.StartDate;
-                    NumArbeitspensum.Value = Convert.ToDecimal(l.Arbeitspensum);
-                    NumLehrjahr.Value = Convert.ToDecimal(l.TraineeYears);
-                    NumAktLehrjahr.Value = Convert.ToDecimal(l.ActualTraineeYear);
-                    ChkLehrling.Checked = true;
-                }
-            }
-        }
-
-
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
 
             CmdWerteSpeichern.Visible = false;
-            CmdMitarbeiterBearbeiten.Visible = true;
             DtgData.Enabled = true;
 
             string eid = IDGetter();
@@ -191,13 +112,9 @@ namespace ContactManager
 
 
             Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end);
-
-            CmdMitarbeiterBearbeiten.Visible = false;
-            Kill.Visible = true;
-            CmbReset.Visible = true;
+            CmdMitarbeiterErstellen.Visible = true;
             CmdCancel.Visible = false;
             DataGridZeileBearbeiten();
-            ChangeTxtValuesDeny();
 
 
             if (ChkLehrling.Checked == true)
@@ -212,14 +129,13 @@ namespace ContactManager
                 xmlHandler.ChangeValuesMitarbeiterXML(m);
             }
 
+            LoadFile();
+
 
         }
 
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-
             Guid id = Guid.NewGuid();
 
             bool status = Status();
@@ -272,12 +188,11 @@ namespace ContactManager
             DataGridNeueZeile();
             CmdMitarbeiterErstellen.Visible = true;
             CmdMitarbeiterSpeichernErstellen.Visible = false;
-            CmdMitarbeiterBearbeiten.Visible = false;
             Kill.Visible = true;
             DtgData.Enabled = true;
             CmbReset.Visible = true;
             CmdCancel.Visible = false;
-            ChangeTxtValuesDeny();
+
             MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
 
             //}
@@ -291,21 +206,38 @@ namespace ContactManager
         {
             if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
-                XDocument xmlDoc = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+                mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
-                var filteredMitarbeiter = from person in xmlDoc.Descendants("Mitarbeiter")
-                                          select new
-                                          {
-                                              ID = person.Attribute("ID").Value,
-                                              Anrede = person.Element("Anrede").Value,
-                                              Nachname = person.Element("Nachname").Value,
-                                              Vorname = person.Element("Vorname").Value,
-                                              Lehrling = person.Attribute("Lehrling").Value
-                                          };
+                var data = mitarbeiter.Descendants("Mitarbeiter").Select(m => new
+                {
+                    Id = m.Attribute("ID").Value,
+                    Anrede = m.Element("Anrede").Value,
+                    Vorname = m.Element("Vorname").Value,
+                    Nachname = m.Element("Nachname").Value,
+                    Postleitzahl = m.Element("Postleitzahl").Value,
+                    Status = m.Attribute("Status").Value,
+                    Lehrling = m.Attribute("Lehrling").Value
+                }).OrderBy(m => m.Id).ToList();
+
+                LblId.DataBindings.Clear();
+                CmbAnrede.DataBindings.Clear();
+                TxtVorname.DataBindings.Clear();
+                TxtNachname.DataBindings.Clear();
+                TxtPostleitzahl.DataBindings.Clear();
+                ChkStatus.DataBindings.Clear();
+                ChkLehrling.DataBindings.Clear();
+
+                LblId.DataBindings.Add("text", data, "ID");
+                CmbAnrede.DataBindings.Add("text", data, "Anrede");
+                TxtVorname.DataBindings.Add("text", data, "Vorname");
+                TxtNachname.DataBindings.Add("text", data, "Nachname");
+                TxtPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
+                ChkStatus.DataBindings.Add("Checked", data, "Status");
+                ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
 
 
-                DtgData.DataSource = filteredMitarbeiter.ToList();
-
+                DtgData.DataSource = data;
+                
             }
             else
             {
@@ -316,11 +248,7 @@ namespace ContactManager
 
         public void DataGridNeueZeile()
         {
-            int n = DtgData.Rows.Add();
-            DtgData.Rows[n].Cells[0].Value = LblId.Text;
-            DtgData.Rows[n].Cells[1].Value = CmbAnrede.Text;
-            DtgData.Rows[n].Cells[2].Value = TxtNachname.Text;
-            DtgData.Rows[n].Cells[3].Value = TxtVorname.Text;
+            LoadFile();
         }
 
         public void DataGridZeileBearbeiten()
@@ -374,82 +302,6 @@ namespace ContactManager
                 ChkStatus.Text = "Deaktivieren";
                 return true;
             }
-        }
-
-        private void ClearAll()
-        {
-            //Parameters
-            LblId.Text = "...";
-            LblStatus.Text = "...";
-
-            //Personen Daten
-            CmbAnrede.ResetText();
-            CmbTitel.ResetText();
-            TxtVorname.Clear();
-            TxtNachname.Clear();
-            TxtAhvNum.Clear();
-
-            //Adresse
-            TxtStrasse.Clear();
-            TxtWohnort.Clear();
-            TxtPostleitzahl.Clear();
-
-            //Kontakt Daten
-            TxtTelPriv.Clear();
-            TxtTelMobil.Clear();
-            TxtTelGesch.Clear();
-            TxtEmail.Clear();
-
-            //Mitarbeiter Daten
-            NumKaderstufe.ResetText();
-            NumArbeitspensum.ResetText();
-            TxtAbteilung.Clear();
-            DtpGeburtsdatum.ResetText();
-
-            //Lehrlinge
-            NumLehrjahr.ResetText();
-            NumAktLehrjahr.ResetText();
-            ChkLehrling.Checked = false;
-
-        }
-
-        private void ChangeTxtValuesDeny()
-        {
-            ChkLehrling.Enabled = false;
-            CmbAnrede.Enabled = false;
-            TxtWohnort.Enabled = false;
-            TxtTelPriv.Enabled = false;
-            TxtTelMobil.Enabled = false;
-            TxtTelGesch.Enabled = false;
-            TxtEmail.Enabled = false;
-            LblId.Enabled = false;
-            LblStatus.Enabled = false;
-            TxtStrasse.Enabled = false;
-            TxtNachname.Enabled = false;
-            TxtVorname.Enabled = false;
-            TxtAhvNum.Enabled = false;
-            TxtAbteilung.Enabled = false;
-            TxtPostleitzahl.Enabled = false;
-        }
-
-        private void ChangeTxtValuesAllow()
-        {
-            ChkStatus.Enabled = true;
-            ChkLehrling.Enabled = true;
-            CmbAnrede.Enabled = true;
-            TxtWohnort.Enabled = true;
-            TxtTelPriv.Enabled = true;
-            TxtTelMobil.Enabled = true;
-            TxtTelGesch.Enabled = true;
-            TxtEmail.Enabled = true;
-            LblId.Enabled = true;
-            LblStatus.Enabled = false;
-            TxtStrasse.Enabled = true;
-            TxtNachname.Enabled = true;
-            TxtVorname.Enabled = true;
-            TxtAhvNum.Enabled = true;
-            TxtAbteilung.Enabled = true;
-            TxtPostleitzahl.Enabled = true;
         }
 
         public void BenutzererstellungFehler()
@@ -536,7 +388,7 @@ namespace ContactManager
 
         private void CmbReset_Click(object sender, EventArgs e)
         {
-            ClearAll();
+            
         }
 
         private void FillCombobox()
@@ -552,7 +404,8 @@ namespace ContactManager
             CmdCancel.Visible = false;
             CmdMitarbeiterErstellen.Visible = true;
             DtgData.Enabled = true;
-            ChangeTxtValuesDeny();
+
+            LoadFile();
         }
 
         private void ChkLehrling_CheckedChanged(object sender, EventArgs e)
@@ -569,30 +422,48 @@ namespace ContactManager
             }
         }
 
-        public bool filterStatus { get; set; }
+        public bool filterStatusTrue { get; set; }
+        public bool filterStatusFalse { get; set; }
 
         public void ApplyXmlFilter()
         {
-            XDocument xmlDoc = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
-            var filteredMitarbeiter = from person in xmlDoc.Descendants("Mitarbeiter")
-                                      where (bool)person.Attribute("Status") == filterStatus
-                                      select new
-                                      {
-                                          ID = person.Attribute("ID").Value,
-                                          Anrede = person.Element("Anrede").Value,
-                                          Nachname = person.Element("Nachname").Value,
-                                          Vorname = person.Element("Vorname").Value,
-                                          Lehrling = person.Attribute("Lehrling").Value
-                                      };
-
-            DtgData.DataSource = filteredMitarbeiter.ToList();
         }
 
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
             FilterDashboard filterDashboard = new FilterDashboard();
             filterDashboard.ShowDialog();
+        }
+
+        private void TxtVorname_TextChanged(object sender, EventArgs e)
+        {
+            if (CmdMitarbeiterErstellen.Visible == true)
+            {
+                string textVorname = TxtVorname.Text;
+
+                if (DtgData.SelectedRows.Count > 0)
+                {
+                    int selectedRowIndex = DtgData.SelectedRows[0].Index;
+
+                    string dtgdataValue = DtgData.Rows[selectedRowIndex].Cells["Vorname"].Value.ToString();
+
+                    if (textVorname != dtgdataValue)
+                    {
+                        CmdWerteSpeichern.Visible = true;
+                        CmdMitarbeiterErstellen.Visible = false;
+                        CmdCancel.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DtgData.Rows[e.RowIndex].Selected = true;
+            }
         }
     }
 }

@@ -42,6 +42,7 @@
             this.CkStatus.Size = new System.Drawing.Size(101, 20);
             this.CkStatus.TabIndex = 0;
             this.CkStatus.Text = "Status: Aktiv";
+            this.CkStatus.ThreeState = true;
             this.CkStatus.UseVisualStyleBackColor = true;
             // 
             // CmdFilterSuchen

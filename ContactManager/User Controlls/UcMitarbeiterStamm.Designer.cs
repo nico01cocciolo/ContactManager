@@ -93,12 +93,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CmbReset = new System.Windows.Forms.Button();
             this.Kill = new System.Windows.Forms.Button();
-            this.CmdWerteSpeichern = new System.Windows.Forms.Button();
             this.CmdMitarbeiterSpeichernErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
-            this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
             this.CmdSuchfilter = new System.Windows.Forms.Button();
+            this.CmdWerteSpeichern = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -129,7 +128,7 @@
             this.DtgData.RowHeadersWidth = 51;
             this.DtgData.Size = new System.Drawing.Size(1245, 425);
             this.DtgData.TabIndex = 0;
-            this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgData_CellClick);
             // 
             // splitContainer1
             // 
@@ -833,6 +832,7 @@
             this.TxtVorname.Name = "TxtVorname";
             this.TxtVorname.Size = new System.Drawing.Size(161, 22);
             this.TxtVorname.TabIndex = 3;
+            this.TxtVorname.TextChanged += new System.EventHandler(this.TxtVorname_TextChanged);
             // 
             // label2
             // 
@@ -882,21 +882,6 @@
             this.Kill.UseVisualStyleBackColor = true;
             this.Kill.Click += new System.EventHandler(this.Kill_Click);
             // 
-            // CmdWerteSpeichern
-            // 
-            this.CmdWerteSpeichern.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdWerteSpeichern.BackgroundImage")));
-            this.CmdWerteSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CmdWerteSpeichern.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdWerteSpeichern.Location = new System.Drawing.Point(245, 4);
-            this.CmdWerteSpeichern.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdWerteSpeichern.Name = "CmdWerteSpeichern";
-            this.CmdWerteSpeichern.Size = new System.Drawing.Size(56, 52);
-            this.CmdWerteSpeichern.TabIndex = 57;
-            this.CmdWerteSpeichern.Tag = "Speichern";
-            this.CmdWerteSpeichern.UseVisualStyleBackColor = true;
-            this.CmdWerteSpeichern.Visible = false;
-            this.CmdWerteSpeichern.Click += new System.EventHandler(this.CmdWerteSpeichern_Click);
-            // 
             // CmdMitarbeiterSpeichernErstellen
             // 
             this.CmdMitarbeiterSpeichernErstellen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdMitarbeiterSpeichernErstellen.BackgroundImage")));
@@ -926,20 +911,6 @@
             this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = false;
             this.CmdMitarbeiterErstellen.Click += new System.EventHandler(this.CmdMitarbeiterErstellen_Click);
             // 
-            // CmdMitarbeiterBearbeiten
-            // 
-            this.CmdMitarbeiterBearbeiten.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdMitarbeiterBearbeiten.BackgroundImage")));
-            this.CmdMitarbeiterBearbeiten.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CmdMitarbeiterBearbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdMitarbeiterBearbeiten.Location = new System.Drawing.Point(75, 4);
-            this.CmdMitarbeiterBearbeiten.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdMitarbeiterBearbeiten.Name = "CmdMitarbeiterBearbeiten";
-            this.CmdMitarbeiterBearbeiten.Size = new System.Drawing.Size(63, 52);
-            this.CmdMitarbeiterBearbeiten.TabIndex = 47;
-            this.CmdMitarbeiterBearbeiten.UseVisualStyleBackColor = true;
-            this.CmdMitarbeiterBearbeiten.Visible = false;
-            this.CmdMitarbeiterBearbeiten.Click += new System.EventHandler(this.CmdMitarbeiterBearbeiten_Click);
-            // 
             // CmdCancel
             // 
             this.CmdCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdCancel.BackgroundImage")));
@@ -963,20 +934,33 @@
             this.CmdSuchfilter.UseVisualStyleBackColor = true;
             this.CmdSuchfilter.Click += new System.EventHandler(this.CmdSuchfilter_Click_1);
             // 
+            // CmdWerteSpeichern
+            // 
+            this.CmdWerteSpeichern.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdWerteSpeichern.BackgroundImage")));
+            this.CmdWerteSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdWerteSpeichern.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdWerteSpeichern.Location = new System.Drawing.Point(4, 4);
+            this.CmdWerteSpeichern.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdWerteSpeichern.Name = "CmdWerteSpeichern";
+            this.CmdWerteSpeichern.Size = new System.Drawing.Size(56, 52);
+            this.CmdWerteSpeichern.TabIndex = 74;
+            this.CmdWerteSpeichern.UseVisualStyleBackColor = true;
+            this.CmdWerteSpeichern.Visible = false;
+            this.CmdWerteSpeichern.Click += new System.EventHandler(this.CmdWerteSpeichern_Click);
+            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
+            this.Controls.Add(this.CmdWerteSpeichern);
             this.Controls.Add(this.CmdSuchfilter);
             this.Controls.Add(this.CmdCancel);
             this.Controls.Add(this.CmbReset);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.CmdWerteSpeichern);
             this.Controls.Add(this.Kill);
             this.Controls.Add(this.CmdMitarbeiterSpeichernErstellen);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
-            this.Controls.Add(this.CmdMitarbeiterBearbeiten);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UcMitarbeiterStamm";
             this.Size = new System.Drawing.Size(1235, 974);
@@ -1057,9 +1041,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
-        private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
         private System.Windows.Forms.Button CmdMitarbeiterSpeichernErstellen;
-        private System.Windows.Forms.Button CmdWerteSpeichern;
         private System.Windows.Forms.Button Kill;
         private System.Windows.Forms.DateTimePicker DtpEnddatum;
         private System.Windows.Forms.Label label16;
@@ -1076,5 +1058,6 @@
         private System.Windows.Forms.NumericUpDown NumLehrjahr;
         private System.Windows.Forms.Button CmdSuchfilter;
         public System.Windows.Forms.TextBox TxtEmail;
+        private System.Windows.Forms.Button CmdWerteSpeichern;
     }
 }
