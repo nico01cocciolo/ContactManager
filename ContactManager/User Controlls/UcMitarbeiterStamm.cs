@@ -84,7 +84,6 @@ namespace ContactManager
 
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
-
             CmdWerteSpeichern.Visible = false;
             DtgData.Enabled = true;
 
@@ -123,7 +122,6 @@ namespace ContactManager
             Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end);
             CmdMitarbeiterErstellen.Visible = true;
             CmdCancel.Visible = false;
-            DataGridZeileBearbeiten();
 
 
             if (ChkLehrling.Checked == true)
@@ -267,6 +265,8 @@ namespace ContactManager
 
             CmdMitarbeiterErstellen.Visible = true;
             CmdCancel.Visible = false;
+            CmdMitarbeiterSpeichernErstellen.Visible = false;
+            CmdWerteSpeichern.Visible = false;
 
             
         }
@@ -459,6 +459,8 @@ namespace ContactManager
 
         public void ApplyXmlFilter()
         {
+            CmdFilterReset.Visible = true;
+
             mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
             var data = mitarbeiter.Descendants("Mitarbeiter")
@@ -491,7 +493,10 @@ namespace ContactManager
             ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
 
             CmdMitarbeiterErstellen.Visible = true;
+
             CmdCancel.Visible = false;
+            CmdMitarbeiterSpeichernErstellen.Visible = false;
+            CmdWerteSpeichern.Visible = false;
             DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
 
             DtgData.DataSource = data;
@@ -499,6 +504,13 @@ namespace ContactManager
 
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
+            LblId.DataBindings.Clear();
+            CmbAnrede.DataBindings.Clear();
+            TxtVorname.DataBindings.Clear();
+            TxtNachname.DataBindings.Clear();
+            TxtPostleitzahl.DataBindings.Clear();
+            ChkStatus.DataBindings.Clear();
+            ChkLehrling.DataBindings.Clear();
             FilterDashboard filterDashboard = new FilterDashboard();
             filterDashboard.ShowDialog();
         }
@@ -534,6 +546,12 @@ namespace ContactManager
                 DtgData.Rows[e.RowIndex].Selected = true;
                 CmdDelete.Visible = true;
             }
+        }
+
+        private void CmdFilterReset_Click(object sender, EventArgs e)
+        {
+            CmdFilterReset.Visible = false;
+            LoadFile();
         }
     }
 }
