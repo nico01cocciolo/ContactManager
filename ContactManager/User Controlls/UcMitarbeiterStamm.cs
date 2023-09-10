@@ -61,7 +61,7 @@ namespace ContactManager
 
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
-            Kill.Visible = false;
+            CmdDelete.Visible = false;
             CmbReset.Visible = false;
             CmdCancel.Visible = true;
             CmdMitarbeiterErstellen.Visible = false;
@@ -74,7 +74,7 @@ namespace ContactManager
         {
             FillCombobox();
             LoadFile();
-            Kill.Visible = false;
+            CmdDelete.Visible = false;
             CmbReset.Visible = false;
         }
 
@@ -201,7 +201,7 @@ namespace ContactManager
             DataGridNeueZeile();
             CmdMitarbeiterErstellen.Visible = true;
             CmdMitarbeiterSpeichernErstellen.Visible = false;
-            Kill.Visible = true;
+            CmdDelete.Visible = true;
             DtgData.Enabled = true;
             CmbReset.Visible = true;
             CmdCancel.Visible = false;
@@ -394,8 +394,17 @@ namespace ContactManager
 
             if (dialogResult == DialogResult.Yes)
             {
+                LblId.DataBindings.Clear();
+                CmbAnrede.DataBindings.Clear();
+                TxtVorname.DataBindings.Clear();
+                TxtNachname.DataBindings.Clear();
+                TxtPostleitzahl.DataBindings.Clear();
+                ChkStatus.DataBindings.Clear();
+                ChkLehrling.DataBindings.Clear();
+
                 xmlHandler.DeleteValuesMitarbeiter(id);
-                DtgData.Rows.RemoveAt(DtgData.SelectedRows[0].Index);
+
+                LoadFile();
             }
         }
 
@@ -516,6 +525,7 @@ namespace ContactManager
             if (e.RowIndex >= 0)
             {
                 DtgData.Rows[e.RowIndex].Selected = true;
+                CmdDelete.Visible = true;
             }
         }
     }

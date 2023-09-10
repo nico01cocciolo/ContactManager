@@ -92,7 +92,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CmbReset = new System.Windows.Forms.Button();
-            this.Kill = new System.Windows.Forms.Button();
+            this.CmdDelete = new System.Windows.Forms.Button();
             this.CmdMitarbeiterSpeichernErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
@@ -867,20 +867,20 @@
             this.CmbReset.UseVisualStyleBackColor = true;
             this.CmbReset.Click += new System.EventHandler(this.CmbReset_Click);
             // 
-            // Kill
+            // CmdDelete
             // 
-            this.Kill.AccessibleDescription = "Benutzer löschen";
-            this.Kill.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Kill.BackgroundImage")));
-            this.Kill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Kill.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Kill.Location = new System.Drawing.Point(1159, 4);
-            this.Kill.Margin = new System.Windows.Forms.Padding(4);
-            this.Kill.Name = "Kill";
-            this.Kill.Size = new System.Drawing.Size(60, 52);
-            this.Kill.TabIndex = 70;
-            this.Kill.Tag = "";
-            this.Kill.UseVisualStyleBackColor = true;
-            this.Kill.Click += new System.EventHandler(this.Kill_Click);
+            this.CmdDelete.AccessibleDescription = "Benutzer löschen";
+            this.CmdDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdDelete.BackgroundImage")));
+            this.CmdDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdDelete.Location = new System.Drawing.Point(1159, 4);
+            this.CmdDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdDelete.Name = "CmdDelete";
+            this.CmdDelete.Size = new System.Drawing.Size(60, 52);
+            this.CmdDelete.TabIndex = 70;
+            this.CmdDelete.Tag = "";
+            this.CmdDelete.UseVisualStyleBackColor = true;
+            this.CmdDelete.Click += new System.EventHandler(this.Kill_Click);
             // 
             // CmdMitarbeiterSpeichernErstellen
             // 
@@ -959,7 +959,7 @@
             this.Controls.Add(this.CmdCancel);
             this.Controls.Add(this.CmbReset);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.Kill);
+            this.Controls.Add(this.CmdDelete);
             this.Controls.Add(this.CmdMitarbeiterSpeichernErstellen);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1043,7 +1043,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
         private System.Windows.Forms.Button CmdMitarbeiterSpeichernErstellen;
-        private System.Windows.Forms.Button Kill;
+        private System.Windows.Forms.Button CmdDelete;
         private System.Windows.Forms.DateTimePicker DtpEnddatum;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel5;

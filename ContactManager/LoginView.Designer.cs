@@ -42,7 +42,7 @@
             // TxtUsername
             // 
             this.TxtUsername.Location = new System.Drawing.Point(161, 122);
-            this.TxtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.TxtUsername.Name = "TxtUsername";
             this.TxtUsername.Size = new System.Drawing.Size(235, 22);
             this.TxtUsername.TabIndex = 0;
@@ -50,7 +50,7 @@
             // TxtPassword
             // 
             this.TxtPassword.Location = new System.Drawing.Point(161, 154);
-            this.TxtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.Size = new System.Drawing.Size(235, 22);
             this.TxtPassword.TabIndex = 1;
@@ -79,7 +79,7 @@
             // CmdFastLogin
             // 
             this.CmdFastLogin.Location = new System.Drawing.Point(161, 222);
-            this.CmdFastLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdFastLogin.Margin = new System.Windows.Forms.Padding(4);
             this.CmdFastLogin.Name = "CmdFastLogin";
             this.CmdFastLogin.Size = new System.Drawing.Size(100, 28);
             this.CmdFastLogin.TabIndex = 4;
@@ -90,7 +90,7 @@
             // CmdClearFields
             // 
             this.CmdClearFields.Location = new System.Drawing.Point(297, 222);
-            this.CmdClearFields.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdClearFields.Margin = new System.Windows.Forms.Padding(4);
             this.CmdClearFields.Name = "CmdClearFields";
             this.CmdClearFields.Size = new System.Drawing.Size(100, 28);
             this.CmdClearFields.TabIndex = 5;
@@ -101,7 +101,7 @@
             // CmdLogin
             // 
             this.CmdLogin.Location = new System.Drawing.Point(161, 258);
-            this.CmdLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdLogin.Margin = new System.Windows.Forms.Padding(4);
             this.CmdLogin.Name = "CmdLogin";
             this.CmdLogin.Size = new System.Drawing.Size(236, 66);
             this.CmdLogin.TabIndex = 6;
@@ -113,7 +113,7 @@
             // 
             this.ChkPWShowHide.AutoSize = true;
             this.ChkPWShowHide.Location = new System.Drawing.Point(161, 194);
-            this.ChkPWShowHide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChkPWShowHide.Margin = new System.Windows.Forms.Padding(4);
             this.ChkPWShowHide.Name = "ChkPWShowHide";
             this.ChkPWShowHide.Size = new System.Drawing.Size(125, 20);
             this.ChkPWShowHide.TabIndex = 7;
@@ -138,7 +138,7 @@
             this.Controls.Add(this.TxtUsername);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "LoginView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -69,5 +69,6 @@ namespace ContactManager
             dashboard.ShowDialog();
             this.Close();
         }
+
     }
 }
