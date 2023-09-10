@@ -1,4 +1,4 @@
-﻿using ContactManager.LoginModel;
+﻿using ContactManager.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
