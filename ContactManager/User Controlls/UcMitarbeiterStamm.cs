@@ -443,7 +443,42 @@ namespace ContactManager
 
         public void ApplyXmlFilter()
         {
+            mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
+            var data = mitarbeiter.Descendants("Mitarbeiter")
+                .Where(mitarbeiterfilter => (bool)mitarbeiterfilter.Attribute("Status") == filterStatusFalse)
+                .Select(m => new
+                {
+                    Id = m.Attribute("ID").Value,
+                    Anrede = m.Element("Anrede").Value,
+                    Vorname = m.Element("Vorname").Value,
+                    Nachname = m.Element("Nachname").Value,
+                    Postleitzahl = m.Element("Postleitzahl").Value,
+                    Status = m.Attribute("Status").Value,
+                    Lehrling = m.Attribute("Lehrling").Value
+                }).OrderBy(m => m.Id).ToList();
+
+            LblId.DataBindings.Clear();
+            CmbAnrede.DataBindings.Clear();
+            TxtVorname.DataBindings.Clear();
+            TxtNachname.DataBindings.Clear();
+            TxtPostleitzahl.DataBindings.Clear();
+            ChkStatus.DataBindings.Clear();
+            ChkLehrling.DataBindings.Clear();
+
+            LblId.DataBindings.Add("text", data, "ID");
+            CmbAnrede.DataBindings.Add("text", data, "Anrede");
+            TxtVorname.DataBindings.Add("text", data, "Vorname");
+            TxtNachname.DataBindings.Add("text", data, "Nachname");
+            TxtPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
+            ChkStatus.DataBindings.Add("Checked", data, "Status");
+            ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
+
+            CmdMitarbeiterErstellen.Visible = true;
+            CmdCancel.Visible = false;
+            DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+
+            DtgData.DataSource = data;
         }
 
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)

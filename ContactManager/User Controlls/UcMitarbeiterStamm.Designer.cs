@@ -926,11 +926,12 @@
             // 
             // CmdSuchfilter
             // 
+            this.CmdSuchfilter.BackgroundImage = global::ContactManager.Properties.Resources.OIP;
+            this.CmdSuchfilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdSuchfilter.Location = new System.Drawing.Point(992, 4);
             this.CmdSuchfilter.Name = "CmdSuchfilter";
-            this.CmdSuchfilter.Size = new System.Drawing.Size(101, 49);
+            this.CmdSuchfilter.Size = new System.Drawing.Size(53, 49);
             this.CmdSuchfilter.TabIndex = 73;
-            this.CmdSuchfilter.Text = "Suchen";
             this.CmdSuchfilter.UseVisualStyleBackColor = true;
             this.CmdSuchfilter.Click += new System.EventHandler(this.CmdSuchfilter_Click_1);
             // 
