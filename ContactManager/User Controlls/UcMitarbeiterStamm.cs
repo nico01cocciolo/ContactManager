@@ -1,6 +1,5 @@
 ﻿using ContactManager.Controller;
 using ContactManager.Model;
-using ContactManager.User_Controlls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,11 +30,17 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        #region Combobox Fill
         string[] anrede = new string[] { "Herr", "Frau", "Divers" };
         string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
         string[] geschlecht = new string[] { "Männlich", "Weiblich", "Divers" };
+        #endregion
 
+        #region Params
         private int index { get; set; }
+        public bool filterStatusTrue { get; set; }
+        public bool filterStatusFalse { get; set; }
+        #endregion
 
         XMLHandler xmlHandler = new XMLHandler();
 
@@ -72,6 +77,10 @@ namespace ContactManager
             Kill.Visible = false;
             CmbReset.Visible = false;
         }
+
+        /// <summary>
+        /// Blibblub brucht no Text
+        /// </summary>
 
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
@@ -134,6 +143,10 @@ namespace ContactManager
 
         }
 
+        /// <summary>
+        /// Erstellt den Mitarbeiter mit einer ID und gibt bei der Erstellung eine Meldung aus wenn erfolgreich.
+        /// Der Mitarbeiter erhält die Lehrlingsparameter wenn die Checkbox "ChkLehrling" den Status Checked hat.
+        /// </summary>
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
             Guid id = Guid.NewGuid();
@@ -206,6 +219,8 @@ namespace ContactManager
         {
             if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
+                
+                
                 mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
                 var data = mitarbeiter.Descendants("Mitarbeiter").Select(m => new
@@ -244,6 +259,9 @@ namespace ContactManager
                 DtgData.DataSource = null;
             }
 
+            CmdMitarbeiterErstellen.Visible = true;
+            CmdCancel.Visible = false;
+            DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
         }
 
         public void DataGridNeueZeile()
@@ -401,8 +419,7 @@ namespace ContactManager
         {
             CmdMitarbeiterSpeichernErstellen.Visible = false;
             CmdWerteSpeichern.Visible = false;
-            CmdCancel.Visible = false;
-            CmdMitarbeiterErstellen.Visible = true;
+          
             DtgData.Enabled = true;
 
             LoadFile();
@@ -422,8 +439,7 @@ namespace ContactManager
             }
         }
 
-        public bool filterStatusTrue { get; set; }
-        public bool filterStatusFalse { get; set; }
+
 
         public void ApplyXmlFilter()
         {
@@ -460,6 +476,8 @@ namespace ContactManager
 
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            index = DtgData.CurrentRow.Index;
+
             if (e.RowIndex >= 0)
             {
                 DtgData.Rows[e.RowIndex].Selected = true;

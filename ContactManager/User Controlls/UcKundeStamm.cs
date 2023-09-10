@@ -209,7 +209,6 @@ namespace ContactManager
             File.Delete($"{id}.txt");
             xmlHandler.DeleteValuesKunde(id);
             LoadData();
-
         }
 
         private void LoadData()

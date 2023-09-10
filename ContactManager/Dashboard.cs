@@ -1,4 +1,4 @@
-﻿using ContactManager.User_Controlls;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,18 +19,6 @@ namespace ContactManager
         public Dashboard()
         {
             InitializeComponent();
-        }
-
-        private void TsmMitarbeiterAnlegen_Click(object sender, EventArgs e)
-        {
-            MitarbeiterAnlegenView mitarbeiterView = new MitarbeiterAnlegenView();
-            mitarbeiterView.ShowDialog();
-        }
-
-        private void kundeAnlegenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            KundeAnlegenView kundenView = new KundeAnlegenView();
-            kundenView.ShowDialog();
         }
 
         private void CmdStammMitarbeiter_Click(object sender, EventArgs e)
