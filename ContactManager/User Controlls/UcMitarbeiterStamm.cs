@@ -261,6 +261,7 @@ namespace ContactManager
 
             CmdMitarbeiterErstellen.Visible = true;
             CmdCancel.Visible = false;
+
             DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
         }
 
