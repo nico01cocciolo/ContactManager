@@ -252,7 +252,13 @@ namespace ContactManager
 
 
                 DtgData.DataSource = data;
-                
+
+                if (DtgData.CurrentCell.RowIndex >= 1)
+                {
+                    DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+                }
+                    
+
             }
             else
             {
@@ -262,7 +268,7 @@ namespace ContactManager
             CmdMitarbeiterErstellen.Visible = true;
             CmdCancel.Visible = false;
 
-            DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+            
         }
 
         public void DataGridNeueZeile()
