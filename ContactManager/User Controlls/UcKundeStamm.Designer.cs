@@ -80,13 +80,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.TxtKundenkontakt = new System.Windows.Forms.TextBox();
-            this.CmdWerteSpeichern = new System.Windows.Forms.Button();
-            this.CmdMitarbeiterBearbeiten = new System.Windows.Forms.Button();
             this.TxtNotizInput = new System.Windows.Forms.TextBox();
             this.TxtNotizOutput = new System.Windows.Forms.TextBox();
             this.CmdNotizErfassen = new System.Windows.Forms.Button();
-            this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
-            this.CmdKundeSpeichern = new System.Windows.Forms.Button();
             this.DtgData = new System.Windows.Forms.DataGridView();
             this.CmdKundeErstellen = new System.Windows.Forms.Button();
             this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
@@ -94,6 +90,8 @@
             this.Kill = new System.Windows.Forms.Button();
             this.CmdClear = new System.Windows.Forms.Button();
             this.CmdSave = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -101,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -318,9 +317,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Persönliche Daten";
             // 
@@ -390,9 +390,10 @@
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(3, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(45, 13);
+            this.label24.Size = new System.Drawing.Size(52, 13);
             this.label24.TabIndex = 0;
             this.label24.Text = "Adresse";
             // 
@@ -480,9 +481,10 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(3, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(71, 13);
+            this.label26.Size = new System.Drawing.Size(83, 13);
             this.label26.TabIndex = 0;
             this.label26.Text = "Kontaktdaten";
             // 
@@ -529,11 +531,12 @@
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(3, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(71, 13);
+            this.label15.Size = new System.Drawing.Size(82, 13);
             this.label15.TabIndex = 0;
-            this.label15.Text = "Kontaktdaten";
+            this.label15.Text = "Kundendaten";
             // 
             // label14
             // 
@@ -577,71 +580,33 @@
             this.TxtKundenkontakt.Size = new System.Drawing.Size(121, 20);
             this.TxtKundenkontakt.TabIndex = 22;
             // 
-            // CmdWerteSpeichern
-            // 
-            this.CmdWerteSpeichern.Location = new System.Drawing.Point(797, 448);
-            this.CmdWerteSpeichern.Name = "CmdWerteSpeichern";
-            this.CmdWerteSpeichern.Size = new System.Drawing.Size(64, 42);
-            this.CmdWerteSpeichern.TabIndex = 59;
-            this.CmdWerteSpeichern.Text = "Speichern";
-            this.CmdWerteSpeichern.UseVisualStyleBackColor = true;
-            this.CmdWerteSpeichern.Visible = false;
-            // 
-            // CmdMitarbeiterBearbeiten
-            // 
-            this.CmdMitarbeiterBearbeiten.Location = new System.Drawing.Point(79, 3);
-            this.CmdMitarbeiterBearbeiten.Name = "CmdMitarbeiterBearbeiten";
-            this.CmdMitarbeiterBearbeiten.Size = new System.Drawing.Size(68, 42);
-            this.CmdMitarbeiterBearbeiten.TabIndex = 58;
-            this.CmdMitarbeiterBearbeiten.Text = "Bearbeiten";
-            this.CmdMitarbeiterBearbeiten.UseVisualStyleBackColor = true;
-            // 
             // TxtNotizInput
             // 
-            this.TxtNotizInput.Location = new System.Drawing.Point(620, 310);
+            this.TxtNotizInput.Location = new System.Drawing.Point(6, 277);
             this.TxtNotizInput.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNotizInput.Multiline = true;
             this.TxtNotizInput.Name = "TxtNotizInput";
-            this.TxtNotizInput.Size = new System.Drawing.Size(312, 71);
+            this.TxtNotizInput.Size = new System.Drawing.Size(277, 71);
             this.TxtNotizInput.TabIndex = 61;
             // 
             // TxtNotizOutput
             // 
-            this.TxtNotizOutput.Location = new System.Drawing.Point(620, 51);
+            this.TxtNotizOutput.Location = new System.Drawing.Point(6, 19);
             this.TxtNotizOutput.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNotizOutput.Multiline = true;
             this.TxtNotizOutput.Name = "TxtNotizOutput";
-            this.TxtNotizOutput.Size = new System.Drawing.Size(312, 254);
+            this.TxtNotizOutput.Size = new System.Drawing.Size(277, 254);
             this.TxtNotizOutput.TabIndex = 60;
             // 
             // CmdNotizErfassen
             // 
-            this.CmdNotizErfassen.Location = new System.Drawing.Point(620, 392);
+            this.CmdNotizErfassen.Location = new System.Drawing.Point(147, 353);
             this.CmdNotizErfassen.Name = "CmdNotizErfassen";
             this.CmdNotizErfassen.Size = new System.Drawing.Size(136, 23);
             this.CmdNotizErfassen.TabIndex = 63;
             this.CmdNotizErfassen.Text = "Notiz erfassen";
             this.CmdNotizErfassen.UseVisualStyleBackColor = true;
             this.CmdNotizErfassen.Click += new System.EventHandler(this.CmdNotizErfassen_Click);
-            // 
-            // CmdMitarbeiterErstellen
-            // 
-            this.CmdMitarbeiterErstellen.Location = new System.Drawing.Point(8, 3);
-            this.CmdMitarbeiterErstellen.Name = "CmdMitarbeiterErstellen";
-            this.CmdMitarbeiterErstellen.Size = new System.Drawing.Size(58, 42);
-            this.CmdMitarbeiterErstellen.TabIndex = 64;
-            this.CmdMitarbeiterErstellen.Text = "Erstellen";
-            this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = true;
-            // 
-            // CmdKundeSpeichern
-            // 
-            this.CmdKundeSpeichern.Location = new System.Drawing.Point(867, 448);
-            this.CmdKundeSpeichern.Name = "CmdKundeSpeichern";
-            this.CmdKundeSpeichern.Size = new System.Drawing.Size(64, 42);
-            this.CmdKundeSpeichern.TabIndex = 65;
-            this.CmdKundeSpeichern.Text = "Speichern";
-            this.CmdKundeSpeichern.UseVisualStyleBackColor = true;
-            this.CmdKundeSpeichern.Visible = false;
             // 
             // DtgData
             // 
@@ -658,7 +623,7 @@
             // 
             // CmdKundeErstellen
             // 
-            this.CmdKundeErstellen.Location = new System.Drawing.Point(263, 13);
+            this.CmdKundeErstellen.Location = new System.Drawing.Point(8, 13);
             this.CmdKundeErstellen.Name = "CmdKundeErstellen";
             this.CmdKundeErstellen.Size = new System.Drawing.Size(75, 23);
             this.CmdKundeErstellen.TabIndex = 68;
@@ -676,7 +641,7 @@
             // 
             // Kill
             // 
-            this.Kill.Location = new System.Drawing.Point(345, 13);
+            this.Kill.Location = new System.Drawing.Point(846, 13);
             this.Kill.Name = "Kill";
             this.Kill.Size = new System.Drawing.Size(75, 23);
             this.Kill.TabIndex = 69;
@@ -686,7 +651,7 @@
             // 
             // CmdClear
             // 
-            this.CmdClear.Location = new System.Drawing.Point(426, 13);
+            this.CmdClear.Location = new System.Drawing.Point(765, 13);
             this.CmdClear.Name = "CmdClear";
             this.CmdClear.Size = new System.Drawing.Size(75, 23);
             this.CmdClear.TabIndex = 70;
@@ -696,7 +661,7 @@
             // 
             // CmdSave
             // 
-            this.CmdSave.Location = new System.Drawing.Point(507, 13);
+            this.CmdSave.Location = new System.Drawing.Point(89, 13);
             this.CmdSave.Name = "CmdSave";
             this.CmdSave.Size = new System.Drawing.Size(75, 23);
             this.CmdSave.TabIndex = 71;
@@ -704,22 +669,38 @@
             this.CmdSave.UseVisualStyleBackColor = true;
             this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 13);
+            this.label17.TabIndex = 72;
+            this.label17.Text = "Notizen";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.Controls.Add(this.TxtNotizOutput);
+            this.panel5.Controls.Add(this.label17);
+            this.panel5.Controls.Add(this.TxtNotizInput);
+            this.panel5.Controls.Add(this.CmdNotizErfassen);
+            this.panel5.Location = new System.Drawing.Point(622, 51);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(299, 391);
+            this.panel5.TabIndex = 73;
+            // 
             // UcKundeStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.CmdSave);
             this.Controls.Add(this.CmdClear);
             this.Controls.Add(this.Kill);
             this.Controls.Add(this.CmdKundeErstellen);
             this.Controls.Add(this.DtgData);
-            this.Controls.Add(this.CmdKundeSpeichern);
-            this.Controls.Add(this.CmdMitarbeiterErstellen);
-            this.Controls.Add(this.CmdNotizErfassen);
-            this.Controls.Add(this.TxtNotizInput);
-            this.Controls.Add(this.TxtNotizOutput);
-            this.Controls.Add(this.CmdWerteSpeichern);
-            this.Controls.Add(this.CmdMitarbeiterBearbeiten);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -738,8 +719,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DtgData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -793,13 +775,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox CmbKundentyp;
-        private System.Windows.Forms.Button CmdWerteSpeichern;
-        private System.Windows.Forms.Button CmdMitarbeiterBearbeiten;
         private System.Windows.Forms.TextBox TxtNotizInput;
         private System.Windows.Forms.TextBox TxtNotizOutput;
         private System.Windows.Forms.Button CmdNotizErfassen;
-        private System.Windows.Forms.Button CmdMitarbeiterErstellen;
-        private System.Windows.Forms.Button CmdKundeSpeichern;
         private System.Windows.Forms.DataGridView DtgData;
         private System.Windows.Forms.Button CmdKundeErstellen;
         private System.Windows.Forms.ErrorProvider ErrVorname;
@@ -810,5 +788,7 @@
         private System.Windows.Forms.ComboBox CmbGeschlecht;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox TxtEmail;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel5;
     }
 }

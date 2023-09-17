@@ -12,6 +12,20 @@ namespace ContactManager.User_Controlls
 {
     public partial class UcDashboardView : UserControl
     {
+        private static UcDashboardView instance;
+
+        public static UcDashboardView Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new UcDashboardView();
+
+                }
+                return instance;
+            }
+        }
         public UcDashboardView()
         {
             InitializeComponent();
