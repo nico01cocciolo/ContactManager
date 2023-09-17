@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcMitarbeiterStamm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel5 = new System.Windows.Forms.Panel();
             this.NumAktLehrjahr = new System.Windows.Forms.NumericUpDown();
@@ -70,6 +69,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CmbGeschlecht = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.ChkStatus = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.LblStatus = new System.Windows.Forms.Label();
@@ -99,8 +100,6 @@
             this.CmdDelete = new System.Windows.Forms.Button();
             this.CmdMitarbeiterSpeichernErstellen = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
-            this.CmbGeschlecht = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -120,7 +119,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Location = new System.Drawing.Point(0, 47);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -595,6 +594,24 @@
             this.panel1.Size = new System.Drawing.Size(318, 346);
             this.panel1.TabIndex = 49;
             // 
+            // CmbGeschlecht
+            // 
+            this.CmbGeschlecht.BackColor = System.Drawing.Color.LightGray;
+            this.CmbGeschlecht.FormattingEnabled = true;
+            this.CmbGeschlecht.Location = new System.Drawing.Point(153, 123);
+            this.CmbGeschlecht.Name = "CmbGeschlecht";
+            this.CmbGeschlecht.Size = new System.Drawing.Size(121, 21);
+            this.CmbGeschlecht.TabIndex = 50;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(3, 126);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(61, 13);
+            this.label27.TabIndex = 49;
+            this.label27.Text = "Geschlecht";
+            // 
             // ChkStatus
             // 
             this.ChkStatus.AutoSize = true;
@@ -809,7 +826,7 @@
             // 
             // CmdFilterReset
             // 
-            this.CmdFilterReset.BackgroundImage = global::ContactManager.Properties.Resources.OIP__1_;
+            this.CmdFilterReset.BackgroundImage = global::ContactManager.Properties.Resources.Filter_Reset_Icon;
             this.CmdFilterReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdFilterReset.Location = new System.Drawing.Point(774, 3);
             this.CmdFilterReset.Margin = new System.Windows.Forms.Padding(2);
@@ -822,7 +839,6 @@
             // 
             // CmdWerteSpeichern
             // 
-            this.CmdWerteSpeichern.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdWerteSpeichern.BackgroundImage")));
             this.CmdWerteSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdWerteSpeichern.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdWerteSpeichern.Location = new System.Drawing.Point(3, 2);
@@ -835,7 +851,7 @@
             // 
             // CmdSuchfilter
             // 
-            this.CmdSuchfilter.BackgroundImage = global::ContactManager.Properties.Resources.OIP;
+            this.CmdSuchfilter.BackgroundImage = global::ContactManager.Properties.Resources.Filter_Icon;
             this.CmdSuchfilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdSuchfilter.Location = new System.Drawing.Point(821, 3);
             this.CmdSuchfilter.Margin = new System.Windows.Forms.Padding(2);
@@ -847,7 +863,6 @@
             // 
             // CmdCancel
             // 
-            this.CmdCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdCancel.BackgroundImage")));
             this.CmdCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdCancel.Location = new System.Drawing.Point(50, 3);
             this.CmdCancel.Margin = new System.Windows.Forms.Padding(2);
@@ -861,7 +876,6 @@
             // CmdDelete
             // 
             this.CmdDelete.AccessibleDescription = "Benutzer löschen";
-            this.CmdDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdDelete.BackgroundImage")));
             this.CmdDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdDelete.Location = new System.Drawing.Point(869, 3);
@@ -874,7 +888,6 @@
             // 
             // CmdMitarbeiterSpeichernErstellen
             // 
-            this.CmdMitarbeiterSpeichernErstellen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdMitarbeiterSpeichernErstellen.BackgroundImage")));
             this.CmdMitarbeiterSpeichernErstellen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdMitarbeiterSpeichernErstellen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdMitarbeiterSpeichernErstellen.Location = new System.Drawing.Point(3, 3);
@@ -887,7 +900,6 @@
             // CmdMitarbeiterErstellen
             // 
             this.CmdMitarbeiterErstellen.BackColor = System.Drawing.Color.Transparent;
-            this.CmdMitarbeiterErstellen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CmdMitarbeiterErstellen.BackgroundImage")));
             this.CmdMitarbeiterErstellen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdMitarbeiterErstellen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdMitarbeiterErstellen.Location = new System.Drawing.Point(3, 3);
@@ -896,25 +908,6 @@
             this.CmdMitarbeiterErstellen.TabIndex = 48;
             this.CmdMitarbeiterErstellen.Tag = "Benutzer erstellen";
             this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = false;
-
-            // 
-            // CmbGeschlecht
-            // 
-            this.CmbGeschlecht.BackColor = System.Drawing.Color.LightGray;
-            this.CmbGeschlecht.FormattingEnabled = true;
-            this.CmbGeschlecht.Location = new System.Drawing.Point(153, 123);
-            this.CmbGeschlecht.Name = "CmbGeschlecht";
-            this.CmbGeschlecht.Size = new System.Drawing.Size(121, 21);
-            this.CmbGeschlecht.TabIndex = 50;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 126);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(61, 13);
-            this.label27.TabIndex = 49;
-            this.label27.Text = "Geschlecht";
             // 
             // UcMitarbeiterStamm
             // 

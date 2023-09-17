@@ -68,6 +68,11 @@
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Login.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="User Controlls\UcDashboardView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,14 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,13 +134,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\OIP.jpeg" />
+    <None Include="Resources\Filter_Icon.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Reset-Filter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\OIP %281%29.jpeg" />
+    <None Include="Resources\Filter_Reset_Icon.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

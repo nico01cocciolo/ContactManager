@@ -63,9 +63,9 @@ namespace ContactManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OIP {
+        internal static System.Drawing.Bitmap Filter_Icon {
             get {
-                object obj = ResourceManager.GetObject("OIP", resourceCulture);
+                object obj = ResourceManager.GetObject("Filter_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,19 +73,9 @@ namespace ContactManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OIP__1_ {
+        internal static System.Drawing.Bitmap Filter_Reset_Icon {
             get {
-                object obj = ResourceManager.GetObject("OIP (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Reset_Filter {
-            get {
-                object obj = ResourceManager.GetObject("Reset-Filter", resourceCulture);
+                object obj = ResourceManager.GetObject("Filter_Reset_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
