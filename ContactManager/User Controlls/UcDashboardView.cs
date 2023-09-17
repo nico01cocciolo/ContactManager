@@ -55,15 +55,14 @@ namespace ContactManager.User_Controlls
         /// <summary>
         /// Lädt beim Laden des Dashboards das PieChart für die Mitarbeiter wie auch für die Kunden
         /// </summary>
-       
         private void UcDashboardView_Load(object sender, EventArgs e)
         {
             Reload();
         }
+        
         /// <summary>
         /// Wir benötigt um beim Wechseln des Usercontrolls die Piecharts erneut zu bestücken
         /// </summary>
-       
         public void Reload()
         {
             LoadMitarbeiterChart(mitarbeiter);
@@ -73,7 +72,6 @@ namespace ContactManager.User_Controlls
         /// Durch den Input von den Strings kann die Funktion unabhängig verwendet werden
         /// Der Dateipfad wird in der Funktion erstellt und danach geladen
         /// </summary>
-       
         private void GetChartValues(string data, out int activeAccountCount, out int inactiveAccountCount)
         {   
             string path = $"{data}.xml";
@@ -92,12 +90,12 @@ namespace ContactManager.User_Controlls
             activeAccountCount = activeAccount.Count;
             inactiveAccountCount = inactiveAccount.Count;
         }
+        
         /// <summary>
         /// Lädt die Werte von der Funktion GetChartValues in die dazugehörige Chart (ChtMitarbeiter)
         /// Es wird eine Serie erstellt mit Aktiven Accounts und eine Ohne Aktive Accounts
         /// Das Pie-Chart wird am Anfang mittels Clear gelert und erneut bestückt
         /// </summary>
-        
         public void LoadMitarbeiterChart(string data)
         {
             int activeAccountCount, inactiveAccountCount;

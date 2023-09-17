@@ -159,65 +159,75 @@ namespace ContactManager
         /// </summary>
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
-            Guid id = Guid.NewGuid();
-
-            bool status = Status();
-
-            string anrede = CmbAnrede.Text;
-            string titel = CmbTitel.Text;
-            string geschlecht = CmbGeschlecht.Text;
-            string vorname = TxtVorname.Text;
-            string nachname = TxtNachname.Text;
-            DateTime dob = DtpGeburtsdatum.Value;
-            string ahv = TxtAhvNum.Text;
-            string nationalitaet = CmbNationalitaet.Text;
-
-            string email = TxtEmail.Text;
-            string privat = TxtTelPriv.Text;
-            string mobil = TxtTelMobil.Text;
-            string arbeit = TxtTelGesch.Text;
-
-            string strasse = TxtStrasse.Text;
-            string wohnort = TxtWohnort.Text;
-            int plz = Convert.ToInt16(TxtPostleitzahl.Text);
-
-            int ks = Convert.ToInt16(NumKaderstufe.Value);
-            string rolle = TxtRolle.Text;
-            string abt = TxtAbteilung.Text;
-            int arbp = Convert.ToInt16(NumArbeitspensum.Value);
-            DateTime st = DtpStartdatum.Value;
-            DateTime et = DtpEnddatum.Value;
-            int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
-            int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
-
-
-
-            if (ChkLehrling.Checked == true)
+            try
             {
-                bool istrainee = true;
-                //Für Lehrlinge
+                Guid id = Guid.NewGuid();
 
-                Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
-                xmlHandler.CreateLehrlingXML(l);
+                bool status = Status();
+
+                string anrede = CmbAnrede.Text;
+                string titel = CmbTitel.Text;
+                string geschlecht = CmbGeschlecht.Text;
+                string vorname = TxtVorname.Text;
+                string nachname = TxtNachname.Text;
+                DateTime dob = DtpGeburtsdatum.Value;
+                string ahv = TxtAhvNum.Text;
+                string nationalitaet = CmbNationalitaet.Text;
+
+                string email = TxtEmail.Text;
+                string privat = TxtTelPriv.Text;
+                string mobil = TxtTelMobil.Text;
+                string arbeit = TxtTelGesch.Text;
+
+                string strasse = TxtStrasse.Text;
+                string wohnort = TxtWohnort.Text;
+                int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+
+                int ks = Convert.ToInt16(NumKaderstufe.Value);
+                string rolle = TxtRolle.Text;
+                string abt = TxtAbteilung.Text;
+                int arbp = Convert.ToInt16(NumArbeitspensum.Value);
+                DateTime st = DtpStartdatum.Value;
+                DateTime et = DtpEnddatum.Value;
+                int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
+                int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
+
+
+                if (ChkLehrling.Checked == true)
+                {
+                    bool istrainee = true;
+                    //Für Lehrlinge
+
+                    Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
+                    xmlHandler.CreateLehrlingXML(l);
+                }
+                else if (ChkLehrling.Checked == false)
+                {
+                    bool istrainee = false;
+                    Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
+                    xmlHandler.CreateMitarbeiterXML(m);
+                }
+
+
+                LblId.Text = Convert.ToString(id);
+                LoadFile();
+                CmdMitarbeiterErstellen.Visible = true;
+                CmdMitarbeiterSpeichernErstellen.Visible = false;
+                CmdDelete.Visible = true;
+                DtgData.Enabled = true;
+                CmbReset.Visible = true;
+                CmdCancel.Visible = false;
+
+                MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
-            else if (ChkLehrling.Checked == false)
+            catch (FormatException ex)
             {
-                bool istrainee = false;
-                Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
-                xmlHandler.CreateMitarbeiterXML(m);
+                MessageBox.Show("Error: " + ex.Message);
             }
-
-
-            LblId.Text = Convert.ToString(id);
-            LoadFile();
-            CmdMitarbeiterErstellen.Visible = true;
-            CmdMitarbeiterSpeichernErstellen.Visible = false;
-            CmdDelete.Visible = true;
-            DtgData.Enabled = true;
-            CmbReset.Visible = true;
-            CmdCancel.Visible = false;
-
-            MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Format stimmt nicht" + ex);
+            }
         }
 
         /// <summary>
