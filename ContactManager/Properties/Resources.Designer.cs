@@ -63,6 +63,36 @@ namespace ContactManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cancel_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Cancel_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Create_User_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Create_User_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Delete_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Delete_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Filter_Icon {
             get {
                 object obj = ResourceManager.GetObject("Filter_Icon", resourceCulture);
@@ -76,6 +106,16 @@ namespace ContactManager.Properties {
         internal static System.Drawing.Bitmap Filter_Reset_Icon {
             get {
                 object obj = ResourceManager.GetObject("Filter_Reset_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Save_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
