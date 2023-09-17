@@ -61,6 +61,9 @@ namespace ContactManager
         }
         #endregion
 
+        /// <summary>
+        /// Schaltet beim Klick die Benötigten Buttons Visible und umgekehrt
+        /// </summary>
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
             CmdDelete.Visible = false;
