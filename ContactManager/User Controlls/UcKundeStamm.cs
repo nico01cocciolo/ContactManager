@@ -21,6 +21,7 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        #region Instances
         private static UcKundeStamm instance;
 
         public static UcKundeStamm Instance
@@ -37,6 +38,7 @@ namespace ContactManager
 
         NotizController nc = new NotizController();
         XMLHandler xmlHandler = new XMLHandler();
+        #endregion
 
         #region Combobox
         string[] kundentyp = new string[] { "A", "B", "C", "D", "E" };

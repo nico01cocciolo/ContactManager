@@ -42,6 +42,7 @@ namespace ContactManager
         public bool filterStatusFalse { get; set; }
         #endregion
 
+        #region Instances
         XMLHandler xmlHandler = new XMLHandler();
 
         private static UcMitarbeiterStamm instance;
@@ -58,6 +59,7 @@ namespace ContactManager
                 return instance;
             }
         }
+        #endregion
 
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
@@ -433,7 +435,11 @@ namespace ContactManager
             CmbGeschlecht.Items.AddRange(geschlecht);
         }
 
-
+        /// <summary>
+        /// Deaktiviert die Buttons CmdWerteSpeichern & CmdMitarbeiterErstellen
+        /// Aktiviert wieder das DataGrid
+        /// Lädt die Daten erneut
+        /// </summary>
         private void CmdCancel_Click(object sender, EventArgs e)
         {
             CmdMitarbeiterSpeichernErstellen.Visible = false;
@@ -460,9 +466,6 @@ namespace ContactManager
                 NumLehrjahr.Enabled = false;
             }
         }
-
-
-
         public void ApplyXmlFilter()
         {
             CmdFilterReset.Visible = true;
@@ -501,7 +504,6 @@ namespace ContactManager
 
             DtgData.DataSource = data;
         }
-
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
             ClearDataBindings();
@@ -556,10 +558,5 @@ namespace ContactManager
             ChkLehrling.DataBindings.Clear();
         }
         
-        //private void CheckInputs()
-        //{
-        //    if (TxtVorname.TextLength > 0 && TxtVorname.Text )
-            
-        //}
     }
 }
