@@ -139,5 +139,17 @@
   <ItemGroup>
     <None Include="Resources\Filter_Reset_Icon.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Create_User_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
