@@ -57,6 +57,14 @@ namespace ContactManager.User_Controlls
         /// </summary>
         private void UcDashboardView_Load(object sender, EventArgs e)
         {
+            Reload();
+        }
+
+        /// <summary>
+        /// Wir benötigt um beim Wechseln des Usercontrolls die Piecharts erneut zu bestücken
+        /// </summary>
+        public void Reload()
+        {
             LoadMitarbeiterChart(mitarbeiter);
             LoadKundeChart(kunde);
         }
@@ -68,7 +76,9 @@ namespace ContactManager.User_Controlls
         private void GetChartValues(string data, out int activeAccountCount, out int inactiveAccountCount)
         {   
             string path = $"{data}.xml";
-            xDoc = XDocument.Load(path);
+            
+            if(File.Exists(path))
+                xDoc = XDocument.Load(path);
 
             var activeAccount = xDoc.Descendants(data)
                 .Where(d => d.Attribute("Status").Value == "true")
@@ -84,42 +94,50 @@ namespace ContactManager.User_Controlls
 
         /// <summary>
         /// Lädt die Werte von der Funktion GetChartValues in die dazugehörige Chart (ChtMitarbeiter)
+        /// Es wird eine Serie erstellt mit Aktiven Accounts und eine Ohne Aktive Accounts
+        /// Das Pie-Chart wird am Anfang mittels Clear gelert und erneut bestückt
         /// </summary>
         public void LoadMitarbeiterChart(string data)
         {
             int activeAccountCount, inactiveAccountCount;
             GetChartValues(data, out activeAccountCount, out inactiveAccountCount);
 
-            ChtMitarbeiter.Titles.Add("Statusaktivität");
+            ChtMitarbeiter.Series.Clear();
+
+            ChtMitarbeiter.Titles.Add("Status: Mitarbeiter");
             ChtMitarbeiter.Series.Add(new Series());
 
             ChtMitarbeiter.Series[0].Points.Add(activeAccountCount);
-            ChtMitarbeiter.Series[0].Points[0].LegendText = "Active Accounts";
+            ChtMitarbeiter.Series[0].Points[0].LegendText = "Aktive Accounts";
             ChtMitarbeiter.Series[0].Points[0].Label = activeAccountCount.ToString();
 
             ChtMitarbeiter.Series[0].Points.Add(inactiveAccountCount);
-            ChtMitarbeiter.Series[0].Points[1].LegendText = "Inactive Accounts";
+            ChtMitarbeiter.Series[0].Points[1].LegendText = "Deaktivierte Accounts";
             ChtMitarbeiter.Series[0].Points[1].Label = inactiveAccountCount.ToString();
 
             ChtMitarbeiter.Series[0].ChartType = SeriesChartType.Pie;
         }
         /// <summary>
         /// Lädt die Werte von der Funktion GetChartValues in die dazugehörige Chart (ChtKunde)
+        /// Es wird eine Serie erstellt mit Aktiven Accounts und eine Ohne Aktive Accounts
+        /// Das Pie-Chart wird am Anfang mittels Clear gelert und erneut bestückt
         /// </summary>
         public void LoadKundeChart(string data)
         {
             int activeAccountCount, inactiveAccountCount;
             GetChartValues(data, out activeAccountCount, out inactiveAccountCount);
 
-            ChtKunde.Titles.Add("Statusaktivität");
+            ChtKunde.Series.Clear();
+
+            ChtKunde.Titles.Add("Status: Kunden");
             ChtKunde.Series.Add(new Series());
 
             ChtKunde.Series[0].Points.Add(activeAccountCount);
-            ChtKunde.Series[0].Points[0].LegendText = "Active Accounts";
+            ChtKunde.Series[0].Points[0].LegendText = "Aktive Accounts";
             ChtKunde.Series[0].Points[0].Label = activeAccountCount.ToString();
 
             ChtKunde.Series[0].Points.Add(inactiveAccountCount);
-            ChtKunde.Series[0].Points[1].LegendText = "Inactive Accounts";
+            ChtKunde.Series[0].Points[1].LegendText = "Deaktivierte Accounts";
             ChtKunde.Series[0].Points[1].Label = inactiveAccountCount.ToString();
 
             ChtKunde.Series[0].ChartType = SeriesChartType.Pie;

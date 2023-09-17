@@ -78,6 +78,7 @@ namespace ContactManager
                 else
                 {
                     UcDashboardView.Instance.BringToFront();
+                    UcDashboardView.Instance.Reload();
                 }
         }
     }
