@@ -16,6 +16,9 @@ namespace ContactManager.User_Controlls
 {
     public partial class UcDashboardView : UserControl
     {
+        private string data1 = "Mitarbeiter";
+        private string data2 = "Kunde";
+
         #region Instances
         private static UcDashboardView instance;
 
@@ -38,40 +41,77 @@ namespace ContactManager.User_Controlls
             InitializeComponent();
         }
 
-        private XDocument mitarbeiter = new XDocument();
+        private XDocument xDoc = new XDocument();
 
         private void UcDashboardView_Load(object sender, EventArgs e)
         {
-            LoadCharts();
+            LoadMitarbeiterChart(data1);
+            LoadKundeChart(data2);
         }
-
-        public void LoadCharts()
+        private void GetChartValues(string data, out int activeAccountCount, out int inactiveAccountCount)
         {
-            mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+            string path = $"{data}.xml";
+            xDoc = XDocument.Load(path);
 
-            var activeAccount = mitarbeiter.Descendants("Mitarbeiter")
+            var activeAccount = xDoc.Descendants(data)
                 .Where(d => d.Attribute("Status").Value == "true")
                 .ToList();
 
-            var inactiveAccount = mitarbeiter.Descendants("Mitarbeiter")
+            var inactiveAccount = xDoc.Descendants(data)
+                .Where(d => d.Attribute("Status").Value == "false")
+                .ToList();
+
+            activeAccountCount = activeAccount.Count;
+            inactiveAccountCount = inactiveAccount.Count;
+        }
+
+        public void LoadMitarbeiterChart(string data)
+        {
+            int activeAccountCount, inactiveAccountCount;
+            GetChartValues(data, out activeAccountCount, out inactiveAccountCount);
+
+            ChtMitarbeiter.Titles.Add("Statusaktivität");
+            ChtMitarbeiter.Series.Add(new Series());
+
+            ChtMitarbeiter.Series[0].Points.Add(activeAccountCount);
+            ChtMitarbeiter.Series[0].Points[0].LegendText = "Active Accounts";
+            ChtMitarbeiter.Series[0].Points[0].Label = activeAccountCount.ToString();
+
+            ChtMitarbeiter.Series[0].Points.Add(inactiveAccountCount);
+            ChtMitarbeiter.Series[0].Points[1].LegendText = "Inactive Accounts";
+            ChtMitarbeiter.Series[0].Points[1].Label = inactiveAccountCount.ToString();
+
+            ChtMitarbeiter.Series[0].ChartType = SeriesChartType.Pie;
+        }
+
+        public void LoadKundeChart(string data)
+        {
+            string path = $"{data}.xml";
+            xDoc = XDocument.Load(path);
+
+            var activeAccount = xDoc.Descendants(data)
+                .Where(d => d.Attribute("Status").Value == "true")
+                .ToList();
+
+            var inactiveAccount = xDoc.Descendants(data)
                 .Where(d => d.Attribute("Status").Value == "false")
                 .ToList();
 
             int activeAccountCount = activeAccount.Count;
             int inactiveAccountCount = inactiveAccount.Count;
 
-            chart1.Titles.Add("Statusaktivität");
-            chart1.Series.Add(new Series());
+            ChtKunde.Titles.Add("Statusaktivität");
+            ChtKunde.Series.Add(new Series());
 
-            chart1.Series[0].Points.Add(activeAccountCount);
-            chart1.Series[0].Points[0].LegendText = "Active Accounts";
-            chart1.Series[0].Points[0].Label = activeAccountCount.ToString();
+            ChtKunde.Series[0].Points.Add(activeAccountCount);
+            ChtKunde.Series[0].Points[0].LegendText = "Active Accounts";
+            ChtKunde.Series[0].Points[0].Label = activeAccountCount.ToString();
 
-            chart1.Series[0].Points.Add(inactiveAccountCount);
-            chart1.Series[0].Points[1].LegendText = "Inactive Accounts";
-            chart1.Series[0].Points[1].Label = inactiveAccountCount.ToString();
+            ChtKunde.Series[0].Points.Add(inactiveAccountCount);
+            ChtKunde.Series[0].Points[1].LegendText = "Inactive Accounts";
+            ChtKunde.Series[0].Points[1].Label = inactiveAccountCount.ToString();
 
-            chart1.Series[0].ChartType = SeriesChartType.Pie;
+            ChtKunde.Series[0].ChartType = SeriesChartType.Pie;
         }
     }
 }
