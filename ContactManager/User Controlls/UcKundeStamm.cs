@@ -47,6 +47,8 @@ namespace ContactManager
         string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
         #endregion
 
+        #region Buttons and Clickevents
+
         /// <summary>
         /// Die Eingabe in TxtNotizInput wird in den string Notiz eingefügt.
         /// Der Dateipfad wird über den ID-Getter geholt. 
@@ -61,23 +63,6 @@ namespace ContactManager
             nc.NotizErfassen(path, notiz);
             LoadNotes();
             
-        }
-
-        /// <summary>
-        /// Gibt von der selektierten Zeile im DataGrid die ID aus und gibt diese wieder zurück.
-        /// </summary>
-        private string IDGetter()
-        {
-            string cellValue = "";
-
-            if (DtgData.SelectedCells.Count > 0)
-            {
-                int selectedrowindex = DtgData.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = DtgData.Rows[selectedrowindex];
-                cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
-
-            }
-            return cellValue;
         }
 
         /// <summary>
@@ -205,74 +190,6 @@ namespace ContactManager
         }
 
         /// <summary>
-        /// Wenn der Status der Checkbox sich ändert ändert sich auch der Text.
-        /// </summary>
-        private bool Status()
-        {
-            if (ChkStatus.Checked)
-            {
-                ChkStatus.Text = "Aktiviert";
-                return true;
-            }
-            else 
-            {
-                ChkStatus.Text = "Deaktiviert";
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Hier sind alle Comoboxen verlinkt und in dieser Funktion untergebracht.
-        /// </summary>
-        private void FillCombobox()
-        {
-            CmbKundentyp.Items.AddRange(kundentyp);
-            CmbAnrede.Items.AddRange(anrede);
-            CmbTitel.Items.AddRange(titel);
-            CmbGeschlecht.Items.AddRange(geschlecht);
-        }
-
-        /// <summary>
-        /// Mit dem ID-Getter wird die ID der aktuellen Zelle geholt und löscht darauf mit der Funktion DeleteValuesKunde den Kunde und die dazugehörige Textdatei.
-        /// </summary>
-        private void Kill_Click(object sender, EventArgs e)
-        {
-            string id = IDGetter();
-
-            File.Delete($"{id}.txt");
-            xmlHandler.DeleteValuesKunde(id);
-            LoadFile();
-        }
-
-        /// <summary>
-        /// Wenn die Datei "Kunde.xml" exisiter und mehr oder gleich 60 Zeichen enthält (Aufgrund der Codierung und Angaben welche eine XML Datei enthält) wird die Datei geladen.
-        /// Ansonsten bleibt das DataGrid leer.
-        /// </summary>
-        private void LoadFile()
-        {
-            if (File.Exists("Kunde.xml") && new FileInfo("Kunde.xml").Length >= 60)
-            {
-                DataSet dataSet = new DataSet();
-                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
-                DtgData.DataSource = dataSet.Tables[0];
-
-                LoadNotes();
-            }
-            else 
-            {
-                DtgData.DataSource = null;
-            }
-        }
-
-        /// <summary>
-        /// Führt bei jeder Änderung von ChkStatus die Funktion Status aus.
-        /// </summary>
-        private void ChkStatus_CheckedChanged(object sender, EventArgs e)
-        {
-            Status();
-        }
-
-        /// <summary>
         /// Führt beim Klick auf CmdClear die Funktion ClearAll aus.
         /// </summary>
         private void CmdClear_Click(object sender, EventArgs e)
@@ -317,10 +234,98 @@ namespace ContactManager
             char kundentyp = Convert.ToChar(CmbKundentyp.Text);
             string kundenkontakt = TxtKundenkontakt.Text;
 
-            Kunde k = new Kunde(ide, status, anrede, titel, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+            Kunde k = new Kunde(ide, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
             xmlHandler.ChangeValuesKundeXML(k);
             LoadFile();
+        }
+
+        /// <summary>
+        /// Mit dem ID-Getter wird die ID der aktuellen Zelle geholt und löscht darauf mit der Funktion DeleteValuesKunde den Kunde und die dazugehörige Textdatei.
+        /// </summary>
+        private void Kill_Click(object sender, EventArgs e)
+        {
+            string id = IDGetter();
+
+            File.Delete($"{id}.txt");
+            xmlHandler.DeleteValuesKunde(id);
+            LoadFile();
+        }
+
+        /// <summary>
+        /// Führt bei jeder Änderung von ChkStatus die Funktion Status aus.
+        /// </summary>
+        private void ChkStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            Status();
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// Gibt von der selektierten Zeile im DataGrid die ID aus und gibt diese wieder zurück.
+        /// </summary>
+        private string IDGetter()
+        {
+            string cellValue = "";
+
+            if (DtgData.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = DtgData.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = DtgData.Rows[selectedrowindex];
+                cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
+
+            }
+            return cellValue;
+        }
+
+        /// <summary>
+        /// Wenn der Status der Checkbox sich ändert ändert sich auch der Text.
+        /// </summary>
+        private bool Status()
+        {
+            if (ChkStatus.Checked)
+            {
+                ChkStatus.Text = "Aktiviert";
+                return true;
+            }
+            else 
+            {
+                ChkStatus.Text = "Deaktiviert";
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Hier sind alle Comoboxen verlinkt und in dieser Funktion untergebracht.
+        /// </summary>
+        private void FillCombobox()
+        {
+            CmbKundentyp.Items.AddRange(kundentyp);
+            CmbAnrede.Items.AddRange(anrede);
+            CmbTitel.Items.AddRange(titel);
+            CmbGeschlecht.Items.AddRange(geschlecht);
+        }
+
+        /// <summary>
+        /// Wenn die Datei "Kunde.xml" exisiter und mehr oder gleich 60 Zeichen enthält (Aufgrund der Codierung und Angaben welche eine XML Datei enthält) wird die Datei geladen.
+        /// Ansonsten bleibt das DataGrid leer.
+        /// </summary>
+        private void LoadFile()
+        {
+            if (File.Exists("Kunde.xml") && new FileInfo("Kunde.xml").Length >= 60)
+            {
+                DataSet dataSet = new DataSet();
+                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
+                DtgData.DataSource = dataSet.Tables[0];
+
+                LoadNotes();
+            }
+            else 
+            {
+                DtgData.DataSource = null;
+            }
         }
 
         /// <summary>
