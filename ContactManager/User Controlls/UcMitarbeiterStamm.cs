@@ -267,10 +267,7 @@ namespace ContactManager
                 DtgData.DataSource = null;
             }
 
-            CmdMitarbeiterErstellen.Visible = true;
-            CmdCancel.Visible = false;
-            CmdMitarbeiterSpeichernErstellen.Visible = false;
-            CmdWerteSpeichern.Visible = false;
+            HideButtons();
 
 
         }
@@ -495,15 +492,21 @@ namespace ContactManager
             ChkStatus.DataBindings.Add("Checked", data, "Status");
             ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
 
-            CmdMitarbeiterErstellen.Visible = true;
+            HideButtons();
 
-            CmdCancel.Visible = false;
-            CmdMitarbeiterSpeichernErstellen.Visible = false;
-            CmdWerteSpeichern.Visible = false;
             DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
 
             DtgData.DataSource = data;
         }
+
+        private void HideButtons()
+        {
+            CmdMitarbeiterErstellen.Visible = true;
+            CmdCancel.Visible = false;
+            CmdMitarbeiterSpeichernErstellen.Visible = false;
+            CmdWerteSpeichern.Visible = false;
+        }
+
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
             ClearDataBindings();
@@ -557,6 +560,6 @@ namespace ContactManager
             ChkStatus.DataBindings.Clear();
             ChkLehrling.DataBindings.Clear();
         }
-        
+
     }
 }
