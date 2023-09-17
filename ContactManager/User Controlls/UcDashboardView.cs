@@ -16,10 +16,21 @@ namespace ContactManager.User_Controlls
 {
     public partial class UcDashboardView : UserControl
     {
-        private string data1 = "Mitarbeiter";
-        private string data2 = "Kunde";
 
+        /// <summary>
+        /// Die Strings werden hier als Statisch abgelegt da sich der Name der Datei nicht ändert
+        /// So kann für die Charts auf den Teil zugegriffen werden
+        /// </summary>
+        #region Parameters
+
+        private string mitarbeiter = "Mitarbeiter";
+        private string kunde = "Kunde";
+
+        #endregion
+        
         #region Instances
+        private XDocument xDoc = new XDocument();
+
         private static UcDashboardView instance;
 
         public static UcDashboardView Instance
@@ -41,15 +52,21 @@ namespace ContactManager.User_Controlls
             InitializeComponent();
         }
 
-        private XDocument xDoc = new XDocument();
-
+        /// <summary>
+        /// Lädt beim Laden des Dashboards das PieChart für die Mitarbeiter wie auch für die Kunden
+        /// </summary>
         private void UcDashboardView_Load(object sender, EventArgs e)
         {
-            LoadMitarbeiterChart(data1);
-            LoadKundeChart(data2);
+            LoadMitarbeiterChart(mitarbeiter);
+            LoadKundeChart(kunde);
         }
+
+        /// <summary>
+        /// Durch den Input von den Strings kann die Funktion unabhängig verwendet werden
+        /// Der Dateipfad wird in der Funktion erstellt und danach geladen
+        /// </summary>
         private void GetChartValues(string data, out int activeAccountCount, out int inactiveAccountCount)
-        {
+        {   
             string path = $"{data}.xml";
             xDoc = XDocument.Load(path);
 
@@ -65,6 +82,9 @@ namespace ContactManager.User_Controlls
             inactiveAccountCount = inactiveAccount.Count;
         }
 
+        /// <summary>
+        /// Lädt die Werte von der Funktion GetChartValues in die dazugehörige Chart (ChtMitarbeiter)
+        /// </summary>
         public void LoadMitarbeiterChart(string data)
         {
             int activeAccountCount, inactiveAccountCount;
@@ -83,22 +103,13 @@ namespace ContactManager.User_Controlls
 
             ChtMitarbeiter.Series[0].ChartType = SeriesChartType.Pie;
         }
-
+        /// <summary>
+        /// Lädt die Werte von der Funktion GetChartValues in die dazugehörige Chart (ChtKunde)
+        /// </summary>
         public void LoadKundeChart(string data)
         {
-            string path = $"{data}.xml";
-            xDoc = XDocument.Load(path);
-
-            var activeAccount = xDoc.Descendants(data)
-                .Where(d => d.Attribute("Status").Value == "true")
-                .ToList();
-
-            var inactiveAccount = xDoc.Descendants(data)
-                .Where(d => d.Attribute("Status").Value == "false")
-                .ToList();
-
-            int activeAccountCount = activeAccount.Count;
-            int inactiveAccountCount = inactiveAccount.Count;
+            int activeAccountCount, inactiveAccountCount;
+            GetChartValues(data, out activeAccountCount, out inactiveAccountCount);
 
             ChtKunde.Titles.Add("Statusaktivität");
             ChtKunde.Series.Add(new Series());
