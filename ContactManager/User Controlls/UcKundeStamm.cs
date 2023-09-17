@@ -38,21 +38,32 @@ namespace ContactManager
         NotizController nc = new NotizController();
         XMLHandler xmlHandler = new XMLHandler();
 
+        #region Combobox
         string[] kundentyp = new string[] { "A", "B", "C", "D", "E" };
         string[] anrede = new string[] { "Herr", "Frau", "Divers" };
         string[] geschlecht = new string[] { "Männlich", "Weiblich", "Divers" };
         string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
+        #endregion
 
+        /// <summary>
+        /// Die Eingabe in TxtNotizInput wird in den string Notiz eingefügt.
+        /// Der Dateipfad wird über den ID-Getter geholt. 
+        /// 
+        /// Path & notiz werden danach in die NotizErfassen Funktion weitergegeben vom NotizController
+        /// </summary>
         private void CmdNotizErfassen_Click(object sender, EventArgs e)
         {
-            NotizController nc = new NotizController();
-
             string notiz = TxtNotizInput.Text;
             string path = $"{IDGetter()}.txt" ;
 
             nc.NotizErfassen(path, notiz);
+            LoadNotes();
+            
         }
 
+        /// <summary>
+        /// Gibt von der selektierten Zeile im DataGrid die ID aus und gibt diese wieder zurück.
+        /// </summary>
         private string IDGetter()
         {
             string cellValue = "";
@@ -67,12 +78,19 @@ namespace ContactManager
             return cellValue;
         }
 
+        /// <summary>
+        /// Beim laden des UcKundenStamm werden die Comboboxen sowie die Datei geladen.
+        /// </summary>
         private void UcKundeStamm_Load(object sender, EventArgs e)
         {
             FillCombobox();
-            LoadData();
+            LoadFile();
         }
 
+        /// <summary>
+        /// Beim Click auf eine Zelle wird die ID ausgelesen und in den string-path gecastet.
+        /// Durch dies werden alle Textfelder mit den Werten der selektierten ID geladen sowie mit "path" die Textdatei welche als Notiz dient geladen (insofern bereits eine Datei existiert)
+        /// </summary>
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string id = IDGetter();
@@ -125,20 +143,23 @@ namespace ContactManager
             }
         }
 
-        private void Knöpgke_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Erstellt den Kunden und Überprüft die Eingaben
+        /// </summary>
+        private void CmdKundeErstellen_Click(object sender, EventArgs e)
         {
             Guid id = Guid.NewGuid();
 
             string vorname = "";
 
             string anrede = CmbAnrede.Text;
-            
+
             if (!String.IsNullOrWhiteSpace(TxtVorname.Text))
             {
                 string vor = TxtVorname.Text;
                 vorname = vor;
             }
-            else 
+            else
             {
                 ErrVorname.SetError(this.TxtVorname, "Eingabe darf nicht leer sein");
             }
@@ -147,6 +168,7 @@ namespace ContactManager
             {
                 bool status = Status();
                 string title = CmbTitel.Text;
+                string geschlecht = CmbGeschlecht.Text;
                 string nachname = TxtNachname.Text;
                 DateTime dob = DtpGeburtsdatum.Value;
                 string nationalitaet = CmbNationalitaet.Text;
@@ -168,10 +190,10 @@ namespace ContactManager
                 char kundentyp = Convert.ToChar(CmbKundentyp.Text);
 
 
-                Kunde k = new Kunde(id, status, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
+                Kunde k = new Kunde(id, status, anrede, title, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
 
                 xmlHandler.CreateKundeXML(k);
-                LoadData();
+                LoadFile();
 
             }
             else
@@ -180,6 +202,9 @@ namespace ContactManager
             }
         }
 
+        /// <summary>
+        /// Wenn der Status der Checkbox sich ändert ändert sich auch der Text.
+        /// </summary>
         private bool Status()
         {
             if (ChkStatus.Checked)
@@ -194,6 +219,9 @@ namespace ContactManager
             }
         }
 
+        /// <summary>
+        /// Hier sind alle Comoboxen verlinkt und in dieser Funktion untergebracht.
+        /// </summary>
         private void FillCombobox()
         {
             CmbKundentyp.Items.AddRange(kundentyp);
@@ -202,22 +230,31 @@ namespace ContactManager
             CmbGeschlecht.Items.AddRange(geschlecht);
         }
 
+        /// <summary>
+        /// Mit dem ID-Getter wird die ID der aktuellen Zelle geholt und löscht darauf mit der Funktion DeleteValuesKunde den Kunde und die dazugehörige Textdatei.
+        /// </summary>
         private void Kill_Click(object sender, EventArgs e)
         {
             string id = IDGetter();
 
             File.Delete($"{id}.txt");
             xmlHandler.DeleteValuesKunde(id);
-            LoadData();
+            LoadFile();
         }
 
-        private void LoadData()
+        /// <summary>
+        /// Wenn die Datei "Kunde.xml" exisiter und mehr oder gleich 60 Zeichen enthält (Aufgrund der Codierung und Angaben welche eine XML Datei enthält) wird die Datei geladen.
+        /// Ansonsten bleibt das DataGrid leer.
+        /// </summary>
+        private void LoadFile()
         {
             if (File.Exists("Kunde.xml") && new FileInfo("Kunde.xml").Length >= 60)
             {
                 DataSet dataSet = new DataSet();
                 dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
                 DtgData.DataSource = dataSet.Tables[0];
+
+                LoadNotes();
             }
             else 
             {
@@ -225,16 +262,28 @@ namespace ContactManager
             }
         }
 
+        /// <summary>
+        /// Führt bei jeder Änderung von ChkStatus die Funktion Status aus.
+        /// </summary>
         private void ChkStatus_CheckedChanged(object sender, EventArgs e)
         {
             Status();
         }
 
+        /// <summary>
+        /// Führt beim Klick auf CmdClear die Funktion ClearAll aus.
+        /// </summary>
         private void CmdClear_Click(object sender, EventArgs e)
         {
             ClearAll();
         }
 
+        /// <summary>
+        /// Beim Klicken auf CmdSave wird die Speicherfunktion ausgeführt.
+        /// Hier werden alle Felder ausgelesn und wenn nötig bereits Konvertiert (Kundentyp to char, plz to int)
+        /// Die ganzen Werte werden in das Objekt Kunde "k" eingefügt und danach an den XML-Handler ChangeValuesKunde weitergegeben. 
+        /// Danach wird die Funktion LoadFile ausgeführt.
+        /// </summary>
         private void CmdSave_Click(object sender, EventArgs e)
         {
             //Parameters
@@ -245,6 +294,7 @@ namespace ContactManager
 
             string anrede = CmbAnrede.Text;
             string titel = CmbTitel.Text;
+            string geschlecht = CmbGeschlecht.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
@@ -265,12 +315,15 @@ namespace ContactManager
             char kundentyp = Convert.ToChar(CmbKundentyp.Text);
             string kundenkontakt = TxtKundenkontakt.Text;
 
-            Kunde k = new Kunde(ide, status, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+            Kunde k = new Kunde(ide, status, anrede, titel, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
             xmlHandler.ChangeValuesKundeXML(k);
-            LoadData();
+            LoadFile();
         }
 
+        /// <summary>
+        /// Hier werden alle Felder zurückgesetzt auf ihren Standart.
+        /// </summary>
         private void ClearAll()
         {
             LblId.Text = "...";
@@ -278,6 +331,7 @@ namespace ContactManager
 
             CmbAnrede.ResetText();
             CmbTitel.ResetText();
+            CmbGeschlecht.ResetText();
 
             TxtVorname.Clear();
             TxtNachname.Clear();
@@ -298,6 +352,20 @@ namespace ContactManager
             TxtFirmenadresse.Clear();
             CmbKundentyp.ResetText();
             TxtKundenkontakt.Clear();
+        }
+
+        /// <summary>
+        /// Lädt die Notizen sobald die Datei existiert in das Feld TxtNotizenOutput
+        /// </summary>
+        private void LoadNotes()
+        {
+            string path = $"{IDGetter()}.txt";
+
+            if(File.Exists(path))
+            {
+                TxtNotizOutput.Text = nc.NotizLaden(path);
+            }
+            
         }
     }
 }

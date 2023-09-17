@@ -22,8 +22,8 @@ namespace ContactManager.Model
         public string Kundenkontakt { get; set; }
         #endregion
 
-        public Kunde(Guid id, bool isa, string anrede, string title, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort,
-                     string firmenname, string firmenadresse, char kt, string kk) : base (id, isa, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort)
+        public Kunde(Guid id, bool isa, string anrede, string title, string gender,string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort,
+                     string firmenname, string firmenadresse, char kt, string kk) : base (id, isa, anrede, title, gender,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort)
         {
             Firmenname = firmenname;
             Firmenadresse = firmenadresse;

@@ -14,6 +14,13 @@ namespace ContactManager.Controller
     internal class XMLHandler
     {
         #region Create
+
+        /// <summary>
+        /// Zuerst wird Überprüft ob die Datei für Kunden ("Kunde.xml") bereits exisitert.
+        /// Sollte die Datei nicht existieren so wird die Datei inkl. dem Kunden erstellt.
+        /// 
+        /// Existiert die Datei bereits wird der Kunde per Add eingefügt.
+        /// </summary>
         public void CreateKundeXML(Kunde k)
         {
             if (!File.Exists("Kunde.xml"))
@@ -27,9 +34,9 @@ namespace ContactManager.Controller
                     new XAttribute("Status", k.isActive),
 
                     //Person
-                    new XElement("Geschlecht", "A"),
                     new XElement("Anrede", k.Anrede),
                     new XElement("Titel", k.Title),
+                    new XElement("Geschlecht", k.Gender),
                     new XElement("Vorname", k.Vorname),
                     new XElement("Nachname", k.Nachname),
                     new XElement("Geburtsdatum", k.Geburtsdatum.ToShortDateString()),
@@ -66,9 +73,9 @@ namespace ContactManager.Controller
                     new XAttribute("Status", k.isActive),
 
                     //Person
-                    new XElement("Geschlecht", "A"),
                     new XElement("Anrede", k.Anrede),
                     new XElement("Titel", k.Title),
+                    new XElement("Geschlecht", k.Gender),
                     new XElement("Vorname", k.Vorname),
                     new XElement("Nachname", k.Nachname),
                     new XElement("Geburtsdatum", k.Geburtsdatum.ToShortDateString()),
@@ -96,7 +103,12 @@ namespace ContactManager.Controller
             }
 
         }
-
+        /// <summary>
+        /// Zuerst wird Überprüft ob die Datei für Mitarbeiter ("Mitarbeiter.xml") bereits exisitert.
+        /// Sollte die Datei nicht existieren so wird die Datei inkl. dem Mitarbeiter erstellt.
+        /// 
+        /// Existiert die Datei bereits wird der Mitarbeiter per Add eingefügt.
+        /// </summary>
         public void CreateMitarbeiterXML(Mitarbeiter m)
         {
             if (!File.Exists("Mitarbeiter.xml"))
@@ -111,9 +123,9 @@ namespace ContactManager.Controller
                     new XAttribute("Lehrling", m.isTrainee),
 
                     //Person
-                    new XElement("Geschlecht", "A"),
                     new XElement("Anrede", m.Anrede),
                     new XElement("Titel", m.Title),
+                     new XElement("Geschlecht", m.Gender),
                     new XElement("Vorname", m.Vorname),
                     new XElement("Nachname", m.Nachname),
                     new XElement("Geburtsdatum", m.Geburtsdatum.ToShortDateString()),
@@ -153,9 +165,9 @@ namespace ContactManager.Controller
                     new XAttribute("Lehrling", m.isTrainee),
 
                     //Person
-                    new XElement("Geschlecht", "A"),
                     new XElement("Anrede", m.Anrede),
                     new XElement("Titel", m.Title),
+                    new XElement("Geschlecht", m.Gender),
                     new XElement("Vorname", m.Vorname),
                     new XElement("Nachname", m.Nachname),
                     new XElement("Geburtsdatum", m.Geburtsdatum.ToShortDateString()),
@@ -185,6 +197,13 @@ namespace ContactManager.Controller
             }
         }
 
+        /// <summary>
+        /// Zuerst wird Überprüft ob die Datei für Lehrling ("Mitarbeiter.xml") bereits exisitert.
+        /// Sollte die Datei nicht existieren so wird die Datei inkl. dem Mitarbeiter erstellt.
+        /// 
+        /// Existiert die Datei bereits wird der Mitarbeiter per Add eingefügt.
+        /// Beim Lehrling werden noch drei Weitere Werte hinzugefügt (Lehrjahre, aktuelles Lehrjahr und der Status ob es ein Lehrling ist)
+        /// </summary>
         public void CreateLehrlingXML(Lehrling l)
         {
             if (!File.Exists("Mitarbeiter.xml"))
@@ -199,9 +218,9 @@ namespace ContactManager.Controller
                     new XAttribute("Lehrling", l.isTrainee),
 
                     //Person
-                    new XElement("Geschlecht", "A"),
                     new XElement("Anrede", l.Anrede),
-                    new XElement("Titel", "A"),
+                    new XElement("Titel", l.Title),
+                    new XElement("Geschlecht", l.Gender),
                     new XElement("Vorname", l.Vorname),
                     new XElement("Nachname", l.Nachname),
                     new XElement("Geburtsdatum", l.Geburtsdatum.ToShortDateString()),
@@ -238,7 +257,6 @@ namespace ContactManager.Controller
                 XElement xEle = XElement.Load("Mitarbeiter.xml");
 
                 xEle.Add(new XElement("Mitarbeiter",
-                    new XElement("Mitarbeiter",
 
                     //Wichtig
                     new XAttribute("ID", l.Id),
@@ -246,9 +264,10 @@ namespace ContactManager.Controller
                     new XAttribute("Lehrling", l.isTrainee),
 
                     //Person
-                    new XElement("Geschlecht", "A"),
+
                     new XElement("Anrede", l.Anrede),
-                    new XElement("Titel", "A"),
+                    new XElement("Titel", l.Title),
+                    new XElement("Geschlecht", l.Gender),
                     new XElement("Vorname", l.Vorname),
                     new XElement("Nachname", l.Nachname),
                     new XElement("Geburtsdatum", l.Geburtsdatum.ToShortDateString()),
@@ -276,7 +295,7 @@ namespace ContactManager.Controller
 
                     //Lehrlingspezifisch
                     new XElement("Lehrjahre", l.TraineeYears),
-                    new XElement("Aktuelles_Lehrjahr", l.ActualTraineeYear))));
+                    new XElement("Aktuelles_Lehrjahr", l.ActualTraineeYear)));
 
                 xEle.Save("Mitarbeiter.xml");
             }
@@ -284,6 +303,10 @@ namespace ContactManager.Controller
         #endregion
 
         #region Update
+
+        /// <summary>
+        /// Das Objekt Mitarbeiter "m" gibt die ganzen Werte welche die enthalten sind wieder in die Felder ein und speicher diese danach.
+        /// </summary>
         public void ChangeValuesMitarbeiterXML(Mitarbeiter m)
         {
             XElement xdoc = XElement.Load("Mitarbeiter.xml");
@@ -298,7 +321,15 @@ namespace ContactManager.Controller
             //Person
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Titel", m.Title);
+           
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetElementValue("Anrede", m.Anrede);
+            
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Geschlecht", m.Gender);
 
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
@@ -366,6 +397,9 @@ namespace ContactManager.Controller
             xdoc.Save("Mitarbeiter.xml");
         }
 
+        /// <summary>
+        /// Das Objekt Kunde "k" gibt die ganzen Werte welche die enthalten sind wieder in die Felder ein und speicher diese danach.
+        /// </summary>
         public void ChangeValuesKundeXML(Kunde k)
         {
             XElement xdoc = XElement.Load("Kunde.xml");
@@ -377,8 +411,6 @@ namespace ContactManager.Controller
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetAttributeValue("Status", k.isActive);
 
-
-
             //Persönliche Daten
             xdoc.Elements("Kunde")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
@@ -387,6 +419,10 @@ namespace ContactManager.Controller
             xdoc.Elements("Kunde")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetElementValue("Anrede", k.Anrede);
+
+            xdoc.Elements("Kunde")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Geschlecht", k.Gender);
 
             xdoc.Elements("Kunde")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
@@ -459,6 +495,9 @@ namespace ContactManager.Controller
             xdoc.Save("Kunde.xml");
         }
 
+        /// <summary>
+        /// Das Objekt Lehrling "l" gibt die ganzen Werte welche die enthalten sind wieder in die Felder ein und speicher diese danach.
+        /// </summary>
         public void ChangeValuesLehrlingXML(Lehrling l)
         {
             XElement xdoc = XElement.Load("Mitarbeiter.xml");
@@ -470,11 +509,18 @@ namespace ContactManager.Controller
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetAttributeValue("Status", l.isActive);
 
-
             //Person
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Titel", l.Title);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetElementValue("Anrede", l.Anrede);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Geschlecht", l.Gender);
 
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
@@ -552,6 +598,11 @@ namespace ContactManager.Controller
         #endregion
 
         #region Read
+
+        /// <summary>
+        /// Liest die ganzen Werte aus dem XML-File aus anhand der ID welche über den string id erhalten wird.
+        /// Die ganzen Werte werden danach in das Objekt Mitarbeiter m gecastet und danach per return wieder ausgegeben.
+        /// </summary>
         public Mitarbeiter RetriveValuesMitarbeiter(string id)
         {
             XElement xdoc = XElement.Load("Mitarbeiter.xml");
@@ -573,6 +624,10 @@ namespace ContactManager.Controller
             string title =      xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
                                     .FirstOrDefault().Element("Titel").Value;
+
+            string geschlecht = xdoc.Elements("Mitarbeiter")
+                                    .Where(x => x.Attribute("ID").Value == id)
+                                    .FirstOrDefault().Element("Geschlecht").Value;
 
             string vorname =    xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
@@ -646,10 +701,15 @@ namespace ContactManager.Controller
                                             .Where(x => x.Attribute("ID").Value == id)
                                             .FirstOrDefault().Element("Arbeitspensum").Value);
 
-            Mitarbeiter m = new Mitarbeiter(ide, status, isTrainee, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end);
+            Mitarbeiter m = new Mitarbeiter(ide, status, isTrainee, anrede, title, geschlecht,vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end);
             return m;
 
         }
+
+        /// <summary>
+        /// Liest die ganzen Werte aus dem XML-File aus anhand der ID welche über den string id erhalten wird.
+        /// Die ganzen Werte werden danach in das Objekt Kunde k gecastet und danach per return wieder ausgegeben.
+        /// </summary>
         public Kunde RetriveValuesKunde(string id)
         {
             XElement xDoc = XElement.Load("Kunde.xml");
@@ -667,6 +727,10 @@ namespace ContactManager.Controller
             string title = xDoc.Elements("Kunde")
                                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                                 .Element("Titel").Value;
+
+            string geschlecht = xDoc.Elements("Kunde")
+                                .Where(x => x.Attribute("ID").Value == id)
+                                .FirstOrDefault().Element("Geschlecht").Value;
 
             string vorname = xDoc.Elements("Kunde")
                                  .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
@@ -732,11 +796,16 @@ namespace ContactManager.Controller
                                        .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                                        .Element("Kundenkontakt").Value;
 
-            Kunde k = new Kunde(ide, status, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+            Kunde k = new Kunde(ide, status, anrede, title, geschlecht, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
             return k;
 
         }
+
+        /// <summary>
+        /// Liest die ganzen Werte aus dem XML-File aus anhand der ID welche über den string id erhalten wird.
+        /// Die ganzen Werte werden danach in das Objekt Lehrling l gecastet und danach per return wieder ausgegeben.
+        /// </summary>
         public Lehrling RetriveValueLehrling(string id)
         {
             XElement xdoc = XElement.Load("Mitarbeiter.xml");
@@ -758,6 +827,10 @@ namespace ContactManager.Controller
             string title = xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
                                     .FirstOrDefault().Element("Titel").Value;
+
+            string geschlecht = xdoc.Elements("Mitarbeiter")
+                        .Where(x => x.Attribute("ID").Value == id)
+                        .FirstOrDefault().Element("Geschlecht").Value;
 
             string vorname = xdoc.Elements("Mitarbeiter")
                                     .Where(x => x.Attribute("ID").Value == id)
@@ -836,13 +909,17 @@ namespace ContactManager.Controller
             int aktlehrjahr = Convert.ToInt16(xdoc.Elements("Mitarbeiter").Where(x => x.Attribute("ID").Value == id).FirstOrDefault().Element("Aktuelles_Lehrjahr").Value);
 
 
-            Lehrling l = new Lehrling(ide, status, istrainee, anrede, title, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end, lehrjahre, aktlehrjahr);
+            Lehrling l = new Lehrling(ide, status, istrainee, anrede, title, geschlecht, vorname, nachname, geburtsdatum, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, kaderstufe, rolle, abteilung, arbeitspensum, start, end, lehrjahre, aktlehrjahr);
 
             return l;
         }
         #endregion
 
         #region Delete
+
+        /// <summary>
+        /// Die ID wird in die Löschfunktion eingefügt, diese löscht danach den Kunden welcher die ID besitzen.
+        /// </summary>
         public void DeleteValuesKunde(string id)
         {
             XElement xDoc = XElement.Load("Kunde.xml");
@@ -854,6 +931,9 @@ namespace ContactManager.Controller
             xDoc.Save("Kunde.xml");
         }
 
+        /// <summary>
+        /// Die ID wird in die Löschfunktion eingefügt, diese löscht danach den Mitarbeiter/Lehrling welcher die ID besitzen.
+        /// </summary>
         public void DeleteValuesMitarbeiter(string id)
         {
             XElement xDoc = XElement.Load("Mitarbeiter.xml");

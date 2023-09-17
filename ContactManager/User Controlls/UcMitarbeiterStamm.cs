@@ -70,6 +70,9 @@ namespace ContactManager
 
         }
 
+        /// <summary>
+        /// Sobald UcMitarbeiterStamm geladen wird werden die Comboboxen gefüllt, die LoadFile funktion ausgeführt und der Reset & Delete Button deaktiviert.
+        /// </summary>
         private void UcMitarbeiterStamm_Load(object sender, EventArgs e)
         {
             FillCombobox();
@@ -79,9 +82,12 @@ namespace ContactManager
         }
 
         /// <summary>
-        /// Blibblub brucht no Text
+        /// Die Funktion Deaktiviert den Knopf CmdWerteSpeicher und Enabled das DataGrid.
+        /// Der ID-Getter holt sich die ID und führt einen Parse aus.
+        /// Status sowohl auch der TraineChecker holen sich den Status der Parameter.
+        /// Ist der "istrainee"-Bool auf True wird die die If-Schleife ausgeführt und speichert die Werte als Lehrling.
+        /// Ist der "istrainee"-Bool auf false werden die Werte als Mitarbeiter gespeichert.
         /// </summary>
-
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
             CmdWerteSpeichern.Visible = false;
@@ -96,6 +102,7 @@ namespace ContactManager
 
             string anrede = CmbAnrede.Text;
             string title = CmbTitel.Text;
+            string geschlecht = CmbGeschlecht.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
@@ -119,7 +126,7 @@ namespace ContactManager
             DateTime end = DtpEnddatum.Value;
 
 
-            Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end);
+            Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end);
             CmdMitarbeiterErstellen.Visible = true;
             CmdCancel.Visible = false;
 
@@ -128,7 +135,7 @@ namespace ContactManager
             {
                 int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
                 int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
-                Lehrling l = new Lehrling(id, status, istrainee, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end, lehrjahre, aktLehrjahr);
+                Lehrling l = new Lehrling(id, status, istrainee, anrede, title, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end, lehrjahre, aktLehrjahr);
                 xmlHandler.ChangeValuesLehrlingXML(l);
             }
             else if (ChkLehrling.Checked == false)
@@ -153,6 +160,7 @@ namespace ContactManager
 
             string anrede = CmbAnrede.Text;
             string titel = CmbTitel.Text;
+            string geschlecht = CmbGeschlecht.Text;
             string vorname = TxtVorname.Text;
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
@@ -184,19 +192,19 @@ namespace ContactManager
                 bool istrainee = true;
                 //Für Lehrlinge
 
-                Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
+                Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
                 xmlHandler.CreateLehrlingXML(l);
             }
             else if (ChkLehrling.Checked == false)
             {
                 bool istrainee = false;
-                Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
+                Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
                 xmlHandler.CreateMitarbeiterXML(m);
             }
 
 
             LblId.Text = Convert.ToString(id);
-            DataGridNeueZeile();
+            LoadFile();
             CmdMitarbeiterErstellen.Visible = true;
             CmdMitarbeiterSpeichernErstellen.Visible = false;
             CmdDelete.Visible = true;
@@ -205,20 +213,20 @@ namespace ContactManager
             CmdCancel.Visible = false;
 
             MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
-
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
 
+        /// <summary>
+        /// Hier läuft der ganze Prozess vom Laden der Datei ab.
+        /// Alle Mitarbeiter werden in der Datei Mitarbeiter.xml gespeichert (Mitarbeiter & Lehrlinge)
+        /// Sollte die Datei existieren und der vorgegbene Zeichensatz grösser oder gleich 60 sein werden die Filtereigenschaften zurückgesetzt und die Datei geladen.
+        /// Existiert die Datei nicht wird die DataSource vom DataGrid auf "null" gesetzt.
+        /// </summary>
         public void LoadFile()
         {
             if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
-                
-                
+
+
                 mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
                 var data = mitarbeiter.Descendants("Mitarbeiter").Select(m => new
@@ -232,13 +240,7 @@ namespace ContactManager
                     Lehrling = m.Attribute("Lehrling").Value
                 }).OrderBy(m => m.Id).ToList();
 
-                LblId.DataBindings.Clear();
-                CmbAnrede.DataBindings.Clear();
-                TxtVorname.DataBindings.Clear();
-                TxtNachname.DataBindings.Clear();
-                TxtPostleitzahl.DataBindings.Clear();
-                ChkStatus.DataBindings.Clear();
-                ChkLehrling.DataBindings.Clear();
+                ClearDataBindings();
 
                 LblId.DataBindings.Add("text", data, "ID");
                 CmbAnrede.DataBindings.Add("text", data, "Anrede");
@@ -255,7 +257,7 @@ namespace ContactManager
                 {
                     DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
                 }
-                    
+
 
             }
             else
@@ -268,22 +270,12 @@ namespace ContactManager
             CmdMitarbeiterSpeichernErstellen.Visible = false;
             CmdWerteSpeichern.Visible = false;
 
-            
+
         }
 
-        public void DataGridNeueZeile()
-        {
-            LoadFile();
-        }
-
-        public void DataGridZeileBearbeiten()
-        {
-            DtgData.SelectedRows[0].Cells[0].Value = LblId.Text;
-            DtgData.SelectedRows[0].Cells[1].Value = CmbAnrede.Text;
-            DtgData.SelectedRows[0].Cells[2].Value = TxtNachname.Text;
-            DtgData.SelectedRows[0].Cells[3].Value = TxtVorname.Text;
-        }
-
+        /// <summary>
+        /// Gibt von der selektierten Zeile im DataGrid die ID aus und gibt diese wieder zurück.
+        /// </summary>
         public string IDGetter()
         {
             string cellValue = "";
@@ -298,6 +290,9 @@ namespace ContactManager
             return cellValue;
         }
 
+        /// <summary>
+        /// Überprüft im Datagrid wenn die Zeile selektiert wie das Lehrlingsattribut gesetzt ist und gibt dieses wieder zurück.
+        /// </summary>
         public bool TraineChecker()
         {
             {
@@ -315,6 +310,9 @@ namespace ContactManager
             }
         }
 
+        /// <summary>
+        /// Wenn der Status der Checkbox sich ändert ändert sich auch der Text.
+        /// </summary>
         private bool Status()
         {
             if (!ChkStatus.Checked)
@@ -329,70 +327,78 @@ namespace ContactManager
             }
         }
 
-        public void BenutzererstellungFehler()
-        {
-            if (CmdMitarbeiterErstellen.Visible == false)
-            {
-                DialogResult dialogResult = MessageBox.Show("Benutzer Speichern?", "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        /// <summary>
+        /// 
+        /// </summary>
+        //public void BenutzererstellungFehler()
+        //{
+        //    if (CmdMitarbeiterErstellen.Visible == false)
+        //    {
+        //        DialogResult dialogResult = MessageBox.Show("Benutzer Speichern?", "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (dialogResult == DialogResult.Yes)
-                {
-                    try
-                    {
-                        Guid id = Guid.NewGuid();
-                        bool status = Status();
-                        bool istrainee = TraineChecker();
+        //        if (dialogResult == DialogResult.Yes)
+        //        {
+        //            try
+        //            {
+        //                Guid id = Guid.NewGuid();
+        //                bool status = Status();
+        //                bool istrainee = TraineChecker();
 
-                        string anrede = CmbAnrede.Text;
-                        string title = CmbTitel.Text;
-                        string vorname = TxtVorname.Text;
-                        string nachname = TxtNachname.Text;
-                        DateTime dob = DtpGeburtsdatum.Value;
-                        string ahv = TxtAhvNum.Text;
-                        string nationalitaet = CmbNationalitaet.Text;
+        //                string anrede = CmbAnrede.Text;
+        //                string title = CmbTitel.Text;
+        //                string geschlecht = CmbGeschlecht.Text;
+        //                string vorname = TxtVorname.Text;
+        //                string nachname = TxtNachname.Text;
+        //                DateTime dob = DtpGeburtsdatum.Value;
+        //                string ahv = TxtAhvNum.Text;
+        //                string nationalitaet = CmbNationalitaet.Text;
 
-                        string email = TxtEmail.Text;
-                        string privat = TxtTelPriv.Text;
-                        string mobil = TxtTelMobil.Text;
-                        string arbeit = TxtTelGesch.Text;
+        //                string email = TxtEmail.Text;
+        //                string privat = TxtTelPriv.Text;
+        //                string mobil = TxtTelMobil.Text;
+        //                string arbeit = TxtTelGesch.Text;
 
-                        string strasse = TxtStrasse.Text;
-                        string wohnort = TxtWohnort.Text;
-                        int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+        //                string strasse = TxtStrasse.Text;
+        //                string wohnort = TxtWohnort.Text;
+        //                int plz = Convert.ToInt16(TxtPostleitzahl.Text);
 
-                        int ks = Convert.ToInt16(NumKaderstufe.Value);
-                        string abt = TxtAbteilung.Text;
-                        string rolle = TxtRolle.Text;
-                        int arbp = Convert.ToInt16(NumArbeitspensum.Value);
-                        DateTime st = DtpStartdatum.Value;
-                        DateTime et = DtpEnddatum.Value;
+        //                int ks = Convert.ToInt16(NumKaderstufe.Value);
+        //                string abt = TxtAbteilung.Text;
+        //                string rolle = TxtRolle.Text;
+        //                int arbp = Convert.ToInt16(NumArbeitspensum.Value);
+        //                DateTime st = DtpStartdatum.Value;
+        //                DateTime et = DtpEnddatum.Value;
 
-                        Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
+        //                Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
 
 
-                        xmlHandler.CreateMitarbeiterXML(m);
-                        LblId.Text = Convert.ToString(id);
-                        DataGridNeueZeile();
-                        CmdMitarbeiterErstellen.Visible = true;
-                        CmdMitarbeiterSpeichernErstellen.Visible = false;
-                        DtgData.Enabled = true;
-                        MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
+        //                xmlHandler.CreateMitarbeiterXML(m);
+        //                LblId.Text = Convert.ToString(id);
+        //                LoadFile();
+        //                CmdMitarbeiterErstellen.Visible = true;
+        //                CmdMitarbeiterSpeichernErstellen.Visible = false;
+        //                DtgData.Enabled = true;
+        //                MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
 
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+        //            }
+        //            catch
+        //            {
+        //                MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
 
-                    CmdMitarbeiterErstellen.Visible = true;
-                }
-                else
-                {
-                    CmdMitarbeiterErstellen.Visible = true;
-                }
-            }
-        }
+        //            CmdMitarbeiterErstellen.Visible = true;
+        //        }
+        //        else
+        //        {
+        //            CmdMitarbeiterErstellen.Visible = true;
+        //        }
+        //    }
+        //}
 
+        /// <summary>
+        /// Löscht den Selektierten User der über den ID-Getter ausgewählt wurde.
+        /// Die Löschung ist nach der Messagebox engültig.
+        /// </summary>
         private void Kill_Click(object sender, EventArgs e)
         {
             string id = IDGetter();
@@ -401,13 +407,7 @@ namespace ContactManager
 
             if (dialogResult == DialogResult.Yes)
             {
-                LblId.DataBindings.Clear();
-                CmbAnrede.DataBindings.Clear();
-                TxtVorname.DataBindings.Clear();
-                TxtNachname.DataBindings.Clear();
-                TxtPostleitzahl.DataBindings.Clear();
-                ChkStatus.DataBindings.Clear();
-                ChkLehrling.DataBindings.Clear();
+                ClearDataBindings();
 
                 xmlHandler.DeleteValuesMitarbeiter(id);
 
@@ -415,21 +415,24 @@ namespace ContactManager
             }
         }
 
+        /// <summary>
+        /// Ruft beim wechseln des ChkStatus die Funktion Status auf
+        /// </summary>
         private void ChkStatus_CheckedChanged(object sender, EventArgs e)
         {
             Status();
         }
 
-        private void CmbReset_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        /// <summary>
+        /// Füllt die Comboboxen mit Vorgegebenen Werten welche in der Region "Combobox definiert sind."
+        /// </summary>
         private void FillCombobox()
         {
             CmbTitel.Items.AddRange(titel);
             CmbAnrede.Items.AddRange(anrede);
+            CmbGeschlecht.Items.AddRange(geschlecht);
         }
+
 
         private void CmdCancel_Click(object sender, EventArgs e)
         {
@@ -441,6 +444,9 @@ namespace ContactManager
             LoadFile();
         }
 
+        /// <summary>
+        /// Ändert sich der Status von ChkLehrling werden die Optionen vom Lehrling aktiviert oder deaktiviert.
+        /// </summary>
         private void ChkLehrling_CheckedChanged(object sender, EventArgs e)
         {
             if (ChkLehrling.Checked)
@@ -476,13 +482,7 @@ namespace ContactManager
                     Lehrling = m.Attribute("Lehrling").Value
                 }).OrderBy(m => m.Id).ToList();
 
-            LblId.DataBindings.Clear();
-            CmbAnrede.DataBindings.Clear();
-            TxtVorname.DataBindings.Clear();
-            TxtNachname.DataBindings.Clear();
-            TxtPostleitzahl.DataBindings.Clear();
-            ChkStatus.DataBindings.Clear();
-            ChkLehrling.DataBindings.Clear();
+            ClearDataBindings();
 
             LblId.DataBindings.Add("text", data, "ID");
             CmbAnrede.DataBindings.Add("text", data, "Anrede");
@@ -504,17 +504,11 @@ namespace ContactManager
 
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
-            LblId.DataBindings.Clear();
-            CmbAnrede.DataBindings.Clear();
-            TxtVorname.DataBindings.Clear();
-            TxtNachname.DataBindings.Clear();
-            TxtPostleitzahl.DataBindings.Clear();
-            ChkStatus.DataBindings.Clear();
-            ChkLehrling.DataBindings.Clear();
+            ClearDataBindings();
+
             FilterDashboard filterDashboard = new FilterDashboard();
             filterDashboard.ShowDialog();
         }
-
         private void TxtVorname_TextChanged(object sender, EventArgs e)
         {
             if (CmdMitarbeiterErstellen.Visible == true)
@@ -536,7 +530,6 @@ namespace ContactManager
                 }
             }
         }
-
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             index = DtgData.CurrentRow.Index;
@@ -547,11 +540,26 @@ namespace ContactManager
                 CmdDelete.Visible = true;
             }
         }
-
         private void CmdFilterReset_Click(object sender, EventArgs e)
         {
             CmdFilterReset.Visible = false;
             LoadFile();
         }
+        private void ClearDataBindings()
+        {
+            LblId.DataBindings.Clear();
+            CmbAnrede.DataBindings.Clear();
+            TxtVorname.DataBindings.Clear();
+            TxtNachname.DataBindings.Clear();
+            TxtPostleitzahl.DataBindings.Clear();
+            ChkStatus.DataBindings.Clear();
+            ChkLehrling.DataBindings.Clear();
+        }
+        
+        //private void CheckInputs()
+        //{
+        //    if (TxtVorname.TextLength > 0 && TxtVorname.Text )
+            
+        //}
     }
 }

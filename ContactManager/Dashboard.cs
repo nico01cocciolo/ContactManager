@@ -29,8 +29,6 @@ namespace ContactManager
 
             //UcMitarbeiterStamm uc = new UcMitarbeiterStamm();
 
-            
-
             if (!PnlUCHandler.Controls.Contains(UcMitarbeiterStamm.Instance))
             {
                 PnlUCHandler.Controls.Add(UcMitarbeiterStamm.Instance);
@@ -42,7 +40,7 @@ namespace ContactManager
                 UcMitarbeiterStamm.Instance.BringToFront();
             }
 
-            UcMitarbeiterStamm.Instance.BenutzererstellungFehler();
+            //UcMitarbeiterStamm.Instance.BenutzererstellungFehler();
         }
 
         private void CmdStammKunden_Click(object sender, EventArgs e)

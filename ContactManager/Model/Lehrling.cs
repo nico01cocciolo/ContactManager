@@ -22,9 +22,9 @@ namespace ContactManager.Model
         public int ActualTraineeYear { get; set; }
         #endregion
 
-        public Lehrling(Guid id, bool isa, bool istrainee, string anrede, string title, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort, int ks, string rolle, string abt, int arbp, DateTime start, DateTime end,
+        public Lehrling(Guid id, bool isa, bool istrainee, string anrede, string title, string gender,string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort, int ks, string rolle, string abt, int arbp, DateTime start, DateTime end,
                         int ty, int aty) 
-                       : base(id, isa, istrainee, anrede, title, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, start, end)
+                       : base(id, isa, istrainee, anrede, title, gender, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, start, end)
         {
             TraineeYears = ty;
             ActualTraineeYear = aty;

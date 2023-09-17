@@ -35,7 +35,7 @@ namespace ContactManager.Model
         public string Vorname { get; set; }
         public string Nachname { get; set; }
         public DateTime Geburtsdatum { get; set; }
-        //public Gender Gender { get; set; }
+        public string Gender { get; set; }
         public string Title { get; set; }
         public string TelefonPrivat { get; set; }
         public string TelefonArbeit { get; set; }
@@ -50,10 +50,7 @@ namespace ContactManager.Model
 
         #endregion
 
-        //ADD 
-        //Du muss no meh so Gugus ine aber mag gad nüme *Gähn*
-
-        public Person(Guid id, bool isa,  string anrede, string title, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort)
+        public Person(Guid id, bool isa,  string anrede, string title, string gender, string vorname, string nachname, DateTime dob, string privat, string arbeit, string mobil, string email, string ahv, string nationalitaet, string strasse, int plz, string wohnort)
         {
             Id = id;
             isActive = isa;
@@ -71,6 +68,7 @@ namespace ContactManager.Model
             Strasse = strasse;
             Plz = plz;
             Wohnort = wohnort;
+            Gender = gender;
 
         }
     }

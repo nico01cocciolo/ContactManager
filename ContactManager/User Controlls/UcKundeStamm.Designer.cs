@@ -88,7 +88,7 @@
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
             this.CmdKundeSpeichern = new System.Windows.Forms.Button();
             this.DtgData = new System.Windows.Forms.DataGridView();
-            this.Knöpgke = new System.Windows.Forms.Button();
+            this.CmdKundeErstellen = new System.Windows.Forms.Button();
             this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
             this.ErrNachname = new System.Windows.Forms.ErrorProvider(this.components);
             this.Kill = new System.Windows.Forms.Button();
@@ -599,7 +599,7 @@
             // TxtNotizInput
             // 
             this.TxtNotizInput.Location = new System.Drawing.Point(620, 310);
-            this.TxtNotizInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtNotizInput.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNotizInput.Multiline = true;
             this.TxtNotizInput.Name = "TxtNotizInput";
             this.TxtNotizInput.Size = new System.Drawing.Size(312, 71);
@@ -608,7 +608,7 @@
             // TxtNotizOutput
             // 
             this.TxtNotizOutput.Location = new System.Drawing.Point(620, 51);
-            this.TxtNotizOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtNotizOutput.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNotizOutput.Multiline = true;
             this.TxtNotizOutput.Name = "TxtNotizOutput";
             this.TxtNotizOutput.Size = new System.Drawing.Size(312, 254);
@@ -656,15 +656,15 @@
             this.DtgData.TabIndex = 67;
             this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgData_CellClick);
             // 
-            // Knöpgke
+            // CmdKundeErstellen
             // 
-            this.Knöpgke.Location = new System.Drawing.Point(263, 13);
-            this.Knöpgke.Name = "Knöpgke";
-            this.Knöpgke.Size = new System.Drawing.Size(75, 23);
-            this.Knöpgke.TabIndex = 68;
-            this.Knöpgke.Text = "Erstellen";
-            this.Knöpgke.UseVisualStyleBackColor = true;
-            this.Knöpgke.Click += new System.EventHandler(this.Knöpgke_Click);
+            this.CmdKundeErstellen.Location = new System.Drawing.Point(263, 13);
+            this.CmdKundeErstellen.Name = "CmdKundeErstellen";
+            this.CmdKundeErstellen.Size = new System.Drawing.Size(75, 23);
+            this.CmdKundeErstellen.TabIndex = 68;
+            this.CmdKundeErstellen.Text = "Erstellen";
+            this.CmdKundeErstellen.UseVisualStyleBackColor = true;
+            this.CmdKundeErstellen.Click += new System.EventHandler(this.CmdKundeErstellen_Click);
             // 
             // ErrVorname
             // 
@@ -711,7 +711,7 @@
             this.Controls.Add(this.CmdSave);
             this.Controls.Add(this.CmdClear);
             this.Controls.Add(this.Kill);
-            this.Controls.Add(this.Knöpgke);
+            this.Controls.Add(this.CmdKundeErstellen);
             this.Controls.Add(this.DtgData);
             this.Controls.Add(this.CmdKundeSpeichern);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
@@ -801,7 +801,7 @@
         private System.Windows.Forms.Button CmdMitarbeiterErstellen;
         private System.Windows.Forms.Button CmdKundeSpeichern;
         private System.Windows.Forms.DataGridView DtgData;
-        private System.Windows.Forms.Button Knöpgke;
+        private System.Windows.Forms.Button CmdKundeErstellen;
         private System.Windows.Forms.ErrorProvider ErrVorname;
         private System.Windows.Forms.ErrorProvider ErrNachname;
         private System.Windows.Forms.Button Kill;

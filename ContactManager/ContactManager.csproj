@@ -67,8 +67,12 @@
     <Compile Include="LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Login.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Model\Login.cs" />
+    <Compile Include="User Controlls\UcDashboardView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controlls\UcDashboardView.Designer.cs">
+      <DependentUpon>UcDashboardView.cs</DependentUpon>
     </Compile>
     <Compile Include="User Controlls\UcKundeStamm.cs">
       <SubType>UserControl</SubType>
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controlls\UcDashboardView.resx">
+      <DependentUpon>UcDashboardView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Controlls\UcKundeStamm.resx">
       <DependentUpon>UcKundeStamm.cs</DependentUpon>

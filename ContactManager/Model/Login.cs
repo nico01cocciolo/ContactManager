@@ -7,9 +7,8 @@ using System.Windows.Forms;
 
 namespace ContactManager.Model
 {
-    internal class Login : Form
-    {
-
+    internal class Login
+    { 
         private string username { get; set; }
         private string password { get; set; }
 

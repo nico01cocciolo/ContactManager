@@ -10,6 +10,9 @@ namespace ContactManager.Controller
 {
     internal class NotizController
     {
+        /// <summary>
+        /// Der Parameter path wird in den StreamWriter gegeben welcher die Datei danach wieder mit dem Text aus dem Parameter string bestückt.
+        /// </summary>
         public void NotizErfassen(string path, string notiz)
         {
             StreamWriter sw = File.AppendText(path);
@@ -19,6 +22,10 @@ namespace ContactManager.Controller
             sw.Close();
         }
 
+
+        /// <summary>
+        /// Mithilfe des Pfades werden die Notizen geladen
+        /// </summary>
         public string NotizLaden(string path)
         {
             string line;
