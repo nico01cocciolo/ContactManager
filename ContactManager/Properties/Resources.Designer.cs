@@ -73,6 +73,16 @@ namespace ContactManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Clear_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Clear_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Create_User_Icon {
             get {
                 object obj = ResourceManager.GetObject("Create_User_Icon", resourceCulture);

@@ -84,14 +84,16 @@
             this.TxtNotizOutput = new System.Windows.Forms.TextBox();
             this.CmdNotizErfassen = new System.Windows.Forms.Button();
             this.DtgData = new System.Windows.Forms.DataGridView();
-            this.CmdKundeErstellen = new System.Windows.Forms.Button();
             this.ErrVorname = new System.Windows.Forms.ErrorProvider(this.components);
             this.ErrNachname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Kill = new System.Windows.Forms.Button();
-            this.CmdClear = new System.Windows.Forms.Button();
-            this.CmdSave = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.CmdSave = new System.Windows.Forms.Button();
+            this.CmdClear = new System.Windows.Forms.Button();
+            this.CmdDelete = new System.Windows.Forms.Button();
+            this.CmdKundeErstellen = new System.Windows.Forms.Button();
+            this.CmdFilterReset = new System.Windows.Forms.Button();
+            this.CmdSuchfilter = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -104,7 +106,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.DarkGray;
             this.panel1.Controls.Add(this.CmbGeschlecht);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.ChkStatus);
@@ -326,7 +328,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.BackColor = System.Drawing.Color.DarkGray;
             this.panel3.Controls.Add(this.TxtPostleitzahl);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.TxtWohnort);
@@ -399,7 +401,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel4.BackColor = System.Drawing.Color.DarkGray;
             this.panel4.Controls.Add(this.TxtTelGesch);
             this.panel4.Controls.Add(this.label20);
             this.panel4.Controls.Add(this.TxtTelPriv);
@@ -490,7 +492,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.BackColor = System.Drawing.Color.DarkGray;
             this.panel2.Controls.Add(this.TxtFirmenadresse);
             this.panel2.Controls.Add(this.TxtFirmenname);
             this.panel2.Controls.Add(this.label11);
@@ -582,7 +584,7 @@
             // 
             // TxtNotizInput
             // 
-            this.TxtNotizInput.Location = new System.Drawing.Point(6, 277);
+            this.TxtNotizInput.Location = new System.Drawing.Point(6, 298);
             this.TxtNotizInput.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNotizInput.Multiline = true;
             this.TxtNotizInput.Name = "TxtNotizInput";
@@ -595,12 +597,12 @@
             this.TxtNotizOutput.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNotizOutput.Multiline = true;
             this.TxtNotizOutput.Name = "TxtNotizOutput";
-            this.TxtNotizOutput.Size = new System.Drawing.Size(277, 254);
+            this.TxtNotizOutput.Size = new System.Drawing.Size(277, 267);
             this.TxtNotizOutput.TabIndex = 60;
             // 
             // CmdNotizErfassen
             // 
-            this.CmdNotizErfassen.Location = new System.Drawing.Point(147, 353);
+            this.CmdNotizErfassen.Location = new System.Drawing.Point(147, 394);
             this.CmdNotizErfassen.Name = "CmdNotizErfassen";
             this.CmdNotizErfassen.Size = new System.Drawing.Size(136, 23);
             this.CmdNotizErfassen.TabIndex = 63;
@@ -617,19 +619,9 @@
             this.DtgData.Name = "DtgData";
             this.DtgData.ReadOnly = true;
             this.DtgData.RowHeadersWidth = 51;
-            this.DtgData.Size = new System.Drawing.Size(923, 292);
+            this.DtgData.Size = new System.Drawing.Size(905, 292);
             this.DtgData.TabIndex = 67;
             this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgData_CellClick);
-            // 
-            // CmdKundeErstellen
-            // 
-            this.CmdKundeErstellen.Location = new System.Drawing.Point(8, 13);
-            this.CmdKundeErstellen.Name = "CmdKundeErstellen";
-            this.CmdKundeErstellen.Size = new System.Drawing.Size(75, 23);
-            this.CmdKundeErstellen.TabIndex = 68;
-            this.CmdKundeErstellen.Text = "Erstellen";
-            this.CmdKundeErstellen.UseVisualStyleBackColor = true;
-            this.CmdKundeErstellen.Click += new System.EventHandler(this.CmdKundeErstellen_Click);
             // 
             // ErrVorname
             // 
@@ -638,36 +630,6 @@
             // ErrNachname
             // 
             this.ErrNachname.ContainerControl = this;
-            // 
-            // Kill
-            // 
-            this.Kill.Location = new System.Drawing.Point(846, 13);
-            this.Kill.Name = "Kill";
-            this.Kill.Size = new System.Drawing.Size(75, 23);
-            this.Kill.TabIndex = 69;
-            this.Kill.Text = "Killswitch";
-            this.Kill.UseVisualStyleBackColor = true;
-            this.Kill.Click += new System.EventHandler(this.Kill_Click);
-            // 
-            // CmdClear
-            // 
-            this.CmdClear.Location = new System.Drawing.Point(765, 13);
-            this.CmdClear.Name = "CmdClear";
-            this.CmdClear.Size = new System.Drawing.Size(75, 23);
-            this.CmdClear.TabIndex = 70;
-            this.CmdClear.Text = "Clear All";
-            this.CmdClear.UseVisualStyleBackColor = true;
-            this.CmdClear.Click += new System.EventHandler(this.CmdClear_Click);
-            // 
-            // CmdSave
-            // 
-            this.CmdSave.Location = new System.Drawing.Point(89, 13);
-            this.CmdSave.Name = "CmdSave";
-            this.CmdSave.Size = new System.Drawing.Size(75, 23);
-            this.CmdSave.TabIndex = 71;
-            this.CmdSave.Text = "Save";
-            this.CmdSave.UseVisualStyleBackColor = true;
-            this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
             // 
             // label17
             // 
@@ -681,24 +643,94 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.BackColor = System.Drawing.Color.DarkGray;
             this.panel5.Controls.Add(this.TxtNotizOutput);
             this.panel5.Controls.Add(this.label17);
             this.panel5.Controls.Add(this.TxtNotizInput);
             this.panel5.Controls.Add(this.CmdNotizErfassen);
             this.panel5.Location = new System.Drawing.Point(622, 51);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(299, 391);
+            this.panel5.Size = new System.Drawing.Size(291, 429);
             this.panel5.TabIndex = 73;
+            // 
+            // CmdSave
+            // 
+            this.CmdSave.BackgroundImage = global::ContactManager.Properties.Resources.Save_Icon;
+            this.CmdSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdSave.Location = new System.Drawing.Point(56, 6);
+            this.CmdSave.Name = "CmdSave";
+            this.CmdSave.Size = new System.Drawing.Size(42, 42);
+            this.CmdSave.TabIndex = 71;
+            this.CmdSave.UseVisualStyleBackColor = true;
+            this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+            // 
+            // CmdClear
+            // 
+            this.CmdClear.BackgroundImage = global::ContactManager.Properties.Resources.Clear_Icon;
+            this.CmdClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdClear.Location = new System.Drawing.Point(729, 6);
+            this.CmdClear.Name = "CmdClear";
+            this.CmdClear.Size = new System.Drawing.Size(42, 42);
+            this.CmdClear.TabIndex = 70;
+            this.CmdClear.UseVisualStyleBackColor = true;
+            this.CmdClear.Click += new System.EventHandler(this.CmdClear_Click);
+            // 
+            // CmdDelete
+            // 
+            this.CmdDelete.BackgroundImage = global::ContactManager.Properties.Resources.Delete_Icon;
+            this.CmdDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdDelete.Location = new System.Drawing.Point(871, 6);
+            this.CmdDelete.Name = "CmdDelete";
+            this.CmdDelete.Size = new System.Drawing.Size(42, 42);
+            this.CmdDelete.TabIndex = 69;
+            this.CmdDelete.UseVisualStyleBackColor = true;
+            this.CmdDelete.Click += new System.EventHandler(this.Kill_Click);
+            // 
+            // CmdKundeErstellen
+            // 
+            this.CmdKundeErstellen.BackgroundImage = global::ContactManager.Properties.Resources.Create_User_Icon;
+            this.CmdKundeErstellen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdKundeErstellen.Location = new System.Drawing.Point(8, 6);
+            this.CmdKundeErstellen.Name = "CmdKundeErstellen";
+            this.CmdKundeErstellen.Size = new System.Drawing.Size(42, 42);
+            this.CmdKundeErstellen.TabIndex = 68;
+            this.CmdKundeErstellen.UseVisualStyleBackColor = true;
+            this.CmdKundeErstellen.Click += new System.EventHandler(this.CmdKundeErstellen_Click);
+            // 
+            // CmdFilterReset
+            // 
+            this.CmdFilterReset.BackgroundImage = global::ContactManager.Properties.Resources.Filter_Reset_Icon;
+            this.CmdFilterReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdFilterReset.Location = new System.Drawing.Point(776, 6);
+            this.CmdFilterReset.Margin = new System.Windows.Forms.Padding(2);
+            this.CmdFilterReset.Name = "CmdFilterReset";
+            this.CmdFilterReset.Size = new System.Drawing.Size(42, 42);
+            this.CmdFilterReset.TabIndex = 76;
+            this.CmdFilterReset.UseVisualStyleBackColor = true;
+            this.CmdFilterReset.Visible = false;
+            // 
+            // CmdSuchfilter
+            // 
+            this.CmdSuchfilter.BackgroundImage = global::ContactManager.Properties.Resources.Filter_Icon;
+            this.CmdSuchfilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdSuchfilter.Location = new System.Drawing.Point(823, 6);
+            this.CmdSuchfilter.Margin = new System.Windows.Forms.Padding(2);
+            this.CmdSuchfilter.Name = "CmdSuchfilter";
+            this.CmdSuchfilter.Size = new System.Drawing.Size(42, 42);
+            this.CmdSuchfilter.TabIndex = 77;
+            this.CmdSuchfilter.UseVisualStyleBackColor = true;
             // 
             // UcKundeStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gray;
+            this.Controls.Add(this.CmdSuchfilter);
+            this.Controls.Add(this.CmdFilterReset);
+            this.Controls.Add(this.CmdClear);
+            this.Controls.Add(this.CmdDelete);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.CmdSave);
-            this.Controls.Add(this.CmdClear);
-            this.Controls.Add(this.Kill);
             this.Controls.Add(this.CmdKundeErstellen);
             this.Controls.Add(this.DtgData);
             this.Controls.Add(this.panel2);
@@ -706,7 +738,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "UcKundeStamm";
-            this.Size = new System.Drawing.Size(934, 791);
+            this.Size = new System.Drawing.Size(938, 791);
             this.Load += new System.EventHandler(this.UcKundeStamm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -782,7 +814,7 @@
         private System.Windows.Forms.Button CmdKundeErstellen;
         private System.Windows.Forms.ErrorProvider ErrVorname;
         private System.Windows.Forms.ErrorProvider ErrNachname;
-        private System.Windows.Forms.Button Kill;
+        private System.Windows.Forms.Button CmdDelete;
         private System.Windows.Forms.Button CmdClear;
         private System.Windows.Forms.Button CmdSave;
         private System.Windows.Forms.ComboBox CmbGeschlecht;
@@ -790,5 +822,7 @@
         private System.Windows.Forms.TextBox TxtEmail;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button CmdFilterReset;
+        private System.Windows.Forms.Button CmdSuchfilter;
     }
 }
