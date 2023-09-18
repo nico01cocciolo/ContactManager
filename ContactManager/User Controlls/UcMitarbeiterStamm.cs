@@ -670,5 +670,29 @@ namespace ContactManager
         {
             ChkStatus.Enabled = true;
         }
+
+        private void felderPrüfen(object sender, EventArgs e)
+        {
+            string id = IDGetter();
+
+            if (ChkLehrling.Checked == false)
+            {
+                Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
+                string changedTxtTelGesch = TxtTelGesch.Text;
+
+                if (changedTxtTelGesch != m.TelefonArbeit || )
+                {
+                    CmdMitarbeiterSpeichernErstellen.Visible = true;
+                    CmdMitarbeiterErstellen.Visible = false;
+                    CmdCancel.Visible = true;
+                    EnableFields();
+                }
+            }
+            else
+            {
+                Lehrling l = xmlHandler.RetriveValueLehrling(id);
+            }
+
+        }
     }
 }

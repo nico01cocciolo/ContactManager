@@ -372,6 +372,7 @@
             this.TxtTelGesch.Name = "TxtTelGesch";
             this.TxtTelGesch.Size = new System.Drawing.Size(161, 22);
             this.TxtTelGesch.TabIndex = 22;
+            this.TxtTelGesch.TextChanged += new System.EventHandler(this.felderPrüfen);
             // 
             // label20
             // 
