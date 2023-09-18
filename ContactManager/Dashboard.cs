@@ -14,9 +14,7 @@ using System.Windows.Forms;
 namespace ContactManager
 {
     public partial class Dashboard : Form
-    {
-        public DataGrid dataGridView1 { get; set; }
-
+    { 
         public Dashboard()
         {
             InitializeComponent();
@@ -39,8 +37,6 @@ namespace ContactManager
             {
                 UcMitarbeiterStamm.Instance.BringToFront();
             }
-
-            //UcMitarbeiterStamm.Instance.BenutzererstellungFehler();
         }
 
         /// <summary>
@@ -80,6 +76,14 @@ namespace ContactManager
                     UcDashboardView.Instance.BringToFront();
                     UcDashboardView.Instance.Reload();
                 }
+        }
+
+        /// <summary>
+        /// Der Import wurde nicht angeschaut und Funktioniert aus diesem Grund auch nicht
+        /// </summary>
+        private void CmdImportCsv_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Der Import von CSV Dateien ist vorübergehend deaktiviert.");
         }
     }
 }

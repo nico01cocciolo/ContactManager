@@ -8,12 +8,13 @@ using System.Windows.Forms;
 namespace ContactManager.Model
 {
     internal class Login
-    { 
+    {
+        #region Parameters
         private string username { get; set; }
         private string password { get; set; }
-
         public bool loginOk = false;
 
+        #endregion
         public Login(string u, string p)
         {
             username = u;

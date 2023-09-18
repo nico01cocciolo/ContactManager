@@ -10,21 +10,33 @@ namespace ContactManager.Controller
 {
     internal class Validator
     {
+        /// <summary>
+        /// Hier sind die Patterns für den Regex definiert
+        /// </summary>
+        #region Regex Patterns
         //Überprüft den String auf Zahlen
-        string pattern = @"^[^\d]+$";
+        string numbers = @"^[^\d]+$";
+       
+        //Überprüft den String au Buchstaben
+        string chars  = @"^[A-Za-z]+$";
+        #endregion
 
+        /// <summary>
+        /// Überprüft den string "input" auf Zahlen und gibt dementsprechend einen boolschen Wert zurück
+        /// </summary>
         public bool ValidateString(string input)
         {
-            if (Regex.IsMatch(pattern, input))
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show($"{input}darf keine Zahl enthalten");
-                return false;
-            }
+            var isMatch = Regex.IsMatch(input, numbers);
+            return isMatch;
         }
 
+        /// <summary>
+        /// Überprüft den string "input" auf Buchstaben und gibt dementsprechend einen boolschen Wert zurück
+        /// </summary>
+        public bool ValidateInt(string input)
+        {
+            var isMatch = Regex.IsMatch(input, chars);
+            return isMatch;
+        }
     }
 }

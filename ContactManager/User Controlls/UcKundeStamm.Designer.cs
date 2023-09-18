@@ -53,7 +53,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.TxtPostleitzahl = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.TxtWohnort = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -94,6 +93,7 @@
             this.CmdKundeErstellen = new System.Windows.Forms.Button();
             this.CmdFilterReset = new System.Windows.Forms.Button();
             this.CmdSuchfilter = new System.Windows.Forms.Button();
+            this.NumPostleitzahl = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -102,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrVorname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumPostleitzahl)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -320,7 +321,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 0;
@@ -329,7 +330,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Controls.Add(this.TxtPostleitzahl);
+            this.panel3.Controls.Add(this.NumPostleitzahl);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.TxtWohnort);
             this.panel3.Controls.Add(this.label18);
@@ -340,13 +341,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(308, 104);
             this.panel3.TabIndex = 53;
-            // 
-            // TxtPostleitzahl
-            // 
-            this.TxtPostleitzahl.Location = new System.Drawing.Point(153, 76);
-            this.TxtPostleitzahl.Name = "TxtPostleitzahl";
-            this.TxtPostleitzahl.Size = new System.Drawing.Size(121, 20);
-            this.TxtPostleitzahl.TabIndex = 22;
             // 
             // label19
             // 
@@ -393,7 +387,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(3, 0);
+            this.label24.Location = new System.Drawing.Point(3, 2);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(52, 13);
             this.label24.TabIndex = 0;
@@ -484,7 +478,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(3, 0);
+            this.label26.Location = new System.Drawing.Point(3, 2);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(83, 13);
             this.label26.TabIndex = 0;
@@ -534,7 +528,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 0);
+            this.label15.Location = new System.Drawing.Point(3, 2);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(82, 13);
             this.label15.TabIndex = 0;
@@ -635,7 +629,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(3, 0);
+            this.label17.Location = new System.Drawing.Point(3, 2);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(50, 13);
             this.label17.TabIndex = 72;
@@ -720,6 +714,18 @@
             this.CmdSuchfilter.TabIndex = 77;
             this.CmdSuchfilter.UseVisualStyleBackColor = true;
             // 
+            // NumPostleitzahl
+            // 
+            this.NumPostleitzahl.Location = new System.Drawing.Point(153, 76);
+            this.NumPostleitzahl.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NumPostleitzahl.Name = "NumPostleitzahl";
+            this.NumPostleitzahl.Size = new System.Drawing.Size(120, 20);
+            this.NumPostleitzahl.TabIndex = 78;
+            // 
             // UcKundeStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -753,6 +759,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrNachname)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumPostleitzahl)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -781,7 +788,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox TxtPostleitzahl;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox TxtWohnort;
         private System.Windows.Forms.Label label18;
@@ -824,5 +830,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button CmdFilterReset;
         private System.Windows.Forms.Button CmdSuchfilter;
+        private System.Windows.Forms.NumericUpDown NumPostleitzahl;
     }
 }

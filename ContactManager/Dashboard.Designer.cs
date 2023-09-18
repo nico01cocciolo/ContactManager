@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CmdDashboard = new System.Windows.Forms.Button();
             this.CmdImportCsv = new System.Windows.Forms.Button();
             this.CmdStammKunden = new System.Windows.Forms.Button();
             this.CmdStammMitarbeiter = new System.Windows.Forms.Button();
             this.PnlUCHandler = new System.Windows.Forms.Panel();
-            this.CmdDashboard = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,21 @@
             this.panel1.Size = new System.Drawing.Size(154, 810);
             this.panel1.TabIndex = 7;
             // 
+            // CmdDashboard
+            // 
+            this.CmdDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdDashboard.BackColor = System.Drawing.Color.DimGray;
+            this.CmdDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdDashboard.ForeColor = System.Drawing.SystemColors.Control;
+            this.CmdDashboard.Location = new System.Drawing.Point(-1, -1);
+            this.CmdDashboard.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdDashboard.Name = "CmdDashboard";
+            this.CmdDashboard.Size = new System.Drawing.Size(152, 49);
+            this.CmdDashboard.TabIndex = 4;
+            this.CmdDashboard.Text = "Dashboard";
+            this.CmdDashboard.UseVisualStyleBackColor = false;
+            this.CmdDashboard.Click += new System.EventHandler(this.CmdDashboard_Click);
+            // 
             // CmdImportCsv
             // 
             this.CmdImportCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -65,6 +80,7 @@
             this.CmdImportCsv.TabIndex = 3;
             this.CmdImportCsv.Text = "Import";
             this.CmdImportCsv.UseVisualStyleBackColor = false;
+            this.CmdImportCsv.Click += new System.EventHandler(this.CmdImportCsv_Click);
             // 
             // CmdStammKunden
             // 
@@ -105,21 +121,6 @@
             this.PnlUCHandler.Name = "PnlUCHandler";
             this.PnlUCHandler.Size = new System.Drawing.Size(914, 816);
             this.PnlUCHandler.TabIndex = 9;
-            // 
-            // CmdDashboard
-            // 
-            this.CmdDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdDashboard.BackColor = System.Drawing.Color.DimGray;
-            this.CmdDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdDashboard.ForeColor = System.Drawing.SystemColors.Control;
-            this.CmdDashboard.Location = new System.Drawing.Point(-1, -1);
-            this.CmdDashboard.Margin = new System.Windows.Forms.Padding(0);
-            this.CmdDashboard.Name = "CmdDashboard";
-            this.CmdDashboard.Size = new System.Drawing.Size(152, 49);
-            this.CmdDashboard.TabIndex = 4;
-            this.CmdDashboard.Text = "Dashboard";
-            this.CmdDashboard.UseVisualStyleBackColor = false;
-            this.CmdDashboard.Click += new System.EventHandler(this.CmdDashboard_Click);
             // 
             // Dashboard
             // 
