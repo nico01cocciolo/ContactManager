@@ -36,7 +36,7 @@
             // 
             this.CkStatus.AutoSize = true;
             this.CkStatus.Checked = true;
-            this.CkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CkStatus.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.CkStatus.Location = new System.Drawing.Point(12, 12);
             this.CkStatus.Name = "CkStatus";
             this.CkStatus.Size = new System.Drawing.Size(101, 20);

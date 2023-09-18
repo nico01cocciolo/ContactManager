@@ -5,10 +5,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -37,9 +40,7 @@ namespace ContactManager
         #endregion
 
         #region Params
-        private int index { get; set; }
-        public bool filterStatusTrue { get; set; }
-        public bool filterStatusFalse { get; set; }
+        private int rowIndex { get; set; }
         #endregion
 
         #region Instances
@@ -241,19 +242,37 @@ namespace ContactManager
             if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
 
-
                 mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
-                var data = mitarbeiter.Descendants("Mitarbeiter").Select(m => new
-                {
-                    Id = m.Attribute("ID").Value,
-                    Anrede = m.Element("Anrede").Value,
-                    Vorname = m.Element("Vorname").Value,
-                    Nachname = m.Element("Nachname").Value,
-                    Postleitzahl = m.Element("Postleitzahl").Value,
-                    Status = m.Attribute("Status").Value,
-                    Lehrling = m.Attribute("Lehrling").Value
-                }).OrderBy(m => m.Id).ToList();
+                var data = mitarbeiter.Descendants("Mitarbeiter")
+                    .Select( m =>
+                    {
+                        string mStatus = m.Attribute("Status").Value;
+                        string mLehrling = m.Attribute("Lehrling").Value;
+
+                        bool Status = Convert.ToBoolean(mStatus);
+                        bool Lehrling = Convert.ToBoolean(mLehrling);
+                        
+                        foreach (var zeile in mitarbeiter.Descendants())
+                        {
+                            if (Status == true)
+                                mStatus = "Aktiv";
+                            else
+                                mStatus = "Inaktiv";
+                        }
+
+                        return new
+                        {
+                            ID = m.Attribute("ID").Value,
+                            Anrede = m.Element("Anrede").Value,
+                            Vorname = m.Element("Vorname").Value,
+                            Nachname = m.Element("Nachname").Value,
+                            Postleitzahl = m.Element("Postleitzahl").Value,
+                            Status,
+                            Lehrling
+                        };
+                    })
+                    .OrderBy(m => m.ID).ToList();
 
                 ClearDataBindings();
 
@@ -265,20 +284,23 @@ namespace ContactManager
                 ChkStatus.DataBindings.Add("Checked", data, "Status");
                 ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
 
+                LblAnzahlZeilenGeladen.Text = Convert.ToString(data.Count);
 
                 DtgData.DataSource = data;
 
-                if (DtgData.CurrentCell.RowIndex >= 1)
+                if (DtgData.RowCount >= 1)
                 {
-                    DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+                    DtgData.CurrentCell = DtgData.Rows[rowIndex].Cells[0];
+                    DtgData.Rows[rowIndex].Selected = true;
                 }
 
 
-            }
-            else
-            {
-                DtgData.DataSource = null;
-            }
+                }
+                else
+                {
+                    
+                    DtgData.DataSource = null;
+                }
 
             HideButtons();
 
@@ -476,40 +498,112 @@ namespace ContactManager
                 NumLehrjahr.Enabled = false;
             }
         }
+
+        public CheckState statusMitarbeiter { get; set; }
+
         public void ApplyXmlFilter()
         {
             CmdFilterReset.Visible = true;
 
-            mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+            if (statusMitarbeiter == CheckState.Unchecked)
+            {
+                mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
-            var data = mitarbeiter.Descendants("Mitarbeiter")
-                .Where(mitarbeiterfilter => (bool)mitarbeiterfilter.Attribute("Status") == filterStatusFalse)
-                .Select(m => new
-                {
-                    Id = m.Attribute("ID").Value,
-                    Anrede = m.Element("Anrede").Value,
-                    Vorname = m.Element("Vorname").Value,
-                    Nachname = m.Element("Nachname").Value,
-                    Postleitzahl = m.Element("Postleitzahl").Value,
-                    Status = m.Attribute("Status").Value,
-                    Lehrling = m.Attribute("Lehrling").Value
-                }).OrderBy(m => m.Id).ToList();
+                var data = mitarbeiter.Descendants("Mitarbeiter")
+                    .Where(mitarbeiterfilter => (bool)mitarbeiterfilter.Attribute("Status") == false)
+                    .Select(m => new
+                    {
+                        Id = m.Attribute("ID").Value,
+                        Anrede = m.Element("Anrede").Value,
+                        Vorname = m.Element("Vorname").Value,
+                        Nachname = m.Element("Nachname").Value,
+                        Postleitzahl = m.Element("Postleitzahl").Value,
+                        Status = m.Attribute("Status").Value,
+                        Lehrling = m.Attribute("Lehrling").Value
+                    }).OrderBy(m => m.Id);
 
-            ClearDataBindings();
+                ClearDataBindings();
 
-            LblId.DataBindings.Add("text", data, "ID");
-            CmbAnrede.DataBindings.Add("text", data, "Anrede");
-            TxtVorname.DataBindings.Add("text", data, "Vorname");
-            TxtNachname.DataBindings.Add("text", data, "Nachname");
-            TxtPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
-            ChkStatus.DataBindings.Add("Checked", data, "Status");
-            ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
+                LblId.DataBindings.Add("text", data, "ID");
+                CmbAnrede.DataBindings.Add("text", data, "Anrede");
+                TxtVorname.DataBindings.Add("text", data, "Vorname");
+                TxtNachname.DataBindings.Add("text", data, "Nachname");
+                TxtPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
+                ChkStatus.DataBindings.Add("Checked", data, "Status");
+                ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
 
-            HideButtons();
+                HideButtons();
 
-            DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+                DtgData.CurrentCell = DtgData.Rows[rowIndex].Cells[0];
 
-            DtgData.DataSource = data;
+                DtgData.DataSource = data;
+            }
+            else if (statusMitarbeiter == CheckState.Checked)
+            {
+                mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+
+                var data = mitarbeiter.Descendants("Mitarbeiter")
+                    .Where(mitarbeiterfilter => (bool)mitarbeiterfilter.Attribute("Status") == true)
+                    .Select(m => new
+                    {
+                        Id = m.Attribute("ID").Value,
+                        Anrede = m.Element("Anrede").Value,
+                        Vorname = m.Element("Vorname").Value,
+                        Nachname = m.Element("Nachname").Value,
+                        Postleitzahl = m.Element("Postleitzahl").Value,
+                        Status = m.Attribute("Status").Value,
+                        Lehrling = m.Attribute("Lehrling").Value
+                    }).OrderBy(m => m.Id).ToList();
+
+                ClearDataBindings();
+
+                LblId.DataBindings.Add("text", data, "ID");
+                CmbAnrede.DataBindings.Add("text", data, "Anrede");
+                TxtVorname.DataBindings.Add("text", data, "Vorname");
+                TxtNachname.DataBindings.Add("text", data, "Nachname");
+                TxtPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
+                ChkStatus.DataBindings.Add("Checked", data, "Status");
+                ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
+
+                HideButtons();
+
+                //DtgData.CurrentRow = DtgData.Rows[index];
+
+                DtgData.DataSource = data;
+            }
+            else
+            {
+                mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+
+                var data = mitarbeiter.Descendants("Mitarbeiter")
+                    //.Where(mitarbeiterfilter => mitarbeiterfilter.Attribute("Status").Value == "true" && "false")
+                    .Select(m => new
+                    {
+                        Id = m.Attribute("ID").Value,
+                        Anrede = m.Element("Anrede").Value,
+                        Vorname = m.Element("Vorname").Value,
+                        Nachname = m.Element("Nachname").Value,
+                        Postleitzahl = m.Element("Postleitzahl").Value,
+                        Status = m.Attribute("Status").Value,
+                        Lehrling = m.Attribute("Lehrling").Value
+                    }).OrderBy(m => m.Id).ToList();
+
+                ClearDataBindings();
+
+                LblId.DataBindings.Add("text", data, "ID");
+                CmbAnrede.DataBindings.Add("text", data, "Anrede");
+                TxtVorname.DataBindings.Add("text", data, "Vorname");
+                TxtNachname.DataBindings.Add("text", data, "Nachname");
+                TxtPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
+                ChkStatus.DataBindings.Add("Checked", data, "Status");
+                ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
+
+                HideButtons();
+
+                //DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+
+                DtgData.DataSource = data;
+            }
         }
 
         private void HideButtons()
@@ -548,13 +642,15 @@ namespace ContactManager
                 }
             }
         }
+
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index = DtgData.CurrentRow.Index;
+            rowIndex = DtgData.CurrentRow.Index;
 
-            if (e.RowIndex >= 0)
+            if (e.RowIndex == DtgData.CurrentRow.Index)
             {
                 DtgData.Rows[e.RowIndex].Selected = true;
+                rowIndex = e.RowIndex;
                 CmdDelete.Visible = true;
             }
         }

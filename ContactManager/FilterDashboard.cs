@@ -19,11 +19,7 @@ namespace ContactManager
 
         private void CmdFilterSuchen_Click(object sender, EventArgs e)
         {
-            bool statusfilterXmlTrue = CkStatus.CheckState != CheckState.Unchecked;
-            bool statusfilterXmlFalse = CkStatus.CheckState != CheckState.Unchecked;
-
-            UcMitarbeiterStamm.Instance.filterStatusTrue = statusfilterXmlTrue;
-            UcMitarbeiterStamm.Instance.filterStatusFalse = statusfilterXmlFalse;
+            UcMitarbeiterStamm.Instance.statusMitarbeiter = CkStatus.CheckState;
             UcMitarbeiterStamm.Instance.ApplyXmlFilter();
             this.Close();
         }
