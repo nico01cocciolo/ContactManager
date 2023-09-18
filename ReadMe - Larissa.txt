@@ -3,6 +3,10 @@ Autoren: Nico Cocciolo, Fabio Schegg
 
 Investierte Zeit: Ja
 
+Login:
+User: admin
+Passwort: admin
+
 Funktioniert:
 ▪ Erfassung von Mitarbeitern und Kunden
 ▪ Mutieren von Mitarbeitern und Kunden

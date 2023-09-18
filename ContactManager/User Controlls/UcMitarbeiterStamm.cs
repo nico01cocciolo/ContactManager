@@ -27,31 +27,40 @@ namespace ContactManager
 {
     public partial class UcMitarbeiterStamm : UserControl
     {
-        private XDocument mitarbeiter = new XDocument();
+       
         private string URL_XML_FILE = "Directory.GetCurrentDirectory() + \"/Mitarbeiter.xml\"";
-        private string temp { get; set; }
 
         public UcMitarbeiterStamm()
         {
             InitializeComponent();
         }
 
-        string pattern = @"^[^\d]+$";
-
         #region Combobox Fill
         string[] anrede = new string[] { "Herr", "Frau", "Divers" };
         string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
         string[] geschlecht = new string[] { "Männlich", "Weiblich", "Divers" };
+        string[] nations = new string[] {"Afghanistan","Ägypten","Albanien","Algerien","Andorra","Angola","Antigua und Barbuda","Äquatorialguinea","Argentinien","Armenien","Aserbaidschan","Äthiopien","Australien",
+                                         "Bahamas","Bahrain","Bangladesch","Barbados","Belarus","Belgien","Belize","Benin","Bhutan","Bolivien","Bosnien und Herzegowina","Botsuana","Brasilien","Brunei Darussalam","Bulgarien","Burkina Faso","Burundi",
+                                         "Cabo Verde","Chile","China","Costa Rica","Cookinseln","Côte d'Ivoire","Dänemark","Deutschland","Dominica","Dominikanische Republik","Dschibuti","Ecuador","El Salvador","Eritrea","Estland","Eswatini",
+                                         "Fidschi","Finnland","Frankreich","Gabun","Gambia","Georgien","Ghana","Grenada","Griechenland","Grossbritannien","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Heiliger Stuhl - Vatikanstadt","Honduras",
+                                         "Indien","Indonesien","Irak","Iran","Irland","Island","Israel","Italien","Jamaika","Japan","Jemen","Jordanien","Jugoslawien","Kambodscha","Kamerun","Kanada","Kasachstan","Katar","Kenia",
+                                         "Kirgisistan","Kiribati","Kolumbien","Komoren","Kongo (Brazzaville)","Kongo (Kinshasa)","Korea (Nord-)","Korea (Süd-)","Kosovo","Kroatien","Kuba","Kuwait","Laos","Lesotho","Lettland","Libanon",
+                                         "Liberia","Libyen","Liechtenstein","Litauen","Luxemburg","Madagaskar","Malawi","Malaysia","Malediven","Mali","Malta","Marokko","Marshallinseln","Mauretanien","Mauritius","Mexiko","Mikronesien",
+                                         "Moldau","Monaco","Mongolei","Montenegro","Mosambik","Myanmar","Namibia","Nauru","Nepal","Neuseeland","Nicaragua","Niederlande","Niger","Nigeria","Nordmazedonien","Norwegen","Oman","Österreich",
+                                         "Pakistan","Palau","Panama","Papua-Neuguinea","Paraguay","Peru","Philippinen","Polen","Portugal","Ruanda","Rumänien","Russland","Salomoninseln","Sambia","Samoa","San Marino","São Tomé und Príncipe",
+                                         "Saudi-Arabien","Schweden","Schweiz","Senegal","Serbien","Seychellen","Sierra Leone","Simbabwe","Singapur","Slowakei","Slowenien","Somalia","Spanien","Sri Lanka","St. Kitts und Nevis","St. Lucia","St. Vincent und die Grenadinen",
+                                         "Südafrika","Sudan","Südsudan","Suriname","Syrien","Tadschikistan","Taiwan","Tansania","Thailand","Timor-Leste","Togo","Tonga","Trinidad und Tobago","Tschad","Tschechien","Tunesien","Türkiye",
+                                         "Turkmenistan","Tuvalu","Uganda","Ukraine","Ungarn","Uruguay","Usbekistan","Vanuatu","Venezuela","Vereinigte Arabische Emirate","Vereinigte Staaten","Vereinigtes Königreich","Vietnam","Zentralafrikanische Republik","Zypern"};
         #endregion
 
         #region Params
         private int rowIndex { get; set; }
         public CheckState statusMitarbeiter { get; set; }
-
-        public string vorname { get; set; }
         #endregion
 
         #region Instances
+        
+        private XDocument mitarbeiter = new XDocument();
         XMLHandler xmlHandler = new XMLHandler();
         Validator val = new Validator();
 
@@ -171,76 +180,83 @@ namespace ContactManager
         /// </summary>
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
+            string vorname = "";
+            string nachname = "";
+
             try
             {
-                Guid id = Guid.NewGuid();
-
-                bool status = Status();
-
-                string anrede = CmbAnrede.Text;
-                string titel = CmbTitel.Text;
-                string geschlecht = CmbGeschlecht.Text;
-                
-                
-                if(Regex.IsMatch(pattern ,TxtVorname.Text))
-                { 
-                vorname = TxtVorname.Text;
-                }
-                else
+                var isVaild = val.ValidateString(TxtVorname.Text) && val.ValidateString(TxtNachname.Text);
+                if (isVaild)
                 {
-                    MessageBox.Show($"{TxtVorname.Text} darf keine Zahlen enthalten");
+
+                    
+                    Guid id = Guid.NewGuid();
+
+                    bool status = Status();
+
+                    string anrede = CmbAnrede.Text;
+                    string titel = CmbTitel.Text;
+                    string geschlecht = CmbGeschlecht.Text;
+
+                    //Benötigte Felder
+                    vorname = TxtVorname.Text;
+                    nachname = TxtNachname.Text;
+                    
+                    DateTime dob = DtpGeburtsdatum.Value;
+                    string ahv = TxtAhvNum.Text;
+                    string nationalitaet = CmbNationalitaet.Text;
+
+                    string email = TxtEmail.Text;
+                    string privat = TxtTelPriv.Text;
+                    string mobil = TxtTelMobil.Text;
+                    string arbeit = TxtTelGesch.Text;
+
+                    string strasse = TxtStrasse.Text;
+                    string wohnort = TxtWohnort.Text;
+                    int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+
+                    int ks = Convert.ToInt16(NumKaderstufe.Value);
+                    string rolle = TxtRolle.Text;
+                    string abt = TxtAbteilung.Text;
+                    int arbp = Convert.ToInt16(NumArbeitspensum.Value);
+                    DateTime st = DtpStartdatum.Value;
+                    DateTime et = DtpEnddatum.Value;
+                    int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
+                    int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
+
+
+                    if (ChkLehrling.Checked == true)
+                    {
+                        bool istrainee = true;
+                        //Für Lehrlinge
+
+                        Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
+                        xmlHandler.CreateLehrlingXML(l);
+                    }
+                    else if (ChkLehrling.Checked == false)
+                    {
+                        bool istrainee = false;
+                        Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
+                        xmlHandler.CreateMitarbeiterXML(m);
+                    }
+
+
+                    LblId.Text = Convert.ToString(id);
+                    LoadFile();
+                    CmdMitarbeiterErstellen.Visible = true;
+                    CmdMitarbeiterSpeichernErstellen.Visible = false;
+                    CmdDelete.Visible = true;
+                    DtgData.Enabled = true;
+                    CmbReset.Visible = true;
+                    CmdCancel.Visible = false;
+
+                    MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
                 }
-
-                string nachname = TxtNachname.Text;
-                DateTime dob = DtpGeburtsdatum.Value;
-                string ahv = TxtAhvNum.Text;
-                string nationalitaet = CmbNationalitaet.Text;
-
-                string email = TxtEmail.Text;
-                string privat = TxtTelPriv.Text;
-                string mobil = TxtTelMobil.Text;
-                string arbeit = TxtTelGesch.Text;
-
-                string strasse = TxtStrasse.Text;
-                string wohnort = TxtWohnort.Text;
-                int plz = Convert.ToInt16(TxtPostleitzahl.Text);
-
-                int ks = Convert.ToInt16(NumKaderstufe.Value);
-                string rolle = TxtRolle.Text;
-                string abt = TxtAbteilung.Text;
-                int arbp = Convert.ToInt16(NumArbeitspensum.Value);
-                DateTime st = DtpStartdatum.Value;
-                DateTime et = DtpEnddatum.Value;
-                int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
-                int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
-
-
-                if (ChkLehrling.Checked == true)
+                else 
                 {
-                    bool istrainee = true;
-                    //Für Lehrlinge
-
-                    Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
-                    xmlHandler.CreateLehrlingXML(l);
-                }
-                else if (ChkLehrling.Checked == false)
-                {
-                    bool istrainee = false;
-                    Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
-                    xmlHandler.CreateMitarbeiterXML(m);
+                    MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname dürfen keine Zahlen enthalten oder leer sein");
                 }
 
-
-                LblId.Text = Convert.ToString(id);
-                LoadFile();
-                CmdMitarbeiterErstellen.Visible = true;
-                CmdMitarbeiterSpeichernErstellen.Visible = false;
-                CmdDelete.Visible = true;
-                DtgData.Enabled = true;
-                CmbReset.Visible = true;
-                CmdCancel.Visible = false;
-
-                MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
             }
             catch (FormatException ex)
             {
@@ -250,6 +266,9 @@ namespace ContactManager
             {
                 MessageBox.Show("Format stimmt nicht" + ex);
             }
+
+
+
         }
 
         /// <summary>
@@ -375,6 +394,7 @@ namespace ContactManager
             CmbTitel.Items.AddRange(titel);
             CmbAnrede.Items.AddRange(anrede);
             CmbGeschlecht.Items.AddRange(geschlecht);
+            CmbNationalitaet.Items.AddRange(nations);
         }
 
         /// <summary>
