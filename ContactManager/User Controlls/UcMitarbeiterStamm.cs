@@ -259,6 +259,7 @@ namespace ContactManager
                 }
 
             HideButtons();
+            ChkStatus.Enabled = false;
 
         }
 
@@ -511,6 +512,7 @@ namespace ContactManager
                         CmdMitarbeiterSpeichernErstellen.Visible = true;
                         CmdMitarbeiterErstellen.Visible = false;
                         CmdCancel.Visible = true;
+                        EnableFields();
                     }
                 }
             }
@@ -526,6 +528,72 @@ namespace ContactManager
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             rowIndex = DtgData.CurrentRow.Index;
+
+            string id = IDGetter();
+
+            
+            if(ChkLehrling.Checked == false)
+            {
+                Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
+
+                //Anrede, Vorname, Nachname, Postleitzahl, Status, Lehrling
+
+                CmbTitel.Text = m.Title;
+                CmbGeschlecht.Text = m.Gender;
+                DtpGeburtsdatum.Value = m.Geburtsdatum;
+                CmbNationalitaet.Text = m.Nationalität;
+                TxtAhvNum.Text = m.AhvNumber;
+
+                TxtEmail.Text = m.Email;
+                TxtTelGesch.Text = m.TelefonArbeit;
+                TxtTelMobil.Text = m.TelefonMobil;
+                TxtTelPriv.Text = m.TelefonPrivat;
+
+                TxtStrasse.Text = m.Strasse;
+                TxtWohnort.Text = m.Wohnort;
+                NumPostleitzahl.Value = m.Plz;
+
+                NumKaderstufe.Value = m.KaderStufe;
+                TxtAbteilung.Text = m.Abteilung;
+                TxtRolle.Text = m.Rolle;
+                NumArbeitspensum.Value = m.Arbeitspensum;
+                DtpStartdatum.Value = m.StartDate;
+                DtpEnddatum.Value = m.EndDate;
+                NumAktLehrjahr.Value = 1;
+                NumLehrjahr.Value = 1;
+            }
+            else
+            {
+
+                Lehrling l = xmlHandler.RetriveValueLehrling(id);
+
+                CmbTitel.Text = l.Title;
+                CmbGeschlecht.Text = l.Gender;
+                DtpGeburtsdatum.Value = l.Geburtsdatum;
+                CmbNationalitaet.Text = l.Nationalität;
+                TxtAhvNum.Text = l.AhvNumber;
+
+                TxtEmail.Text = l.Email;
+                TxtTelGesch.Text = l.TelefonArbeit;
+                TxtTelMobil.Text = l.TelefonMobil;
+                TxtTelPriv.Text = l.TelefonPrivat;
+
+                TxtStrasse.Text = l.Strasse;
+                TxtWohnort.Text = l.Wohnort;
+                NumPostleitzahl.Value = l.Plz;
+
+                NumKaderstufe.Value = l.KaderStufe;
+                TxtAbteilung.Text = l.Abteilung;
+                TxtRolle.Text = l.Rolle;
+                NumArbeitspensum.Value = l.Arbeitspensum;
+                DtpStartdatum.Value = l.StartDate;
+                DtpEnddatum.Value = l.EndDate;
+
+                NumLehrjahr.Value = l.TraineeYears;
+                NumAktLehrjahr.Value = l.ActualTraineeYear;
+            }
+
+
 
             if (e.RowIndex == DtgData.CurrentRow.Index)
             {
@@ -575,6 +643,8 @@ namespace ContactManager
 
         private void NumPostleitzahl_ValueChanged(object sender, EventArgs e)
         {
+            
+
             if (CmdMitarbeiterErstellen.Visible == true)
             {
                 string valuePlz = Convert.ToString(NumPostleitzahl.Value);
@@ -590,9 +660,15 @@ namespace ContactManager
                         CmdMitarbeiterSpeichernErstellen.Visible = true;
                         CmdMitarbeiterErstellen.Visible = false;
                         CmdCancel.Visible = true;
+                        EnableFields();
                     }
                 }
             }
+        }
+
+        private void EnableFields()
+        {
+            ChkStatus.Enabled = true;
         }
     }
 }
