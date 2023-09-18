@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -35,6 +36,8 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        string pattern = @"^[^\d]+$";
+
         #region Combobox Fill
         string[] anrede = new string[] { "Herr", "Frau", "Divers" };
         string[] titel = new string[] { "", "Dr.", "Prof.", "Dipl.-Ing." };
@@ -44,6 +47,8 @@ namespace ContactManager
         #region Params
         private int rowIndex { get; set; }
         public CheckState statusMitarbeiter { get; set; }
+
+        public string vorname { get; set; }
         #endregion
 
         #region Instances
@@ -175,7 +180,17 @@ namespace ContactManager
                 string anrede = CmbAnrede.Text;
                 string titel = CmbTitel.Text;
                 string geschlecht = CmbGeschlecht.Text;
-                string vorname = TxtVorname.Text;
+                
+                
+                if(Regex.IsMatch(pattern ,TxtVorname.Text))
+                { 
+                vorname = TxtVorname.Text;
+                }
+                else
+                {
+                    MessageBox.Show($"{TxtVorname.Text} darf keine Zahlen enthalten");
+                }
+
                 string nachname = TxtNachname.Text;
                 DateTime dob = DtpGeburtsdatum.Value;
                 string ahv = TxtAhvNum.Text;
@@ -250,7 +265,7 @@ namespace ContactManager
             {
                 XMLtoDatagrid();
 
-                if (DtgData.RowCount >= 1)
+                if (DtgData.RowCount >= 0)
                 {
                     LblAnzahlZeilenGeladen.Text = Convert.ToString(DtgData.Rows.Count);
                     DtgData.CurrentCell = DtgData.Rows[rowIndex].Cells[0];
@@ -339,6 +354,7 @@ namespace ContactManager
 
                 xmlHandler.DeleteValuesMitarbeiter(id);
 
+                IndexDeleteUpdate();
                 LoadFile();
             }
         }
@@ -659,5 +675,12 @@ namespace ContactManager
         /// Um einen Index out of range Fehler vorzubeugen wird nach dem löschen 1 vom Index abgezogen
         /// Ansonsten wird der Index auf 0 gesetzt
         /// </summary>
+        private void IndexDeleteUpdate()
+        {
+            if (rowIndex != 0)
+                rowIndex = rowIndex - 1;
+            else
+                rowIndex = 0;
+        }
     }
 }

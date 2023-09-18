@@ -15,13 +15,14 @@ namespace ContactManager.Controller
 
         public bool ValidateString(string input)
         {
-            if (!Regex.IsMatch(pattern, input))
-            { 
-                return false;
+            if (Regex.IsMatch(pattern, input))
+            {
+                return true;
             }
             else
             {
-                return true;
+                MessageBox.Show($"{input}darf keine Zahl enthalten");
+                return false;
             }
         }
 
