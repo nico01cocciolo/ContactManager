@@ -376,6 +376,10 @@ namespace ContactManager.Controller
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetElementValue("Wohnort", m.Wohnort);
+            
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Postleitzahl", m.Plz);
 
             //Kunde
             xdoc.Elements("Mitarbeiter")
@@ -567,6 +571,10 @@ namespace ContactManager.Controller
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetElementValue("Wohnort", l.Wohnort);
+
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetElementValue("Wohnort", l.Plz);
 
             //Kunde
             xdoc.Elements("Mitarbeiter")

@@ -188,7 +188,7 @@ namespace ContactManager
 
                         bool istrainee = TraineChecker();
 
-                        Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
+                        
 
                         if (ChkLehrling.Checked == true)
                         {
@@ -197,6 +197,7 @@ namespace ContactManager
                         }
                         else if (ChkLehrling.Checked == false)
                         {
+                            Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
                             xmlHandler.ChangeValuesMitarbeiterXML(m);
                         }
 

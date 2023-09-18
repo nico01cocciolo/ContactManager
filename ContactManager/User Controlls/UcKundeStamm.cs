@@ -42,6 +42,7 @@ namespace ContactManager
 
         NotizController nc = new NotizController();
         XMLHandler xmlHandler = new XMLHandler();
+        Validator val = new Validator();
         #endregion
 
         #region Combobox
@@ -142,12 +143,20 @@ namespace ContactManager
             TxtKundenkontakt.Text = k.Kundenkontakt;
             TxtFirmenadresse.Text = k.Firmenadresse;
             TxtFirmenname.Text = k.Firmenname;
-            
+
+            CheckingForNotes(path);
+        }
+
+        /// <summary>
+        /// Überprüft ob Notizen existieren und zeigt diese an oder gibt einen Text aus
+        /// </summary>
+        private void CheckingForNotes(string path)
+        {
             if (File.Exists(path))
             {
                 TxtNotizOutput.Text = nc.NotizLaden(path);
             }
-            else 
+            else
             {
                 TxtNotizOutput.Text = "Keine Notizen vorhanden";
             }
@@ -250,7 +259,7 @@ namespace ContactManager
 
             string strasse = TxtStrasse.Text;
             string wohnort = TxtWohnort.Text;
-            int plz = Convert.ToInt16(NumPostleitzahl.Text);
+            int plz = Convert.ToInt16(NumPostleitzahl.Value);
 
             string firmenname = TxtFirmenname.Text;
             string firmenadresse = TxtFirmenadresse.Text;
