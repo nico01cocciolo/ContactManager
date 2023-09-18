@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -53,6 +54,8 @@ namespace ContactManager
         #region Params
         private int rowIndex { get; set; }
         public CheckState statusMitarbeiter { get; set; }
+
+        private bool ErstellenOderSpeichern = false;
         #endregion
 
         #region Instances
@@ -82,6 +85,7 @@ namespace ContactManager
         /// </summary>
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
+            ErstellenOderSpeichern = true;
             CmdDelete.Visible = false;
             CmbReset.Visible = false;
             CmdCancel.Visible = true;
@@ -101,80 +105,6 @@ namespace ContactManager
             CmdDelete.Visible = false;
             CmbReset.Visible = false;
         }
-
-        /// <summary>
-        /// Die Funktion Deaktiviert den Knopf CmdWerteSpeicher und Enabled das DataGrid.
-        /// Der ID-Getter holt sich die ID und führt einen Parse aus.
-        /// Status sowohl auch der TraineChecker holen sich den Status der Parameter.
-        /// Ist der "istrainee"-Bool auf True wird die die If-Schleife ausgeführt und speichert die Werte als Lehrling.
-        /// Ist der "istrainee"-Bool auf false werden die Werte als Mitarbeiter gespeichert.
-        /// </summary>
-        private void CmdWerteSpeichern_Click(object sender, EventArgs e)
-        {
-
-            CmdWerteSpeichern.Visible = false;
-            DtgData.Enabled = true;
-
-            string eid = IDGetter();
-
-            bool status = Status();
-            bool istrainee = TraineChecker();
-
-            Guid id = Guid.Parse(eid);
-
-            string anrede = CmbAnrede.Text;
-            string title = CmbTitel.Text;
-            string geschlecht = CmbGeschlecht.Text;
-            string vorname = TxtVorname.Text;
-            
-            string nachname = TxtNachname.Text;
-            DateTime dob = DtpGeburtsdatum.Value;
-            string ahv = TxtAhvNum.Text;
-            string nationalitaet = CmbNationalitaet.Text;
-
-            string email = TxtEmail.Text;
-            string privat = TxtTelPriv.Text;
-            string mobil = TxtTelMobil.Text;
-            string arbeit = TxtTelGesch.Text;
-
-            string strasse = TxtStrasse.Text;
-            string wohnort = TxtWohnort.Text;
-            int plz = Convert.ToInt16(TxtPostleitzahl.Text);
-
-            int ks = Convert.ToInt16(NumKaderstufe.Value);
-            string abt = TxtAbteilung.Text;
-            string rolle = TxtRolle.Text;
-            int arbp = Convert.ToInt16(NumArbeitspensum.Value);
-            DateTime st = DtpStartdatum.Value;
-            DateTime end = DtpEnddatum.Value;
-
-
-            Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end);
-            CmdMitarbeiterErstellen.Visible = true;
-            CmdCancel.Visible = false;
-
-
-            if (ChkLehrling.Checked == true)
-            {
-                int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
-                int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
-                Lehrling l = new Lehrling(id, status, istrainee, anrede, title, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, end, lehrjahre, aktLehrjahr);
-                xmlHandler.ChangeValuesLehrlingXML(l);
-            }
-            else if (ChkLehrling.Checked == false)
-            {
-                xmlHandler.ChangeValuesMitarbeiterXML(m);
-            }
-
-            LoadFile();
-
-
-        }
-
-        /// <summary>
-        /// Erstellt den Mitarbeiter mit einer ID und gibt bei der Erstellung eine Meldung aus wenn erfolgreich.
-        /// Der Mitarbeiter erhält die Lehrlingsparameter wenn die Checkbox "ChkLehrling" den Status Checked hat.
-        /// </summary>
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
             string vorname = "";
@@ -185,9 +115,12 @@ namespace ContactManager
                 var isVaild = val.ValidateString(TxtVorname.Text) && val.ValidateString(TxtNachname.Text);
                 if (isVaild)
                 {
-
-                    
-                    Guid id = Guid.NewGuid();
+                    CmdMitarbeiterErstellen.Visible = true;
+                    CmdMitarbeiterSpeichernErstellen.Visible = false;
+                    CmdDelete.Visible = true;
+                    DtgData.Enabled = true;
+                    CmbReset.Visible = true;
+                    CmdCancel.Visible = false;
 
                     bool status = Status();
 
@@ -198,7 +131,7 @@ namespace ContactManager
                     //Benötigte Felder
                     vorname = TxtVorname.Text;
                     nachname = TxtNachname.Text;
-                    
+
                     DateTime dob = DtpGeburtsdatum.Value;
                     string ahv = TxtAhvNum.Text;
                     string nationalitaet = CmbNationalitaet.Text;
@@ -221,33 +154,55 @@ namespace ContactManager
                     int lehrjahre = Convert.ToInt16(NumLehrjahr.Value);
                     int aktLehrjahr = Convert.ToInt16(NumAktLehrjahr.Value);
 
-
-                    if (ChkLehrling.Checked == true)
+                    if (ErstellenOderSpeichern == true)
                     {
-                        bool istrainee = true;
-                        //Für Lehrlinge
+                        Guid id = Guid.NewGuid();
 
-                        Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
-                        xmlHandler.CreateLehrlingXML(l);
+                        if (ChkLehrling.Checked == true)
+                        {
+                            bool istrainee = true;
+                            //Für Lehrlinge
+
+                            Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
+                            xmlHandler.CreateLehrlingXML(l);
+                        }
+                        else if (ChkLehrling.Checked == false)
+                        {
+                            bool istrainee = false;
+                            Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
+                            xmlHandler.CreateMitarbeiterXML(m);
+                        }
+
+
+                        LblId.Text = Convert.ToString(id);
+                        LoadFile();
+
+                        ErstellenOderSpeichern = false;
+
+                        MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
                     }
-                    else if (ChkLehrling.Checked == false)
+                    else
                     {
-                        bool istrainee = false;
+                        string eid = IDGetter();
+                        Guid id = Guid.Parse(eid);
+
+                        bool istrainee = TraineChecker();
+
                         Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
-                        xmlHandler.CreateMitarbeiterXML(m);
+
+                        if (ChkLehrling.Checked == true)
+                        {
+                            Lehrling l = new Lehrling(id, status, istrainee, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et, lehrjahre, aktLehrjahr);
+                            xmlHandler.ChangeValuesLehrlingXML(l);
+                        }
+                        else if (ChkLehrling.Checked == false)
+                        {
+                            xmlHandler.ChangeValuesMitarbeiterXML(m);
+                        }
+
+                        LoadFile();
+
                     }
-
-
-                    LblId.Text = Convert.ToString(id);
-                    LoadFile();
-                    CmdMitarbeiterErstellen.Visible = true;
-                    CmdMitarbeiterSpeichernErstellen.Visible = false;
-                    CmdDelete.Visible = true;
-                    DtgData.Enabled = true;
-                    CmbReset.Visible = true;
-                    CmdCancel.Visible = false;
-
-                    MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
                 }
                 else 
                 {
@@ -408,7 +363,6 @@ namespace ContactManager
         private void CmdCancel_Click(object sender, EventArgs e)
         {
             CmdMitarbeiterSpeichernErstellen.Visible = false;
-            CmdWerteSpeichern.Visible = false;
           
             DtgData.Enabled = true;
 
@@ -474,7 +428,6 @@ namespace ContactManager
             CmdMitarbeiterErstellen.Visible = true;
             CmdCancel.Visible = false;
             CmdMitarbeiterSpeichernErstellen.Visible = false;
-            CmdWerteSpeichern.Visible = false;
         }
 
         public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, string filterVorname)
@@ -555,7 +508,7 @@ namespace ContactManager
 
                     if (textVorname != dtgdataValue)
                     {
-                        CmdWerteSpeichern.Visible = true;
+                        CmdMitarbeiterSpeichernErstellen.Visible = true;
                         CmdMitarbeiterErstellen.Visible = false;
                         CmdCancel.Visible = true;
                     }

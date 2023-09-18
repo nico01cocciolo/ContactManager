@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.LblAnzahlZeilenGeladen = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.NumAktLehrjahr = new System.Windows.Forms.NumericUpDown();
             this.NumLehrjahr = new System.Windows.Forms.NumericUpDown();
@@ -92,17 +91,17 @@
             this.TxtVorname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.LblAnzahlZeilenGeladen = new System.Windows.Forms.Label();
             this.DtgData = new System.Windows.Forms.DataGridView();
             this.CmbReset = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
             this.CmdDelete = new System.Windows.Forms.Button();
             this.CmdMitarbeiterSpeichernErstellen = new System.Windows.Forms.Button();
             this.CmdFilterReset = new System.Windows.Forms.Button();
-            this.CmdWerteSpeichern = new System.Windows.Forms.Button();
             this.CmdSuchfilter = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label31 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -116,8 +115,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumKaderstufe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgData)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -144,18 +143,6 @@
             this.splitContainer1.SplitterDistance = 465;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 1;
-            // 
-            // LblAnzahlZeilenGeladen
-            // 
-            this.LblAnzahlZeilenGeladen.AutoSize = true;
-            this.LblAnzahlZeilenGeladen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAnzahlZeilenGeladen.Location = new System.Drawing.Point(152, 6);
-            this.LblAnzahlZeilenGeladen.Name = "LblAnzahlZeilenGeladen";
-            this.LblAnzahlZeilenGeladen.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LblAnzahlZeilenGeladen.Size = new System.Drawing.Size(24, 20);
-            this.LblAnzahlZeilenGeladen.TabIndex = 54;
-            this.LblAnzahlZeilenGeladen.Text = "...";
-            this.LblAnzahlZeilenGeladen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel5
             // 
@@ -879,6 +866,40 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Persönliche Daten";
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.label31);
+            this.panel6.Controls.Add(this.LblAnzahlZeilenGeladen);
+            this.panel6.Location = new System.Drawing.Point(910, 412);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(313, 26);
+            this.panel6.TabIndex = 55;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(3, 6);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(143, 16);
+            this.label31.TabIndex = 55;
+            this.label31.Text = "Anzahl Zeilen geladen:";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // LblAnzahlZeilenGeladen
+            // 
+            this.LblAnzahlZeilenGeladen.AutoSize = true;
+            this.LblAnzahlZeilenGeladen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAnzahlZeilenGeladen.Location = new System.Drawing.Point(152, 6);
+            this.LblAnzahlZeilenGeladen.Name = "LblAnzahlZeilenGeladen";
+            this.LblAnzahlZeilenGeladen.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LblAnzahlZeilenGeladen.Size = new System.Drawing.Size(19, 16);
+            this.LblAnzahlZeilenGeladen.TabIndex = 54;
+            this.LblAnzahlZeilenGeladen.Text = "...";
+            this.LblAnzahlZeilenGeladen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // DtgData
             // 
             this.DtgData.AllowUserToAddRows = false;
@@ -886,7 +907,7 @@
             this.DtgData.AllowUserToOrderColumns = true;
             this.DtgData.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgData.Location = new System.Drawing.Point(0, 4);
+            this.DtgData.Location = new System.Drawing.Point(4, 4);
             this.DtgData.Margin = new System.Windows.Forms.Padding(4);
             this.DtgData.Name = "DtgData";
             this.DtgData.RowHeadersWidth = 51;
@@ -960,20 +981,6 @@
             this.CmdFilterReset.Visible = false;
             this.CmdFilterReset.Click += new System.EventHandler(this.CmdFilterReset_Click);
             // 
-            // CmdWerteSpeichern
-            // 
-            this.CmdWerteSpeichern.BackgroundImage = global::ContactManager.Properties.Resources.Save_Icon;
-            this.CmdWerteSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CmdWerteSpeichern.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdWerteSpeichern.Location = new System.Drawing.Point(4, 4);
-            this.CmdWerteSpeichern.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdWerteSpeichern.Name = "CmdWerteSpeichern";
-            this.CmdWerteSpeichern.Size = new System.Drawing.Size(56, 52);
-            this.CmdWerteSpeichern.TabIndex = 74;
-            this.CmdWerteSpeichern.UseVisualStyleBackColor = true;
-            this.CmdWerteSpeichern.Visible = false;
-            this.CmdWerteSpeichern.Click += new System.EventHandler(this.CmdWerteSpeichern_Click);
-            // 
             // CmdSuchfilter
             // 
             this.CmdSuchfilter.BackgroundImage = global::ContactManager.Properties.Resources.Filter_Icon;
@@ -1001,35 +1008,12 @@
             this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = false;
             this.CmdMitarbeiterErstellen.Click += new System.EventHandler(this.CmdMitarbeiterErstellen_Click);
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.label31);
-            this.panel6.Controls.Add(this.LblAnzahlZeilenGeladen);
-            this.panel6.Location = new System.Drawing.Point(910, 412);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(310, 26);
-            this.panel6.TabIndex = 55;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(3, 6);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(143, 16);
-            this.label31.TabIndex = 55;
-            this.label31.Text = "Anzahl Zeilen geladen:";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.Controls.Add(this.CmdFilterReset);
-            this.Controls.Add(this.CmdWerteSpeichern);
             this.Controls.Add(this.CmdSuchfilter);
             this.Controls.Add(this.CmdCancel);
             this.Controls.Add(this.CmbReset);
@@ -1059,9 +1043,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumArbeitspensum)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtgData)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1134,7 +1118,6 @@
         private System.Windows.Forms.NumericUpDown NumLehrjahr;
         private System.Windows.Forms.Button CmdSuchfilter;
         public System.Windows.Forms.TextBox TxtEmail;
-        private System.Windows.Forms.Button CmdWerteSpeichern;
         private System.Windows.Forms.Button CmdFilterReset;
         private System.Windows.Forms.DataGridView DtgData;
         private System.Windows.Forms.ComboBox CmbGeschlecht;
