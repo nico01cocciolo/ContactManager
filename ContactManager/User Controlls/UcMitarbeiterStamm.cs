@@ -27,9 +27,6 @@ namespace ContactManager
 {
     public partial class UcMitarbeiterStamm : UserControl
     {
-       
-        private string URL_XML_FILE = "Directory.GetCurrentDirectory() + \"/Mitarbeiter.xml\"";
-
         public UcMitarbeiterStamm()
         {
             InitializeComponent();
@@ -290,7 +287,6 @@ namespace ContactManager
                     DtgData.CurrentCell = DtgData.Rows[rowIndex].Cells[0];
                     DtgData.Rows[rowIndex].Selected = true;
                 }
-
 
                 }
                 else

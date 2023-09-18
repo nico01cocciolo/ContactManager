@@ -136,7 +136,7 @@ namespace ContactManager
 
             TxtStrasse.Text = k.Strasse;
             TxtWohnort.Text = k.Wohnort;
-            TxtPostleitzahl.Text = Convert.ToString(k.Plz);
+            NumPostleitzahl.Value = k.Plz;
 
             CmbKundentyp.Text = Convert.ToString(k.Kundentyp);
             TxtKundenkontakt.Text = k.Kundenkontakt;
@@ -174,7 +174,7 @@ namespace ContactManager
                 ErrVorname.SetError(this.TxtVorname, "Eingabe darf nicht leer sein");
             }
 
-            if (CmbKundentyp.SelectedIndex > -1 && TxtPostleitzahl.TextLength > 0)
+            if (CmbKundentyp.SelectedIndex > -1)
             {
                 bool status = Status();
                 string title = CmbTitel.Text;
@@ -191,7 +191,7 @@ namespace ContactManager
 
                 string strasse = TxtStrasse.Text;
                 string wohnort = TxtWohnort.Text;
-                int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+                int plz = Convert.ToInt16(NumPostleitzahl.Value);
 
                 string firmenname = TxtFirmenname.Text;
                 string firmenadresse = TxtFirmenadresse.Text;
@@ -250,7 +250,7 @@ namespace ContactManager
 
             string strasse = TxtStrasse.Text;
             string wohnort = TxtWohnort.Text;
-            int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+            int plz = Convert.ToInt16(NumPostleitzahl.Text);
 
             string firmenname = TxtFirmenname.Text;
             string firmenadresse = TxtFirmenadresse.Text;
@@ -406,7 +406,7 @@ namespace ContactManager
 
             TxtStrasse.Clear();
             TxtWohnort.Clear();
-            TxtPostleitzahl.Clear();
+            NumPostleitzahl.ResetText();
 
             TxtFirmenname.Clear();
             TxtFirmenadresse.Clear();
