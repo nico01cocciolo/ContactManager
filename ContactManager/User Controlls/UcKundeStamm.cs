@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using ContactManager.Model;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Linq;
 
 namespace ContactManager
 {
@@ -42,6 +43,7 @@ namespace ContactManager
         }
 
         NotizController nc = new NotizController();
+        private XDocument kunden = new XDocument();
         XMLHandler xmlHandler = new XMLHandler();
         Validator val = new Validator();
         #endregion
@@ -101,16 +103,13 @@ namespace ContactManager
         /// </summary>
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            CmdDelete.Visible = true;
             index = DtgData.CurrentRow.Index;
-
-            ShowButtons();
 
             string id = IDGetter();
             string path = $"{id}.txt";
 
             Kunde k = xmlHandler.RetriveValuesKunde(id);
-
-            LblId.Text = Convert.ToString(k.Id);
 
             if (k.isActive)
             {
@@ -123,10 +122,8 @@ namespace ContactManager
                 ChkStatus.Checked = false;
             }
 
-            CmbAnrede.Text = k.Anrede;
+
             CmbTitel.Text = k.Title;
-            TxtVorname.Text = k.Vorname;
-            TxtNachname.Text = k.Nachname;
             DtpGeburtsdatum.Value = k.Geburtsdatum;
             CmbNationalitaet.Text = k.Nationalität;
             TxtAhvNum.Text = k.AhvNumber;
@@ -138,9 +135,7 @@ namespace ContactManager
 
             TxtStrasse.Text = k.Strasse;
             TxtWohnort.Text = k.Wohnort;
-            NumPostleitzahl.Value = k.Plz;
 
-            CmbKundentyp.Text = Convert.ToString(k.Kundentyp);
             TxtKundenkontakt.Text = k.Kundenkontakt;
             TxtFirmenadresse.Text = k.Firmenadresse;
             TxtFirmenname.Text = k.Firmenname;
@@ -170,6 +165,7 @@ namespace ContactManager
         {
             ErstellenOderSpeichern = true;
             CmdKundeErstellen.Visible = false;
+            CmdSave.Visible = true;
         }
 
         /// <summary>
@@ -333,6 +329,54 @@ namespace ContactManager
             CmbNationalitaet.Items.AddRange(nations);
         }
 
+        public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, string filterVorname)
+        {
+            kunden = XDocument.Load(Directory.GetCurrentDirectory() + "/Kunde.xml");
+
+            var data = kunden.Descendants("Kunde")
+                .Where(k => (bool)k.Attribute("Status") == statusIsTrue ||
+                             (bool)k.Attribute("Status") == !statusIsFalse
+
+                )
+                .Select(k =>
+                {
+                    string kStatus = k.Attribute("Status").Value;
+                    bool Status = Convert.ToBoolean(kStatus);
+
+                    foreach (var zeile in kunden.Descendants())
+                    {
+                        if (Status == true)
+                            kStatus = "Aktiv";
+                        else
+                            kStatus = "Inaktiv";
+                    }
+
+                    return new
+                    {
+                        ID = k.Attribute("ID").Value,
+                        Anrede = k.Element("Anrede").Value,
+                        Vorname = k.Element("Vorname").Value,
+                        Nachname = k.Element("Nachname").Value,
+                        Postleitzahl = k.Element("Postleitzahl").Value,
+                        Kundentyp = k.Element("Kundentyp").Value,
+                        Status,
+                    };
+                })
+                .OrderBy(m => m.ID).ToList();
+
+            ClearDataBindings();
+
+            DtgData.DataSource = data;
+
+            LblId.DataBindings.Add("text", data, "ID");
+            CmbAnrede.DataBindings.Add("text", data, "Anrede");
+            TxtVorname.DataBindings.Add("text", data, "Vorname");
+            TxtNachname.DataBindings.Add("text", data, "Nachname");
+            NumPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
+            NumPostleitzahl.DataBindings.Add("text", data, "Kundentyp");
+            ChkStatus.DataBindings.Add("Checked", data, "Status");
+        }
+
         /// <summary>
         /// Wenn die Datei "Kunde.xml" exisiter und mehr oder gleich 60 Zeichen enthält (Aufgrund der Codierung und Angaben welche eine XML Datei enthält) wird die Datei geladen.
         /// Ansonsten bleibt das DataGrid leer.
@@ -341,9 +385,12 @@ namespace ContactManager
         {
             if (File.Exists("Kunde.xml") && new FileInfo("Kunde.xml").Length >= 60)
             {
-                DataSet dataSet = new DataSet();
-                dataSet.ReadXml(Directory.GetCurrentDirectory() + "/Kunde.xml");
-                DtgData.DataSource = dataSet.Tables[0];
+                bool filterStatusIsTrue = true;
+                bool filterStatusIsFalse = true;
+                string filterVorname = null;
+
+
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterVorname);
 
                 LoadNotes();
 
@@ -426,6 +473,16 @@ namespace ContactManager
             CmdSave.Visible = true;
 
             CmdNotizErfassen.Enabled = true;
+        }
+
+        private void ClearDataBindings()
+        {
+            LblId.DataBindings.Clear();
+            CmbAnrede.DataBindings.Clear();
+            TxtVorname.DataBindings.Clear();
+            TxtNachname.DataBindings.Clear();
+            NumPostleitzahl.DataBindings.Clear();
+            ChkStatus.DataBindings.Clear();
         }
     }
 }
