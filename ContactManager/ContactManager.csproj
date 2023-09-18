@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\NotizController.cs" />
+    <Compile Include="Controller\Validator.cs" />
     <Compile Include="Controller\XMLHandler.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>

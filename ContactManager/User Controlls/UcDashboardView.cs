@@ -101,6 +101,7 @@ namespace ContactManager.User_Controlls
             int activeAccountCount, inactiveAccountCount;
             GetChartValues(data, out activeAccountCount, out inactiveAccountCount);
 
+            ChtMitarbeiter.Titles.Clear();
             ChtMitarbeiter.Series.Clear();
 
             ChtMitarbeiter.Titles.Add("Status: Mitarbeiter");
@@ -127,6 +128,7 @@ namespace ContactManager.User_Controlls
             int activeAccountCount, inactiveAccountCount;
             GetChartValues(data, out activeAccountCount, out inactiveAccountCount);
 
+            ChtKunde.Titles.Clear();
             ChtKunde.Series.Clear();
 
             ChtKunde.Titles.Add("Status: Kunden");

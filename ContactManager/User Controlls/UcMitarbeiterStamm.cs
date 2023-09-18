@@ -28,6 +28,7 @@ namespace ContactManager
     {
         private XDocument mitarbeiter = new XDocument();
         private string URL_XML_FILE = "Directory.GetCurrentDirectory() + \"/Mitarbeiter.xml\"";
+        private string temp { get; set; }
 
         public UcMitarbeiterStamm()
         {
@@ -47,6 +48,7 @@ namespace ContactManager
 
         #region Instances
         XMLHandler xmlHandler = new XMLHandler();
+        Validator val = new Validator();
 
         private static UcMitarbeiterStamm instance;
 
@@ -113,6 +115,7 @@ namespace ContactManager
             string title = CmbTitel.Text;
             string geschlecht = CmbGeschlecht.Text;
             string vorname = TxtVorname.Text;
+            
             string nachname = TxtNachname.Text;
             DateTime dob = DtpGeburtsdatum.Value;
             string ahv = TxtAhvNum.Text;
@@ -319,74 +322,6 @@ namespace ContactManager
                 return true;
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        //public void BenutzererstellungFehler()
-        //{
-        //    if (CmdMitarbeiterErstellen.Visible == false)
-        //    {
-        //        DialogResult dialogResult = MessageBox.Show("Benutzer Speichern?", "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-        //        if (dialogResult == DialogResult.Yes)
-        //        {
-        //            try
-        //            {
-        //                Guid id = Guid.NewGuid();
-        //                bool status = Status();
-        //                bool istrainee = TraineChecker();
-
-        //                string anrede = CmbAnrede.Text;
-        //                string title = CmbTitel.Text;
-        //                string geschlecht = CmbGeschlecht.Text;
-        //                string vorname = TxtVorname.Text;
-        //                string nachname = TxtNachname.Text;
-        //                DateTime dob = DtpGeburtsdatum.Value;
-        //                string ahv = TxtAhvNum.Text;
-        //                string nationalitaet = CmbNationalitaet.Text;
-
-        //                string email = TxtEmail.Text;
-        //                string privat = TxtTelPriv.Text;
-        //                string mobil = TxtTelMobil.Text;
-        //                string arbeit = TxtTelGesch.Text;
-
-        //                string strasse = TxtStrasse.Text;
-        //                string wohnort = TxtWohnort.Text;
-        //                int plz = Convert.ToInt16(TxtPostleitzahl.Text);
-
-        //                int ks = Convert.ToInt16(NumKaderstufe.Value);
-        //                string abt = TxtAbteilung.Text;
-        //                string rolle = TxtRolle.Text;
-        //                int arbp = Convert.ToInt16(NumArbeitspensum.Value);
-        //                DateTime st = DtpStartdatum.Value;
-        //                DateTime et = DtpEnddatum.Value;
-
-        //                Mitarbeiter m = new Mitarbeiter(id, status, istrainee, anrede, title, geschlecht,vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, ks, rolle, abt, arbp, st, et);
-
-
-        //                xmlHandler.CreateMitarbeiterXML(m);
-        //                LblId.Text = Convert.ToString(id);
-        //                LoadFile();
-        //                CmdMitarbeiterErstellen.Visible = true;
-        //                CmdMitarbeiterSpeichernErstellen.Visible = false;
-        //                DtgData.Enabled = true;
-        //                MessageBox.Show($"Der Nutzer {vorname} {nachname} wurde erstellt.");
-
-        //            }
-        //            catch
-        //            {
-        //                MessageBox.Show("Überprüfen Sie Ihre eingetragenen Felder", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-
-        //            CmdMitarbeiterErstellen.Visible = true;
-        //        }
-        //        else
-        //        {
-        //            CmdMitarbeiterErstellen.Visible = true;
-        //        }
-        //    }
-        //}
 
         /// <summary>
         /// Löscht den Selektierten User der über den ID-Getter ausgewählt wurde.
