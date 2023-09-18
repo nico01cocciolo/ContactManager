@@ -444,7 +444,6 @@ namespace ContactManager
                 {
                     string mStatus = m.Attribute("Status").Value;
                     string mLehrling = m.Attribute("Lehrling").Value;
-
                     bool Status = Convert.ToBoolean(mStatus);
                     bool Lehrling = Convert.ToBoolean(mLehrling);
 
@@ -471,6 +470,8 @@ namespace ContactManager
 
             ClearDataBindings();
 
+            DtgData.DataSource = data;
+
             LblId.DataBindings.Add("text", data, "ID");
             CmbAnrede.DataBindings.Add("text", data, "Anrede");
             TxtVorname.DataBindings.Add("text", data, "Vorname");
@@ -478,8 +479,6 @@ namespace ContactManager
             NumPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
             ChkStatus.DataBindings.Add("Checked", data, "Status");
             ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
-
-            DtgData.DataSource = data;
 
             LblAnzahlZeilenGeladen.Text = Convert.ToString(DtgData.Rows.Count);
         }
@@ -572,6 +571,28 @@ namespace ContactManager
                 rowIndex = rowIndex - 1;
             else
                 rowIndex = 0;
+        }
+
+        private void NumPostleitzahl_ValueChanged(object sender, EventArgs e)
+        {
+            if (CmdMitarbeiterErstellen.Visible == true)
+            {
+                string valuePlz = Convert.ToString(NumPostleitzahl.Value);
+
+                if (DtgData.SelectedRows.Count > 0)
+                {
+                    int selectedRowIndex = DtgData.SelectedRows[0].Index;
+
+                    string dtgdataValue = DtgData.Rows[selectedRowIndex].Cells["Postleitzahl"].Value.ToString();
+
+                    if (valuePlz != dtgdataValue)
+                    {
+                        CmdMitarbeiterSpeichernErstellen.Visible = true;
+                        CmdMitarbeiterErstellen.Visible = false;
+                        CmdCancel.Visible = true;
+                    }
+                }
+            }
         }
     }
 }
