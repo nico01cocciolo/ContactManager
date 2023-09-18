@@ -21,6 +21,10 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        #region Parameters
+        private int index { get; set; }
+        #endregion
+
         #region Instances
         private static UcKundeStamm instance;
 
@@ -72,6 +76,8 @@ namespace ContactManager
         {
             FillCombobox();
             LoadFile();
+
+            HideButtons();
         }
 
         /// <summary>
@@ -80,6 +86,10 @@ namespace ContactManager
         /// </summary>
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            index = DtgData.CurrentRow.Index;
+
+            ShowButtons();
+
             string id = IDGetter();
             string path = $"{id}.txt";
 
@@ -245,11 +255,34 @@ namespace ContactManager
         /// </summary>
         private void Kill_Click(object sender, EventArgs e)
         {
-            string id = IDGetter();
+            DialogResult dialogResult = MessageBox.Show("Benutzer löschen?", "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            File.Delete($"{id}.txt");
-            xmlHandler.DeleteValuesKunde(id);
-            LoadFile();
+            if (dialogResult == DialogResult.Yes)
+            {
+                string id = IDGetter();
+
+                File.Delete($"{id}.txt");
+                xmlHandler.DeleteValuesKunde(id);
+
+                IndexDeleteUpdate();
+
+                LoadFile();
+            }
+        }
+
+        /// <summary>
+        /// Beim Klicken auf eine Zelle im DataGrid wird der Index gesetzt
+        /// Dieser wird benötigt um die Position nach dem Bearbeiten eines Users nicht wieder an den Anfang der Tabelle zu setzen
+        /// 
+        /// Um einen Index out of range Fehler vorzubeugen wird nach dem löschen 1 vom Index abgezogen
+        /// Ansonsten wird der Index auf 0 gesetzt
+        /// </summary>
+        private void IndexDeleteUpdate()
+        {
+            if (index != 0)
+                index = index - 1;
+            else
+                index = 0;
         }
 
         /// <summary>
@@ -321,11 +354,17 @@ namespace ContactManager
                 DtgData.DataSource = dataSet.Tables[0];
 
                 LoadNotes();
+
+                if (DtgData.CurrentCell.RowIndex >= 0)
+                {
+                    DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
+                }
             }
             else 
             {
                 DtgData.DataSource = null;
             }
+            HideButtons();
         }
 
         /// <summary>
@@ -373,6 +412,28 @@ namespace ContactManager
                 TxtNotizOutput.Text = nc.NotizLaden(path);
             }
             
+        }
+
+        /// <summary>
+        /// Versteckt Buttons
+        /// </summary>
+        private void HideButtons()
+        {
+            CmdDelete.Visible = false;
+            CmdSave.Visible = false;
+
+            CmdNotizErfassen.Enabled = false;
+        }
+
+        /// <summary>
+        /// Zeigt Buttons an
+        /// </summary>
+        private void ShowButtons()
+        {
+            CmdDelete.Visible = true;
+            CmdSave.Visible = true;
+
+            CmdNotizErfassen.Enabled = true;
         }
     }
 }

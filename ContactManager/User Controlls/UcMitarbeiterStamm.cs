@@ -96,6 +96,7 @@ namespace ContactManager
         /// </summary>
         private void CmdWerteSpeichern_Click(object sender, EventArgs e)
         {
+
             CmdWerteSpeichern.Visible = false;
             DtgData.Enabled = true;
 
@@ -239,6 +240,7 @@ namespace ContactManager
         /// </summary>
         public void LoadFile()
         {
+
             if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
 
@@ -445,6 +447,8 @@ namespace ContactManager
 
                 xmlHandler.DeleteValuesMitarbeiter(id);
 
+                IndexDeleteUpdate();
+
                 LoadFile();
             }
         }
@@ -498,9 +502,6 @@ namespace ContactManager
                 NumLehrjahr.Enabled = false;
             }
         }
-
-        public CheckState statusMitarbeiter { get; set; }
-
         public void ApplyXmlFilter()
         {
             CmdFilterReset.Visible = true;
@@ -606,6 +607,9 @@ namespace ContactManager
             }
         }
 
+        /// <summary>
+        /// Versteckt Buttons
+        /// </summary>
         private void HideButtons()
         {
             CmdMitarbeiterErstellen.Visible = true;
@@ -614,6 +618,7 @@ namespace ContactManager
             CmdWerteSpeichern.Visible = false;
         }
 
+
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
             ClearDataBindings();
@@ -621,6 +626,10 @@ namespace ContactManager
             FilterDashboard filterDashboard = new FilterDashboard();
             filterDashboard.ShowDialog();
         }
+
+        /// <summary>
+        /// Braucht noch Info oder wird ehh gelöscht
+        /// </summary>
         private void TxtVorname_TextChanged(object sender, EventArgs e)
         {
             if (CmdMitarbeiterErstellen.Visible == true)
@@ -642,7 +651,6 @@ namespace ContactManager
                 }
             }
         }
-
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             rowIndex = DtgData.CurrentRow.Index;
@@ -654,11 +662,19 @@ namespace ContactManager
                 CmdDelete.Visible = true;
             }
         }
+       
+        /// <summary>
+        /// Funktion um den Filter zurückzusetzen und erneut die Daten zu laden
+        /// </summary>
         private void CmdFilterReset_Click(object sender, EventArgs e)
         {
             CmdFilterReset.Visible = false;
             LoadFile();
         }
+        
+        /// <summary>
+        /// Wird benötigt um Fehlern mit DataBindings vorzubeugen
+        /// </summary>
         private void ClearDataBindings()
         {
             LblId.DataBindings.Clear();
@@ -669,6 +685,20 @@ namespace ContactManager
             ChkStatus.DataBindings.Clear();
             ChkLehrling.DataBindings.Clear();
         }
-
+       
+        /// <summary>
+        /// Beim Klicken auf eine Zelle im DataGrid wird der Index gesetzt
+        /// Dieser wird benötigt um die Position nach dem Bearbeiten eines Users nicht wieder an den Anfang der Tabelle zu setzen
+        /// 
+        /// Um einen Index out of range Fehler vorzubeugen wird nach dem löschen 1 vom Index abgezogen
+        /// Ansonsten wird der Index auf 0 gesetzt
+        /// </summary>
+        private void IndexDeleteUpdate()
+        {
+            if (index != 0)
+                index = index - 1;
+            else
+                index = 0;
+        }
     }
 }
