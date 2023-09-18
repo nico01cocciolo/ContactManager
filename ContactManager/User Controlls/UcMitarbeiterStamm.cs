@@ -143,7 +143,7 @@ namespace ContactManager
 
                     string strasse = TxtStrasse.Text;
                     string wohnort = TxtWohnort.Text;
-                    int plz = Convert.ToInt16(TxtPostleitzahl.Text);
+                    int plz = Convert.ToInt16(NumPostleitzahl.Value);
 
                     int ks = Convert.ToInt16(NumKaderstufe.Value);
                     string rolle = TxtRolle.Text;
@@ -474,7 +474,7 @@ namespace ContactManager
             CmbAnrede.DataBindings.Add("text", data, "Anrede");
             TxtVorname.DataBindings.Add("text", data, "Vorname");
             TxtNachname.DataBindings.Add("text", data, "Nachname");
-            TxtPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
+            NumPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
             ChkStatus.DataBindings.Add("Checked", data, "Status");
             ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
 
@@ -553,7 +553,7 @@ namespace ContactManager
             CmbAnrede.DataBindings.Clear();
             TxtVorname.DataBindings.Clear();
             TxtNachname.DataBindings.Clear();
-            TxtPostleitzahl.DataBindings.Clear();
+            NumPostleitzahl.DataBindings.Clear();
             ChkStatus.DataBindings.Clear();
             ChkLehrling.DataBindings.Clear();
         }
