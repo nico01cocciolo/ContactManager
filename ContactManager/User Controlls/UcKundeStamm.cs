@@ -23,6 +23,7 @@ namespace ContactManager
 
         #region Parameters
         private int index { get; set; }
+        private bool ErstellenOderSpeichern = false;
         #endregion
 
         #region Instances
@@ -167,58 +168,8 @@ namespace ContactManager
         /// </summary>
         private void CmdKundeErstellen_Click(object sender, EventArgs e)
         {
-            Guid id = Guid.NewGuid();
-
-            string vorname = "";
-
-            string anrede = CmbAnrede.Text;
-
-            if (!String.IsNullOrWhiteSpace(TxtVorname.Text))
-            {
-                string vor = TxtVorname.Text;
-                vorname = vor;
-            }
-            else
-            {
-                ErrVorname.SetError(this.TxtVorname, "Eingabe darf nicht leer sein");
-            }
-
-            if (CmbKundentyp.SelectedIndex > -1)
-            {
-                bool status = Status();
-                string title = CmbTitel.Text;
-                string geschlecht = CmbGeschlecht.Text;
-                string nachname = TxtNachname.Text;
-                DateTime dob = DtpGeburtsdatum.Value;
-                string nationalitaet = CmbNationalitaet.Text;
-                string ahv = TxtAhvNum.Text;
-
-                string email = TxtEmail.Text;
-                string mobil = TxtTelMobil.Text;
-                string arbeit = TxtTelGesch.Text;
-                string privat = TxtTelPriv.Text;
-
-                string strasse = TxtStrasse.Text;
-                string wohnort = TxtWohnort.Text;
-                int plz = Convert.ToInt16(NumPostleitzahl.Value);
-
-                string firmenname = TxtFirmenname.Text;
-                string firmenadresse = TxtFirmenadresse.Text;
-                string kundekontakt = TxtKundenkontakt.Text;
-
-                char kundentyp = Convert.ToChar(CmbKundentyp.Text);
-
-
-                Kunde k = new Kunde(id, status, anrede, title, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundekontakt);
-
-                xmlHandler.CreateKundeXML(k);
-                LoadFile();
-
-            }
-            else
-            {
-                MessageBox.Show("Error");
-            }
+            ErstellenOderSpeichern = true;
+            CmdKundeErstellen.Visible = false;
         }
 
         /// <summary>
@@ -237,39 +188,57 @@ namespace ContactManager
         /// </summary>
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            //Parameters
-            string id = IDGetter();
-            Guid ide = Guid.Parse(id);
 
-            bool status = Status();
+            if (CmbKundentyp.SelectedIndex > -1)
+            {
+                bool status = Status();
+                string anrede = CmbAnrede.Text;
+                string titel = CmbTitel.Text;
+                string geschlecht = CmbGeschlecht.Text;
+                string vorname = TxtVorname.Text;
+                string nachname = TxtNachname.Text;
+                DateTime dob = DtpGeburtsdatum.Value;
+                string nationalitaet = CmbNationalitaet.Text;
+                string ahv = TxtAhvNum.Text;
 
-            string anrede = CmbAnrede.Text;
-            string titel = CmbTitel.Text;
-            string geschlecht = CmbGeschlecht.Text;
-            string vorname = TxtVorname.Text;
-            string nachname = TxtNachname.Text;
-            DateTime dob = DtpGeburtsdatum.Value;
-            string nationalitaet = CmbNationalitaet.Text;
-            string ahv = TxtAhvNum.Text;
+                string email = TxtEmail.Text;
+                string privat = TxtTelPriv.Text;
+                string arbeit = TxtTelGesch.Text;
+                string mobil = TxtTelMobil.Text;
 
-            string email = TxtEmail.Text;
-            string privat = TxtTelPriv.Text;
-            string arbeit = TxtTelGesch.Text;
-            string mobil = TxtTelMobil.Text;
+                string strasse = TxtStrasse.Text;
+                string wohnort = TxtWohnort.Text;
+                int plz = Convert.ToInt16(NumPostleitzahl.Value);
 
-            string strasse = TxtStrasse.Text;
-            string wohnort = TxtWohnort.Text;
-            int plz = Convert.ToInt16(NumPostleitzahl.Value);
+                string firmenname = TxtFirmenname.Text;
+                string firmenadresse = TxtFirmenadresse.Text;
+                char kundentyp = Convert.ToChar(CmbKundentyp.Text);
+                string kundenkontakt = TxtKundenkontakt.Text;
 
-            string firmenname = TxtFirmenname.Text;
-            string firmenadresse = TxtFirmenadresse.Text;
-            char kundentyp = Convert.ToChar(CmbKundentyp.Text);
-            string kundenkontakt = TxtKundenkontakt.Text;
+                if (ErstellenOderSpeichern == true)
+                {
+                    Guid id = Guid.NewGuid();
+                    Kunde k = new Kunde(id, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
-            Kunde k = new Kunde(ide, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+                    xmlHandler.CreateKundeXML(k);
+                    ErstellenOderSpeichern = false;
 
-            xmlHandler.ChangeValuesKundeXML(k);
-            LoadFile();
+                    CmdSave.Visible = false;
+                }
+                else if (ErstellenOderSpeichern == false)
+                {
+                    string id = IDGetter();
+                    Guid ide = Guid.Parse(id);
+                    Kunde k = new Kunde(ide, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+                    xmlHandler.ChangeValuesKundeXML(k);
+                }
+
+                LoadFile();
+            }
+            else
+            {
+                MessageBox.Show("Error", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
         }
 
         /// <summary>
