@@ -263,13 +263,21 @@ namespace ContactManager
 
             if (File.Exists("Mitarbeiter.xml") && new FileInfo("Mitarbeiter.xml").Length >= 60)
             {
-                XMLtoDatagrid();
+                bool filterStatusIsTrue = true;
+                bool filterStatusIsFalse = true;
+                string filterVorname = null;
+
+
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterVorname);
 
                 if (DtgData.RowCount >= 0)
                 {
-                    LblAnzahlZeilenGeladen.Text = Convert.ToString(DtgData.Rows.Count);
-                    DtgData.CurrentCell = DtgData.Rows[rowIndex].Cells[0];
-                    DtgData.Rows[rowIndex].Selected = true;
+                    if (rowIndex > 1)
+                    {
+                        DtgData.CurrentCell = DtgData.Rows[rowIndex].Cells[0];
+                        DtgData.Rows[rowIndex].Selected = true;
+                    }
+                    
                 }
 
 
@@ -280,7 +288,6 @@ namespace ContactManager
                 }
 
             HideButtons();
-
 
         }
 
@@ -408,129 +415,38 @@ namespace ContactManager
                 NumLehrjahr.Enabled = false;
             }
         }
-        public void ApplyXmlFilter()
+        public void ApplyXmlFilter(string filterVorname)
         {
             CmdFilterReset.Visible = true;
 
+
             if (statusMitarbeiter == CheckState.Unchecked)
             {
-                mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+                bool filterStatusIsTrue = false;
+                bool filterStatusIsFalse = true;
 
-                var data = mitarbeiter.Descendants("Mitarbeiter")
-                    .Where(mitarbeiterfilter => (bool)mitarbeiterfilter.Attribute("Status") == false)
-                    .Select(m =>
-                    {
-                        string mStatus = m.Attribute("Status").Value;
-                        string mLehrling = m.Attribute("Lehrling").Value;
-
-                        bool Status = Convert.ToBoolean(mStatus);
-                        bool Lehrling = Convert.ToBoolean(mLehrling);
-
-                        foreach (var zeile in mitarbeiter.Descendants())
-                        {
-                            if (Status == true)
-                                mStatus = "Aktiv";
-                            else
-                                mStatus = "Inaktiv";
-                        }
-
-                        return new
-                        {
-                            ID = m.Attribute("ID").Value,
-                            Anrede = m.Element("Anrede").Value,
-                            Vorname = m.Element("Vorname").Value,
-                            Nachname = m.Element("Nachname").Value,
-                            Postleitzahl = m.Element("Postleitzahl").Value,
-                            Status,
-                            Lehrling
-                        };
-                    })
-                .OrderBy(m => m.ID).ToList();
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterVorname);
 
                 HideButtons();
 
                 //DtgData.CurrentCell = DtgData.Rows[rowIndex].Cells[0];
 
-                DtgData.DataSource = data;
             }
             else if (statusMitarbeiter == CheckState.Checked)
             {
-                mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
-
-                var data = mitarbeiter.Descendants("Mitarbeiter")
-                    .Where(mitarbeiterfilter => (bool)mitarbeiterfilter.Attribute("Status") == true)
-                    .Select(m =>
-                    {
-                        string mStatus = m.Attribute("Status").Value;
-                        string mLehrling = m.Attribute("Lehrling").Value;
-
-                        bool Status = Convert.ToBoolean(mStatus);
-                        bool Lehrling = Convert.ToBoolean(mLehrling);
-
-                        foreach (var zeile in mitarbeiter.Descendants())
-                        {
-                            if (Status == true)
-                                mStatus = "Aktiv";
-                            else
-                                mStatus = "Inaktiv";
-                        }
-
-                        return new
-                        {
-                            ID = m.Attribute("ID").Value,
-                            Anrede = m.Element("Anrede").Value,
-                            Vorname = m.Element("Vorname").Value,
-                            Nachname = m.Element("Nachname").Value,
-                            Postleitzahl = m.Element("Postleitzahl").Value,
-                            Status,
-                            Lehrling
-                        };
-                    })
-                .OrderBy(m => m.ID).ToList();
-
+                bool filterStatusIsTrue = true;
+                bool filterStatusIsFalse = false;
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterVorname);
                 HideButtons();
-
-                //DtgData.CurrentRow = DtgData.Rows[index];
-
-                DtgData.DataSource = data;
             }
             else
             {
-                mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
+                bool filterStatusIsTrue = true;
+                bool filterStatusIsFalse = true;
 
-                var data = mitarbeiter.Descendants("Mitarbeiter")
-                    .Select(m =>
-                    {
-                        string mStatus = m.Attribute("Status").Value;
-                        string mLehrling = m.Attribute("Lehrling").Value;
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterVorname);
 
-                        bool Status = Convert.ToBoolean(mStatus);
-                        bool Lehrling = Convert.ToBoolean(mLehrling);
-
-                        foreach (var zeile in mitarbeiter.Descendants())
-                        {
-                            if (Status == true)
-                                mStatus = "Aktiv";
-                            else
-                                mStatus = "Inaktiv";
-                        }
-
-                        return new
-                        {
-                            ID = m.Attribute("ID").Value,
-                            Anrede = m.Element("Anrede").Value,
-                            Vorname = m.Element("Vorname").Value,
-                            Nachname = m.Element("Nachname").Value,
-                            Postleitzahl = m.Element("Postleitzahl").Value,
-                            Status,
-                            Lehrling
-                        };
-                    })
-                .OrderBy(m => m.ID).ToList();
-
-                //DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
-
-                DtgData.DataSource = data;
+                HideButtons();
             }
         }
 
@@ -545,11 +461,15 @@ namespace ContactManager
             CmdWerteSpeichern.Visible = false;
         }
 
-        public void XMLtoDatagrid()
+        public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, string filterVorname)
         {
             mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
             var data = mitarbeiter.Descendants("Mitarbeiter")
+                .Where(m => (bool)m.Attribute("Status") == statusIsTrue ||
+                             (bool)m.Attribute("Status") == !statusIsFalse
+
+                )
                 .Select(m =>
                 {
                     string mStatus = m.Attribute("Status").Value;
@@ -590,8 +510,9 @@ namespace ContactManager
             ChkLehrling.DataBindings.Add("Checked", data, "Lehrling");
 
             DtgData.DataSource = data;
-        }
 
+            LblAnzahlZeilenGeladen.Text = Convert.ToString(DtgData.Rows.Count);
+        }
 
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {

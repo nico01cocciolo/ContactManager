@@ -30,6 +30,7 @@
         {
             this.CkStatus = new System.Windows.Forms.CheckBox();
             this.CmdFilterSuchen = new System.Windows.Forms.Button();
+            this.TxtFilterVorname = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CkStatus
@@ -55,11 +56,19 @@
             this.CmdFilterSuchen.UseVisualStyleBackColor = true;
             this.CmdFilterSuchen.Click += new System.EventHandler(this.CmdFilterSuchen_Click);
             // 
+            // TxtFilterVorname
+            // 
+            this.TxtFilterVorname.Location = new System.Drawing.Point(13, 38);
+            this.TxtFilterVorname.Name = "TxtFilterVorname";
+            this.TxtFilterVorname.Size = new System.Drawing.Size(100, 22);
+            this.TxtFilterVorname.TabIndex = 2;
+            // 
             // FilterDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 596);
+            this.Controls.Add(this.TxtFilterVorname);
             this.Controls.Add(this.CmdFilterSuchen);
             this.Controls.Add(this.CkStatus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -76,5 +85,6 @@
 
         private System.Windows.Forms.CheckBox CkStatus;
         private System.Windows.Forms.Button CmdFilterSuchen;
+        private System.Windows.Forms.TextBox TxtFilterVorname;
     }
 }
