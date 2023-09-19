@@ -44,9 +44,10 @@
             this.ChtMitarbeiter.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.ChtMitarbeiter.Legends.Add(legend1);
-            this.ChtMitarbeiter.Location = new System.Drawing.Point(22, 19);
+            this.ChtMitarbeiter.Location = new System.Drawing.Point(22, 268);
+            this.ChtMitarbeiter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ChtMitarbeiter.Name = "ChtMitarbeiter";
-            this.ChtMitarbeiter.Size = new System.Drawing.Size(418, 334);
+            this.ChtMitarbeiter.Size = new System.Drawing.Size(557, 411);
             this.ChtMitarbeiter.TabIndex = 0;
             this.ChtMitarbeiter.Text = "chart1";
             // 
@@ -56,21 +57,23 @@
             this.ChtKunde.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.ChtKunde.Legends.Add(legend2);
-            this.ChtKunde.Location = new System.Drawing.Point(22, 359);
+            this.ChtKunde.Location = new System.Drawing.Point(601, 268);
+            this.ChtKunde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ChtKunde.Name = "ChtKunde";
-            this.ChtKunde.Size = new System.Drawing.Size(418, 334);
+            this.ChtKunde.Size = new System.Drawing.Size(557, 411);
             this.ChtKunde.TabIndex = 1;
             this.ChtKunde.Text = "chart1";
             // 
             // UcDashboardView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.Controls.Add(this.ChtKunde);
             this.Controls.Add(this.ChtMitarbeiter);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UcDashboardView";
-            this.Size = new System.Drawing.Size(926, 791);
+            this.Size = new System.Drawing.Size(1235, 974);
             this.Load += new System.EventHandler(this.UcDashboardView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ChtMitarbeiter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChtKunde)).EndInit();
