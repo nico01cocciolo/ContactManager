@@ -17,6 +17,9 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Aktiviert die Filterfunktion und Checkt Status von den Checkboxen ab
+        /// </summary>
         private void CmdFilterSuchen_Click(object sender, EventArgs e)
         {
             string filterVorname = TxtFilterVorname.Text;

@@ -133,7 +133,20 @@ namespace ContactManager
             CmdDelete.Visible = false;
         }
 
-
+        /// <summary>
+        /// Hier werden die Mitarbeiter/Lehrlinge erstellt.
+        /// Mit dem Try werden andere Exceptions abgefangen
+        /// 
+        /// Durch den Guid ID weiss man welcher Mitarbeiter/Lehrling kann man die Personen finden.
+        /// 
+        /// Danach werden die Buttons je nach dem an und aus geschaltet
+        /// Die ganzen Werte werden in einen Dateityp umgewandelt und danach wieder in den Mitarbeiter m oder den Lehrling l gecastet
+        /// Mit dem TraineChecker wird überprüft ob es sich um einen Lehrling handelt oder nicht
+        /// Durch das werden auch die Felder für den Lehrlin aktiviert/deaktiviert
+        /// 
+        /// Danach wird das File erneut geladen mittels FileLoad
+        /// 
+        /// </summary>
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
             string vorname = "";
@@ -227,7 +240,6 @@ namespace ContactManager
 
 
         }
-
 
         /// <summary>
         /// Hier werden die Changes bei den Mitarbeitern gespeichert, die Eingabe des Vornamens und Nachnamens wird mittels Regex auf Zahlen im Namen kontrolliert
@@ -335,6 +347,8 @@ namespace ContactManager
         /// Alle Mitarbeiter werden in der Datei Mitarbeiter.xml gespeichert (Mitarbeiter & Lehrlinge)
         /// Sollte die Datei existieren und der vorgegbene Zeichensatz grösser oder gleich 60 sein werden die Filtereigenschaften zurückgesetzt und die Datei geladen.
         /// Existiert die Datei nicht wird die DataSource vom DataGrid auf "null" gesetzt.
+        /// 
+        /// Der Status für den Filter wird hier auch wieder zurückgesetzt
         /// </summary>
         public void LoadFile()
         {
@@ -487,6 +501,11 @@ namespace ContactManager
             NumLehrjahr.Enabled = true;
             NumAktLehrjahr.Enabled = true;
         }
+       
+        /// <summary>
+        /// Mit dem Filter kann überprüft werden ob der Status Aktiv/Inaktiv ist oder ob es sich um einen Lehrling handelt
+        /// Zudem kann nach dem Vornamen und Nachnamen gesucht werden
+        /// </summary>
         public void ApplyXmlFilter(string filterVorname, string filterNachname)
         {
             CmdFilterReset.Visible = true;
@@ -622,7 +641,10 @@ namespace ContactManager
             CmdMitarbeiterSpeichernErstellen.Visible = false;
         }
 
-        //ff
+        /// <summary>
+        /// Erstellt das Datagrid, hier kommt auch der Hauptteil des Filters ins Spiel
+        /// Zudem sind hier die wichtigen Felder welche im DataGrid angezeigt werden hinterlegt
+        /// </summary>
         public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, bool statusLehrlingIsTrue, bool statusLehrlingIsFalse, string filterVorname, string filterNachname)
         {
             mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
@@ -675,6 +697,9 @@ namespace ContactManager
             LblAnzahlZeilenGeladen.Text = Convert.ToString(DtgData.Rows.Count);
         }
 
+        /// <summary>
+        /// Öffnet das FilterDashboard
+        /// </summary>
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
             ClearDataBindings();
@@ -682,7 +707,6 @@ namespace ContactManager
             FilterDashboard filterDashboard = new FilterDashboard();
             filterDashboard.ShowDialog();
         }
-
 
         /// <summary>
         /// Beim Klicken auf eine Zelle im DataGrid wird der Index gesetzt
