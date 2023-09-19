@@ -12,6 +12,8 @@ using System.IO;
 using ContactManager.Model;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ContactManager
 {
@@ -78,12 +80,12 @@ namespace ContactManager
         private void CmdNotizErfassen_Click(object sender, EventArgs e)
         {
             string notiz = TxtNotizInput.Text;
-            string path = $"{IDGetter()}.txt" ;
+            string path = $"{IDGetter()}.txt";
 
             nc.NotizErfassen(path, notiz);
             TxtNotizInput.Clear();
             LoadNotes();
-            
+
         }
 
         /// <summary>
@@ -166,9 +168,10 @@ namespace ContactManager
         /// </summary>
         private void CmdKundeErstellen_Click(object sender, EventArgs e)
         {
-            ErstellenOderSpeichern = true;
             CmdKundeErstellen.Visible = false;
+            CmdSaveChanges.Visible = false;
             CmdSave.Visible = true;
+            CmdCancel.Visible = true;
         }
 
         /// <summary>
@@ -187,6 +190,8 @@ namespace ContactManager
         /// </summary>
         private void CmdSave_Click(object sender, EventArgs e)
         {
+            CmdSave.Visible = false;
+            CmdSaveChanges.Visible = true;
 
             if (CmbKundentyp.SelectedIndex >= 0)
             {
@@ -214,23 +219,53 @@ namespace ContactManager
                 char kundentyp = Convert.ToChar(CmbKundentyp.Text);
                 string kundenkontakt = TxtKundenkontakt.Text;
 
-                if (ErstellenOderSpeichern == true)
-                {
-                    Guid id = Guid.NewGuid();
-                    Kunde k = new Kunde(id, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+                Guid id = Guid.NewGuid();
+                Kunde k = new Kunde(id, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
-                    xmlHandler.CreateKundeXML(k);
-                    ErstellenOderSpeichern = false;
+                xmlHandler.CreateKundeXML(k);
+                ErstellenOderSpeichern = false;
 
-                    CmdSave.Visible = false;
-                }
-                else if (ErstellenOderSpeichern == false)
-                {
-                    string id = IDGetter();
-                    Guid ide = Guid.Parse(id);
-                    Kunde k = new Kunde(ide, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
-                    xmlHandler.ChangeValuesKundeXML(k);
-                }
+                CmdSave.Visible = false;
+
+                LoadFile();
+            }
+            else
+            {
+                MessageBox.Show("Error", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+        }
+        private void CmdSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (CmbKundentyp.SelectedIndex >= 0)
+            {
+                bool status = Status();
+                string anrede = CmbAnrede.Text;
+                string titel = CmbTitel.Text;
+                string geschlecht = CmbGeschlecht.Text;
+                string vorname = TxtVorname.Text;
+                string nachname = TxtNachname.Text;
+                DateTime dob = DtpGeburtsdatum.Value;
+                string nationalitaet = CmbNationalitaet.Text;
+                string ahv = TxtAhvNum.Text;
+
+                string email = TxtEmail.Text;
+                string privat = TxtTelPriv.Text;
+                string arbeit = TxtTelGesch.Text;
+                string mobil = TxtTelMobil.Text;
+
+                string strasse = TxtStrasse.Text;
+                string wohnort = TxtWohnort.Text;
+                int plz = Convert.ToInt16(NumPostleitzahl.Value);
+
+                string firmenname = TxtFirmenname.Text;
+                string firmenadresse = TxtFirmenadresse.Text;
+                char kundentyp = Convert.ToChar(CmbKundentyp.Text);
+                string kundenkontakt = TxtKundenkontakt.Text;
+
+                string id = IDGetter();
+                Guid ide = Guid.Parse(id);
+                Kunde k = new Kunde(ide, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+                xmlHandler.ChangeValuesKundeXML(k);
 
                 LoadFile();
             }
@@ -313,7 +348,7 @@ namespace ContactManager
                 ChkStatus.Text = "Aktiviert";
                 return true;
             }
-            else 
+            else
             {
                 ChkStatus.Text = "Deaktiviert";
                 return false;
@@ -400,7 +435,7 @@ namespace ContactManager
                     DtgData.CurrentCell = DtgData.Rows[index].Cells[0];
                 }
             }
-            else 
+            else
             {
                 DtgData.DataSource = null;
             }
@@ -447,11 +482,11 @@ namespace ContactManager
         {
             string path = $"{IDGetter()}.txt";
 
-            if(File.Exists(path))
+            if (File.Exists(path))
             {
                 TxtNotizOutput.Text = nc.NotizLaden(path);
             }
-            
+
         }
 
         /// <summary>
@@ -484,6 +519,17 @@ namespace ContactManager
             TxtNachname.DataBindings.Clear();
             NumPostleitzahl.DataBindings.Clear();
             ChkStatus.DataBindings.Clear();
+        }
+
+        private void CmdCancel_Click(object sender, EventArgs e)
+        {
+            CmdSave.Visible = false;
+            CmdSaveChanges.Visible = true;
+            CmdKundeErstellen.Visible = true;
+            DtgData.Enabled = true;
+            CmdCancel.Visible = false;
+
+            LoadFile();
         }
     }
 }
