@@ -188,7 +188,7 @@ namespace ContactManager
         private void CmdSave_Click(object sender, EventArgs e)
         {
 
-            if (CmbKundentyp.SelectedIndex > -1)
+            if (CmbKundentyp.SelectedIndex >= 0)
             {
                 bool status = Status();
                 string anrede = CmbAnrede.Text;
