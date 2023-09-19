@@ -93,34 +93,7 @@ namespace ContactManager
             CmdMitarbeiterChangesSpeichern.Visible = false;
             DtgData.Enabled = false;
 
-            CmbAnrede.ResetText();
-            TxtVorname.ResetText();
-            TxtNachname.ResetText();
-
-            CmbTitel.ResetText();
-            CmbGeschlecht.ResetText();
-            DtpGeburtsdatum.ResetText();
-            CmbNationalitaet.ResetText();
-            TxtAhvNum.ResetText();
-
-            TxtEmail.ResetText();
-            TxtTelGesch.ResetText();
-            TxtTelMobil.ResetText();
-            TxtTelPriv.ResetText();
-
-            TxtStrasse.ResetText();
-            TxtWohnort.ResetText();
-            NumPostleitzahl.ResetText();
-
-            NumKaderstufe.ResetText();
-            TxtAbteilung.ResetText();
-            TxtRolle.ResetText();
-            NumArbeitspensum.ResetText();
-            DtpStartdatum.ResetText();
-            DtpEnddatum.ResetText();
-            NumAktLehrjahr.ResetText();
-            NumLehrjahr.ResetText();
-
+            ResetUcText();
         }
 
         /// <summary>
@@ -361,10 +334,11 @@ namespace ContactManager
                 bool filterLehrlingIsFalse = true;
                 string filterVorname = "";
                 string filterNachname = "";
+                string filterArbeitspensum = "";
 
 
 
-                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterLehrlingIsTrue, filterLehrlingIsFalse, filterVorname, filterNachname);
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterLehrlingIsTrue, filterLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                 if (DtgData.RowCount >= 0)
                 {
@@ -506,7 +480,7 @@ namespace ContactManager
         /// Mit dem Filter kann überprüft werden ob der Status Aktiv/Inaktiv ist oder ob es sich um einen Lehrling handelt
         /// Zudem kann nach dem Vornamen und Nachnamen gesucht werden
         /// </summary>
-        public void ApplyXmlFilter(string filterVorname, string filterNachname)
+        public void ApplyXmlFilter(string filterVorname, string filterNachname, string filterArbeitspensum)
         {
             CmdFilterReset.Visible = true;
 
@@ -522,7 +496,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = false;
                     bool statusLehrlingIsFalse = true;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -534,7 +508,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = true;
                     bool statusLehrlingIsFalse = false;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -546,7 +520,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = true;
                     bool statusLehrlingIsFalse = true;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -561,7 +535,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = false;
                     bool statusLehrlingIsFalse = true;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -573,7 +547,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = true;
                     bool statusLehrlingIsFalse = false;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -585,7 +559,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = true;
                     bool statusLehrlingIsFalse = true;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -600,7 +574,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = false;
                     bool statusLehrlingIsFalse = true;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -612,7 +586,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = true;
                     bool statusLehrlingIsFalse = false;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -624,7 +598,7 @@ namespace ContactManager
                     bool statusLehrlingIsTrue = true;
                     bool statusLehrlingIsFalse = true;
 
-                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname);
+                    XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, statusLehrlingIsTrue, statusLehrlingIsFalse, filterVorname, filterNachname, filterArbeitspensum);
 
                     HideButtons();
                 }
@@ -645,7 +619,7 @@ namespace ContactManager
         /// Erstellt das Datagrid, hier kommt auch der Hauptteil des Filters ins Spiel
         /// Zudem sind hier die wichtigen Felder welche im DataGrid angezeigt werden hinterlegt
         /// </summary>
-        public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, bool statusLehrlingIsTrue, bool statusLehrlingIsFalse, string filterVorname, string filterNachname)
+        public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, bool statusLehrlingIsTrue, bool statusLehrlingIsFalse, string filterVorname, string filterNachname, string filterArbeitspensum)
         {
             mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
 
@@ -655,7 +629,8 @@ namespace ContactManager
                              ((bool)m.Attribute("Lehrling") == statusLehrlingIsTrue ||
                              (bool)m.Attribute("Lehrling") == !statusLehrlingIsFalse) &&
                              m.Element("Vorname").Value.Contains(filterVorname) &&
-                             m.Element("Nachname").Value.Contains(filterNachname)
+                             m.Element("Nachname").Value.Contains(filterNachname) &&
+                             m.Element("Arbeitspensum").Value.Contains(filterArbeitspensum)
                 )
                 .Select(m =>
                 {
@@ -703,6 +678,7 @@ namespace ContactManager
         private void CmdSuchfilter_Click_1(object sender, EventArgs e)
         {
             ClearDataBindings();
+            ResetUcText();
 
             FilterDashboard filterDashboard = new FilterDashboard();
             filterDashboard.ShowDialog();
@@ -796,6 +772,37 @@ namespace ContactManager
         {
             CmdFilterReset.Visible = false;
             LoadFile();
+        }
+
+        public void ResetUcText()
+        {
+            CmbAnrede.ResetText();
+            TxtVorname.ResetText();
+            TxtNachname.ResetText();
+
+            CmbTitel.ResetText();
+            CmbGeschlecht.ResetText();
+            DtpGeburtsdatum.ResetText();
+            CmbNationalitaet.ResetText();
+            TxtAhvNum.ResetText();
+
+            TxtEmail.ResetText();
+            TxtTelGesch.ResetText();
+            TxtTelMobil.ResetText();
+            TxtTelPriv.ResetText();
+
+            TxtStrasse.ResetText();
+            TxtWohnort.ResetText();
+            NumPostleitzahl.ResetText();
+
+            NumKaderstufe.ResetText();
+            TxtAbteilung.ResetText();
+            TxtRolle.ResetText();
+            NumArbeitspensum.ResetText();
+            DtpStartdatum.ResetText();
+            DtpEnddatum.ResetText();
+            NumAktLehrjahr.ResetText();
+            NumLehrjahr.ResetText();
         }
         
         /// <summary>

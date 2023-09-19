@@ -24,10 +24,16 @@ namespace ContactManager
         {
             string filterVorname = TxtFilterVorname.Text;
             string filterNachname = TxtFilterNachname.Text;
+            string filterArbeitspensum = NumFilterArbeitspensum.Value.ToString();
             UcMitarbeiterStamm.Instance.statusMitarbeiter = CkStatus.CheckState;
             UcMitarbeiterStamm.Instance.statusLehrling = CkLehrling.CheckState;
-            UcMitarbeiterStamm.Instance.ApplyXmlFilter(filterVorname, filterNachname);
+            UcMitarbeiterStamm.Instance.ApplyXmlFilter(filterVorname, filterNachname, filterArbeitspensum);
             this.Close();
+        }
+
+        private void NumFilterArbeitspensum_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

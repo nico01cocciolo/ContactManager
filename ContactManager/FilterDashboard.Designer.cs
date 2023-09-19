@@ -35,6 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtFilterNachname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.NumFilterArbeitspensum = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.NumFilterArbeitspensum)).BeginInit();
             this.SuspendLayout();
             // 
             // CkStatus
@@ -62,6 +65,7 @@
             // 
             // TxtFilterVorname
             // 
+            this.TxtFilterVorname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtFilterVorname.Location = new System.Drawing.Point(13, 38);
             this.TxtFilterVorname.Name = "TxtFilterVorname";
             this.TxtFilterVorname.Size = new System.Drawing.Size(100, 22);
@@ -85,12 +89,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(119, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 20);
+            this.label1.Size = new System.Drawing.Size(62, 16);
             this.label1.TabIndex = 1000;
             this.label1.Text = "Vorname";
             // 
             // TxtFilterNachname
             // 
+            this.TxtFilterNachname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtFilterNachname.Location = new System.Drawing.Point(13, 66);
             this.TxtFilterNachname.Name = "TxtFilterNachname";
             this.TxtFilterNachname.Size = new System.Drawing.Size(100, 22);
@@ -101,15 +106,41 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(119, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 20);
+            this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 1001;
             this.label2.Text = "Nachname";
+            // 
+            // NumFilterArbeitspensum
+            // 
+            this.NumFilterArbeitspensum.BackColor = System.Drawing.Color.LightGray;
+            this.NumFilterArbeitspensum.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumFilterArbeitspensum.Location = new System.Drawing.Point(13, 95);
+            this.NumFilterArbeitspensum.Margin = new System.Windows.Forms.Padding(4);
+            this.NumFilterArbeitspensum.Name = "NumFilterArbeitspensum";
+            this.NumFilterArbeitspensum.Size = new System.Drawing.Size(100, 22);
+            this.NumFilterArbeitspensum.TabIndex = 1002;
+            this.NumFilterArbeitspensum.ValueChanged += new System.EventHandler(this.NumFilterArbeitspensum_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(119, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 16);
+            this.label3.TabIndex = 1003;
+            this.label3.Text = "Arbeitspensum";
             // 
             // FilterDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 596);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.NumFilterArbeitspensum);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtFilterNachname);
             this.Controls.Add(this.label1);
@@ -122,6 +153,7 @@
             this.Name = "FilterDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FilterDashboard";
+            ((System.ComponentModel.ISupportInitialize)(this.NumFilterArbeitspensum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +168,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtFilterNachname;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown NumFilterArbeitspensum;
+        private System.Windows.Forms.Label label3;
     }
 }
