@@ -18,14 +18,17 @@ namespace ContactManager
         {
             InitializeComponent();
         }
-
+        
+        /// <summary>
+        /// Aktiviert die Filterfunktion und Checkt Status von den Checkboxen ab
+        /// </summary>
         private void CmdFilterSuchen_Click(object sender, EventArgs e)
         {
             string filterVorname = TxtFilterVorname.Text;
             string filterNachname = TxtFilterNachname.Text;
             string filterFirmenname = TxtFilterFirmenname.Text;
-            UcKundeStamm.Instance.statusKunde = CkStatus.CheckState;
-            UcKundeStamm.Instance.ApplyXmlFilter(filterVorname, filterNachname);
+            UcKundeStamm.Instance.statusKunde = ChkStatus.CheckState;
+            UcKundeStamm.Instance.ApplyXmlFilter(filterVorname, filterNachname, filterFirmenname);
             this.Close();
         }
     }

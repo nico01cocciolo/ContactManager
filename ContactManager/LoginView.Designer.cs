@@ -79,6 +79,7 @@
             // CmdFastLogin
             // 
             this.CmdFastLogin.BackColor = System.Drawing.Color.Turquoise;
+            this.CmdFastLogin.Enabled = false;
             this.CmdFastLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.CmdFastLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdFastLogin.Location = new System.Drawing.Point(121, 180);

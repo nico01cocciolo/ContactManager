@@ -307,11 +307,11 @@ namespace ContactManager
 
             catch (FormatException ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Format stimmt nicht " + ex.Message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Format stimmt nicht" + ex);
+                MessageBox.Show("Error: " + ex);
             }
         }
 
@@ -701,10 +701,24 @@ namespace ContactManager
 
             CmdDelete.Visible = true;
 
+
             if (ChkLehrling.Checked == false)
             {
+
+
                 Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
 
+
+                if (m.isActive)
+                {
+                    LblStatus.Text = "Aktiviert";
+                    ChkStatus.Checked = true;
+                }
+                else
+                {
+                    LblStatus.Text = "Deaktiviert";
+                    ChkStatus.Checked = false;
+                }
                 //Anrede, Vorname, Nachname, Postleitzahl, Status, Lehrling
 
                 CmbTitel.Text = m.Title;
@@ -736,6 +750,18 @@ namespace ContactManager
             {
 
                 Lehrling l = xmlHandler.RetriveValueLehrling(id);
+
+
+                if (l.isActive)
+                {
+                    LblStatus.Text = "Aktiviert";
+                    ChkStatus.Checked = true;
+                }
+                else
+                {
+                    LblStatus.Text = "Deaktiviert";
+                    ChkStatus.Checked = false;
+                }
 
                 CmbTitel.Text = l.Title;
                 CmbGeschlecht.Text = l.Gender;

@@ -27,6 +27,7 @@ namespace ContactManager
         #region Parameters
         private int index { get; set; }
         private bool ErstellenOderSpeichern = false;
+        public CheckState statusKunde { get; set; }
         #endregion
 
         #region Instances
@@ -183,25 +184,31 @@ namespace ContactManager
         }
 
         /// <summary>
-        /// Beim Klicken auf CmdSave wird die Speicherfunktion ausgeführt.
+        /// Beim Klicken auf CmdSave wird die Erstellen-Funktion ausgeführt.
         /// Hier werden alle Felder ausgelesn und wenn nötig bereits Konvertiert (Kundentyp to char, plz to int)
-        /// Die ganzen Werte werden in das Objekt Kunde "k" eingefügt und danach an den XML-Handler ChangeValuesKunde weitergegeben. 
+        /// Die ganzen Werte werden in das Objekt Kunde "k" eingefügt und danach an den XML-Handler CreateKundeXML weitergegeben. 
         /// Danach wird die Funktion LoadFile ausgeführt.
         /// </summary>
         private void CmdSave_Click(object sender, EventArgs e)
         {
+            string vorname = "";
+            string nachname = "";
+            string firmenname = "";
+
             CmdSave.Visible = false;
             CmdSaveChanges.Visible = true;
             CmdCancel.Visible = false;
-
-            if (CmbKundentyp.SelectedIndex >= 0)
+            try
             {
+                var isValid = val.ValidateString(TxtVorname.Text) && val.ValidateString(TxtNachname.Text) && val.ValidateString(TxtFirmenname.Text);
+                if (isValid)
+                {
                 bool status = Status();
                 string anrede = CmbAnrede.Text;
                 string titel = CmbTitel.Text;
                 string geschlecht = CmbGeschlecht.Text;
-                string vorname = TxtVorname.Text;
-                string nachname = TxtNachname.Text;
+                 vorname = TxtVorname.Text;
+                nachname = TxtNachname.Text;
                 DateTime dob = DtpGeburtsdatum.Value;
                 string nationalitaet = CmbNationalitaet.Text;
                 string ahv = TxtAhvNum.Text;
@@ -215,7 +222,7 @@ namespace ContactManager
                 string wohnort = TxtWohnort.Text;
                 int plz = Convert.ToInt16(NumPostleitzahl.Value);
 
-                string firmenname = TxtFirmenname.Text;
+                firmenname = TxtFirmenname.Text;
                 string firmenadresse = TxtFirmenadresse.Text;
                 char kundentyp = Convert.ToChar(CmbKundentyp.Text);
                 string kundenkontakt = TxtKundenkontakt.Text;
@@ -232,50 +239,81 @@ namespace ContactManager
             }
             else
             {
-                MessageBox.Show("Error", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname, Firmename, Kundentyp dürfen keine Zahlen enthalten oder leer sein");
+            }
+            
+            }              
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Format stimmt nicht " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex);
             }
         }
+
+        /// <summary>
+        /// Beim Klicken auf CmdSave wird die Speicherfunktion ausgeführt.
+        /// Hier werden alle Felder ausgelesn und wenn nötig bereits Konvertiert (Kundentyp to char, plz to int)
+        /// Die ganzen Werte werden in das Objekt Kunde "k" eingefügt und danach an den XML-Handler ChangeValuesKunde weitergegeben. 
+        /// Danach wird die Funktion LoadFile ausgeführt.
+        /// </summary>
         private void CmdSaveChanges_Click(object sender, EventArgs e)
         {
-            if (CmbKundentyp.SelectedIndex >= 0)
+            string vorname = "";
+            string nachname = "";
+            string firmenname = "";
+            try { 
+                var isValid = val.ValidateString(TxtVorname.Text) && val.ValidateString(TxtNachname.Text) && val.ValidateString(TxtFirmenname.Text);
+                if (isValid)
+                {
+                    bool status = Status();
+                    string anrede = CmbAnrede.Text;
+                    string titel = CmbTitel.Text;
+                    string geschlecht = CmbGeschlecht.Text;
+                    vorname = TxtVorname.Text;
+                    nachname = TxtNachname.Text;
+                    DateTime dob = DtpGeburtsdatum.Value;
+                    string nationalitaet = CmbNationalitaet.Text;
+                    string ahv = TxtAhvNum.Text;
+
+                    string email = TxtEmail.Text;
+                    string privat = TxtTelPriv.Text;
+                    string arbeit = TxtTelGesch.Text;
+                    string mobil = TxtTelMobil.Text;
+
+                    string strasse = TxtStrasse.Text;
+                    string wohnort = TxtWohnort.Text;
+                    int plz = Convert.ToInt16(NumPostleitzahl.Value);
+
+                    firmenname = TxtFirmenname.Text;
+                    string firmenadresse = TxtFirmenadresse.Text;
+                    char kundentyp = Convert.ToChar(CmbKundentyp.Text);
+                    string kundenkontakt = TxtKundenkontakt.Text;
+
+                    string id = IDGetter();
+                    Guid ide = Guid.Parse(id);
+                    Kunde k = new Kunde(ide, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+                    xmlHandler.ChangeValuesKundeXML(k);
+
+                    LoadFile();
+                }
+                else
+
+                {
+                MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname, Firmename, Kundentyp dürfen keine Zahlen enthalten oder leer sein");
+                }
+              }
+            catch (FormatException ex)
             {
-                bool status = Status();
-                string anrede = CmbAnrede.Text;
-                string titel = CmbTitel.Text;
-                string geschlecht = CmbGeschlecht.Text;
-                string vorname = TxtVorname.Text;
-                string nachname = TxtNachname.Text;
-                DateTime dob = DtpGeburtsdatum.Value;
-                string nationalitaet = CmbNationalitaet.Text;
-                string ahv = TxtAhvNum.Text;
-
-                string email = TxtEmail.Text;
-                string privat = TxtTelPriv.Text;
-                string arbeit = TxtTelGesch.Text;
-                string mobil = TxtTelMobil.Text;
-
-                string strasse = TxtStrasse.Text;
-                string wohnort = TxtWohnort.Text;
-                int plz = Convert.ToInt16(NumPostleitzahl.Value);
-
-                string firmenname = TxtFirmenname.Text;
-                string firmenadresse = TxtFirmenadresse.Text;
-                char kundentyp = Convert.ToChar(CmbKundentyp.Text);
-                string kundenkontakt = TxtKundenkontakt.Text;
-
-                string id = IDGetter();
-                Guid ide = Guid.Parse(id);
-                Kunde k = new Kunde(ide, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
-                xmlHandler.ChangeValuesKundeXML(k);
-
-                LoadFile();
+                MessageBox.Show("Format stimmt nicht " + ex.Message);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Error:" + ex);
             }
         }
-
         /// <summary>
         /// Mit dem ID-Getter wird die ID der aktuellen Zelle geholt und löscht darauf mit der Funktion DeleteValuesKunde den Kunde und die dazugehörige Textdatei.
         /// </summary>
@@ -368,14 +406,20 @@ namespace ContactManager
             CmbNationalitaet.Items.AddRange(nations);
         }
 
-
-        public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, string filterVorname)
+        /// <summary>
+        /// Erstellt das Datagrid, hier kommt auch der Hauptteil des Filters ins Spiel
+        /// Zudem sind hier die wichtigen Felder welche im DataGrid angezeigt werden hinterlegt
+        /// </summary>
+        public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, string filterVorname, string filterNachname, string filterFirmenname)
         {
             kunden = XDocument.Load(Directory.GetCurrentDirectory() + "/Kunde.xml");
 
             var data = kunden.Descendants("Kunde")
                 .Where(k => (bool)k.Attribute("Status") == statusIsTrue ||
-                             (bool)k.Attribute("Status") == !statusIsFalse
+                             (bool)k.Attribute("Status") == !statusIsFalse &&
+                             k.Element("Vorname").Value.Contains(filterVorname) &&
+                             k.Element("Nachname").Value.Contains(filterNachname) &&
+                             k.Element("Firmenname").Value.Contains(filterFirmenname)
 
                 )
                 .Select(k =>
@@ -413,6 +457,8 @@ namespace ContactManager
             TxtNachname.DataBindings.Add("text", data, "Nachname");
             NumPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
             ChkStatus.DataBindings.Add("Checked", data, "Status");
+            
+            LblAnzahlZeilenGeladen.Text = Convert.ToString(DtgData.Rows.Count);
         }
 
         /// <summary>
@@ -425,10 +471,11 @@ namespace ContactManager
             {
                 bool filterStatusIsTrue = true;
                 bool filterStatusIsFalse = true;
-                string filterVorname = null;
+                string filterVorname = "";
+                string filterNachname = "";
+                string filterFirmenname = "";
 
-
-                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterVorname);
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusIsFalse, filterVorname, filterNachname, filterFirmenname);
 
                 LoadNotes();
 
@@ -513,6 +560,47 @@ namespace ContactManager
             CmdNotizErfassen.Enabled = true;
         }
 
+        /// <summary>
+        /// Mit dem Filter kann überprüft werden ob der Status Aktiv/Inaktiv ist oder ob es sich um einen Lehrling handelt
+        /// Zudem kann nach dem Vornamen und Nachnamen gesucht werden
+        /// </summary>
+        public void ApplyXmlFilter(string filterVorname, string filterNachname, string filterFirmenname)
+        {
+            CmdFilterReset.Visible = true;
+
+            if (statusKunde == CheckState.Unchecked)
+            {
+                bool filterStatusIsTrue = false;
+                bool filterStatusisFalse = true;
+
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusisFalse, filterVorname, filterNachname, filterFirmenname);
+
+                HideButtons();
+            }
+            else if (statusKunde == CheckState.Checked)
+            {
+                bool filterStatusIsTrue = true;
+                bool filterStatusisFalse = false;
+
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusisFalse, filterVorname, filterNachname, filterFirmenname);
+
+                HideButtons();
+            }
+            else 
+            {
+                bool filterStatusIsTrue = true;
+                bool filterStatusisFalse = true;
+
+                XMLtoDatagrid(filterStatusIsTrue, filterStatusisFalse, filterVorname, filterNachname, filterFirmenname);
+
+                HideButtons();
+            }
+        }
+
+
+        /// <summary>
+        /// Löscht die DataBindings
+        /// </summary>
         private void ClearDataBindings()
         {
             LblId.DataBindings.Clear();
@@ -522,7 +610,9 @@ namespace ContactManager
             NumPostleitzahl.DataBindings.Clear();
             ChkStatus.DataBindings.Clear();
         }
-
+        /// <summary>
+        /// Schaltet Buttons Visible/Invisible
+        /// </summary>
         private void CmdCancel_Click(object sender, EventArgs e)
         {
             CmdSave.Visible = false;
@@ -531,6 +621,26 @@ namespace ContactManager
             DtgData.Enabled = true;
             CmdCancel.Visible = false;
 
+            LoadFile();
+        }
+
+        /// <summary>
+        /// Setzt den Suchfilter
+        /// </summary>
+        private void CmdSuchfilter_Click(object sender, EventArgs e)
+        {
+            ClearDataBindings();
+
+            FilterDashboardKunde filterDashboard = new FilterDashboardKunde();
+            filterDashboard.ShowDialog();
+        }
+
+        /// <summary>
+        /// Resetet den Filter
+        /// </summary>
+        private void CmdFilterReset_Click(object sender, EventArgs e)
+        {
+            CmdFilterReset.Visible = false;
             LoadFile();
         }
     }
