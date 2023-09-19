@@ -199,6 +199,8 @@ namespace ContactManager
                         xmlHandler.CreateMitarbeiterXML(m);
                     }
 
+                    CmdMitarbeiterChangesSpeichern.Visible = true;
+
                     LblId.Text = Convert.ToString(id);
                     LoadFile();
 
