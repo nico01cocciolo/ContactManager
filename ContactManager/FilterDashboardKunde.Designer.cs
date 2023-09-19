@@ -130,7 +130,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtFilterVorname);
             this.Controls.Add(this.ChkStatus);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FilterDashboardKunde";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FilterDashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
