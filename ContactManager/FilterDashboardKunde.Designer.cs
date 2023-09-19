@@ -32,7 +32,7 @@
             this.TxtFilterNachname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtFilterVorname = new System.Windows.Forms.TextBox();
-            this.CkStatus = new System.Windows.Forms.CheckBox();
+            this.ChkStatus = new System.Windows.Forms.CheckBox();
             this.CmdFilterSuchen = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtFilterFirmenname = new System.Windows.Forms.TextBox();
@@ -74,23 +74,23 @@
             this.TxtFilterVorname.Size = new System.Drawing.Size(76, 20);
             this.TxtFilterVorname.TabIndex = 1003;
             // 
-            // CkStatus
+            // ChkStatus
             // 
-            this.CkStatus.AutoSize = true;
-            this.CkStatus.Checked = true;
-            this.CkStatus.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.CkStatus.Location = new System.Drawing.Point(11, 11);
-            this.CkStatus.Margin = new System.Windows.Forms.Padding(2);
-            this.CkStatus.Name = "CkStatus";
-            this.CkStatus.Size = new System.Drawing.Size(59, 17);
-            this.CkStatus.TabIndex = 1002;
-            this.CkStatus.Text = "Status:";
-            this.CkStatus.ThreeState = true;
-            this.CkStatus.UseVisualStyleBackColor = true;
+            this.ChkStatus.AutoSize = true;
+            this.ChkStatus.Checked = true;
+            this.ChkStatus.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.ChkStatus.Location = new System.Drawing.Point(11, 11);
+            this.ChkStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.ChkStatus.Name = "ChkStatus";
+            this.ChkStatus.Size = new System.Drawing.Size(59, 17);
+            this.ChkStatus.TabIndex = 1002;
+            this.ChkStatus.Text = "Status:";
+            this.ChkStatus.ThreeState = true;
+            this.ChkStatus.UseVisualStyleBackColor = true;
             // 
             // CmdFilterSuchen
             // 
-            this.CmdFilterSuchen.Location = new System.Drawing.Point(198, 420);
+            this.CmdFilterSuchen.Location = new System.Drawing.Point(199, 152);
             this.CmdFilterSuchen.Margin = new System.Windows.Forms.Padding(2);
             this.CmdFilterSuchen.Name = "CmdFilterSuchen";
             this.CmdFilterSuchen.Size = new System.Drawing.Size(56, 19);
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 484);
+            this.ClientSize = new System.Drawing.Size(266, 185);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtFilterFirmenname);
             this.Controls.Add(this.CmdFilterSuchen);
@@ -129,7 +129,7 @@
             this.Controls.Add(this.TxtFilterNachname);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtFilterVorname);
-            this.Controls.Add(this.CkStatus);
+            this.Controls.Add(this.ChkStatus);
             this.Name = "FilterDashboardKunde";
             this.Text = "FilterDashboard";
             this.ResumeLayout(false);
@@ -143,7 +143,7 @@
         private System.Windows.Forms.TextBox TxtFilterNachname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtFilterVorname;
-        private System.Windows.Forms.CheckBox CkStatus;
+        private System.Windows.Forms.CheckBox ChkStatus;
         private System.Windows.Forms.Button CmdFilterSuchen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtFilterFirmenname;
