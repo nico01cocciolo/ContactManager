@@ -82,6 +82,7 @@ namespace ContactManager
 
         /// <summary>
         /// Schaltet beim Klick die Benötigten Buttons Visible und umgekehrt
+        /// Cleart alle Felder für einen sauberen Input.
         /// </summary>
         private void CmdMitarbeiterErstellen_Click(object sender, EventArgs e)
         {
@@ -131,6 +132,8 @@ namespace ContactManager
             LoadFile();
             CmdDelete.Visible = false;
         }
+
+
         private void CmdMitarbeiterSpeichern_Click(object sender, EventArgs e)
         {
             string vorname = "";
@@ -225,6 +228,21 @@ namespace ContactManager
 
         }
 
+
+        /// <summary>
+        /// Hier werden die Changes bei den Mitarbeitern gespeichert, die Eingabe des Vornamens und Nachnamens wird mittels Regex auf Zahlen im Namen kontrolliert
+        /// Mit dem Try werden andere Exceptions abgefangen
+        /// 
+        /// Durch den ID Getter weiss man welcher Mitarbeiter/Lehrling bearbeitet wird
+        /// 
+        /// Danach werden die Buttons je nach dem an und aus geschaltet
+        /// Die ganzen Werte werden in einen Dateityp umgewandelt und danach wieder in den Mitarbeiter m oder den Lehrling l gecastet
+        /// Mit dem TraineChecker wird überprüft ob es sich um einen Lehrling handelt oder nicht
+        /// Durch das werden auch die Felder für den Lehrlin aktiviert/deaktiviert
+        /// 
+        /// Danach wird das File erneut geladen mittels FileLoad
+        /// 
+        /// </summary>
         private void CmdMitarbeiterChangesSpeichern_Click(object sender, EventArgs e)
         {
             string vorname = "";
@@ -604,6 +622,7 @@ namespace ContactManager
             CmdMitarbeiterSpeichernErstellen.Visible = false;
         }
 
+        //ff
         public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, bool statusLehrlingIsTrue, bool statusLehrlingIsFalse, string filterVorname, string filterNachname)
         {
             mitarbeiter = XDocument.Load(Directory.GetCurrentDirectory() + "/Mitarbeiter.xml");
@@ -671,6 +690,8 @@ namespace ContactManager
         /// 
         /// Um einen Index out of range Fehler vorzubeugen wird nach dem löschen 1 vom Index abgezogen
         /// Ansonsten wird der Index auf 0 gesetzt
+        /// 
+        /// Durch den Klick werden auch die ganzen Werte des Mitarbeiter/Lehrlings geladen
         /// </summary>
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -784,6 +805,10 @@ namespace ContactManager
             else
                 rowIndex = 0;
         }
+        
+        /// <summary>
+        /// Schaltet Felder auf true
+        /// </summary>
         private void EnableFields()
         {
             ChkStatus.Enabled = true;

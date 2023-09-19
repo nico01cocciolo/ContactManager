@@ -103,6 +103,8 @@ namespace ContactManager
         /// </summary>
         private void DtgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            ShowButtons();
+
             CmdDelete.Visible = true;
             index = DtgData.CurrentRow.Index;
 
