@@ -62,6 +62,12 @@
     <Compile Include="FilterDashboard.Designer.cs">
       <DependentUpon>FilterDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FilterDashboardKunde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilterDashboardKunde.Designer.cs">
+      <DependentUpon>FilterDashboardKunde.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FilterDashboard.resx">
       <DependentUpon>FilterDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilterDashboardKunde.resx">
+      <DependentUpon>FilterDashboardKunde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>

@@ -368,6 +368,7 @@ namespace ContactManager
             CmbNationalitaet.Items.AddRange(nations);
         }
 
+
         public void XMLtoDatagrid(bool statusIsTrue, bool statusIsFalse, string filterVorname)
         {
             kunden = XDocument.Load(Directory.GetCurrentDirectory() + "/Kunde.xml");
