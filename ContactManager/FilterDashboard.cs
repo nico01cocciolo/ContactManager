@@ -25,8 +25,8 @@ namespace ContactManager
             string filterVorname = TxtFilterVorname.Text;
             string filterNachname = TxtFilterNachname.Text;
             string filterArbeitspensum = NumFilterArbeitspensum.Value.ToString();
-            UcMitarbeiterStamm.Instance.statusMitarbeiter = CkStatus.CheckState;
-            UcMitarbeiterStamm.Instance.statusLehrling = CkLehrling.CheckState;
+            UcMitarbeiterStamm.Instance.statusMitarbeiter = ChkStatus.CheckState;
+            UcMitarbeiterStamm.Instance.statusLehrling = ChkLehrling.CheckState;
             UcMitarbeiterStamm.Instance.ApplyXmlFilter(filterVorname, filterNachname, filterArbeitspensum);
             this.Close();
         }

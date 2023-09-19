@@ -203,46 +203,46 @@ namespace ContactManager
                 var isValid = val.ValidateString(TxtVorname.Text) && val.ValidateString(TxtNachname.Text) && val.ValidateString(TxtFirmenname.Text);
                 if (isValid)
                 {
-                bool status = Status();
-                string anrede = CmbAnrede.Text;
-                string titel = CmbTitel.Text;
-                string geschlecht = CmbGeschlecht.Text;
-                 vorname = TxtVorname.Text;
-                nachname = TxtNachname.Text;
-                DateTime dob = DtpGeburtsdatum.Value;
-                string nationalitaet = CmbNationalitaet.Text;
-                string ahv = TxtAhvNum.Text;
+                    bool status = Status();
+                    string anrede = CmbAnrede.Text;
+                    string titel = CmbTitel.Text;
+                    string geschlecht = CmbGeschlecht.Text;
+                    vorname = TxtVorname.Text;
+                    nachname = TxtNachname.Text;
+                    DateTime dob = DtpGeburtsdatum.Value;
+                    string nationalitaet = CmbNationalitaet.Text;
+                    string ahv = TxtAhvNum.Text;
 
-                string email = TxtEmail.Text;
-                string privat = TxtTelPriv.Text;
-                string arbeit = TxtTelGesch.Text;
-                string mobil = TxtTelMobil.Text;
+                    string email = TxtEmail.Text;
+                    string privat = TxtTelPriv.Text;
+                    string arbeit = TxtTelGesch.Text;
+                    string mobil = TxtTelMobil.Text;
 
-                string strasse = TxtStrasse.Text;
-                string wohnort = TxtWohnort.Text;
-                int plz = Convert.ToInt16(NumPostleitzahl.Value);
+                    string strasse = TxtStrasse.Text;
+                    string wohnort = TxtWohnort.Text;
+                    int plz = Convert.ToInt16(NumPostleitzahl.Value);
 
-                firmenname = TxtFirmenname.Text;
-                string firmenadresse = TxtFirmenadresse.Text;
-                char kundentyp = Convert.ToChar(CmbKundentyp.Text);
-                string kundenkontakt = TxtKundenkontakt.Text;
+                    firmenname = TxtFirmenname.Text;
+                    string firmenadresse = TxtFirmenadresse.Text;
+                    char kundentyp = Convert.ToChar(CmbKundentyp.Text);
+                    string kundenkontakt = TxtKundenkontakt.Text;
 
-                Guid id = Guid.NewGuid();
-                Kunde k = new Kunde(id, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
+                    Guid id = Guid.NewGuid();
+                    Kunde k = new Kunde(id, status, anrede, titel, geschlecht, vorname, nachname, dob, privat, arbeit, mobil, email, ahv, nationalitaet, strasse, plz, wohnort, firmenname, firmenadresse, kundentyp, kundenkontakt);
 
-                xmlHandler.CreateKundeXML(k);
-                ErstellenOderSpeichern = false;
+                    xmlHandler.CreateKundeXML(k);
+                    ErstellenOderSpeichern = false;
 
-                CmdSave.Visible = false;
+                    CmdSave.Visible = false;
 
-                LoadFile();
+                    LoadFile();
+                }
+                else
+                {
+                    MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname, Firmename, Kundentyp dürfen keine Zahlen enthalten oder leer sein");
+                }
+
             }
-            else
-            {
-            MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname, Firmename, Kundentyp dürfen keine Zahlen enthalten oder leer sein");
-            }
-            
-            }              
             catch (FormatException ex)
             {
                 MessageBox.Show("Format stimmt nicht " + ex.Message);
@@ -264,7 +264,8 @@ namespace ContactManager
             string vorname = "";
             string nachname = "";
             string firmenname = "";
-            try { 
+            try
+            {
                 var isValid = val.ValidateString(TxtVorname.Text) && val.ValidateString(TxtNachname.Text) && val.ValidateString(TxtFirmenname.Text);
                 if (isValid)
                 {
@@ -302,9 +303,9 @@ namespace ContactManager
                 else
 
                 {
-                MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname, Firmename, Kundentyp dürfen keine Zahlen enthalten oder leer sein");
+                    MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname, Firmename, Kundentyp dürfen keine Zahlen enthalten oder leer sein");
                 }
-              }
+            }
             catch (FormatException ex)
             {
                 MessageBox.Show("Format stimmt nicht " + ex.Message);
@@ -457,7 +458,7 @@ namespace ContactManager
             TxtNachname.DataBindings.Add("text", data, "Nachname");
             NumPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
             ChkStatus.DataBindings.Add("Checked", data, "Status");
-            
+
             LblAnzahlZeilenGeladen.Text = Convert.ToString(DtgData.Rows.Count);
         }
 
@@ -586,7 +587,7 @@ namespace ContactManager
 
                 HideButtons();
             }
-            else 
+            else
             {
                 bool filterStatusIsTrue = true;
                 bool filterStatusisFalse = true;
