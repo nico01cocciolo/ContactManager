@@ -136,6 +136,7 @@ namespace ContactManager
             TxtStrasse.Text = k.Strasse;
             TxtWohnort.Text = k.Wohnort;
 
+            CmbKundentyp.Text = Convert.ToString(k.Kundentyp);
             TxtKundenkontakt.Text = k.Kundenkontakt;
             TxtFirmenadresse.Text = k.Firmenadresse;
             TxtFirmenname.Text = k.Firmenname;
@@ -358,7 +359,6 @@ namespace ContactManager
                         Vorname = k.Element("Vorname").Value,
                         Nachname = k.Element("Nachname").Value,
                         Postleitzahl = k.Element("Postleitzahl").Value,
-                        Kundentyp = k.Element("Kundentyp").Value,
                         Status,
                     };
                 })
@@ -373,7 +373,6 @@ namespace ContactManager
             TxtVorname.DataBindings.Add("text", data, "Vorname");
             TxtNachname.DataBindings.Add("text", data, "Nachname");
             NumPostleitzahl.DataBindings.Add("text", data, "Postleitzahl");
-            NumPostleitzahl.DataBindings.Add("text", data, "Kundentyp");
             ChkStatus.DataBindings.Add("Checked", data, "Status");
         }
 

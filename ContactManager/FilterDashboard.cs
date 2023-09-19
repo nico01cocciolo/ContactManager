@@ -20,8 +20,10 @@ namespace ContactManager
         private void CmdFilterSuchen_Click(object sender, EventArgs e)
         {
             string filterVorname = TxtFilterVorname.Text;
+            string filterNachname = TxtFilterNachname.Text;
             UcMitarbeiterStamm.Instance.statusMitarbeiter = CkStatus.CheckState;
-            UcMitarbeiterStamm.Instance.ApplyXmlFilter(filterVorname);
+            UcMitarbeiterStamm.Instance.statusLehrling = CkLehrling.CheckState;
+            UcMitarbeiterStamm.Instance.ApplyXmlFilter(filterVorname, filterNachname);
             this.Close();
         }
     }

@@ -317,6 +317,9 @@ namespace ContactManager.Controller
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetAttributeValue("Status", m.isActive);
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetAttributeValue("Lehrling", m.isTrainee);
 
             //Person
             xdoc.Elements("Mitarbeiter")
@@ -512,6 +515,9 @@ namespace ContactManager.Controller
             xdoc.Elements("Mitarbeiter")
                 .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
                 .SetAttributeValue("Status", l.isActive);
+            xdoc.Elements("Mitarbeiter")
+                .Where(x => x.Attribute("ID").Value == id).FirstOrDefault()
+                .SetAttributeValue("Lehrling", l.isTrainee);
 
             //Person
             xdoc.Elements("Mitarbeiter")

@@ -95,13 +95,13 @@
             this.label31 = new System.Windows.Forms.Label();
             this.LblAnzahlZeilenGeladen = new System.Windows.Forms.Label();
             this.DtgData = new System.Windows.Forms.DataGridView();
-            this.CmbReset = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
             this.CmdDelete = new System.Windows.Forms.Button();
             this.CmdMitarbeiterSpeichernErstellen = new System.Windows.Forms.Button();
             this.CmdFilterReset = new System.Windows.Forms.Button();
             this.CmdSuchfilter = new System.Windows.Forms.Button();
             this.CmdMitarbeiterErstellen = new System.Windows.Forms.Button();
+            this.CmdMitarbeiterChangesSpeichern = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -155,7 +155,7 @@
             this.panel5.Controls.Add(this.label29);
             this.panel5.Controls.Add(this.label30);
             this.panel5.Location = new System.Drawing.Point(832, 242);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(387, 187);
             this.panel5.TabIndex = 53;
@@ -165,7 +165,7 @@
             this.NumAktLehrjahr.BackColor = System.Drawing.Color.LightGray;
             this.NumAktLehrjahr.Enabled = false;
             this.NumAktLehrjahr.Location = new System.Drawing.Point(209, 95);
-            this.NumAktLehrjahr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumAktLehrjahr.Margin = new System.Windows.Forms.Padding(4);
             this.NumAktLehrjahr.Maximum = new decimal(new int[] {
             4,
             0,
@@ -190,7 +190,7 @@
             this.NumLehrjahr.BackColor = System.Drawing.Color.LightGray;
             this.NumLehrjahr.Enabled = false;
             this.NumLehrjahr.Location = new System.Drawing.Point(209, 63);
-            this.NumLehrjahr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumLehrjahr.Margin = new System.Windows.Forms.Padding(4);
             this.NumLehrjahr.Maximum = new decimal(new int[] {
             4,
             0,
@@ -213,14 +213,17 @@
             // ChkLehrling
             // 
             this.ChkLehrling.AutoSize = true;
+            this.ChkLehrling.Checked = true;
+            this.ChkLehrling.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChkLehrling.Location = new System.Drawing.Point(8, 33);
-            this.ChkLehrling.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChkLehrling.Margin = new System.Windows.Forms.Padding(4);
             this.ChkLehrling.Name = "ChkLehrling";
             this.ChkLehrling.Size = new System.Drawing.Size(76, 20);
             this.ChkLehrling.TabIndex = 21;
             this.ChkLehrling.Text = "Lehrling";
             this.ChkLehrling.UseVisualStyleBackColor = true;
             this.ChkLehrling.CheckedChanged += new System.EventHandler(this.ChkLehrling_CheckedChanged);
+            this.ChkLehrling.CheckStateChanged += new System.EventHandler(this.ChkLehrling_CheckedChanged);
             // 
             // label28
             // 
@@ -264,7 +267,7 @@
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label24);
             this.panel3.Location = new System.Drawing.Point(436, 198);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(388, 142);
             this.panel3.TabIndex = 52;
@@ -273,7 +276,7 @@
             // 
             this.NumPostleitzahl.BackColor = System.Drawing.Color.LightGray;
             this.NumPostleitzahl.Location = new System.Drawing.Point(204, 95);
-            this.NumPostleitzahl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumPostleitzahl.Margin = new System.Windows.Forms.Padding(4);
             this.NumPostleitzahl.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -282,7 +285,6 @@
             this.NumPostleitzahl.Name = "NumPostleitzahl";
             this.NumPostleitzahl.Size = new System.Drawing.Size(161, 22);
             this.NumPostleitzahl.TabIndex = 22;
-            this.NumPostleitzahl.ValueChanged += new System.EventHandler(this.NumPostleitzahl_ValueChanged);
             // 
             // label19
             // 
@@ -299,7 +301,7 @@
             this.TxtWohnort.BackColor = System.Drawing.Color.LightGray;
             this.TxtWohnort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtWohnort.Location = new System.Drawing.Point(204, 62);
-            this.TxtWohnort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtWohnort.Margin = new System.Windows.Forms.Padding(4);
             this.TxtWohnort.Name = "TxtWohnort";
             this.TxtWohnort.Size = new System.Drawing.Size(161, 22);
             this.TxtWohnort.TabIndex = 20;
@@ -319,7 +321,7 @@
             this.TxtStrasse.BackColor = System.Drawing.Color.LightGray;
             this.TxtStrasse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtStrasse.Location = new System.Drawing.Point(204, 30);
-            this.TxtStrasse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtStrasse.Margin = new System.Windows.Forms.Padding(4);
             this.TxtStrasse.Name = "TxtStrasse";
             this.TxtStrasse.Size = new System.Drawing.Size(161, 22);
             this.TxtStrasse.TabIndex = 16;
@@ -358,7 +360,7 @@
             this.panel4.Controls.Add(this.label25);
             this.panel4.Controls.Add(this.label26);
             this.panel4.Location = new System.Drawing.Point(436, 4);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(388, 187);
             this.panel4.TabIndex = 51;
@@ -368,11 +370,10 @@
             this.TxtTelGesch.BackColor = System.Drawing.Color.LightGray;
             this.TxtTelGesch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTelGesch.Location = new System.Drawing.Point(179, 124);
-            this.TxtTelGesch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtTelGesch.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelGesch.Name = "TxtTelGesch";
             this.TxtTelGesch.Size = new System.Drawing.Size(161, 22);
             this.TxtTelGesch.TabIndex = 22;
-            this.TxtTelGesch.TextChanged += new System.EventHandler(this.felderPrüfen);
             // 
             // label20
             // 
@@ -389,7 +390,7 @@
             this.TxtTelPriv.BackColor = System.Drawing.Color.LightGray;
             this.TxtTelPriv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTelPriv.Location = new System.Drawing.Point(179, 92);
-            this.TxtTelPriv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtTelPriv.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelPriv.Name = "TxtTelPriv";
             this.TxtTelPriv.Size = new System.Drawing.Size(161, 22);
             this.TxtTelPriv.TabIndex = 20;
@@ -409,7 +410,7 @@
             this.TxtTelMobil.BackColor = System.Drawing.Color.LightGray;
             this.TxtTelMobil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTelMobil.Location = new System.Drawing.Point(179, 60);
-            this.TxtTelMobil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtTelMobil.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTelMobil.Name = "TxtTelMobil";
             this.TxtTelMobil.Size = new System.Drawing.Size(161, 22);
             this.TxtTelMobil.TabIndex = 18;
@@ -429,7 +430,7 @@
             this.TxtEmail.BackColor = System.Drawing.Color.LightGray;
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtEmail.Location = new System.Drawing.Point(179, 28);
-            this.TxtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(161, 22);
             this.TxtEmail.TabIndex = 16;
@@ -472,7 +473,7 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Location = new System.Drawing.Point(832, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(388, 235);
             this.panel2.TabIndex = 50;
@@ -482,7 +483,7 @@
             this.TxtRolle.BackColor = System.Drawing.Color.LightGray;
             this.TxtRolle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtRolle.Location = new System.Drawing.Point(179, 95);
-            this.TxtRolle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtRolle.Margin = new System.Windows.Forms.Padding(4);
             this.TxtRolle.Name = "TxtRolle";
             this.TxtRolle.Size = new System.Drawing.Size(161, 22);
             this.TxtRolle.TabIndex = 36;
@@ -501,7 +502,7 @@
             // 
             this.DtpEnddatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpEnddatum.Location = new System.Drawing.Point(179, 191);
-            this.DtpEnddatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtpEnddatum.Margin = new System.Windows.Forms.Padding(4);
             this.DtpEnddatum.Name = "DtpEnddatum";
             this.DtpEnddatum.Size = new System.Drawing.Size(160, 22);
             this.DtpEnddatum.TabIndex = 34;
@@ -521,7 +522,7 @@
             // 
             this.NumKaderstufe.BackColor = System.Drawing.Color.LightGray;
             this.NumKaderstufe.Location = new System.Drawing.Point(180, 31);
-            this.NumKaderstufe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumKaderstufe.Margin = new System.Windows.Forms.Padding(4);
             this.NumKaderstufe.Maximum = new decimal(new int[] {
             5,
             0,
@@ -540,7 +541,7 @@
             0,
             0});
             this.NumArbeitspensum.Location = new System.Drawing.Point(179, 127);
-            this.NumArbeitspensum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumArbeitspensum.Margin = new System.Windows.Forms.Padding(4);
             this.NumArbeitspensum.Name = "NumArbeitspensum";
             this.NumArbeitspensum.Size = new System.Drawing.Size(160, 22);
             this.NumArbeitspensum.TabIndex = 31;
@@ -549,7 +550,7 @@
             // 
             this.DtpStartdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpStartdatum.Location = new System.Drawing.Point(179, 159);
-            this.DtpStartdatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtpStartdatum.Margin = new System.Windows.Forms.Padding(4);
             this.DtpStartdatum.Name = "DtpStartdatum";
             this.DtpStartdatum.Size = new System.Drawing.Size(160, 22);
             this.DtpStartdatum.TabIndex = 30;
@@ -579,7 +580,7 @@
             this.TxtAbteilung.BackColor = System.Drawing.Color.LightGray;
             this.TxtAbteilung.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtAbteilung.Location = new System.Drawing.Point(179, 63);
-            this.TxtAbteilung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtAbteilung.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAbteilung.Name = "TxtAbteilung";
             this.TxtAbteilung.Size = new System.Drawing.Size(161, 22);
             this.TxtAbteilung.TabIndex = 26;
@@ -641,7 +642,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 426);
             this.panel1.TabIndex = 49;
@@ -651,10 +652,10 @@
             this.CmbGeschlecht.BackColor = System.Drawing.Color.LightGray;
             this.CmbGeschlecht.FormattingEnabled = true;
             this.CmbGeschlecht.Location = new System.Drawing.Point(204, 151);
-            this.CmbGeschlecht.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbGeschlecht.Margin = new System.Windows.Forms.Padding(4);
             this.CmbGeschlecht.Name = "CmbGeschlecht";
             this.CmbGeschlecht.Size = new System.Drawing.Size(160, 24);
-            this.CmbGeschlecht.TabIndex = 50;
+            this.CmbGeschlecht.TabIndex = 4;
             // 
             // label27
             // 
@@ -671,12 +672,11 @@
             this.ChkStatus.AutoSize = true;
             this.ChkStatus.Checked = true;
             this.ChkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ChkStatus.Enabled = false;
             this.ChkStatus.Location = new System.Drawing.Point(204, 54);
-            this.ChkStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChkStatus.Margin = new System.Windows.Forms.Padding(4);
             this.ChkStatus.Name = "ChkStatus";
             this.ChkStatus.Size = new System.Drawing.Size(111, 20);
-            this.ChkStatus.TabIndex = 48;
+            this.ChkStatus.TabIndex = 1;
             this.ChkStatus.Text = "Status ändern";
             this.ChkStatus.UseVisualStyleBackColor = true;
             this.ChkStatus.CheckedChanged += new System.EventHandler(this.ChkStatus_CheckedChanged);
@@ -716,20 +716,20 @@
             this.TxtAhvNum.BackColor = System.Drawing.Color.LightGray;
             this.TxtAhvNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtAhvNum.Location = new System.Drawing.Point(204, 314);
-            this.TxtAhvNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtAhvNum.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAhvNum.Name = "TxtAhvNum";
             this.TxtAhvNum.Size = new System.Drawing.Size(161, 22);
-            this.TxtAhvNum.TabIndex = 14;
+            this.TxtAhvNum.TabIndex = 9;
             // 
             // CmbNationalitaet
             // 
             this.CmbNationalitaet.BackColor = System.Drawing.Color.LightGray;
             this.CmbNationalitaet.FormattingEnabled = true;
             this.CmbNationalitaet.Location = new System.Drawing.Point(204, 281);
-            this.CmbNationalitaet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbNationalitaet.Margin = new System.Windows.Forms.Padding(4);
             this.CmbNationalitaet.Name = "CmbNationalitaet";
             this.CmbNationalitaet.Size = new System.Drawing.Size(160, 24);
-            this.CmbNationalitaet.TabIndex = 13;
+            this.CmbNationalitaet.TabIndex = 8;
             // 
             // LblId
             // 
@@ -767,10 +767,10 @@
             this.DtpGeburtsdatum.CalendarTitleBackColor = System.Drawing.Color.LightGray;
             this.DtpGeburtsdatum.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpGeburtsdatum.Location = new System.Drawing.Point(204, 249);
-            this.DtpGeburtsdatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtpGeburtsdatum.Margin = new System.Windows.Forms.Padding(4);
             this.DtpGeburtsdatum.Name = "DtpGeburtsdatum";
             this.DtpGeburtsdatum.Size = new System.Drawing.Size(160, 22);
-            this.DtpGeburtsdatum.TabIndex = 1;
+            this.DtpGeburtsdatum.TabIndex = 7;
             // 
             // label6
             // 
@@ -797,10 +797,10 @@
             this.TxtNachname.BackColor = System.Drawing.Color.LightGray;
             this.TxtNachname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNachname.Location = new System.Drawing.Point(204, 217);
-            this.TxtNachname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNachname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNachname.Name = "TxtNachname";
             this.TxtNachname.Size = new System.Drawing.Size(161, 22);
-            this.TxtNachname.TabIndex = 8;
+            this.TxtNachname.TabIndex = 6;
             // 
             // label3
             // 
@@ -817,10 +817,10 @@
             this.CmbTitel.BackColor = System.Drawing.Color.LightGray;
             this.CmbTitel.FormattingEnabled = true;
             this.CmbTitel.Location = new System.Drawing.Point(204, 118);
-            this.CmbTitel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbTitel.Margin = new System.Windows.Forms.Padding(4);
             this.CmbTitel.Name = "CmbTitel";
             this.CmbTitel.Size = new System.Drawing.Size(160, 24);
-            this.CmbTitel.TabIndex = 6;
+            this.CmbTitel.TabIndex = 3;
             // 
             // label4
             // 
@@ -837,21 +837,20 @@
             this.CmbAnrede.BackColor = System.Drawing.Color.LightGray;
             this.CmbAnrede.FormattingEnabled = true;
             this.CmbAnrede.Location = new System.Drawing.Point(204, 85);
-            this.CmbAnrede.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbAnrede.Margin = new System.Windows.Forms.Padding(4);
             this.CmbAnrede.Name = "CmbAnrede";
             this.CmbAnrede.Size = new System.Drawing.Size(160, 24);
-            this.CmbAnrede.TabIndex = 4;
+            this.CmbAnrede.TabIndex = 2;
             // 
             // TxtVorname
             // 
             this.TxtVorname.BackColor = System.Drawing.Color.LightGray;
             this.TxtVorname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtVorname.Location = new System.Drawing.Point(204, 185);
-            this.TxtVorname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtVorname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtVorname.Name = "TxtVorname";
             this.TxtVorname.Size = new System.Drawing.Size(161, 22);
-            this.TxtVorname.TabIndex = 3;
-            this.TxtVorname.TextChanged += new System.EventHandler(this.TxtVorname_TextChanged);
+            this.TxtVorname.TabIndex = 5;
             // 
             // label2
             // 
@@ -914,36 +913,29 @@
             this.DtgData.AllowUserToAddRows = false;
             this.DtgData.AllowUserToDeleteRows = false;
             this.DtgData.AllowUserToOrderColumns = true;
+            this.DtgData.AllowUserToResizeRows = false;
+            this.DtgData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.DtgData.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DtgData.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.DtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgData.Location = new System.Drawing.Point(4, 4);
-            this.DtgData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DtgData.Margin = new System.Windows.Forms.Padding(4);
             this.DtgData.Name = "DtgData";
+            this.DtgData.RowHeadersVisible = false;
             this.DtgData.RowHeadersWidth = 51;
             this.DtgData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtgData.Size = new System.Drawing.Size(1219, 404);
             this.DtgData.TabIndex = 0;
             this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgData_CellClick);
             // 
-            // CmbReset
-            // 
-            this.CmbReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbReset.Location = new System.Drawing.Point(145, 4);
-            this.CmbReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.CmbReset.Name = "CmbReset";
-            this.CmbReset.Size = new System.Drawing.Size(92, 52);
-            this.CmbReset.TabIndex = 71;
-            this.CmbReset.Text = "Reseter";
-            this.CmbReset.UseVisualStyleBackColor = true;
-            // 
             // CmdCancel
             // 
             this.CmdCancel.BackgroundImage = global::ContactManager.Properties.Resources.Cancel_Icon;
             this.CmdCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CmdCancel.Location = new System.Drawing.Point(72, 4);
+            this.CmdCancel.Location = new System.Drawing.Point(4, 4);
             this.CmdCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CmdCancel.Name = "CmdCancel";
-            this.CmdCancel.Size = new System.Drawing.Size(53, 52);
+            this.CmdCancel.Size = new System.Drawing.Size(55, 52);
             this.CmdCancel.TabIndex = 72;
             this.CmdCancel.UseVisualStyleBackColor = true;
             this.CmdCancel.Visible = false;
@@ -956,7 +948,7 @@
             this.CmdDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdDelete.Location = new System.Drawing.Point(1159, 4);
-            this.CmdDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdDelete.Margin = new System.Windows.Forms.Padding(4);
             this.CmdDelete.Name = "CmdDelete";
             this.CmdDelete.Size = new System.Drawing.Size(60, 52);
             this.CmdDelete.TabIndex = 70;
@@ -969,8 +961,8 @@
             this.CmdMitarbeiterSpeichernErstellen.BackgroundImage = global::ContactManager.Properties.Resources.Save_Icon;
             this.CmdMitarbeiterSpeichernErstellen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdMitarbeiterSpeichernErstellen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdMitarbeiterSpeichernErstellen.Location = new System.Drawing.Point(4, 4);
-            this.CmdMitarbeiterSpeichernErstellen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdMitarbeiterSpeichernErstellen.Location = new System.Drawing.Point(67, 4);
+            this.CmdMitarbeiterSpeichernErstellen.Margin = new System.Windows.Forms.Padding(4);
             this.CmdMitarbeiterSpeichernErstellen.Name = "CmdMitarbeiterSpeichernErstellen";
             this.CmdMitarbeiterSpeichernErstellen.Size = new System.Drawing.Size(56, 52);
             this.CmdMitarbeiterSpeichernErstellen.TabIndex = 56;
@@ -1010,7 +1002,7 @@
             this.CmdMitarbeiterErstellen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CmdMitarbeiterErstellen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdMitarbeiterErstellen.Location = new System.Drawing.Point(4, 4);
-            this.CmdMitarbeiterErstellen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdMitarbeiterErstellen.Margin = new System.Windows.Forms.Padding(4);
             this.CmdMitarbeiterErstellen.Name = "CmdMitarbeiterErstellen";
             this.CmdMitarbeiterErstellen.Size = new System.Drawing.Size(55, 52);
             this.CmdMitarbeiterErstellen.TabIndex = 48;
@@ -1018,20 +1010,33 @@
             this.CmdMitarbeiterErstellen.UseVisualStyleBackColor = false;
             this.CmdMitarbeiterErstellen.Click += new System.EventHandler(this.CmdMitarbeiterErstellen_Click);
             // 
+            // CmdMitarbeiterChangesSpeichern
+            // 
+            this.CmdMitarbeiterChangesSpeichern.BackgroundImage = global::ContactManager.Properties.Resources.Save_Icon;
+            this.CmdMitarbeiterChangesSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CmdMitarbeiterChangesSpeichern.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdMitarbeiterChangesSpeichern.Location = new System.Drawing.Point(67, 4);
+            this.CmdMitarbeiterChangesSpeichern.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdMitarbeiterChangesSpeichern.Name = "CmdMitarbeiterChangesSpeichern";
+            this.CmdMitarbeiterChangesSpeichern.Size = new System.Drawing.Size(56, 52);
+            this.CmdMitarbeiterChangesSpeichern.TabIndex = 76;
+            this.CmdMitarbeiterChangesSpeichern.UseVisualStyleBackColor = true;
+            this.CmdMitarbeiterChangesSpeichern.Click += new System.EventHandler(this.CmdMitarbeiterChangesSpeichern_Click);
+            // 
             // UcMitarbeiterStamm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
+            this.Controls.Add(this.CmdMitarbeiterChangesSpeichern);
             this.Controls.Add(this.CmdFilterReset);
             this.Controls.Add(this.CmdSuchfilter);
             this.Controls.Add(this.CmdCancel);
-            this.Controls.Add(this.CmbReset);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.CmdDelete);
             this.Controls.Add(this.CmdMitarbeiterSpeichernErstellen);
             this.Controls.Add(this.CmdMitarbeiterErstellen);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UcMitarbeiterStamm";
             this.Size = new System.Drawing.Size(1235, 974);
             this.Load += new System.EventHandler(this.UcMitarbeiterStamm_Load);
@@ -1122,7 +1127,6 @@
         private System.Windows.Forms.TextBox TxtRolle;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox ChkLehrling;
-        private System.Windows.Forms.Button CmbReset;
         private System.Windows.Forms.Button CmdCancel;
         private System.Windows.Forms.NumericUpDown NumAktLehrjahr;
         private System.Windows.Forms.NumericUpDown NumLehrjahr;
@@ -1136,5 +1140,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.NumericUpDown NumPostleitzahl;
+        private System.Windows.Forms.Button CmdMitarbeiterChangesSpeichern;
     }
 }
