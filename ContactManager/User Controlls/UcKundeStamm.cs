@@ -192,6 +192,7 @@ namespace ContactManager
         {
             CmdSave.Visible = false;
             CmdSaveChanges.Visible = true;
+            CmdCancel.Visible = false;
 
             if (CmbKundentyp.SelectedIndex >= 0)
             {

@@ -669,11 +669,13 @@
             // 
             this.DtgData.AllowUserToAddRows = false;
             this.DtgData.AllowUserToDeleteRows = false;
+            this.DtgData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.DtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgData.Location = new System.Drawing.Point(4, 610);
             this.DtgData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DtgData.Name = "DtgData";
             this.DtgData.ReadOnly = true;
+            this.DtgData.RowHeadersVisible = false;
             this.DtgData.RowHeadersWidth = 51;
             this.DtgData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtgData.Size = new System.Drawing.Size(1213, 359);
