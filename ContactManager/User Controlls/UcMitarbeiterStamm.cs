@@ -680,70 +680,67 @@ namespace ContactManager
 
             CmdDelete.Visible = true;
 
-            if (DtgData.SelectedRows.Count >= 2)
+            if (ChkLehrling.Checked == false)
             {
-                if (ChkLehrling.Checked == false)
-                {
-                    Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
+                Mitarbeiter m = xmlHandler.RetriveValuesMitarbeiter(id);
 
-                    //Anrede, Vorname, Nachname, Postleitzahl, Status, Lehrling
+                //Anrede, Vorname, Nachname, Postleitzahl, Status, Lehrling
 
-                    CmbTitel.Text = m.Title;
-                    CmbGeschlecht.Text = m.Gender;
-                    DtpGeburtsdatum.Value = m.Geburtsdatum;
-                    CmbNationalitaet.Text = m.Nationalität;
-                    TxtAhvNum.Text = m.AhvNumber;
+                CmbTitel.Text = m.Title;
+                CmbGeschlecht.Text = m.Gender;
+                DtpGeburtsdatum.Value = m.Geburtsdatum;
+                CmbNationalitaet.Text = m.Nationalität;
+                TxtAhvNum.Text = m.AhvNumber;
 
-                    TxtEmail.Text = m.Email;
-                    TxtTelGesch.Text = m.TelefonArbeit;
-                    TxtTelMobil.Text = m.TelefonMobil;
-                    TxtTelPriv.Text = m.TelefonPrivat;
+                TxtEmail.Text = m.Email;
+                TxtTelGesch.Text = m.TelefonArbeit;
+                TxtTelMobil.Text = m.TelefonMobil;
+                TxtTelPriv.Text = m.TelefonPrivat;
 
-                    TxtStrasse.Text = m.Strasse;
+                TxtStrasse.Text = m.Strasse;
 
-                    NumKaderstufe.Value = m.KaderStufe;
-                    TxtAbteilung.Text = m.Abteilung;
-                    TxtRolle.Text = m.Rolle;
-                    NumArbeitspensum.Value = m.Arbeitspensum;
-                    DtpStartdatum.Value = m.StartDate;
-                    DtpEnddatum.Value = m.EndDate;
-                    NumAktLehrjahr.Value = 1;
-                    NumLehrjahr.Value = 1;
+                NumKaderstufe.Value = m.KaderStufe;
+                TxtAbteilung.Text = m.Abteilung;
+                TxtRolle.Text = m.Rolle;
+                NumArbeitspensum.Value = m.Arbeitspensum;
+                DtpStartdatum.Value = m.StartDate;
+                DtpEnddatum.Value = m.EndDate;
+                NumAktLehrjahr.Value = 1;
+                NumLehrjahr.Value = 1;
 
-                    NumLehrjahr.Enabled = false;
-                    NumAktLehrjahr.Enabled = false;
-                }
-                else
-                {
+                NumLehrjahr.Enabled = false;
+                NumAktLehrjahr.Enabled = false;
+            }
+            else
+            {
 
-                    Lehrling l = xmlHandler.RetriveValueLehrling(id);
+                Lehrling l = xmlHandler.RetriveValueLehrling(id);
 
-                    CmbTitel.Text = l.Title;
-                    CmbGeschlecht.Text = l.Gender;
-                    DtpGeburtsdatum.Value = l.Geburtsdatum;
-                    CmbNationalitaet.Text = l.Nationalität;
-                    TxtAhvNum.Text = l.AhvNumber;
+                CmbTitel.Text = l.Title;
+                CmbGeschlecht.Text = l.Gender;
+                DtpGeburtsdatum.Value = l.Geburtsdatum;
+                CmbNationalitaet.Text = l.Nationalität;
+                TxtAhvNum.Text = l.AhvNumber;
 
-                    TxtEmail.Text = l.Email;
-                    TxtTelGesch.Text = l.TelefonArbeit;
-                    TxtTelMobil.Text = l.TelefonMobil;
-                    TxtTelPriv.Text = l.TelefonPrivat;
+                TxtEmail.Text = l.Email;
+                TxtTelGesch.Text = l.TelefonArbeit;
+                TxtTelMobil.Text = l.TelefonMobil;
+                TxtTelPriv.Text = l.TelefonPrivat;
 
-                    TxtStrasse.Text = l.Strasse;
+                TxtStrasse.Text = l.Strasse;
 
-                    NumKaderstufe.Value = l.KaderStufe;
-                    TxtAbteilung.Text = l.Abteilung;
-                    TxtRolle.Text = l.Rolle;
-                    NumArbeitspensum.Value = l.Arbeitspensum;
-                    DtpStartdatum.Value = l.StartDate;
-                    DtpEnddatum.Value = l.EndDate;
+                NumKaderstufe.Value = l.KaderStufe;
+                TxtAbteilung.Text = l.Abteilung;
+                TxtRolle.Text = l.Rolle;
+                NumArbeitspensum.Value = l.Arbeitspensum;
+                DtpStartdatum.Value = l.StartDate;
+                DtpEnddatum.Value = l.EndDate;
 
-                    NumLehrjahr.Value = l.TraineeYears;
-                    NumAktLehrjahr.Value = l.ActualTraineeYear;
+                NumLehrjahr.Value = l.TraineeYears;
+                NumAktLehrjahr.Value = l.ActualTraineeYear;
 
-                    NumLehrjahr.Enabled = true;
-                    NumAktLehrjahr.Enabled = true;
-                }
+                NumLehrjahr.Enabled = true;
+                NumAktLehrjahr.Enabled = true;
             }
         }
        
