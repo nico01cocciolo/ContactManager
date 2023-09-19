@@ -7,6 +7,8 @@ Login:
 User: admin
 Passwort: admin
 
+Für Debuging kann der FastLogin Button einfach wieder Enabled werden (☞ﾟヮﾟ)☞
+
 Funktioniert:
 ▪ Erfassung von Mitarbeitern und Kunden
 ▪ Mutieren von Mitarbeitern und Kunden
