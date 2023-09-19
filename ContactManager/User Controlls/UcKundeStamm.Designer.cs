@@ -623,13 +623,13 @@
             this.DtgData.AllowUserToDeleteRows = false;
             this.DtgData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.DtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgData.Location = new System.Drawing.Point(3, 486);
+            this.DtgData.Location = new System.Drawing.Point(3, 497);
             this.DtgData.Name = "DtgData";
             this.DtgData.ReadOnly = true;
             this.DtgData.RowHeadersVisible = false;
             this.DtgData.RowHeadersWidth = 51;
             this.DtgData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtgData.Size = new System.Drawing.Size(910, 268);
+            this.DtgData.Size = new System.Drawing.Size(910, 265);
             this.DtgData.TabIndex = 67;
             this.DtgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgData_CellClick);
             // 
@@ -754,7 +754,7 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.label31);
             this.panel6.Controls.Add(this.LblAnzahlZeilenGeladen);
-            this.panel6.Location = new System.Drawing.Point(678, 759);
+            this.panel6.Location = new System.Drawing.Point(678, 767);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(235, 22);
