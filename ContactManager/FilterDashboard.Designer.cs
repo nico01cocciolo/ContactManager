@@ -55,7 +55,7 @@
             // 
             // CmdFilterSuchen
             // 
-            this.CmdFilterSuchen.Location = new System.Drawing.Point(264, 517);
+            this.CmdFilterSuchen.Location = new System.Drawing.Point(267, 133);
             this.CmdFilterSuchen.Name = "CmdFilterSuchen";
             this.CmdFilterSuchen.Size = new System.Drawing.Size(75, 23);
             this.CmdFilterSuchen.TabIndex = 5;
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 596);
+            this.ClientSize = new System.Drawing.Size(354, 168);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NumFilterArbeitspensum);
             this.Controls.Add(this.label2);

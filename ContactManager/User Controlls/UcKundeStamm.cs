@@ -195,14 +195,13 @@ namespace ContactManager
             string nachname = "";
             string firmenname = "";
 
-            CmdSave.Visible = false;
-            CmdSaveChanges.Visible = true;
-            CmdCancel.Visible = false;
-            try
-            {
                 var isValid = val.ValidateString(TxtVorname.Text) && val.ValidateString(TxtNachname.Text) && val.ValidateString(TxtFirmenname.Text);
                 if (isValid)
                 {
+                    CmdSave.Visible = false;
+                    CmdSaveChanges.Visible = true;
+                    CmdCancel.Visible = false;
+
                     bool status = Status();
                     string anrede = CmbAnrede.Text;
                     string titel = CmbTitel.Text;
@@ -241,16 +240,6 @@ namespace ContactManager
                 {
                     MessageBox.Show($"Die Pflichtfelder: Vorname, Nachname, Firmename, Kundentyp dürfen keine Zahlen enthalten oder leer sein");
                 }
-
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Format stimmt nicht " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error:" + ex);
-            }
         }
 
         /// <summary>
@@ -372,7 +361,7 @@ namespace ContactManager
             {
                 int selectedrowindex = DtgData.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = DtgData.Rows[selectedrowindex];
-                cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
+                cellValue = Convert.ToString(selectedRow.Cells["Kundennummer"].Value);
 
             }
             return cellValue;
@@ -438,21 +427,25 @@ namespace ContactManager
 
                     return new
                     {
-                        ID = k.Attribute("ID").Value,
+                        Kundennummer = k.Attribute("ID").Value,
+                        Firmenname = k.Element("Firmenname").Value,
                         Anrede = k.Element("Anrede").Value,
                         Vorname = k.Element("Vorname").Value,
                         Nachname = k.Element("Nachname").Value,
+                        Wohnadresse = k.Element("Strasse").Value,
+                        Wohnort = k.Element("Wohnort").Value,
                         Postleitzahl = k.Element("Postleitzahl").Value,
+                        Geburtsdatum = k.Element("Geburtsdatum").Value,
                         Status,
                     };
                 })
-                .OrderBy(m => m.ID).ToList();
+                .OrderBy(m => m.Kundennummer).ToList();
 
             ClearDataBindings();
 
             DtgData.DataSource = data;
 
-            LblId.DataBindings.Add("text", data, "ID");
+            LblId.DataBindings.Add("text", data, "Kundennummer");
             CmbAnrede.DataBindings.Add("text", data, "Anrede");
             TxtVorname.DataBindings.Add("text", data, "Vorname");
             TxtNachname.DataBindings.Add("text", data, "Nachname");
